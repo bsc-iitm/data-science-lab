@@ -1,0 +1,40 @@
+project:
+  type: website
+  title: "Data Science Lab"
+
+website:
+  page-footer: "Copyright 2025 @ IIT Madras"
+  page-navigation: true
+  sidebar:
+    logo: "assets/iit_logo.png"
+    collapse-level: 1
+    border: true
+    foreground: "primary"
+    contents: auto
+    search: true
+  repo-url: https://github.com/bsc-iitm/data-science-lab
+  repo-branch: master
+  repo-actions: [edit, issue, source]
+  repo-link-target: "_blank"
+  #announcement: 
+  #  icon: info-circle
+  #  dismissable: true
+  #  content: "**Updates**: Dark mode has been enabled. The icon is just below the logo. You can now search the bank using specific tags. Look for the last entry in the sidebar"
+  #  type: primary
+  #  position: below-navbar
+
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: darkly
+    fontsize: 20px
+    toc: true
+    code-line-numbers: true
+    highlight-style: github
+    code-block-border-left: "#D3D3D3"
+    code-overflow: scroll
+    other-links:
+      - text: Discussion Forum
+        icon: chat-square-dots-fill
+        href: https://discourse.onlinedegree.iitm.ac.in/

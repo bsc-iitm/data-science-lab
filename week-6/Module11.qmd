@@ -1,0 +1,243 @@
+---
+title: "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+
+LangChain **Chains** are a powerful way to **combine multiple components** (like LLMs, prompts, memory, tools) into a **pipeline** that performs complex reasoning or multi-step tasks.
+
+---
+
+##  What is a Chain?
+
+A chain links multiple actions together. For example:
+> Prompt → LLM → Output Parser  
+is a simple chain.
+
+LangChain provides prebuilt chains and lets you create custom ones.
+
+---
+
+## 1. SimpleSequentialChain
+
+This is the **easiest way** to chain multiple LLM calls **sequentially**, where the output of one is passed to the next. (output of one chain becomes the sole input to the next chain.)
+
+###  Example: Idea → Name → Slogan
+
+```python
+from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain, SimpleSequentialChain
+
+# First chain: generate startup idea
+prompt1 = PromptTemplate.from_template("Give me a business idea about {topic}")
+llm1 = OpenAI(temperature=0.7)
+chain1 = LLMChain(llm=llm1, prompt=prompt1)
+
+# Second chain: write a tagline based on that idea
+prompt2 = PromptTemplate.from_template("Write a tagline for: {input}")
+llm2 = OpenAI(temperature=0.7)
+chain2 = LLMChain(llm=llm2, prompt=prompt2)
+
+# Combine both
+overall_chain = SimpleSequentialChain(chains=[chain1, chain2], verbose=True)
+result = overall_chain.run("healthcare")
+print(result)
+```
+---
+
+##  2. SequentialChain (Named Chains)
+
+When your chains have **multiple inputs and outputs**, use `SequentialChain`. `SequentialChain` offers more flexibility by allowing:
+
+Multiple initial inputs.
+
+- Multiple outputs at each step (intermediate outputs).
+- Explicit control over which outputs are passed as inputs to subsequent steps.
+- This is crucial for more complex workflows where you need to carry multiple pieces of information through different stages of a process.
+
+###  Example:
+
+```python
+from langchain_openai import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain, SequentialChain
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
+llm = OpenAI(temperature=0.7)
+
+# Chain 1: Translate English to French
+translation_prompt = PromptTemplate(
+    input_variables=["english_text"],
+    template="Translate the following English text to French:\n\n{english_text}\n\nFrench Translation:"
+)
+translation_chain = LLMChain(
+    llm=llm,
+    prompt=translation_prompt,
+    output_key="french_text" # Define an output_key for the result of this chain
+)
+
+# Chain 2: Summarize the French text (from Chain 1's output)
+summary_prompt = PromptTemplate(
+    input_variables=["french_text"], # Input variable matches output_key from translation_chain
+    template="Summarize the following French text concisely in French:\n\n{french_text}\n\nSummary:"
+)
+summary_chain = LLMChain(
+    llm=llm,
+    prompt=summary_prompt,
+    output_key="french_summary" # Define an output_key for the result of this chain
+)
+
+
+overall_chain_sequential = SequentialChain(
+    chains=[translation_chain, summary_chain],
+    input_variables=["english_text"],
+    output_variables=["french_text", "french_summary"], # We want both the translation and the summary
+    verbose=True
+)
+
+original_english_text = "Artificial intelligence is rapidly advancing, transforming industries and daily life."
+
+print("Running SequentialChain...\n")
+response = overall_chain_sequential.invoke({"english_text": original_english_text}) # Use invoke with a dictionary input
+
+print("\n--- Original English Text ---")
+print(original_english_text)
+print("\n--- French Translation ---")
+print(response["french_text"])
+print("\n--- French Summary ---")
+print(response["french_summary"])
+```
+
+---
+
+##  3. RouterChain
+
+`RouterChain` lets you **dynamically choose** which chain to use based on input.
+
+This is useful when:
+- You want to route different queries to different models or prompts.
+- You are building multi-skill agents.
+
+###  Conceptual Diagram:
+
+```text
+Input → Router → Chain A
+              → Chain B
+              → Chain C
+```
+
+LangChain uses a **LLM classifier** under the hood to decide the route.
+
+### Example: Different prompts for different domains
+
+```python
+from langchain.llms import OpenAI
+from langchain.chains import LLMChain, MultiPromptChain
+from langchain.prompts import PromptTemplate
+
+# Define different prompt templates
+math_prompt = PromptTemplate(
+    template="You are a math expert. Answer this question:\n{input}",
+    input_variables=["input"]
+)
+history_prompt = PromptTemplate(
+    template="You are a historian. Provide insights:\n{input}",
+    input_variables=["input"]
+)
+
+# Wrap them in LLMChains
+llm = OpenAI(temperature=0)
+math_chain = LLMChain(llm=llm, prompt=math_prompt)
+history_chain = LLMChain(llm=llm, prompt=history_prompt)
+
+# Dictionary of prompt chains
+destination_chains = {
+    "math": math_chain,
+    "history": history_chain
+}
+
+# Router prompt
+router_template = """\
+Given a question, classify it into one of the following domains: math or history.
+
+Question: {input}
+Domain:"""
+
+router_prompt = PromptTemplate(
+    template=router_template,
+    input_variables=["input"]
+)
+
+# RouterChain
+router_chain = LLMChain(llm=llm, prompt=router_prompt)
+
+# Final MultiPromptChain
+chain = MultiPromptChain(
+    router_chain=router_chain,
+    destination_chains=destination_chains,
+    default_chain=math_chain,  # fallback
+    verbose=True
+)
+
+result = chain.run("Who was the first President of India?")
+print(result)
+```
+
+## 4.  Custom Chains
+
+You can also build your own chain classes by subclassing `Chain` and defining:
+- `input_keys`
+- `output_keys`
+- `_call()` method
+
+Useful for full control over data flow.
+
+
+### Example
+You can build a chain from scratch by subclassing Chain and implementing the `_call()` method.
+
+```python
+from langchain.chains.base import Chain
+from typing import Dict, List
+
+class AddExclamationChain(Chain):
+    @property
+    def input_keys(self) -> List[str]:
+        return ["text"]
+
+    @property
+    def output_keys(self) -> List[str]:
+        return ["modified_text"]
+
+    def _call(self, inputs: Dict[str, str]) -> Dict[str, str]:
+        text = inputs["text"]
+        modified = text + "!!!"
+        return {"modified_text": modified}
+
+# Test it
+chain = AddExclamationChain()
+output = chain.run("This is amazing")
+print(output)  # Output: This is amazing!!!
+```
+---
+
+##  Summary Table
+
+| Chain Type           | Use Case                                               |
+|----------------------|--------------------------------------------------------|
+| `SimpleSequential`   | One-step → next → next logic, like writing pipelines   |
+| `SequentialChain`    | Named inputs/outputs, slightly more complex flows      |
+| `RouterChain`        | Decision-based routing to different sub-chains         |
+| `CustomChain`        | For advanced users who need full control               |
+
+---

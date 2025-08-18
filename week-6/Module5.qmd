@@ -1,0 +1,142 @@
+---
+title: "Module 5: Getting Started with OpenAI API"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+## What is the OpenAI API?
+
+The OpenAI API allows you to access powerful large language models like **GPT-3.5** and **GPT-4** via a simple HTTP-based interface.
+
+You can use it for:
+
+- Chatbots
+- Content creation
+- Text summarization
+- Translation
+- Code generation
+- Audio transcription
+- Image generation
+- Embedding generation
+
+---
+
+## Create an OpenAI Account
+
+1. Go to [https://platform.openai.com](https://platform.openai.com)
+2. Sign up using your email, Google, or GitHub.
+3. Navigate to [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+4. Click **"Create new secret key"**
+5. **Copy and store** your key securely.
+
+
+::: {.callout-warning}
+ Your secret key starts with `sk-` and should never be shared publicly.
+:::
+
+---
+
+## Install the OpenAI Python Package
+
+```bash
+pip install --upgrade openai
+```
+
+---
+
+## Set Up Your API Key in Python
+
+You can use your API key in two ways:
+
+### Option 1: Set directly in code (for testing only)
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key="your-api-key-here")
+```
+
+### Option 2: Use environment variables (recommended)
+
+```bash
+# In terminal
+export OPENAI_API_KEY="your-api-key-here"
+```
+
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+```
+
+---
+
+## Available Functionalities in openai>=1.0.0
+
+### 1. Chat Completion
+
+```python
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Explain photosynthesis in simple words."}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+---
+
+### 2. Image Generation
+
+```python
+response = client.images.generate(
+    model="dall-e-3",
+    prompt="A futuristic city floating in the sky",
+    size="1024x1024",
+    quality="standard",
+    n=1
+)
+image_url = response.data[0].url
+print(image_url)
+```
+
+---
+
+### 3. Embeddings
+
+```python
+response = client.embeddings.create(
+    input="Machine learning is fun.",
+    model="text-embedding-ada-002"
+)
+print(response.data[0].embedding)
+```
+
+---
+
+### 4. Audio Transcription (Whisper)
+
+```python
+with open("speech.mp3", "rb") as audio_file:
+    transcript = client.audio.transcriptions.create(
+        model="whisper-1",
+        file=audio_file
+    )
+print(transcript.text)
+```
+
+---
+
+## Summary
+
+- Use `OpenAI()` to create a client with your API key.
+- Modern usage recommends `client.chat.completions.create()` for chat interactions.
+- You can also generate images, extract embeddings, and transcribe audio using a consistent client interface.

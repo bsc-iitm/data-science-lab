@@ -1,0 +1,110 @@
+---
+title: "Module 1: Introduction to Prompt Engineering"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+##  Welcome to Prompt Engineering!
+
+In this first module, we are going to learn what **prompt engineering** means and why it is important when working with big AI language models like ChatGPT, GPT-3, GPT-4, etc.
+
+### Prerequisite:
+
+---
+
+##  What is a Prompt?
+A **prompt** is just a piece of text or a question that you give to an AI language model.
+The model will try to complete it or give an answer based on that prompt.
+
+## What is Prompt Engineering?
+
+Prompt engineering means writing your prompt in a smart way so that the model gives the best and most accurate output.
+
+You can think of it like this:
+
+> **"If you ask the right question, you will get the right answer."**
+
+So, prompt engineering is like the **art (and science)** of talking to AI in a way it understands better.
+
+It helps the AI give meaningful, useful, and more correct responses just by changing how we ask.
+It is especially important for powerful models like GPT-3/4, which can perform a wide range of tasks depending on how they’re prompted
+
+### Example
+
+#### Example 1:
+Prompt: "Translate this sentence into Hindi: I teach machine learning."
+
+Output: "Main machine learning padhata hoon."
+
+
+#### Example 2:
+Prompt: "What is the sentiment of this review? 'The movie was incredibly boring and a complete waste of time.'"
+
+Output: "Negative"
+
+---
+
+###  Good vs Bad Prompt Example
+
+BAD: Summarize the following.
+
+
+GOOD: Summarize the following scientific article in 2-3 sentences using layman language.
+
+
+### Why Prompt Engineering Matters
+
+- Improves output quality and relevance
+- Reduces need for retraining or fine-tuning
+- Empowers non-technical users to interact with AI effectively
+
+---
+
+#  Prompt Engineering vs Fine-Tuning
+
+| Prompt Engineering | Fine-Tuning |
+|--------------------|-------------|
+| No change to model weights | Adjusts model parameters |
+| Fast and low-cost | Requires training resources |
+| Easily deployed | Needs careful dataset curation |
+
+---
+
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
+
+  <a href="./" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      ⬅️ Home
+    </button>
+  </a>
+
+  <a href="Module2.html" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      Module 2 ➡️
+    </button>
+  </a>
+
+</div>
+
+

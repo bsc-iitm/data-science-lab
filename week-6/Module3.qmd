@@ -1,0 +1,38 @@
+---
+title: "Module 3: Applications of Prompt Engineering"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+##  Overview
+
+In this module, we will explore how prompt engineering can help us perform real-world tasks using language models. You will see how the same model can be used for many different applications just by changing the **prompt**.
+
+We’ll cover:
+
+- ✅ Text Summarization
+- ✅ Text Classification (like Sentiment Analysis)
+- ✅ Question Answering (QA)
+- ✅ Translation
+- ✅ Grammar Correction
+
+Each section has:
+- a simple explanation
+- a good prompt example
+- and a code example using Hugging Face's GPT-2 pipeline.
+
+---
+
+##  1. Text Summarization
+
+**Goal**: Reduce a long paragraph into a short and simple summary.
+
+###  Prompt Example
+
+
+Summarize this paragraph in one line: 
+"Artificial Intelligence is used in many fields such as healthcare, finance, and education to automate processes and improve efficiency."

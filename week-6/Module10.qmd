@@ -1,0 +1,232 @@
+---
+title: "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+This module dives into three foundational building blocks within the LangChain framework: **LLMs (Language Model wrappers)**, **PromptTemplates**, and **OutputParsers**. A solid understanding and mastery of these components are crucial for constructing robust, structured, and highly reusable language model applications and pipelines. They form the bedrock upon which more complex LangChain constructs (like Chains and Agents) are built.
+
+---
+
+## 1. LLMs – Language Model Wrappers
+
+At the heart of any LLM-powered application is, naturally, the **Large Language Model** itself. LangChain provides a sophisticated yet user-friendly interface to interact with various LLM providers, abstracting away the intricacies of their specific APIs. This means you can seamlessly switch between models from different vendors such as OpenAI, Cohere, Anthropic, Google (via `langchain-google-genai`), HuggingFace (via `langchain-huggingface`), and many others, often with minimal code changes.
+
+LangChain categorizes LLM interfaces into two main types:
+* **`LLM`:** For models that typically accept a string input and return a string completion (e.g., older OpenAI completion models like `text-davinci-003`).
+* **`ChatModel`:** For models that accept a list of messages (representing a conversation history with roles like "user," "assistant," "system") and return a message, designed for conversational interfaces (e.g., OpenAI's GPT-3.5-turbo, GPT-4, Anthropic's Claude). While the example below uses `LLM`, `ChatModel` is more common for modern conversational AI.
+
+###  Example: Using OpenAI's older Completion Model with LangChain
+
+```python
+# Note: For newer models like gpt-3.5-turbo or gpt-4, you would typically use ChatOpenAI
+# from langchain_openai import ChatOpenAI
+# llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+# response = llm.invoke("Write a motivational quote.")
+
+# This example uses the older LLM wrapper for text-davinci-003,
+# which is good for demonstrating the basic LLM interface.
+from langchain_openai import OpenAI
+
+# Initialize the OpenAI LLM wrapper.
+# model_name: Specifies which LLM to use. "text-davinci-003" is an older completion model.
+# temperature: Controls the creativity of the output. 0.0 means more deterministic, higher means more random/creative.
+llm = OpenAI(model_name="text-davinci-003", temperature=0.7)
+
+# Make a call to the LLM with a simple string prompt.
+# For LLM wrappers, the .invoke() method is used for synchronous calls.
+response = llm.invoke("Write a motivational quote.")
+print(response)
+```
+
+::: {.callout-note appearance="simple" collapse="true"}
+# Key Takeaway
+The primary advantage here is abstraction. You don't need to manually construct HTTP requests, handle API keys in headers, or parse raw JSON responses. LangChain's LLM (or ChatModel) wrapper handles all these underlying complexities, providing a clean Pythonic interface. This means you can seamlessly switch between models and providers (e.g., from `OpenAI` to `Anthropic` or `HuggingFace`) by simply changing the import and the class instantiation, without altering your core application logic.
+:::
+
+# 2.  PromptTemplate – Modular Prompt Construction
+
+Hardcoding prompt strings directly into your code quickly becomes unmanageable as applications grow.  
+Prompts often need to be **dynamic**, incorporating user inputs, retrieved data, or internal states.  
+
+This is where LangChain's `PromptTemplate` comes into play. It enables you to **template your prompts**, defining a structure with **placeholders (variables)** that can be filled in at runtime.
+
+---
+
+##  Example: Creating and Formatting a PromptTemplate
+
+### Python
+
+```python
+from langchain.prompts import PromptTemplate
+
+# Define the template string with a placeholder using curly braces {}.
+# The variable name "product" is identified by LangChain.
+template_string = "What are some marketing strategies for a {product}?"
+
+# Create a PromptTemplate instance.
+# input_variables: A list of strings corresponding to the placeholders in your template.
+# template: The actual template string.
+template = PromptTemplate(
+    input_variables=["product"],
+    template=template_string
+)
+
+prompt = template.format(product="fitness app")
+print(prompt)
+```
+
+::: {.callout-note collapse="true"}
+`PromptTemplate` does more than just f-strings. It handles multiple input variables, can manage different types of prompts (e.g., ChatPromptTemplate for message-based LLMs), and ensures your prompts are well-structured and reusable across different parts of your application or even different projects.
+:::
+
+###  Benefits of PromptTemplate:
+- Reusable and readable
+- Parameterized with inputs
+- Easier to maintain and debug
+- Version Control Friendly
+
+---
+
+# 3.  OutputParsers – Making Model Responses Structured
+
+Large Language Models fundamentally generate **plain text strings**.  
+While this is versatile, in many real-world applications, you don't just want raw text;  
+you need to extract **structured information** from the LLM's response.
+
+For example, you might want to retrieve:
+- a **JSON object**
+- a **Python list**
+- a **specific number**
+- or a **boolean value**
+
+---
+
+##  Why OutputParsers?
+
+`OutputParsers` in LangChain are designed precisely for this purpose.  
+They take the **raw text output** from an LLM and **transform it into a desired data structure**.
+
+This is crucial for:
+- Integrating LLM outputs into **application logic**
+- Storing results in **databases**
+- Passing structured data to **external services**
+
+---
+
+##  Example: Extracting JSON from an LLM Response
+
+This example demonstrates how to set up an `OutputParser` to expect a structured JSON response.
+
+>  **Key Insight**:  
+You must tell **both** the OutputParser **how to parse**, and the **LLM what format** to output.  
+The `format_instructions` generated by the parser are vital for **guiding the LLM**.
+
+```python
+from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain_openai import OpenAI # For LLM interaction
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+import json # For pretty printing the output
+
+# 1. Define the desired schema for the structured output.
+# Each ResponseSchema defines a key (name) and a description (to guide the LLM).
+response_schemas = [
+    ResponseSchema(name="headline", description="The main headline of the news article summary"),
+    ResponseSchema(name="summary", description="A concise 2-sentence summary of the news article"),
+    ResponseSchema(name="keywords", description="A comma-separated list of 3-5 keywords related to the article")
+]
+
+# 2. Create a StructuredOutputParser from the defined schema.
+parser = StructuredOutputParser.from_response_schemas(response_schemas)
+
+# 3. Get the formatting instructions.
+# These instructions tell the LLM exactly how to format its output
+# so that the parser can successfully read it.
+format_instructions = parser.get_format_instructions()
+
+print("--- Format instructions to insert in your prompt ---")
+print(format_instructions)
+print("\n" + "="*50 + "\n")
+
+# Now, let's use this with an LLM and PromptTemplate
+
+# News article to summarize
+article_text = """
+Recent studies have confirmed that climate change is accelerating, with global temperatures continuing to rise. Scientists emphasize the urgent need for reducing greenhouse gas emissions. Renewable energy sources are becoming increasingly viable alternatives to fossil fuels. The latest IPCC report highlights the irreversible impacts already in motion and stresses immediate, ambitious action.
+"""
+
+# Create a PromptTemplate that includes the format instructions
+# It's crucial that the prompt explicitly asks the LLM to adhere to the format.
+prompt_template_string = """
+You are a news summarizer. Summarize the following article and extract key information in JSON format.
+{format_instructions}
+Article:
+{article}
+"""
+
+prompt = PromptTemplate(
+    input_variables=["article"],
+    partial_variables={"format_instructions": format_instructions}, # Partial variable for fixed instructions
+    template=prompt_template_string
+)
+
+# Initialize the LLM (using a chat model like gpt-3.5-turbo is recommended for structured output)
+llm = OpenAI(temperature=0) # Set temperature to 0 for more deterministic output
+
+# Create an LLMChain to combine the prompt and LLM
+chain = LLMChain(llm=llm, prompt=prompt)
+
+# Run the chain to get the raw text output from the LLM
+llm_raw_output = chain.run(article=article_text)
+print("--- Raw LLM Output (text string) ---")
+print(llm_raw_output)
+print("\n" + "="*50 + "\n")
+
+# Use the parser to transform the raw text output into a structured dictionary
+try:
+    parsed_output = parser.parse(llm_raw_output)
+    print("--- Parsed Output (Python Dictionary) ---")
+    print(json.dumps(parsed_output, indent=2))
+except Exception as e:
+    print(f"Error parsing output: {e}")
+    print("The LLM might not have followed the format instructions precisely.")
+```
+
+
+##  Using All Three Together
+
+```python
+from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+
+# Step 1: Prompt Template
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain the concept of {topic} in simple terms."
+)
+
+# Step 2: LLM
+llm = OpenAI(temperature=0.5)
+
+# Step 3: Chain
+chain = LLMChain(llm=llm, prompt=prompt)
+
+# Run
+response = chain.run("blockchain")
+print(response)
+```
+---
+
+##  Summary
+
+- `LLM`: Connect to a language model.
+- `PromptTemplate`: Build clean, reusable prompts.
+- `OutputParser`: Convert raw LLM responses into structured data.
+
+

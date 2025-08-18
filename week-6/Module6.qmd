@@ -1,0 +1,144 @@
+---
+title: "Module 6: Hands-on with OpenAI API"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+In this hands-on module, we'll apply the concepts you've learned to build and test real prompts using OpenAI's `ChatCompletion` API (via the **new OpenAI SDK** `openai>=1.0.0`). We will also look at several mini-projects and explore how to integrate them into real-world applications.
+
+---
+
+## Setup
+
+```python
+!pip install --upgrade openai
+```
+
+```python
+from openai import OpenAI
+import os
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+```
+
+---
+
+## 1. Simple ChatBot Interaction
+
+```python
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the FIFA World Cup in 2022?"}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+---
+
+## 2. Custom Assistant Role
+
+```python
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    messages=[
+        {"role": "system", "content": "You are a strict English grammar teacher."},
+        {"role": "user", "content": "Correct this: He don't like the cold."}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+---
+
+## 3. Explore Parameters
+
+Play with:
+
+- `temperature`: creativity
+- `top_p`: nucleus sampling
+- `max_tokens`: response length
+- `stop`: cut-off patterns
+- `n`: number of completions
+
+```python
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    temperature=0.9,
+    top_p=0.85,
+    max_tokens=100,
+    messages=[
+        {"role": "user", "content": "Write a short story about a cat on Mars."}
+    ]
+)
+print(response.choices[0].message.content)
+```
+
+---
+
+## 4. Mini-Applications
+
+### a) Summarizer
+
+```python
+def summarize_text(text):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "Summarize the following text."},
+            {"role": "user", "content": text}
+        ]
+    )
+    return response.choices[0].message.content
+```
+
+### b) Idea Generator
+
+```python
+def generate_ideas(topic):
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a creative idea generator."},
+            {"role": "user", "content": f"Give 5 unique business ideas on {topic}."}
+        ]
+    )
+    return response.choices[0].message.content
+```
+
+---
+
+## 5. Further Exploration Ideas
+
+- **Quiz Generator**: Generate multiple-choice questions from topics
+- **Recipe Recommender**: Generate recipes from given ingredients
+- **Persona Bot**: Change assistant behavior (e.g. a Shakespearean poet)
+- **Resume Optimizer**: Improve resumes using targeted prompts
+- **Story Continuation**: Ask GPT to continue a paragraph
+
+---
+
+## Summary
+
+- You've seen how to send chat messages and tweak response behavior.
+- We built mini apps using different prompt designs.
+- You can now start prototyping your own AI assistants!
+
+---
+
+###  Hands-On Notebook
+
+<a href="https://colab.research.google.com/drive/1Mn9c-dlZeY1f2uPBQdbp7aOPAKKb_KKq?usp=sharing" target="_blank">
+  <button style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 16px;">
+     Open in Google Colab
+  </button>
+</a>
+
+
+

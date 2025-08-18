@@ -1,0 +1,157 @@
+---
+title: "Module 7: Working with Text Completion in OpenAI"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+In this module, we’ll explore how to use the **Text Completion API** to generate text from a prompt using models like `text-davinci-003`.
+
+This API is useful when you want the model to complete a sentence, paragraph, or idea based on a given start.
+
+---
+
+
+## What is a Text Completion?
+
+A **completion** means you're asking the model to "complete the text you started."  
+For example, if your prompt is:
+
+> `"Once upon a time, in a galaxy far away,"`
+
+The model will try to continue that story in a logical and coherent way.
+
+---
+
+##  Common Use Cases
+
+- Story writing
+- Explanation or reasoning
+- Translation
+- Grammar correction
+- Code generation
+
+---
+
+## Basic Setup
+
+Install the OpenAI package and import the required libraries:
+
+
+```python
+!pip install openai
+```
+
+```python
+
+import openai
+import os
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+```
+
+---
+
+## Making a Completion Request
+
+Here’s a basic example of using the Text Completion endpoint:
+
+```python
+
+response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt="Write a tweet about climate change.",
+    max_tokens=60)
+print(response.choices[0].text.strip())
+```
+
+---
+
+## Key Parameters
+
+| Parameter     | Description |
+|---------------|-------------|
+| `prompt`      | The text you want the model to complete |
+| `model`       | The completion model (e.g., `text-davinci-003`) |
+| `max_tokens`  | Max length of the output |
+| `temperature` | Controls randomness (0 = deterministic, 1 = very random) |
+| `top_p`       | Controls diversity via nucleus sampling |
+| `n`           | Number of completions to generate |
+| `stop`        | Stop generation at specific token(s) |
+
+---
+
+### Example with All Parameters:
+
+```python
+response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt="Explain the concept of gravity in simple words.",
+    temperature=0.7,
+    max_tokens=100,
+    top_p=0.9,
+    n=1,
+    stop=["\n"])
+print(response.choices[0].text.strip())
+```
+
+---
+
+## Use Case: Grammar Correction
+
+```python
+prompt = "Correct this sentence: 'She no went to the market today.'"
+response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt,
+    temperature=0,
+    max_tokens=60)
+print(response.choices[0].text.strip())
+```
+
+---
+
+## Use Case: Email Drafting
+
+```python
+prompt = "Write a formal email to a colleague asking for help on a project due next week."
+response = openai.Completion.create(
+    model="text-davinci-003",
+    prompt=prompt,
+    max_tokens=150,
+    temperature=0.6)
+print(response.choices[0].text.strip())
+```
+
+---
+
+##  Best Practices
+
+- Be specific in your prompts: vague prompts give vague results.
+- Limit token size if you only need short responses.
+- Use `temperature` and `top_p` to balance creativity and control.
+
+---
+
+##  When to Use Completion vs ChatCompletion?
+
+| Task                    | Use This API              |
+|-------------------------|---------------------------|
+| Long-form generation    | `Completion.create()`     |
+| Conversational systems  | `ChatCompletion.create()` |
+| Role-based agents       | `ChatCompletion.create()` |
+| Fill-in-the-blank style | `Completion.create()`     |
+
+---
+
+##  Summary
+
+- Text Completion is ideal for open-ended text generation.
+- Use `text-davinci-003` for best results.
+- Tune parameters like `temperature`, `max_tokens`, and `stop` for optimal behavior.
+
+---
+

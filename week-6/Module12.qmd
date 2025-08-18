@@ -1,0 +1,137 @@
+---
+title: "Module 12: LangChain Memory – Making LLMs Remember Context"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+
+In real-world applications, like chatbots and assistants, we often want the system to remember past conversations. This is where **LangChain Memory** comes into play.
+
+---
+
+##  What is Memory?
+
+By default, LLMs are stateless. This means:
+
+- They don't remember anything from earlier user inputs.
+- Each call to the LLM is treated like a blank slate.
+
+Memory allows us to **maintain context** between multiple inputs.
+
+---
+
+##  Types of Memory in LangChain
+
+LangChain provides several built-in memory classes for different use-cases.
+
+### 1. `ConversationBufferMemory`
+
+Stores the entire conversation in memory as a buffer (long text history). Best for simple dialogs.
+
+```python
+from langchain.memory import ConversationBufferMemory
+
+memory = ConversationBufferMemory()
+```
+
+### 2. `ConversationBufferWindowMemory`
+
+Same as buffer memory but only keeps the **last `k` messages**.
+
+```python
+from langchain.memory import ConversationBufferWindowMemory
+
+memory = ConversationBufferWindowMemory(k=3)
+```
+
+### 3. `ConversationSummaryMemory`
+
+Summarizes the conversation so far to save tokens.
+
+```python
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationSummaryMemory
+
+llm = ChatOpenAI()
+memory = ConversationSummaryMemory(llm=llm)
+```
+
+### 4. `EntityMemory`
+
+Tracks information about entities (like names, places) throughout the conversation.
+
+---
+
+##  Adding Memory to Chains
+
+You can add memory to any chain. Most commonly used with `ConversationChain`.
+
+```python
+from langchain.chains import ConversationChain
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationBufferMemory
+
+llm = ChatOpenAI()
+memory = ConversationBufferMemory()
+conversation = ConversationChain(llm=llm, memory=memory)
+
+response = conversation.run("Hello, my name is Nitin.")
+print(response)
+
+response = conversation.run("What is my name?")
+print(response)  # Should recall 'Nitin'
+```
+
+---
+
+##  Customizing Memory
+
+You can customize memory parameters:
+
+- `k` in buffer window memory (controls how many turns to remember)
+- LLM model for summarization in summary memory
+- Prefix/suffix prompts for memory formatting
+
+---
+
+##  Full Stateful Chat Example
+
+```python
+from langchain.chains import ConversationChain
+from langchain.chat_models import ChatOpenAI
+from langchain.memory import ConversationBufferWindowMemory
+
+llm = ChatOpenAI()
+memory = ConversationBufferWindowMemory(k=2)
+
+conversation = ConversationChain(
+    llm=llm,
+    memory=memory,
+    verbose=True
+)
+
+conversation.run("Hi, I'm Anjali.")
+conversation.run("I live in Delhi.")
+conversation.run("Where do I live?")
+```
+
+---
+
+::: {.callout-important}
+
+| Situation                          | Recommended Memory              |
+|-----------------------------------|---------------------------------|
+| Simple chatbot                    | ConversationBufferMemory        |
+| Long conversation                 | ConversationSummaryMemory       |
+| Entity-aware dialog               | EntityMemory                    |
+| Limited token budget              | Summary or Window Memory        |
+:::
+---
+
+::: {.callout-note}
+Memory is essential when building applications that require **context awareness**, like chatbots, customer support agents, or tutors.
+:::

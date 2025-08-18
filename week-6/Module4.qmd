@@ -1,0 +1,93 @@
+---
+title: "Module 4: Introduction to LLM Platforms"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+---
+
+#  What are LLM Platforms?
+
+LLM platforms provide access to powerful AI models that understand and generate human-like text, code, images, and more. These platforms usually offer:
+
+- Pre-trained models (e.g., GPT, Claude, Gemini, Mistral)
+- Easy-to-use APIs
+- Cloud-based access (no training needed)
+
+---
+
+##  Popular LLM Providers
+
+| Platform | Focus | Strengths |
+|----------|-------|-----------|
+| **OpenAI** | General-purpose LLMs (GPT-3.5, GPT-4) | Chat, code, summarization |
+| **Anthropic** | Safer, explainable models (Claude) | Long context, safety |
+| **Google AI (Gemini)** | Integrated with Google tools | Strong in reasoning, multilingual |
+| **Mistral** | Open-source lightweight models | Efficient, fast |
+| **Cohere** | NLP + RAG friendly APIs | Focused on enterprise use |
+| **Hugging Face** | Open-source model hub | Community, fine-tuning support |
+| **Azure AI** | Enterprise OpenAI hosting | Scalable, secure |
+
+---
+
+##  Why Use These Platforms?
+
+| Benefit | Explanation |
+|--------|-------------|
+|  Intelligence-as-a-Service | No need to train from scratch — just use API |
+|  Plug-and-play APIs | Easy integration with apps, websites, and bots |
+|  Multitask Capabilities | One model can do Q&A, summarization, translation, etc. |
+|  Continuous Updates | Models improve automatically in the cloud |
+
+
+
+-  LLM-related skills are in **high demand** globally:
+  - Prompt Engineering
+  - LangChain / RAG apps
+  - OpenAI/Gemini APIs
+  - LLM app integration (chatbots, agents)
+
+
+## ✅ Summary
+
+- LLM platforms give access to powerful AI models through easy APIs.
+- They are used in almost every modern industry.
+- Learning to work with them opens many career and product-building opportunities.
+
+---
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
+
+  <a href="Module3.html/" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      ⬅️ Module 3
+    </button>
+  </a>
+
+  <a href="Module7.html" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      Module 5 ➡️
+    </button>
+  </a>
+
+</div>

@@ -1,0 +1,31 @@
+---
+title: "Week 6"
+format: html
+order: 6
+---
+
+<h1 style="text-align: center; font-size: 4.5em; margin-top: 200px;">
+  Prompt Engineering
+</h1>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 3rem;">
+
+
+  <a href="Module1.html" style="text-decoration: none;">
+    <button style="
+      padding: 10px 20px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;">
+      Module 1 ➡️
+    </button>
+  </a>
+
+</div>
+
+
+

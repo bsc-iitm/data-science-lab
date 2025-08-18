@@ -1,0 +1,178 @@
+---
+title: "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-fold: true
+jupyter: python3
+---
+
+## Overview
+
+This module builds upon the basic `PromptTemplate` usage by exploring advanced concepts like:
+
+- Partial templates (pre-filling parts of the prompt)
+- Nesting templates for modularity
+- Debugging prompt formatting issues
+
+These are essential when building complex pipelines (e.g., RAG, agents), and they enhance **prompt reuse**, **flexibility**, and **robustness**.
+
+---
+
+## 1. Partial PromptTemplates
+
+Sometimes a prompt has multiple variables, but you want to **pre-fill some** of them.
+
+LangChain allows you to do this with **`partial()`**.
+
+```python
+from langchain.prompts import PromptTemplate
+
+# Define a template with two variables
+base_template = PromptTemplate(
+    input_variables=["product", "audience"],
+    template="Give marketing ideas for {product} aimed at {audience}."
+)
+
+# Partially fill the 'audience'
+partial_prompt = base_template.partial(audience="teenagers")
+
+# Now you only need to pass 'product'
+final_prompt = partial_prompt.format(product="fitness tracker")
+print(final_prompt)
+```
+
+::: {.callout-note}
+You can chain multiple `.partial()` calls or combine with dynamic inputs at runtime.
+:::
+
+---
+
+## 2. Nesting PromptTemplates
+
+You can **nest prompt templates** inside others to build **composable prompts**.
+
+```python
+from langchain.prompts import PromptTemplate
+
+# Define reusable templates
+instruction_template = PromptTemplate(
+    input_variables=["task"],
+    template="You are a helpful assistant. Please complete the following task: {task}"
+)
+
+task_template = PromptTemplate(
+    input_variables=["topic"],
+    template="Write a summary about {topic}."
+)
+
+# Generate the task first, then embed it in the instruction
+final_task = task_template.format(topic="climate change")
+final_prompt = instruction_template.format(task=final_task)
+print(final_prompt)
+```
+
+---
+
+## 3. Using f-string-like Templates (without PromptTemplate)
+
+Sometimes, you might not want to use `PromptTemplate`, especially for quick prototyping.
+
+```python
+product = "AI chatbot"
+audience = "teachers"
+
+prompt = f"""
+Generate innovative ideas to market a {product} for {audience}.
+Make it sound professional.
+"""
+
+print(prompt)
+```
+
+But note:
+- No validation
+- No template reuse
+- Harder to debug
+
+Use `PromptTemplate` whenever possible for production-quality prompts.
+
+---
+
+## 4. Debugging PromptTemplates
+
+When prompts fail to format correctly or raise runtime errors, use:
+
+### a. `template.format()` Errors
+
+```python
+from langchain.prompts import PromptTemplate
+
+template = PromptTemplate(
+    input_variables=["name"],
+    template="Hello {name}, welcome to {company}."
+)
+
+# This will raise a KeyError because 'company' is not provided
+# prompt = template.format(name="Nitin")
+```
+
+**Solution**: Add all required inputs or use `partial()`.
+
+### b. Print intermediate values
+
+```python
+print("Prompt Variables:", template.input_variables)
+print("Template:", template.template)
+```
+
+### c. Validate Inputs
+
+Always check variable names in curly braces match what you pass to `format()` or the chain.
+
+---
+
+## 5. PromptTemplate with Partial & Chains
+
+```python
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from langchain_openai import OpenAI
+
+llm = OpenAI()
+
+base_template = PromptTemplate(
+    input_variables=["tool", "task"],
+    template="You are using {tool} to {task}. Write a one-line summary."
+)
+
+partial_prompt = base_template.partial(tool="LangChain")
+chain = LLMChain(llm=llm, prompt=partial_prompt)
+
+response = chain.run(task="summarize search results")
+print(response)
+```
+
+---
+
+## Summary
+
+| Feature              | Description                                           |
+|---------------------|-------------------------------------------------------|
+| `partial()`         | Pre-fill some prompt variables                        |
+| Nested Templates    | Use one template inside another                       |
+| Debugging Tips      | Use `.format()` carefully, print templates            |
+| Reuse & Maintain    | Modular templates = maintainable and scalable code    |
+
+These techniques make prompt engineering scalable and production-ready, especially in **RAG**, **Agent**, or **multi-component** systems.
+
+
+###  Hands-On Notebook
+
+<a href="https://colab.research.google.com/drive/1pD2K8ya9c6su-wjGI81utQGpFvgkWr8p?usp=sharing" target="_blank">
+  <button style="padding: 10px 20px; background-color: #2e7d32; color: white; border: none; border-radius: 6px; font-size: 16px;">
+     Open in Google Colab
+  </button>
+</a>
+

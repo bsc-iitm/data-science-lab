@@ -6,6 +6,7 @@ format:
     toc-depth: 2
     code-fold: true
 jupyter: python3
+order: 10
 ---
 
 This module dives into three foundational building blocks within the LangChain framework: **LLMs (Language Model wrappers)**, **PromptTemplates**, and **OutputParsers**. A solid understanding and mastery of these components are crucial for constructing robust, structured, and highly reusable language model applications and pipelines. They form the bedrock upon which more complex LangChain constructs (like Chains and Agents) are built.

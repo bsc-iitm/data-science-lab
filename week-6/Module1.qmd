@@ -6,6 +6,8 @@ format:
     toc-depth: 2
     code-fold: true
 jupyter: python3
+author: Nitin
+order: 1
 ---
 
 ##  Welcome to Prompt Engineering!

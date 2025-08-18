@@ -6,6 +6,7 @@ format:
     toc-depth: 2
     code-fold: true
 jupyter: python3
+order: 7
 ---
 
 In this module, we’ll explore how to use the **Text Completion API** to generate text from a prompt using models like `text-davinci-003`.

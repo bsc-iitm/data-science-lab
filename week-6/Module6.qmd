@@ -6,6 +6,7 @@ format:
     toc-depth: 2
     code-fold: true
 jupyter: python3
+order: 6
 ---
 
 In this hands-on module, we'll apply the concepts you've learned to build and test real prompts using OpenAI's `ChatCompletion` API (via the **new OpenAI SDK** `openai>=1.0.0`). We will also look at several mini-projects and explore how to integrate them into real-world applications.

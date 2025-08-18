@@ -1,0 +1,1605 @@
+[
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html",
+    "title": "Vectors",
+    "section": "",
+    "text": "First we shall import the NumPy package.\n\nimport numpy as np",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#import",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#import",
+    "title": "Vectors",
+    "section": "",
+    "text": "First we shall import the NumPy package.\n\nimport numpy as np",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#python-lists",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#python-lists",
+    "title": "Vectors",
+    "section": "Python Lists",
+    "text": "Python Lists\nConsider the following vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nOne of the simplest operations that we can think of is to add these two vectors:\n\\[\n\\mathbf{z} = \\mathbf{x} + \\mathbf{y}= \\begin{bmatrix}\n5\\\\\n7\\\\\n9\n\\end{bmatrix}\n\\]\nLet us first see how this is done in native Python, using lists:\n\nx = [1, 2, 3]\ny = [4, 5, 6]\nz = [ ]\nfor x_i, y_i in zip(x, y):\n    z.append(x_i + y_i)\nz\n\n[5, 7, 9]\n\n\nIn a moment, we shall study how NumPy simplifies this operation. But before that, we need to understand how vectors are represented in NumPy.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#vectors-as-numpy-arrays",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#vectors-as-numpy-arrays",
+    "title": "Vectors",
+    "section": "Vectors as NumPy arrays",
+    "text": "Vectors as NumPy arrays\nConsider the following vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\nx\n\narray([1, 2, 3])\n\n\nWe can also arrive at this using the arange method. The arange method in NumPy is similar to the range function in Python. The right end-point is excluded and the step size is \\(1\\) by default.\n\nx = np.arange(1, 4)\nx\n\narray([1, 2, 3])\n\n\nNotice that x is a new kind of object and is called a NumPy array. To be more precise, it is an object of type ndarray.\n\ntype(x)\n\nnumpy.ndarray\n\n\nWe can now turn to vector addition in NumPy.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#vector-addition",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#vector-addition",
+    "title": "Vectors",
+    "section": "Vector addition",
+    "text": "Vector addition\nAddition is one of the elementary operations that can be performed on vectors. Given two vectors\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{z} = \\mathbf{x} + \\mathbf{y}= \\begin{bmatrix}\n5\\\\\n7\\\\\n9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = np.arange(4, 7)\nz = x + y\nz\n\narray([5, 7, 9])\n\n\nCompare the NumPy code with the Python code that involved lists and notice the differences. At least two are worth pointing:\n\nThere is no explicit loop in the case of NumPy.\nThe code is succinct and more readable.\n\nWe will soon see that there are also improvements to efficiency when using NumPy, especially when working with large arrays. Next we turn to some useful operations on vectors that can be performed with the help of NumPy.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#element-wise-multiplication",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#element-wise-multiplication",
+    "title": "Vectors",
+    "section": "Element-wise multiplication",
+    "text": "Element-wise multiplication\nElement-wise multiplication of two vectors is called the Hadamard product. The operator corresponding to it is \\(\\odot\\). For example, given two vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{z} = \\mathbf{x} \\odot \\mathbf{y}= \\begin{bmatrix}\n4\\\\\n10\\\\\n18\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = np.arange(4, 7)\nz = x * y\nz\n\narray([ 4, 10, 18])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#scaling-vectors",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#scaling-vectors",
+    "title": "Vectors",
+    "section": "Scaling vectors",
+    "text": "Scaling vectors\nIf \\(\\mathbf{x}\\) is a vector, scaling it by a constant \\(k\\) is equivalent to element-wise multiplication by \\(k\\). For example, given\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{y} = 3 \\mathbf{x} = \\begin{bmatrix}\n3\\\\\n6\\\\\n9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = 3 * x\ny\n\narray([3, 6, 9])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#python-lists-vs-numpy-arrays",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#python-lists-vs-numpy-arrays",
+    "title": "Vectors",
+    "section": "Python Lists vs NumPy Arrays",
+    "text": "Python Lists vs NumPy Arrays\nA small detour. Let us now compare the difference in speed between Python lists and NumPy arrays. Consider a sequence of the first 1 million integers. We wish to multiply each element by 2. Let us do it in two ways, one using Python lists and other using NumPy arrays, and observe the difference in speeds.\n\npy_list = list(range(1_000_000))\nnp_array = np.arange(1_000_000)\n\n\n%timeit [2 * x for x in py_list]\n\n57.4 ms ± 10.9 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)\n\n\n\n%timeit 2 * np_array\n\n980 µs ± 113 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n\n\n\nround((55.3 * 10 ** (-3)) / (723 * 10 ** (-6)))\n\n76\n\n\nWe will look at some common operations on vectors and see how they can be achieved with NumPy.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#element-wise-functions-of-vectors",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#element-wise-functions-of-vectors",
+    "title": "Vectors",
+    "section": "Element-wise functions of vectors",
+    "text": "Element-wise functions of vectors\nScaling a vector \\(\\mathbf{x}\\) by a constant \\(k\\) can be seen as the outcome of the function \\(f(x) = kx\\) applied element-wise:\n\\[\n\\begin{bmatrix}\nf(x_1)\\\\\n\\vdots\\\\\nf(x_d)\n\\end{bmatrix} = \\begin{bmatrix}\nkx_1\\\\\n\\vdots\\\\\nk x_d\n\\end{bmatrix}\n\\]\nNumPy extends this feature for any arbitrary function.\n\nExample-1\nFor example, consider the function \\(f(x) = x^2\\). This can be applied element-wise:\n\\[\n\\begin{bmatrix}\nx_1^2\\\\\n\\vdots\\\\\nx_d^2\n\\end{bmatrix}\n\\]\nLet us do this for:\n\\[\n\\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 5)\nx ** 2\n\narray([ 1,  4,  9, 16])\n\n\n\n\nExample-2.1\nAs another example, consider \\(f(x) = \\log(x)\\). This can also be applied element-wise:\n\\[\n\\begin{bmatrix}\n\\log(x_1)\\\\\n\\vdots\\\\\n\\log(x_d)\n\\end{bmatrix}\n\\]\nLet us do this for \\(\\begin{bmatrix}1 & 10 & 100 & 1000 & 10000 & 100000\\end{bmatrix}^T\\). Use base \\(10\\).\nIn NumPy:\n\nx = np.array([1, 10, 100, 1000, 10_000, 100_000])\nnp.log10(x)\n\narray([0., 1., 2., 3., 4., 5.])\n\n\n\n\nExample 2.2\nWe can also use log to the base \\(e\\), the natural logarithm. For this, let us take a specific vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\ne\\\\\ne^2\\\\\ne^3\n\\end{bmatrix}\n\\]\nand apply the function \\(f(x) = \\ln(x)\\) element-wise.\nIn NumPy:\n\nx = np.array([1, np.e, np.e ** 2, np.e ** 3])\nnp.log(x)\n\narray([0., 1., 2., 3.])\n\n\n\n\nExample 3\nJust as we can scale a vector, we can also add a constant to each component. This is equivalent to applying the element-wise function \\(f(x) = x + c\\). Let us take the case of \\(\\begin{bmatrix}1 & 2 & 3\\end{bmatrix}^T\\) and \\(c = 5\\).\nIn NumPy:\n\nx = np.arange(1, 4)\nc = 5\nx + c\n\narray([6, 7, 8])\n\n\n\n\nExample 4\nNow for a slightly more involved example with \\(f(x) = 5x - 2\\) applied element-wise on the following vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n-1\\\\\n0\\\\\n1\\\\\n2\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(-1, 3)\n5 * x - 2\n\narray([-7, -2,  3,  8])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#dot-product",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#dot-product",
+    "title": "Vectors",
+    "section": "Dot Product",
+    "text": "Dot Product\nThe dot product between two vectors \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) is given as follows:\n\\[\nz = \\mathbf{x}^T \\mathbf{y} =  \\mathbf{x} \\cdot \\mathbf{y} = \\sum \\limits_{j = 1}^{m} x_j y_j\n\\]\nLet us use the following vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\\\\\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n-4\\\\\n-5\\\\\n-6\\\\\n-7\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 5)\ny = np.arange(-4, -8, -1)\nnp.dot(x, y)\n\nnp.int64(-60)\n\n\nAlternatively, we can do the following.\n\nx @ y\n\nnp.int64(-60)\n\n\nSince this resembles the mathematical expression quite accurately, we shall stick to this.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#vector-of-zeros-or-ones",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#vector-of-zeros-or-ones",
+    "title": "Vectors",
+    "section": "Vector of zeros or ones",
+    "text": "Vector of zeros or ones\nOn many occassions, we might want to create a NumPy array all of whose elements are zeros or ones or some other constant. Let us create the following vectors:\n\\[\n\\mathbf{0} = \\begin{bmatrix}\n0\\\\\n0\\\\\n0\\\\\n0\\\\\n0\n\\end{bmatrix}, \\mathbf{1} = \\begin{bmatrix}\n1\\\\\n1\\\\\n1\\\\\n1\\\\\n1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nzeros = np.zeros(5)\nzeros\n\narray([0., 0., 0., 0., 0.])\n\n\n\nones = np.ones(5)\nones\n\narray([1., 1., 1., 1., 1.])\n\n\nWhat if we wanted to create a vector all of whose elements are equal to \\(5\\)?\n\nfives = np.ones(5) * 5\nfives\n\narray([5., 5., 5., 5., 5.])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#norm-of-a-vector",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#norm-of-a-vector",
+    "title": "Vectors",
+    "section": "Norm of a vector",
+    "text": "Norm of a vector\nFor a vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nThe \\(L_2\\) norm is defind as:\n\\[\n||\\mathbf{x}||_2 = \\sqrt{1^2 + 2^2 + 3^2} = \\sqrt{14}\n\\]\nThe \\(L_1\\) norm is defind as:\n\\[\n||\\mathbf{x}||_1 = |1| + |2| + |3| = 6\n\\]\nIn NumPy:\n\n# L2-norm\nx = np.arange(1, 4)\nnorm = np.linalg.norm(x)\nnorm\n\nnp.float64(3.7416573867739413)\n\n\nBy default, the norm computed is the L2 norm. If we want to compute the L1 norm, we have to pass an additional argument to the function.\n\n# L1-norm\nx = np.arange(1, 4)\nnorm = np.linalg.norm(x, ord = 1)\nnorm\n\nnp.float64(6.0)",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-1.html#shape-and-dimension-of-a-vector",
+    "href": "week-1/NumPy-Matplotlib/nb-1.html#shape-and-dimension-of-a-vector",
+    "title": "Vectors",
+    "section": "Shape and dimension of a vector",
+    "text": "Shape and dimension of a vector\nVectors are “one dimensional” arrays. So all vectors in NumPy have array-dimension equal to one. The term “array-dimension” here is defined for a NumPy array. It is different from the dimension used in the vector-space sense. The vector-space dimension can be obtaind by looking at the shape of the NumPy array. Let us explore these two ideas for:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\n\\end{bmatrix}\n\\]\n\n# Shape\nx = np.arange(1, 5)\nx.shape\n\n(4,)\n\n\n\n# N-dim\nx = np.arange(1, 5)\nx.ndim\n\n1",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Vectors"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-4.html",
+    "href": "week-1/NumPy-Matplotlib/nb-4.html",
+    "title": "Sampling from Distributions, Bar Plots, Histograms and Scatter plots",
+    "section": "",
+    "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nrng = np.random.default_rng(seed = 42)",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-4.html#import-and-settings",
+    "href": "week-1/NumPy-Matplotlib/nb-4.html#import-and-settings",
+    "title": "Sampling from Distributions, Bar Plots, Histograms and Scatter plots",
+    "section": "",
+    "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\nrng = np.random.default_rng(seed = 42)",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-4.html#sampling-and-plotting",
+    "href": "week-1/NumPy-Matplotlib/nb-4.html#sampling-and-plotting",
+    "title": "Sampling from Distributions, Bar Plots, Histograms and Scatter plots",
+    "section": "Sampling and Plotting",
+    "text": "Sampling and Plotting\nNumPy provides a utility to generate pseudo-random numbers. We shall try to sample points from various distributions. Once we have a sample, we can then represent it pictorially using suitable plots.\n\nSampling: Bernoulli\nLet us generate a sample of \\(1000\\) points from the \\(\\text{Br}(0.7)\\).\nIn NumPy:\n\nX = rng.choice([0, 1], p = [0.3, 0.7], size = 1000)\nX.shape\n\n(1000,)\n\n\n\n\nPlotting: Bar plot\nLet us visualise the sample using a bar plot. For this, we first need the height of the bars.\n\nzero, one = 0, 0\nfor i in range(X.shape[0]):\n    if X[i] == 0:\n        zero += 1\n    else:\n        one += 1\n\nThere is a better way of getting the height of the bars. We will learn this when we study advanced indexing.\n\nplt.bar([0, 1], [zero, one])\nplt.xticks([0, 1]);\n\n\n\n\n\n\n\n\n\n\nSampling: Gaussian\nWe now generate a sample of \\(10,000\\) points from \\(\\mathcal{N}(1, 4)\\). Recall that \\(\\mu = 1\\) and \\(\\sigma^2 = 4\\).\n\nX = rng.normal(1, 2, size = 10_000)\nX.shape\n\n(10000,)\n\n\n\n\nPlotting: Histogram\nWe can now visualise the sample using a histogram.\n\nplt.hist(X, bins = 10, edgecolor = 'black');\n\n\n\n\n\n\n\n\n\n\nSampling: Bivariate Gaussian\nSample 1000 points from the following Bivariate Gaussian:\n\\[\n\\mathcal{N} \\left( \\begin{bmatrix}1 \\\\ 2\\end{bmatrix}, \\begin{bmatrix}1 & 0\\\\0 & 5\\end{bmatrix} \\right)\n\\]\n\nmu = np.array([1, 2])\ncov = np.array([\n    [1, 0],\n    [0, 5]\n])\nX = rng.multivariate_normal(mu, cov, size = 1000).T\n# we transpose so that the data-matrix is (d, n) and not (n, d)\nd, n = X.shape\n\n\n\nPlotting: Scatter plot\nLet us now visualise the sample using a scatter plot. Zooming out of the scatter plot gives us a better understanding. Changing the covariance matrix also helps in understanding how the sampled points depend on it.\n\nplt.scatter(X[0], X[1])\nplt.axis('equal')\nplt.axhline(color = 'black', linestyle = '--', linewidth = '0.8')\nplt.axvline(color = 'black', linestyle = '--', linewidth = '0.8')\n\n\n\n\n\n\n\n\n\n\nEstimating the sample covariance matrix\nLet us now estimate the sample covariance matrix and verify if it is close to the population covariance matrix. For this, we use extend the concept of a norm to matrices.\n\nd, n = X.shape\nmu = X.mean(axis = 1).reshape(d, 1)\nC = (X - mu) @ (X - mu).T / n\nC\n\narray([[ 0.93985785, -0.03385001],\n       [-0.03385001,  5.12296728]])\n\n\n\n# Check how close C and cov are\nnp.linalg.norm(C - cov)\n\n0.1450161250795069\n\n\n\nStudy: Sample covariance vs Population covariance\nAs an exercise, let us vary the number of data-points and notice the effect it has on the value of the norm computed above. We expect the norm to be smaller as the dataset’s size increases. We perform the following steps:\n\nA function that generates the dataset for a given size.\nA function that uses the generated dataset to compute thee sample covariance matrix.\n\n\ndef generate(mu, cov, n):\n    X = rng.multivariate_normal(mu, cov, size = n).T\n    return X\n\ndef sample_covariance(X):\n    d, n = X.shape\n    mu = X.mean(axis = 1).reshape(d, 1)\n    X -= mu\n    return X @ X.T / n\n\nWe now run this for different values of the dataset size, \\(n\\). For each \\(n\\), we run the experiment \\(T\\) times and then average the norm. We then plot the norm versus the value of \\(n\\)\n\nmu = np.array([1, 2])\n# population covariance matrix\ncov = np.array([\n    [1, 0],\n    [0, 5]\n])\n\n# Run experiment\nT = 10 # number of runs for each n\nnorms = [ ]\nn_vals = np.arange(1000, 100_000, 1000)\nfor n in n_vals:\n    norm = 0\n    for t in range(T):\n        X = generate(mu, cov, n)\n        C = sample_covariance(X)\n        norm += np.linalg.norm(C - cov)\n    norms.append(norm / T)\n\n# Plot\nplt.plot(n_vals, norms)\nplt.title('Norm vs Dataset size')\nplt.xlabel('Dataset size')\nplt.ylabel('Norm');\n\n\n\n\n\n\n\n\nWe see how the norm keeps going down as the dataset’s size keeps growing. This confirms our belief that the sample covariance matrix becomes a more accurate estimate of the population covariance matrix as the dataset’s size increases.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-4.html#gmm",
+    "href": "week-1/NumPy-Matplotlib/nb-4.html#gmm",
+    "title": "Sampling from Distributions, Bar Plots, Histograms and Scatter plots",
+    "section": "GMM",
+    "text": "GMM\nLet us now draw \\(1,000,000\\) samples from a Gaussian Mixture Model (GMM) that has three components, with mixture probabilities \\([0.2, 0.3, 0.5]\\) and means \\([0, 5, 10]\\). The standard deviation of all three Gaussians is the same and is equal to \\(1\\). We can visualise the sample using a histogram.\n\nn = 1_000_000\ncomp = rng.choice([0, 1, 2], p = [0.2, 0.3, 0.5], size = n)\nmu = np.array([-10, 0, 10])\nX = np.zeros(n)\nfor i in range(n):\n    X[i] = rng.normal(mu[comp[i]], 1)\nplt.hist(X, bins = 1000, edgecolor = 'black');",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-2.html",
+    "href": "week-1/NumPy-Matplotlib/nb-2.html",
+    "title": "Plotting Simple Curves",
+    "section": "",
+    "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Plotting Simple Curves"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-2.html#import-and-settings",
+    "href": "week-1/NumPy-Matplotlib/nb-2.html#import-and-settings",
+    "title": "Plotting Simple Curves",
+    "section": "",
+    "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Plotting Simple Curves"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-2.html#partitioning-the-real-line",
+    "href": "week-1/NumPy-Matplotlib/nb-2.html#partitioning-the-real-line",
+    "title": "Plotting Simple Curves",
+    "section": "Partitioning the real line",
+    "text": "Partitioning the real line\nIn order to plot a curve, we need a set of \\(x\\) values and the corresponding \\(y\\) values. Since \\(x\\) is the independent variable, we need to first generate a list of values for \\(x\\).\nIn NumPy:\n\nx = np.linspace(0, 1, 11)\nx\n\narray([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Plotting Simple Curves"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-2.html#curves",
+    "href": "week-1/NumPy-Matplotlib/nb-2.html#curves",
+    "title": "Plotting Simple Curves",
+    "section": "Curves",
+    "text": "Curves\nWe shall plot several curves, starting from simple curves to more complex ones. In this process, we will also learn how to add simple annotations to the plot.\n\nCurve-1\nPlot \\(y = x\\) for \\(x \\in [0, 1]\\). Sample \\(10\\) equally spaced points in this interval, inclusive of endpoints.\nIn NumPy:\n\nx = np.linspace(0, 1, 10)\ny = x\nplt.plot(x, y)\n\n\n\n\n\n\n\n\nIf we also wish to visualise the points, we can add a scatter plot along with the line plot.\n\nx = np.linspace(0, 1, 10)\ny = x\nplt.plot(x, y); # ; is added to suprress the output\n\n\n\n\n\n\n\n\n\n\nCurve-2\nPlot \\(y = 5 - 3x\\) for \\(x \\in [-5, 5]\\). Sample \\(20\\) equally spaced points in this interval, inclusive of endpoints. Add a title to the plot which has the equation of the curve.\n\nx = np.linspace(-5, 5, 20)\ny = 5 - 3 * x\nplt.plot(x, y)\nplt.title('y = 5 - 3 x');\n\n\n\n\n\n\n\n\n\n\nCurve-3\nPlot \\(y = x^2\\) for \\(x \\in [-1, 1]\\). Try out four different samples for x:\n\n\\(5\\) equally spaced points in this interval, endpoints inclusive\n\\(10\\) equally spaced points in this interval, endpoints inclusive\n\\(20\\) equally spaced points in this interval, endpoints inclusive\n\\(50\\) equally spaced points in this interval, endpoints inclusive\n\nObserve the differences in these four plots. Which one would you choose? Add the equation of the curve as the title of the plot. Also add the x and y-axis to the plot.\n\nx = np.linspace(-1, 1)\ny = x ** 2\nplt.plot(x, y)\nplt.axhline(color = 'black', linestyle = '--', linewidth = 0.8)\nplt.axvline(color = 'black', linestyle = '--', linewidth = 0.8);\n\n\n\n\n\n\n\n\n\n\nCurve-4\nPlot \\(y = 3\\) and \\(x = 5\\) on the same plot. Color the first one green and the second one red. Limit your plot to the region \\(x \\in [0, 6]\\) and \\(y \\in [0, 6]\\).\n\nLabel the x and the y axes.\nAdd a suitable title.\nAdd a legend.\n\n\n# y = 3\nx = np.linspace(0, 6, 2)\ny = np.ones(2) * 3\nplt.plot(x, y, color = 'blue', label = 'y = 3')\n\n# x = 5\nx = np.ones(2) * 5\ny = np.linspace(0, 6, 2)\nplt.plot(x, y, color = 'red', label = 'x = 5')\n\nplt.legend()\nplt.title('x = 5 and y = 3')\nplt.axhline(color = 'black')\nplt.axvline(color = 'black');",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Plotting Simple Curves"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-2.html#subplots",
+    "href": "week-1/NumPy-Matplotlib/nb-2.html#subplots",
+    "title": "Plotting Simple Curves",
+    "section": "Subplots",
+    "text": "Subplots\nSometimes we may have to plot multiple objects, each in a separate plot. Plot the following curves, each in a separe plot:\n\n\\(y = \\ln x, \\quad x \\in \\left( \\cfrac{1}{e^2}, e^3 \\right)\\)\n\\(y = e^x, \\quad x \\in (0, 3)\\)\n\\(y = \\sin x, \\quad x \\in [0, 2 \\pi]\\)\n\\(y = \\cfrac{1}{x}, \\quad x \\in (0, 5)\\)\n\nTitle each curve appropriately.\n\n# rcParams is like a dict\n# controls various configurations\nplt.rcParams['figure.figsize'] = [8, 8]\nplt.rcParams['font.size'] = 10\n\n# Plot-1\nplt.subplot(2, 2, 1)\nx = np.linspace(1 / np.e ** 2, np.e ** 3)\ny = np.log(x)\nplt.plot(x, y)\nplt.title('y = ln x')\n\n# Plot-2\nplt.subplot(2, 2, 2)\nx = np.linspace(0, 3)\ny = np.exp(x)\nplt.plot(x, y)\nplt.title('$y = e^x$')\n\n# Plot-3\nplt.subplot(2, 2, 3)\nx = np.linspace(0, 2 * np.pi)\ny = np.sin(x)\nplt.plot(x, y)\nplt.title('y = sin x')\n\n# Plot-4\nplt.subplot(2, 2, 4)\nx = np.linspace(0.1, 5)\ny = 1 / x\nplt.plot(x, y)\nplt.title('y = 1 / x')\n\nText(0.5, 1.0, 'y = 1 / x')",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Plotting Simple Curves"
+    ]
+  },
+  {
+    "objectID": "week-6/Module3.html",
+    "href": "week-6/Module3.html",
+    "title": "Module 3: Applications of Prompt Engineering",
+    "section": "",
+    "text": "In this module, we will explore how prompt engineering can help us perform real-world tasks using language models. You will see how the same model can be used for many different applications just by changing the prompt.\nWe’ll cover:\n\n✅ Text Summarization\n✅ Text Classification (like Sentiment Analysis)\n✅ Question Answering (QA)\n✅ Translation\n✅ Grammar Correction\n\nEach section has: - a simple explanation - a good prompt example - and a code example using Hugging Face’s GPT-2 pipeline.",
+    "crumbs": [
+      "Week 6",
+      "Module 3: Applications of Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module3.html#overview",
+    "href": "week-6/Module3.html#overview",
+    "title": "Module 3: Applications of Prompt Engineering",
+    "section": "",
+    "text": "In this module, we will explore how prompt engineering can help us perform real-world tasks using language models. You will see how the same model can be used for many different applications just by changing the prompt.\nWe’ll cover:\n\n✅ Text Summarization\n✅ Text Classification (like Sentiment Analysis)\n✅ Question Answering (QA)\n✅ Translation\n✅ Grammar Correction\n\nEach section has: - a simple explanation - a good prompt example - and a code example using Hugging Face’s GPT-2 pipeline.",
+    "crumbs": [
+      "Week 6",
+      "Module 3: Applications of Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module3.html#text-summarization",
+    "href": "week-6/Module3.html#text-summarization",
+    "title": "Module 3: Applications of Prompt Engineering",
+    "section": "1. Text Summarization",
+    "text": "1. Text Summarization\nGoal: Reduce a long paragraph into a short and simple summary.\n\nPrompt Example\nSummarize this paragraph in one line: “Artificial Intelligence is used in many fields such as healthcare, finance, and education to automate processes and improve efficiency.”",
+    "crumbs": [
+      "Week 6",
+      "Module 3: Applications of Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module1.html",
+    "href": "week-6/Module1.html",
+    "title": "Module 1: Introduction to Prompt Engineering",
+    "section": "",
+    "text": "In this first module, we are going to learn what prompt engineering means and why it is important when working with big AI language models like ChatGPT, GPT-3, GPT-4, etc.",
+    "crumbs": [
+      "Week 6",
+      "Module 1: Introduction to Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module1.html#welcome-to-prompt-engineering",
+    "href": "week-6/Module1.html#welcome-to-prompt-engineering",
+    "title": "Module 1: Introduction to Prompt Engineering",
+    "section": "",
+    "text": "In this first module, we are going to learn what prompt engineering means and why it is important when working with big AI language models like ChatGPT, GPT-3, GPT-4, etc.",
+    "crumbs": [
+      "Week 6",
+      "Module 1: Introduction to Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module1.html#what-is-a-prompt",
+    "href": "week-6/Module1.html#what-is-a-prompt",
+    "title": "Module 1: Introduction to Prompt Engineering",
+    "section": "What is a Prompt?",
+    "text": "What is a Prompt?\nA prompt is just a piece of text or a question that you give to an AI language model. The model will try to complete it or give an answer based on that prompt.",
+    "crumbs": [
+      "Week 6",
+      "Module 1: Introduction to Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module1.html#what-is-prompt-engineering",
+    "href": "week-6/Module1.html#what-is-prompt-engineering",
+    "title": "Module 1: Introduction to Prompt Engineering",
+    "section": "What is Prompt Engineering?",
+    "text": "What is Prompt Engineering?\nPrompt engineering means writing your prompt in a smart way so that the model gives the best and most accurate output.\nYou can think of it like this:\n\n“If you ask the right question, you will get the right answer.”\n\nSo, prompt engineering is like the art (and science) of talking to AI in a way it understands better.\nIt helps the AI give meaningful, useful, and more correct responses just by changing how we ask. It is especially important for powerful models like GPT-3/4, which can perform a wide range of tasks depending on how they’re prompted\n\nExample\n\nExample 1:\nPrompt: “Translate this sentence into Hindi: I teach machine learning.”\nOutput: “Main machine learning padhata hoon.”\n\n\nExample 2:\nPrompt: “What is the sentiment of this review? ‘The movie was incredibly boring and a complete waste of time.’”\nOutput: “Negative”\n\n\n\n\nGood vs Bad Prompt Example\nBAD: Summarize the following.\nGOOD: Summarize the following scientific article in 2-3 sentences using layman language.\n\n\nWhy Prompt Engineering Matters\n\nImproves output quality and relevance\nReduces need for retraining or fine-tuning\nEmpowers non-technical users to interact with AI effectively",
+    "crumbs": [
+      "Week 6",
+      "Module 1: Introduction to Prompt Engineering"
+    ]
+  },
+  {
+    "objectID": "week-6/Module4.html#popular-llm-providers",
+    "href": "week-6/Module4.html#popular-llm-providers",
+    "title": "Module 4: Introduction to LLM Platforms",
+    "section": "Popular LLM Providers",
+    "text": "Popular LLM Providers\n\n\n\n\n\n\n\n\nPlatform\nFocus\nStrengths\n\n\n\n\nOpenAI\nGeneral-purpose LLMs (GPT-3.5, GPT-4)\nChat, code, summarization\n\n\nAnthropic\nSafer, explainable models (Claude)\nLong context, safety\n\n\nGoogle AI (Gemini)\nIntegrated with Google tools\nStrong in reasoning, multilingual\n\n\nMistral\nOpen-source lightweight models\nEfficient, fast\n\n\nCohere\nNLP + RAG friendly APIs\nFocused on enterprise use\n\n\nHugging Face\nOpen-source model hub\nCommunity, fine-tuning support\n\n\nAzure AI\nEnterprise OpenAI hosting\nScalable, secure",
+    "crumbs": [
+      "Week 6",
+      "Module 4: Introduction to LLM Platforms"
+    ]
+  },
+  {
+    "objectID": "week-6/Module4.html#why-use-these-platforms",
+    "href": "week-6/Module4.html#why-use-these-platforms",
+    "title": "Module 4: Introduction to LLM Platforms",
+    "section": "Why Use These Platforms?",
+    "text": "Why Use These Platforms?\n\n\n\n\n\n\n\nBenefit\nExplanation\n\n\n\n\nIntelligence-as-a-Service\nNo need to train from scratch — just use API\n\n\nPlug-and-play APIs\nEasy integration with apps, websites, and bots\n\n\nMultitask Capabilities\nOne model can do Q&A, summarization, translation, etc.\n\n\nContinuous Updates\nModels improve automatically in the cloud\n\n\n\n\nLLM-related skills are in high demand globally:\nPrompt Engineering\nLangChain / RAG apps\nOpenAI/Gemini APIs\nLLM app integration (chatbots, agents)",
+    "crumbs": [
+      "Week 6",
+      "Module 4: Introduction to LLM Platforms"
+    ]
+  },
+  {
+    "objectID": "week-6/Module4.html#summary",
+    "href": "week-6/Module4.html#summary",
+    "title": "Module 4: Introduction to LLM Platforms",
+    "section": "✅ Summary",
+    "text": "✅ Summary\n\nLLM platforms give access to powerful AI models through easy APIs.\nThey are used in almost every modern industry.\nLearning to work with them opens many career and product-building opportunities.\n\n\n\n  ⬅️ Module 3  \n  Module 5 ➡️",
+    "crumbs": [
+      "Week 6",
+      "Module 4: Introduction to LLM Platforms"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html",
+    "href": "week-6/Module7.html",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "",
+    "text": "In this module, we’ll explore how to use the Text Completion API to generate text from a prompt using models like text-davinci-003.\nThis API is useful when you want the model to complete a sentence, paragraph, or idea based on a given start.",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#what-is-a-text-completion",
+    "href": "week-6/Module7.html#what-is-a-text-completion",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "What is a Text Completion?",
+    "text": "What is a Text Completion?\nA completion means you’re asking the model to “complete the text you started.”\nFor example, if your prompt is:\n\n\"Once upon a time, in a galaxy far away,\"\n\nThe model will try to continue that story in a logical and coherent way.",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#common-use-cases",
+    "href": "week-6/Module7.html#common-use-cases",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Common Use Cases",
+    "text": "Common Use Cases\n\nStory writing\nExplanation or reasoning\nTranslation\nGrammar correction\nCode generation",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#basic-setup",
+    "href": "week-6/Module7.html#basic-setup",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Basic Setup",
+    "text": "Basic Setup\nInstall the OpenAI package and import the required libraries:\n!pip install openai\n\nimport openai\nimport os\n\nopenai.api_key = os.getenv(\"OPENAI_API_KEY\")",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#making-a-completion-request",
+    "href": "week-6/Module7.html#making-a-completion-request",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Making a Completion Request",
+    "text": "Making a Completion Request\nHere’s a basic example of using the Text Completion endpoint:\n\nresponse = openai.Completion.create(\n    model=\"text-davinci-003\",\n    prompt=\"Write a tweet about climate change.\",\n    max_tokens=60)\nprint(response.choices[0].text.strip())",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#key-parameters",
+    "href": "week-6/Module7.html#key-parameters",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Key Parameters",
+    "text": "Key Parameters\n\n\n\n\n\n\n\nParameter\nDescription\n\n\n\n\nprompt\nThe text you want the model to complete\n\n\nmodel\nThe completion model (e.g., text-davinci-003)\n\n\nmax_tokens\nMax length of the output\n\n\ntemperature\nControls randomness (0 = deterministic, 1 = very random)\n\n\ntop_p\nControls diversity via nucleus sampling\n\n\nn\nNumber of completions to generate\n\n\nstop\nStop generation at specific token(s)\n\n\n\n\n\nExample with All Parameters:\nresponse = openai.Completion.create(\n    model=\"text-davinci-003\",\n    prompt=\"Explain the concept of gravity in simple words.\",\n    temperature=0.7,\n    max_tokens=100,\n    top_p=0.9,\n    n=1,\n    stop=[\"\\n\"])\nprint(response.choices[0].text.strip())",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#use-case-grammar-correction",
+    "href": "week-6/Module7.html#use-case-grammar-correction",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Use Case: Grammar Correction",
+    "text": "Use Case: Grammar Correction\nprompt = \"Correct this sentence: 'She no went to the market today.'\"\nresponse = openai.Completion.create(\n    model=\"text-davinci-003\",\n    prompt=prompt,\n    temperature=0,\n    max_tokens=60)\nprint(response.choices[0].text.strip())",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#use-case-email-drafting",
+    "href": "week-6/Module7.html#use-case-email-drafting",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Use Case: Email Drafting",
+    "text": "Use Case: Email Drafting\nprompt = \"Write a formal email to a colleague asking for help on a project due next week.\"\nresponse = openai.Completion.create(\n    model=\"text-davinci-003\",\n    prompt=prompt,\n    max_tokens=150,\n    temperature=0.6)\nprint(response.choices[0].text.strip())",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#best-practices",
+    "href": "week-6/Module7.html#best-practices",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nBe specific in your prompts: vague prompts give vague results.\nLimit token size if you only need short responses.\nUse temperature and top_p to balance creativity and control.",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#when-to-use-completion-vs-chatcompletion",
+    "href": "week-6/Module7.html#when-to-use-completion-vs-chatcompletion",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "When to Use Completion vs ChatCompletion?",
+    "text": "When to Use Completion vs ChatCompletion?\n\n\n\nTask\nUse This API\n\n\n\n\nLong-form generation\nCompletion.create()\n\n\nConversational systems\nChatCompletion.create()\n\n\nRole-based agents\nChatCompletion.create()\n\n\nFill-in-the-blank style\nCompletion.create()",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module7.html#summary",
+    "href": "week-6/Module7.html#summary",
+    "title": "Module 7: Working with Text Completion in OpenAI",
+    "section": "Summary",
+    "text": "Summary\n\nText Completion is ideal for open-ended text generation.\nUse text-davinci-003 for best results.\nTune parameters like temperature, max_tokens, and stop for optimal behavior.",
+    "crumbs": [
+      "Week 6",
+      "Module 7: Working with Text Completion in OpenAI"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html",
+    "href": "week-6/Module13.html",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "",
+    "text": "This module builds upon the basic PromptTemplate usage by exploring advanced concepts like:\n\nPartial templates (pre-filling parts of the prompt)\nNesting templates for modularity\nDebugging prompt formatting issues\n\nThese are essential when building complex pipelines (e.g., RAG, agents), and they enhance prompt reuse, flexibility, and robustness.",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#overview",
+    "href": "week-6/Module13.html#overview",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "",
+    "text": "This module builds upon the basic PromptTemplate usage by exploring advanced concepts like:\n\nPartial templates (pre-filling parts of the prompt)\nNesting templates for modularity\nDebugging prompt formatting issues\n\nThese are essential when building complex pipelines (e.g., RAG, agents), and they enhance prompt reuse, flexibility, and robustness.",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#partial-prompttemplates",
+    "href": "week-6/Module13.html#partial-prompttemplates",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "1. Partial PromptTemplates",
+    "text": "1. Partial PromptTemplates\nSometimes a prompt has multiple variables, but you want to pre-fill some of them.\nLangChain allows you to do this with partial().\nfrom langchain.prompts import PromptTemplate\n\n# Define a template with two variables\nbase_template = PromptTemplate(\n    input_variables=[\"product\", \"audience\"],\n    template=\"Give marketing ideas for {product} aimed at {audience}.\"\n)\n\n# Partially fill the 'audience'\npartial_prompt = base_template.partial(audience=\"teenagers\")\n\n# Now you only need to pass 'product'\nfinal_prompt = partial_prompt.format(product=\"fitness tracker\")\nprint(final_prompt)\n\n\n\n\n\n\nNote\n\n\n\nYou can chain multiple .partial() calls or combine with dynamic inputs at runtime.",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#nesting-prompttemplates",
+    "href": "week-6/Module13.html#nesting-prompttemplates",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "2. Nesting PromptTemplates",
+    "text": "2. Nesting PromptTemplates\nYou can nest prompt templates inside others to build composable prompts.\nfrom langchain.prompts import PromptTemplate\n\n# Define reusable templates\ninstruction_template = PromptTemplate(\n    input_variables=[\"task\"],\n    template=\"You are a helpful assistant. Please complete the following task: {task}\"\n)\n\ntask_template = PromptTemplate(\n    input_variables=[\"topic\"],\n    template=\"Write a summary about {topic}.\"\n)\n\n# Generate the task first, then embed it in the instruction\nfinal_task = task_template.format(topic=\"climate change\")\nfinal_prompt = instruction_template.format(task=final_task)\nprint(final_prompt)",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#using-f-string-like-templates-without-prompttemplate",
+    "href": "week-6/Module13.html#using-f-string-like-templates-without-prompttemplate",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "3. Using f-string-like Templates (without PromptTemplate)",
+    "text": "3. Using f-string-like Templates (without PromptTemplate)\nSometimes, you might not want to use PromptTemplate, especially for quick prototyping.\nproduct = \"AI chatbot\"\naudience = \"teachers\"\n\nprompt = f\"\"\"\nGenerate innovative ideas to market a {product} for {audience}.\nMake it sound professional.\n\"\"\"\n\nprint(prompt)\nBut note: - No validation - No template reuse - Harder to debug\nUse PromptTemplate whenever possible for production-quality prompts.",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#debugging-prompttemplates",
+    "href": "week-6/Module13.html#debugging-prompttemplates",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "4. Debugging PromptTemplates",
+    "text": "4. Debugging PromptTemplates\nWhen prompts fail to format correctly or raise runtime errors, use:\n\na. template.format() Errors\nfrom langchain.prompts import PromptTemplate\n\ntemplate = PromptTemplate(\n    input_variables=[\"name\"],\n    template=\"Hello {name}, welcome to {company}.\"\n)\n\n# This will raise a KeyError because 'company' is not provided\n# prompt = template.format(name=\"Nitin\")\nSolution: Add all required inputs or use partial().\n\n\nb. Print intermediate values\nprint(\"Prompt Variables:\", template.input_variables)\nprint(\"Template:\", template.template)\n\n\nc. Validate Inputs\nAlways check variable names in curly braces match what you pass to format() or the chain.",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#prompttemplate-with-partial-chains",
+    "href": "week-6/Module13.html#prompttemplate-with-partial-chains",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "5. PromptTemplate with Partial & Chains",
+    "text": "5. PromptTemplate with Partial & Chains\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import LLMChain\nfrom langchain_openai import OpenAI\n\nllm = OpenAI()\n\nbase_template = PromptTemplate(\n    input_variables=[\"tool\", \"task\"],\n    template=\"You are using {tool} to {task}. Write a one-line summary.\"\n)\n\npartial_prompt = base_template.partial(tool=\"LangChain\")\nchain = LLMChain(llm=llm, prompt=partial_prompt)\n\nresponse = chain.run(task=\"summarize search results\")\nprint(response)",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module13.html#summary",
+    "href": "week-6/Module13.html#summary",
+    "title": "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging",
+    "section": "Summary",
+    "text": "Summary\n\n\n\n\n\n\n\nFeature\nDescription\n\n\n\n\npartial()\nPre-fill some prompt variables\n\n\nNested Templates\nUse one template inside another\n\n\nDebugging Tips\nUse .format() carefully, print templates\n\n\nReuse & Maintain\nModular templates = maintainable and scalable code\n\n\n\nThese techniques make prompt engineering scalable and production-ready, especially in RAG, Agent, or multi-component systems.\n\nHands-On Notebook\n  Open in Google Colab",
+    "crumbs": [
+      "Week 6",
+      "Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html",
+    "href": "week-6/Module10.html",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "",
+    "text": "This module dives into three foundational building blocks within the LangChain framework: LLMs (Language Model wrappers), PromptTemplates, and OutputParsers. A solid understanding and mastery of these components are crucial for constructing robust, structured, and highly reusable language model applications and pipelines. They form the bedrock upon which more complex LangChain constructs (like Chains and Agents) are built.",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#llms-language-model-wrappers",
+    "href": "week-6/Module10.html#llms-language-model-wrappers",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "1. LLMs – Language Model Wrappers",
+    "text": "1. LLMs – Language Model Wrappers\nAt the heart of any LLM-powered application is, naturally, the Large Language Model itself. LangChain provides a sophisticated yet user-friendly interface to interact with various LLM providers, abstracting away the intricacies of their specific APIs. This means you can seamlessly switch between models from different vendors such as OpenAI, Cohere, Anthropic, Google (via langchain-google-genai), HuggingFace (via langchain-huggingface), and many others, often with minimal code changes.\nLangChain categorizes LLM interfaces into two main types: * LLM: For models that typically accept a string input and return a string completion (e.g., older OpenAI completion models like text-davinci-003). * ChatModel: For models that accept a list of messages (representing a conversation history with roles like “user,” “assistant,” “system”) and return a message, designed for conversational interfaces (e.g., OpenAI’s GPT-3.5-turbo, GPT-4, Anthropic’s Claude). While the example below uses LLM, ChatModel is more common for modern conversational AI.\n\nExample: Using OpenAI’s older Completion Model with LangChain\n# Note: For newer models like gpt-3.5-turbo or gpt-4, you would typically use ChatOpenAI\n# from langchain_openai import ChatOpenAI\n# llm = ChatOpenAI(model_name=\"gpt-3.5-turbo\", temperature=0.7)\n# response = llm.invoke(\"Write a motivational quote.\")\n\n# This example uses the older LLM wrapper for text-davinci-003,\n# which is good for demonstrating the basic LLM interface.\nfrom langchain_openai import OpenAI\n\n# Initialize the OpenAI LLM wrapper.\n# model_name: Specifies which LLM to use. \"text-davinci-003\" is an older completion model.\n# temperature: Controls the creativity of the output. 0.0 means more deterministic, higher means more random/creative.\nllm = OpenAI(model_name=\"text-davinci-003\", temperature=0.7)\n\n# Make a call to the LLM with a simple string prompt.\n# For LLM wrappers, the .invoke() method is used for synchronous calls.\nresponse = llm.invoke(\"Write a motivational quote.\")\nprint(response)\n\n\n\n\n\n\nKey Takeaway\n\n\n\n\n\nThe primary advantage here is abstraction. You don’t need to manually construct HTTP requests, handle API keys in headers, or parse raw JSON responses. LangChain’s LLM (or ChatModel) wrapper handles all these underlying complexities, providing a clean Pythonic interface. This means you can seamlessly switch between models and providers (e.g., from OpenAI to Anthropic or HuggingFace) by simply changing the import and the class instantiation, without altering your core application logic.",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#example-creating-and-formatting-a-prompttemplate",
+    "href": "week-6/Module10.html#example-creating-and-formatting-a-prompttemplate",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "Example: Creating and Formatting a PromptTemplate",
+    "text": "Example: Creating and Formatting a PromptTemplate\n\nPython\nfrom langchain.prompts import PromptTemplate\n\n# Define the template string with a placeholder using curly braces {}.\n# The variable name \"product\" is identified by LangChain.\ntemplate_string = \"What are some marketing strategies for a {product}?\"\n\n# Create a PromptTemplate instance.\n# input_variables: A list of strings corresponding to the placeholders in your template.\n# template: The actual template string.\ntemplate = PromptTemplate(\n    input_variables=[\"product\"],\n    template=template_string\n)\n\nprompt = template.format(product=\"fitness app\")\nprint(prompt)\n\n\n\n\n\n\nNote\n\n\n\n\n\nPromptTemplate does more than just f-strings. It handles multiple input variables, can manage different types of prompts (e.g., ChatPromptTemplate for message-based LLMs), and ensures your prompts are well-structured and reusable across different parts of your application or even different projects.\n\n\n\n\n\nBenefits of PromptTemplate:\n\nReusable and readable\nParameterized with inputs\nEasier to maintain and debug\nVersion Control Friendly",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#why-outputparsers",
+    "href": "week-6/Module10.html#why-outputparsers",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "Why OutputParsers?",
+    "text": "Why OutputParsers?\nOutputParsers in LangChain are designed precisely for this purpose.\nThey take the raw text output from an LLM and transform it into a desired data structure.\nThis is crucial for: - Integrating LLM outputs into application logic - Storing results in databases - Passing structured data to external services",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#example-extracting-json-from-an-llm-response",
+    "href": "week-6/Module10.html#example-extracting-json-from-an-llm-response",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "Example: Extracting JSON from an LLM Response",
+    "text": "Example: Extracting JSON from an LLM Response\nThis example demonstrates how to set up an OutputParser to expect a structured JSON response.\n\nKey Insight:\nYou must tell both the OutputParser how to parse, and the LLM what format to output.\nThe format_instructions generated by the parser are vital for guiding the LLM.\n\nfrom langchain.output_parsers import StructuredOutputParser, ResponseSchema\nfrom langchain_openai import OpenAI # For LLM interaction\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import LLMChain\nimport json # For pretty printing the output\n\n# 1. Define the desired schema for the structured output.\n# Each ResponseSchema defines a key (name) and a description (to guide the LLM).\nresponse_schemas = [\n    ResponseSchema(name=\"headline\", description=\"The main headline of the news article summary\"),\n    ResponseSchema(name=\"summary\", description=\"A concise 2-sentence summary of the news article\"),\n    ResponseSchema(name=\"keywords\", description=\"A comma-separated list of 3-5 keywords related to the article\")\n]\n\n# 2. Create a StructuredOutputParser from the defined schema.\nparser = StructuredOutputParser.from_response_schemas(response_schemas)\n\n# 3. Get the formatting instructions.\n# These instructions tell the LLM exactly how to format its output\n# so that the parser can successfully read it.\nformat_instructions = parser.get_format_instructions()\n\nprint(\"--- Format instructions to insert in your prompt ---\")\nprint(format_instructions)\nprint(\"\\n\" + \"=\"*50 + \"\\n\")\n\n# Now, let's use this with an LLM and PromptTemplate\n\n# News article to summarize\narticle_text = \"\"\"\nRecent studies have confirmed that climate change is accelerating, with global temperatures continuing to rise. Scientists emphasize the urgent need for reducing greenhouse gas emissions. Renewable energy sources are becoming increasingly viable alternatives to fossil fuels. The latest IPCC report highlights the irreversible impacts already in motion and stresses immediate, ambitious action.\n\"\"\"\n\n# Create a PromptTemplate that includes the format instructions\n# It's crucial that the prompt explicitly asks the LLM to adhere to the format.\nprompt_template_string = \"\"\"\nYou are a news summarizer. Summarize the following article and extract key information in JSON format.\n{format_instructions}\nArticle:\n{article}\n\"\"\"\n\nprompt = PromptTemplate(\n    input_variables=[\"article\"],\n    partial_variables={\"format_instructions\": format_instructions}, # Partial variable for fixed instructions\n    template=prompt_template_string\n)\n\n# Initialize the LLM (using a chat model like gpt-3.5-turbo is recommended for structured output)\nllm = OpenAI(temperature=0) # Set temperature to 0 for more deterministic output\n\n# Create an LLMChain to combine the prompt and LLM\nchain = LLMChain(llm=llm, prompt=prompt)\n\n# Run the chain to get the raw text output from the LLM\nllm_raw_output = chain.run(article=article_text)\nprint(\"--- Raw LLM Output (text string) ---\")\nprint(llm_raw_output)\nprint(\"\\n\" + \"=\"*50 + \"\\n\")\n\n# Use the parser to transform the raw text output into a structured dictionary\ntry:\n    parsed_output = parser.parse(llm_raw_output)\n    print(\"--- Parsed Output (Python Dictionary) ---\")\n    print(json.dumps(parsed_output, indent=2))\nexcept Exception as e:\n    print(f\"Error parsing output: {e}\")\n    print(\"The LLM might not have followed the format instructions precisely.\")",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#using-all-three-together",
+    "href": "week-6/Module10.html#using-all-three-together",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "Using All Three Together",
+    "text": "Using All Three Together\nfrom langchain.llms import OpenAI\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import LLMChain\n\n# Step 1: Prompt Template\nprompt = PromptTemplate(\n    input_variables=[\"topic\"],\n    template=\"Explain the concept of {topic} in simple terms.\"\n)\n\n# Step 2: LLM\nllm = OpenAI(temperature=0.5)\n\n# Step 3: Chain\nchain = LLMChain(llm=llm, prompt=prompt)\n\n# Run\nresponse = chain.run(\"blockchain\")\nprint(response)",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module10.html#summary",
+    "href": "week-6/Module10.html#summary",
+    "title": "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers",
+    "section": "Summary",
+    "text": "Summary\n\nLLM: Connect to a language model.\nPromptTemplate: Build clean, reusable prompts.\nOutputParser: Convert raw LLM responses into structured data.",
+    "crumbs": [
+      "Week 6",
+      "Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html",
+    "href": "week-6/Module9.html",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "",
+    "text": "LangChain is an innovative, open-source framework meticulously designed to simplify and accelerate the development of applications that harness the power of large language models (LLMs). Think of LLMs as the “brains” of your AI applications, encompassing models like OpenAI’s ChatGPT and GPT-4, Anthropic’s Claude, Google’s Gemini, and many others. LangChain acts as the orchestration layer, enabling the flexible and sophisticated integration of LLMs with crucial components such as external memory systems, diverse APIs, specialized tools, intelligent agents, and robust vector stores. It moves beyond simple prompt-and-response, allowing developers to build complex, intelligent systems.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#why-do-we-need-langchain",
+    "href": "week-6/Module9.html#why-do-we-need-langchain",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "Why Do We Need LangChain?",
+    "text": "Why Do We Need LangChain?\nBuilding real-world applications with LLMs presents a unique set of challenges that go beyond merely sending a prompt to an API. Developers often encounter hurdles such as:\n\nHow to manage multi-step reasoning? Imagine an LLM application that needs to first search for information, then summarize it, and finally answer a user’s question based on that summary. This requires a sequence of actions and decisions, which is complex to manage with raw API calls.\nHow to keep conversation history or memory? LLMs are inherently stateless; they don’t remember past interactions in a conversation. For truly conversational chatbots or agents, maintaining context (what was said before) is paramount.\nHow to call external tools or databases? LLMs are powerful at language understanding and generation but lack real-time access to current events, proprietary data, or the ability to perform calculations precisely. Connecting them to external tools (like search engines, calculators, or databases) is essential for grounded, factual, and dynamic responses.\nHow to structure and reuse prompts easily? As applications grow, managing numerous prompt strings for different tasks, ensuring consistency, and adding dynamic inputs can become cumbersome and error-prone.\n\nLangChain elegantly addresses these challenges by offering a modular, extensible framework. It provides the architectural scaffolding to connect all these disparate components—LLMs, memory, tools, and data—into powerful, coherent, and maintainable pipelines.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#use-cases-of-langchain",
+    "href": "week-6/Module9.html#use-cases-of-langchain",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "Use Cases of LangChain",
+    "text": "Use Cases of LangChain\nLangChain’s modularity and comprehensive features make it suitable for building a wide array of sophisticated LLM-powered applications:\n\nConversational Chatbots with Memory: Develop chatbots that remember past interactions, enabling natural and context-aware dialogues. This is crucial for customer service, virtual assistants, and interactive learning platforms.\nIntelligent Agents that Take Actions: Create autonomous agents that can reason about a task, decide which tools to use, execute those tools (like Browse the web, searching databases, performing calculations), and then respond or take further actions based on the results. This is a significant step towards more independent AI systems.\nRAG (Retrieval-Augmented Generation) Systems: Build applications that retrieve relevant information from external data sources (e.g., documents, databases) before generating a response. This grounds the LLM’s output in factual, up-to-date, or proprietary data, significantly reducing hallucinations and increasing accuracy.\nDocument Q&A and Search Apps: Power applications that allow users to ask questions about large corpuses of documents and get precise, contextually relevant answers, effectively turning unstructured data into an accessible knowledge base.\nCustom Workflows Powered by LLMs: Design bespoke multi-step processes where LLMs handle natural language understanding and generation at various stages, orchestrating complex operations.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#core-ideas-behind-langchain",
+    "href": "week-6/Module9.html#core-ideas-behind-langchain",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "Core Ideas Behind LangChain",
+    "text": "Core Ideas Behind LangChain\nLangChain’s philosophy revolves around breaking down complex LLM applications into fundamental, interchangeable components. This architectural approach promotes the creation of modular, testable, and scalable systems, allowing developers to build sophisticated applications without reinventing the wheel for common functionalities.\n\n1. PromptTemplate\n\nConcept: A PromptTemplate is a blueprint for generating prompts. Instead of hardcoding prompt strings, you define a template with placeholders (variables) that can be dynamically filled in.\nPurpose: Helps you define structured prompts with dynamic inputs. This significantly improves the maintainability and readability of your prompt strings, especially when dealing with multiple inputs or varying scenarios. It ensures consistency and simplifies prompt engineering.\nAnalogy: Think of it like a mail merge template. You define the structure of your letter once, and then you can easily insert different names, addresses, or dates for each recipient.\n\n\n\n2. LLM Wrappers\n\nConcept: LangChain provides a unified interface (LLM or ChatModel classes) to interact with various LLMs from different providers.\nPurpose: You just choose the model (e.g., OpenAI’s GPT-4, Anthropic’s Claude, Google’s Gemini, Hugging Face models), and LangChain handles the underlying API calls, authentication, and request/response formatting complexities. This abstracts away provider-specific details, making it easy to swap models or integrate new ones without rewriting your application logic.\nAnalogy: Imagine a universal remote control for all your smart devices. You don’t need to learn each device’s specific commands; the remote handles the translation.\n\n\n\n3. Chains\n\nConcept: Chains are sequences of calls or logic steps. They allow you to combine LLMs with other components (like prompt templates, other chains, or tools) in a predefined order to accomplish a more complex task.\nPurpose: They provide a structured way to execute multi-step operations.\nExamples:\n\nLLMChain: The simplest chain, combining a PromptTemplate with an LLM. It takes input variables, formats them into a prompt, passes it to the LLM, and returns the LLM’s output.\nSimpleSequentialChain: Executes a series of chains in a predefined order, where the output of one chain becomes the input for the next. Ideal for linear workflows.\nRouterChain: Allows dynamic routing of input to different sub-chains based on the input’s content or intent. This enables more complex, conditional workflows.\n\nAnalogy: A chain is like an assembly line in a factory. Each station (component) performs a specific task, and the output of one station feeds into the next, creating a finished product.\n\n\n\n4. Memory\n\nConcept: Memory components allow LLM applications to remember previous interactions within a conversation.\nPurpose: Built-in memory types track previous conversations, enabling the LLM to maintain context and generate coherent, relevant responses over multiple turns. Without memory, each LLM call is stateless, meaning it has no recollection of what was said moments before.\nExamples:\n\nConversationBufferMemory: Stores all previous messages in a buffer and passes them directly to the LLM.\nEntityMemory: Focuses on remembering specific entities (people, places, things) and their attributes mentioned during the conversation.\n\nAnalogy: Memory for an LLM is like a human’s short-term memory during a conversation, allowing us to refer back to earlier points and maintain flow.\n\n\n\n5. Agents & Tools\n\nConcept: This is where LLMs move from being just text generators to active decision-makers.\n\nAgents: Empower LLMs to reason about a problem and decide actions to take based on the available tools. They can observe the environment, think about what to do next, execute an action, and repeat.\nTools: Are functions that agents can use. These can be external APIs, a calculator, a search engine, a custom database query function, or even another LLM.\n\nPurpose: Agents allow LLMs to go beyond their pre-trained knowledge, interact with the real world (via tools), and perform complex, dynamic tasks requiring external information or computation.\nAnalogy: An agent is like a project manager, and tools are the specialized workers they can delegate tasks to. The project manager (agent) decides who (which tool) does what, when, and how, to achieve the overall goal.\n\n\n\n6. Retrievers & Vector Stores\n\nConcept: These components are central to building Retrieval-Augmented Generation (RAG) systems.\n\nRetrievers: Are interfaces for fetching relevant documents or data from a storage location. They are designed to retrieve information based on a query, often using semantic similarity.\nVector Stores: Are specialized databases that store numerical representations (embeddings) of text. They enable semantic search, allowing you to find text chunks that are conceptually similar to your query, even if they don’t share exact keywords.\n\nPurpose: They enable LLMs to access and utilize external, up-to-date, or proprietary information that wasn’t part of their original training data. This is crucial for reducing hallucinations, providing factual answers, and answering questions about specific documents.\nSupports: LangChain provides integrations with many popular vector databases like Chroma, FAISS, Pinecone, Weaviate, Milvus, and others.\nAnalogy: A retriever and vector store combined are like a highly efficient, semantic library search system. When you ask a question, it quickly finds the most relevant books (documents) in the library (vector store) based on the meaning of your question, not just keywords.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#langchain-ecosystem",
+    "href": "week-6/Module9.html#langchain-ecosystem",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "LangChain Ecosystem",
+    "text": "LangChain Ecosystem\nThe LangChain ecosystem is strategically modularized to give developers flexibility and reduce dependency bloat. It’s primarily split into a few key packages:\n\nlangchain-core: This is the foundational package. It contains the base classes, fundamental logic, and core interfaces for all LangChain components. You’ll almost always need this.\nlangchain-community: This package provides integrations with a wide array of third-party tools and services. This includes support for various LLM providers (beyond OpenAI), vector stores (like Chroma), data loaders, utilities for web scraping, and more. It’s separated so you only install the dependencies for the specific community integrations you use.\nlangchain-openai: This is a specific integration package solely for OpenAI models and tools. It includes specialized wrappers and functionalities optimized for interacting with OpenAI’s API, including their chat models, embedding models, and tool-calling capabilities.\n\nYou install them as needed, minimizing the overall footprint of your project’s dependencies.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#installation",
+    "href": "week-6/Module9.html#installation",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "Installation",
+    "text": "Installation\nBasic installation:\npip install langchain openai\nIf using .env for API keys:\npip install python-dotenv\nExtras:\npip install chromadb faiss-cpu tiktoken",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#setting-up-openai-api-key",
+    "href": "week-6/Module9.html#setting-up-openai-api-key",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "Setting Up OpenAI API Key",
+    "text": "Setting Up OpenAI API Key\nCreate a .env file:\nOPENAI_API_KEY=sk-xxxxxxxxxxxxxxxx\nIn your code:\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\nos.environ[\"OPENAI_API_KEY\"]\n\n\n\n\n\n\nExplanation\n\n\n\n\n\n\nfrom langchain_openai import OpenAI We import the specific wrapper for OpenAI’s LLMs from the langchain_openai package, reflecting the modular ecosystem.\nllm = OpenAI(temperature=0.7) We create an instance of the OpenAI LLM wrapper. You can pass various parameters here, like temperature, model_name, etc.\noutput = llm.invoke(\"Write a short poem about the moon.\") We call the LLM with our prompt. LangChain handles the underlying API request, sending your prompt to OpenAI’s servers, and receiving the generated text.\nThe .invoke() method is the standard way to call an LLM (or a chain) for a single input.\nprint(output) Prints the generated poem.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module9.html#langchain-in-production",
+    "href": "week-6/Module9.html#langchain-in-production",
+    "title": "Module 9: Introduction to LangChain",
+    "section": "LangChain in Production",
+    "text": "LangChain in Production\nLangChain can be integrated with:\n\nStreamlit / Gradio for frontend\nFastAPI / Flask for APIs\nDocker for containerization\nVector DBs like Pinecone or Chroma\n\n\n\n\n\n\n\n\nChoose LangChain when:\n\n\n\n\nYou’re building a multi-step pipeline that involves sequential or complex reasoning (e.g., research, analysis, then synthesis).\nYou want to connect memory, external tools, APIs, databases, or web resources with your LLM.\nYou’re working with agents that need to make decisions and take actions autonomously.\nYou are developing Retrieval-Augmented Generation (RAG) systems to ground LLM responses in specific data.\nYou need model agnosticism and want the flexibility to easily swap between different LLM providers.\nYou aim for structured, reusable, and maintainable LLM application code.\n\n\n\n\n\n\n\n\n\nDon’t use LangChain if:\n\n\n\n\nYou only need a single, straightforward prompt call to an LLM, without any complex chaining, memory, or tool integration. For very simple, one-off interactions, a direct API call might be sufficient and introduce less overhead.\nYou just want to experiment quickly with raw completions or basic playground-style interactions where the overhead of a framework isn’t beneficial.",
+    "crumbs": [
+      "Week 6",
+      "Module 9: Introduction to LangChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html",
+    "href": "week-6/Module8.html",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "",
+    "text": "Evaluating prompts is fundamental to successful prompt engineering. It helps in:\n\nIdentifying Effective Prompts: Pinpointing which prompts consistently generate accurate, helpful, or creative outputs. This is crucial for maximizing the utility of LLMs across diverse applications.\nMitigating Undesirable Outputs: Reducing occurrences of hallucinations (LLMs generating false or nonsensical information) and irrelevant responses that don’t align with the user’s intent.\nEnhancing Generalizability: Selecting prompts that perform well not just in specific instances but also generalize better across a wider range of examples or different users. This ensures robustness and scalability of LLM applications.",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html#why-evaluate-prompts",
+    "href": "week-6/Module8.html#why-evaluate-prompts",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "",
+    "text": "Evaluating prompts is fundamental to successful prompt engineering. It helps in:\n\nIdentifying Effective Prompts: Pinpointing which prompts consistently generate accurate, helpful, or creative outputs. This is crucial for maximizing the utility of LLMs across diverse applications.\nMitigating Undesirable Outputs: Reducing occurrences of hallucinations (LLMs generating false or nonsensical information) and irrelevant responses that don’t align with the user’s intent.\nEnhancing Generalizability: Selecting prompts that perform well not just in specific instances but also generalize better across a wider range of examples or different users. This ensures robustness and scalability of LLM applications.",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html#what-makes-a-good-prompt",
+    "href": "week-6/Module8.html#what-makes-a-good-prompt",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "What Makes a “Good” Prompt?",
+    "text": "What Makes a “Good” Prompt?\nA “good” prompt is one that consistently elicits high-quality responses from an LLM. The characteristics of such outputs typically include:\n\nRelevant – The output directly addresses and matches the intent of the user’s query. It doesn’t deviate from the core subject or provide extraneous information.\nFluent – The language used in the output is grammatically correct, natural-sounding, and readable. It avoids awkward phrasing, typos, or syntactic errors that could hinder understanding.\nCoherent – The ideas presented in the output flow logically and are well-connected and structured. There’s a clear progression of thought, making the response easy to follow.\nFactual – The output contains accurate and verifiable information. This is particularly critical in applications where precision and truthfulness are paramount, such as in factual retrieval or reporting.\nComplete – The output fully answers the question or task posed by the prompt, providing all necessary details without leaving out crucial information.",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html#human-evaluation-criteria",
+    "href": "week-6/Module8.html#human-evaluation-criteria",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "Human Evaluation Criteria",
+    "text": "Human Evaluation Criteria\nHuman evaluation remains the gold standard for assessing prompt quality, especially for nuanced aspects like creativity, subjectivity, or complex reasoning. A scoring rubric is a structured way to conduct this manual assessment.\n\n\n\n\n\n\n\n\nCriteria\nScale (1-5)\nDescription\n\n\n\n\nRelevance\n1 (poor) – 5 (excellent)\nDoes the output directly and appropriately match the prompt’s intent? A score of 1 indicates the output is completely off-topic, while 5 means it’s perfectly aligned.\n\n\nFluency\n1 – 5\nIs the language natural, grammatically correct, and free from errors? A score of 1 suggests the output is difficult to read due to poor grammar or awkward phrasing, while 5 indicates impeccable language.\n\n\nCoherence\n1 – 5\nAre the ideas well-connected, logically organized, and easy to follow? A score of 1 implies a disjointed or confusing output, whereas 5 signifies a highly structured and logical flow.\n\n\nFactuality\n1 – 5\nIs the information accurate and verifiable? A score of 1 means the output contains significant factual errors or hallucinations, while 5 denotes complete accuracy.\n\n\nCompleteness\n1 – 5\nDoes the output fully address all aspects of the request or question? A score of 1 indicates a partial or incomplete response, while 5 means the task is entirely fulfilled.\n\n\n\nBy using such a rubric, evaluators can provide consistent and comparable scores, allowing for systematic analysis of different prompts and their outputs.",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html#llm-as-a-judge-evaluation",
+    "href": "week-6/Module8.html#llm-as-a-judge-evaluation",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "LLM-as-a-Judge Evaluation",
+    "text": "LLM-as-a-Judge Evaluation\nA modern and efficient approach to prompt evaluation involves leveraging another LLM to act as a judge. This method is particularly useful for large-scale evaluations where human review might be impractical.\nThe core idea is to provide a powerful LLM with: 1. The original prompt. 2. Two or more responses generated from different prompts or models. 3. Instructions for comparing these responses based on specific criteria (e.g., relevance, coherence, conciseness).\nprompt = '''\nYou will be given two responses to the same prompt. Pick the one that is more relevant and coherent.\n\nPrompt: \"Explain the concept of climate change.\"\n\nResponse A: \"Climate change is the average weather shift over a short time.\"\n\nResponse B: \"Climate change refers to long-term alterations in temperature and weather patterns, often due to human activity.\"\n\nWhich is better and why?\n'''\n\nfrom openai import OpenAI\nimport os\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n\nresponse = client.chat.completions.create(\n    model=\"gpt-3.5-turbo\",\n    messages=[{\"role\": \"user\", \"content\": prompt}]\n)\n\nprint(response.choices[0].message.content)\n\n\n# For demonstration purposes, a placeholder response:\nresponse_content = \"Response B is better because it accurately describes climate change as long-term alterations and mentions human activity, which is a key aspect. Response A incorrectly states it's a short-term shift.\"\n\nprint(response_content)",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/Module8.html#automatic-evaluation-metrics",
+    "href": "week-6/Module8.html#automatic-evaluation-metrics",
+    "title": "Module 8: Evaluating Prompt Quality and Output Reliability",
+    "section": "Automatic Evaluation Metrics",
+    "text": "Automatic Evaluation Metrics\n\nEvaluate both using human review or LLM.\n\n\nBLEU Score\nMeasures n-gram overlap with reference text (used in translation).\n\n\nROUGE Score\nUsed for summarization — compares recall of overlapping n-grams.\n\n\nMETEOR Score\nSimilar to BLEU but considers synonyms and stemming.\n\nThese are more useful when reference outputs are available.\n\n\n\n\n\n\n\n\nTip\n\n\n\n\nUse clear and specific instructions.\nAdd examples (few-shot prompting).\nBreak complex tasks into smaller steps (chain-of-thought).\nTry different phrasings for better performance.\nAvoid ambiguous or vague language.",
+    "crumbs": [
+      "Week 6",
+      "Module 8: Evaluating Prompt Quality and Output Reliability"
+    ]
+  },
+  {
+    "objectID": "week-6/index.html",
+    "href": "week-6/index.html",
+    "title": "Week 6",
+    "section": "",
+    "text": "Prompt Engineering\n\n\n  Module 1 ➡️",
+    "crumbs": [
+      "Week 6"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html",
+    "href": "week-6/Module11.html",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "",
+    "text": "LangChain Chains are a powerful way to combine multiple components (like LLMs, prompts, memory, tools) into a pipeline that performs complex reasoning or multi-step tasks.",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#what-is-a-chain",
+    "href": "week-6/Module11.html#what-is-a-chain",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "What is a Chain?",
+    "text": "What is a Chain?\nA chain links multiple actions together. For example: &gt; Prompt → LLM → Output Parser\nis a simple chain.\nLangChain provides prebuilt chains and lets you create custom ones.",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#simplesequentialchain",
+    "href": "week-6/Module11.html#simplesequentialchain",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "1. SimpleSequentialChain",
+    "text": "1. SimpleSequentialChain\nThis is the easiest way to chain multiple LLM calls sequentially, where the output of one is passed to the next. (output of one chain becomes the sole input to the next chain.)\n\nExample: Idea → Name → Slogan\nfrom langchain.llms import OpenAI\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import LLMChain, SimpleSequentialChain\n\n# First chain: generate startup idea\nprompt1 = PromptTemplate.from_template(\"Give me a business idea about {topic}\")\nllm1 = OpenAI(temperature=0.7)\nchain1 = LLMChain(llm=llm1, prompt=prompt1)\n\n# Second chain: write a tagline based on that idea\nprompt2 = PromptTemplate.from_template(\"Write a tagline for: {input}\")\nllm2 = OpenAI(temperature=0.7)\nchain2 = LLMChain(llm=llm2, prompt=prompt2)\n\n# Combine both\noverall_chain = SimpleSequentialChain(chains=[chain1, chain2], verbose=True)\nresult = overall_chain.run(\"healthcare\")\nprint(result)",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#sequentialchain-named-chains",
+    "href": "week-6/Module11.html#sequentialchain-named-chains",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "2. SequentialChain (Named Chains)",
+    "text": "2. SequentialChain (Named Chains)\nWhen your chains have multiple inputs and outputs, use SequentialChain. SequentialChain offers more flexibility by allowing:\nMultiple initial inputs.\n\nMultiple outputs at each step (intermediate outputs).\nExplicit control over which outputs are passed as inputs to subsequent steps.\nThis is crucial for more complex workflows where you need to carry multiple pieces of information through different stages of a process.\n\n\nExample:\nfrom langchain_openai import OpenAI\nfrom langchain.prompts import PromptTemplate\nfrom langchain.chains import LLMChain, SequentialChain\nimport os\nfrom dotenv import load_dotenv\n\nload_dotenv()\nos.environ[\"OPENAI_API_KEY\"] = os.getenv(\"OPENAI_API_KEY\")\n\nllm = OpenAI(temperature=0.7)\n\n# Chain 1: Translate English to French\ntranslation_prompt = PromptTemplate(\n    input_variables=[\"english_text\"],\n    template=\"Translate the following English text to French:\\n\\n{english_text}\\n\\nFrench Translation:\"\n)\ntranslation_chain = LLMChain(\n    llm=llm,\n    prompt=translation_prompt,\n    output_key=\"french_text\" # Define an output_key for the result of this chain\n)\n\n# Chain 2: Summarize the French text (from Chain 1's output)\nsummary_prompt = PromptTemplate(\n    input_variables=[\"french_text\"], # Input variable matches output_key from translation_chain\n    template=\"Summarize the following French text concisely in French:\\n\\n{french_text}\\n\\nSummary:\"\n)\nsummary_chain = LLMChain(\n    llm=llm,\n    prompt=summary_prompt,\n    output_key=\"french_summary\" # Define an output_key for the result of this chain\n)\n\n\noverall_chain_sequential = SequentialChain(\n    chains=[translation_chain, summary_chain],\n    input_variables=[\"english_text\"],\n    output_variables=[\"french_text\", \"french_summary\"], # We want both the translation and the summary\n    verbose=True\n)\n\noriginal_english_text = \"Artificial intelligence is rapidly advancing, transforming industries and daily life.\"\n\nprint(\"Running SequentialChain...\\n\")\nresponse = overall_chain_sequential.invoke({\"english_text\": original_english_text}) # Use invoke with a dictionary input\n\nprint(\"\\n--- Original English Text ---\")\nprint(original_english_text)\nprint(\"\\n--- French Translation ---\")\nprint(response[\"french_text\"])\nprint(\"\\n--- French Summary ---\")\nprint(response[\"french_summary\"])",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#routerchain",
+    "href": "week-6/Module11.html#routerchain",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "3. RouterChain",
+    "text": "3. RouterChain\nRouterChain lets you dynamically choose which chain to use based on input.\nThis is useful when: - You want to route different queries to different models or prompts. - You are building multi-skill agents.\n\nConceptual Diagram:\nInput → Router → Chain A\n              → Chain B\n              → Chain C\nLangChain uses a LLM classifier under the hood to decide the route.\n\n\nExample: Different prompts for different domains\nfrom langchain.llms import OpenAI\nfrom langchain.chains import LLMChain, MultiPromptChain\nfrom langchain.prompts import PromptTemplate\n\n# Define different prompt templates\nmath_prompt = PromptTemplate(\n    template=\"You are a math expert. Answer this question:\\n{input}\",\n    input_variables=[\"input\"]\n)\nhistory_prompt = PromptTemplate(\n    template=\"You are a historian. Provide insights:\\n{input}\",\n    input_variables=[\"input\"]\n)\n\n# Wrap them in LLMChains\nllm = OpenAI(temperature=0)\nmath_chain = LLMChain(llm=llm, prompt=math_prompt)\nhistory_chain = LLMChain(llm=llm, prompt=history_prompt)\n\n# Dictionary of prompt chains\ndestination_chains = {\n    \"math\": math_chain,\n    \"history\": history_chain\n}\n\n# Router prompt\nrouter_template = \"\"\"\\\nGiven a question, classify it into one of the following domains: math or history.\n\nQuestion: {input}\nDomain:\"\"\"\n\nrouter_prompt = PromptTemplate(\n    template=router_template,\n    input_variables=[\"input\"]\n)\n\n# RouterChain\nrouter_chain = LLMChain(llm=llm, prompt=router_prompt)\n\n# Final MultiPromptChain\nchain = MultiPromptChain(\n    router_chain=router_chain,\n    destination_chains=destination_chains,\n    default_chain=math_chain,  # fallback\n    verbose=True\n)\n\nresult = chain.run(\"Who was the first President of India?\")\nprint(result)",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#custom-chains",
+    "href": "week-6/Module11.html#custom-chains",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "4. Custom Chains",
+    "text": "4. Custom Chains\nYou can also build your own chain classes by subclassing Chain and defining: - input_keys - output_keys - _call() method\nUseful for full control over data flow.\n\nExample\nYou can build a chain from scratch by subclassing Chain and implementing the _call() method.\nfrom langchain.chains.base import Chain\nfrom typing import Dict, List\n\nclass AddExclamationChain(Chain):\n    @property\n    def input_keys(self) -&gt; List[str]:\n        return [\"text\"]\n\n    @property\n    def output_keys(self) -&gt; List[str]:\n        return [\"modified_text\"]\n\n    def _call(self, inputs: Dict[str, str]) -&gt; Dict[str, str]:\n        text = inputs[\"text\"]\n        modified = text + \"!!!\"\n        return {\"modified_text\": modified}\n\n# Test it\nchain = AddExclamationChain()\noutput = chain.run(\"This is amazing\")\nprint(output)  # Output: This is amazing!!!",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module11.html#summary-table",
+    "href": "week-6/Module11.html#summary-table",
+    "title": "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain",
+    "section": "Summary Table",
+    "text": "Summary Table\n\n\n\n\n\n\n\nChain Type\nUse Case\n\n\n\n\nSimpleSequential\nOne-step → next → next logic, like writing pipelines\n\n\nSequentialChain\nNamed inputs/outputs, slightly more complex flows\n\n\nRouterChain\nDecision-based routing to different sub-chains\n\n\nCustomChain\nFor advanced users who need full control",
+    "crumbs": [
+      "Week 6",
+      "Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html",
+    "href": "week-6/Module12.html",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "",
+    "text": "In real-world applications, like chatbots and assistants, we often want the system to remember past conversations. This is where LangChain Memory comes into play.",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html#what-is-memory",
+    "href": "week-6/Module12.html#what-is-memory",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "What is Memory?",
+    "text": "What is Memory?\nBy default, LLMs are stateless. This means:\n\nThey don’t remember anything from earlier user inputs.\nEach call to the LLM is treated like a blank slate.\n\nMemory allows us to maintain context between multiple inputs.",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html#types-of-memory-in-langchain",
+    "href": "week-6/Module12.html#types-of-memory-in-langchain",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "Types of Memory in LangChain",
+    "text": "Types of Memory in LangChain\nLangChain provides several built-in memory classes for different use-cases.\n\n1. ConversationBufferMemory\nStores the entire conversation in memory as a buffer (long text history). Best for simple dialogs.\nfrom langchain.memory import ConversationBufferMemory\n\nmemory = ConversationBufferMemory()\n\n\n2. ConversationBufferWindowMemory\nSame as buffer memory but only keeps the last k messages.\nfrom langchain.memory import ConversationBufferWindowMemory\n\nmemory = ConversationBufferWindowMemory(k=3)\n\n\n3. ConversationSummaryMemory\nSummarizes the conversation so far to save tokens.\nfrom langchain.chat_models import ChatOpenAI\nfrom langchain.memory import ConversationSummaryMemory\n\nllm = ChatOpenAI()\nmemory = ConversationSummaryMemory(llm=llm)\n\n\n4. EntityMemory\nTracks information about entities (like names, places) throughout the conversation.",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html#adding-memory-to-chains",
+    "href": "week-6/Module12.html#adding-memory-to-chains",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "Adding Memory to Chains",
+    "text": "Adding Memory to Chains\nYou can add memory to any chain. Most commonly used with ConversationChain.\nfrom langchain.chains import ConversationChain\nfrom langchain.chat_models import ChatOpenAI\nfrom langchain.memory import ConversationBufferMemory\n\nllm = ChatOpenAI()\nmemory = ConversationBufferMemory()\nconversation = ConversationChain(llm=llm, memory=memory)\n\nresponse = conversation.run(\"Hello, my name is Nitin.\")\nprint(response)\n\nresponse = conversation.run(\"What is my name?\")\nprint(response)  # Should recall 'Nitin'",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html#customizing-memory",
+    "href": "week-6/Module12.html#customizing-memory",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "Customizing Memory",
+    "text": "Customizing Memory\nYou can customize memory parameters:\n\nk in buffer window memory (controls how many turns to remember)\nLLM model for summarization in summary memory\nPrefix/suffix prompts for memory formatting",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module12.html#full-stateful-chat-example",
+    "href": "week-6/Module12.html#full-stateful-chat-example",
+    "title": "Module 12: LangChain Memory – Making LLMs Remember Context",
+    "section": "Full Stateful Chat Example",
+    "text": "Full Stateful Chat Example\nfrom langchain.chains import ConversationChain\nfrom langchain.chat_models import ChatOpenAI\nfrom langchain.memory import ConversationBufferWindowMemory\n\nllm = ChatOpenAI()\nmemory = ConversationBufferWindowMemory(k=2)\n\nconversation = ConversationChain(\n    llm=llm,\n    memory=memory,\n    verbose=True\n)\n\nconversation.run(\"Hi, I'm Anjali.\")\nconversation.run(\"I live in Delhi.\")\nconversation.run(\"Where do I live?\")\n\n\n\n\n\n\n\nImportant\n\n\n\n\n\n\nSituation\nRecommended Memory\n\n\n\n\nSimple chatbot\nConversationBufferMemory\n\n\nLong conversation\nConversationSummaryMemory\n\n\nEntity-aware dialog\nEntityMemory\n\n\nLimited token budget\nSummary or Window Memory\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nMemory is essential when building applications that require context awareness, like chatbots, customer support agents, or tutors.",
+    "crumbs": [
+      "Week 6",
+      "Module 12: LangChain Memory – Making LLMs Remember Context"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html",
+    "href": "week-6/Module6.html",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "",
+    "text": "In this hands-on module, we’ll apply the concepts you’ve learned to build and test real prompts using OpenAI’s ChatCompletion API (via the new OpenAI SDK openai&gt;=1.0.0). We will also look at several mini-projects and explore how to integrate them into real-world applications.",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#setup",
+    "href": "week-6/Module6.html#setup",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "Setup",
+    "text": "Setup\n!pip install --upgrade openai\nfrom openai import OpenAI\nimport os\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#simple-chatbot-interaction",
+    "href": "week-6/Module6.html#simple-chatbot-interaction",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "1. Simple ChatBot Interaction",
+    "text": "1. Simple ChatBot Interaction\nresponse = client.chat.completions.create(\n    model=\"gpt-3.5-turbo\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": \"Who won the FIFA World Cup in 2022?\"}\n    ]\n)\nprint(response.choices[0].message.content)",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#custom-assistant-role",
+    "href": "week-6/Module6.html#custom-assistant-role",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "2. Custom Assistant Role",
+    "text": "2. Custom Assistant Role\nresponse = client.chat.completions.create(\n    model=\"gpt-3.5-turbo\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a strict English grammar teacher.\"},\n        {\"role\": \"user\", \"content\": \"Correct this: He don't like the cold.\"}\n    ]\n)\nprint(response.choices[0].message.content)",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#explore-parameters",
+    "href": "week-6/Module6.html#explore-parameters",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "3. Explore Parameters",
+    "text": "3. Explore Parameters\nPlay with:\n\ntemperature: creativity\ntop_p: nucleus sampling\nmax_tokens: response length\nstop: cut-off patterns\nn: number of completions\n\nresponse = client.chat.completions.create(\n    model=\"gpt-3.5-turbo\",\n    temperature=0.9,\n    top_p=0.85,\n    max_tokens=100,\n    messages=[\n        {\"role\": \"user\", \"content\": \"Write a short story about a cat on Mars.\"}\n    ]\n)\nprint(response.choices[0].message.content)",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#mini-applications",
+    "href": "week-6/Module6.html#mini-applications",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "4. Mini-Applications",
+    "text": "4. Mini-Applications\n\na) Summarizer\ndef summarize_text(text):\n    response = client.chat.completions.create(\n        model=\"gpt-3.5-turbo\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"Summarize the following text.\"},\n            {\"role\": \"user\", \"content\": text}\n        ]\n    )\n    return response.choices[0].message.content\n\n\nb) Idea Generator\ndef generate_ideas(topic):\n    response = client.chat.completions.create(\n        model=\"gpt-3.5-turbo\",\n        messages=[\n            {\"role\": \"system\", \"content\": \"You are a creative idea generator.\"},\n            {\"role\": \"user\", \"content\": f\"Give 5 unique business ideas on {topic}.\"}\n        ]\n    )\n    return response.choices[0].message.content",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#further-exploration-ideas",
+    "href": "week-6/Module6.html#further-exploration-ideas",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "5. Further Exploration Ideas",
+    "text": "5. Further Exploration Ideas\n\nQuiz Generator: Generate multiple-choice questions from topics\nRecipe Recommender: Generate recipes from given ingredients\nPersona Bot: Change assistant behavior (e.g. a Shakespearean poet)\nResume Optimizer: Improve resumes using targeted prompts\nStory Continuation: Ask GPT to continue a paragraph",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module6.html#summary",
+    "href": "week-6/Module6.html#summary",
+    "title": "Module 6: Hands-on with OpenAI API",
+    "section": "Summary",
+    "text": "Summary\n\nYou’ve seen how to send chat messages and tweak response behavior.\nWe built mini apps using different prompt designs.\nYou can now start prototyping your own AI assistants!\n\n\n\nHands-On Notebook\n  Open in Google Colab",
+    "crumbs": [
+      "Week 6",
+      "Module 6: Hands-on with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html",
+    "href": "week-6/Module5.html",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "",
+    "text": "The OpenAI API allows you to access powerful large language models like GPT-3.5 and GPT-4 via a simple HTTP-based interface.\nYou can use it for:\n\nChatbots\nContent creation\nText summarization\nTranslation\nCode generation\nAudio transcription\nImage generation\nEmbedding generation",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#what-is-the-openai-api",
+    "href": "week-6/Module5.html#what-is-the-openai-api",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "",
+    "text": "The OpenAI API allows you to access powerful large language models like GPT-3.5 and GPT-4 via a simple HTTP-based interface.\nYou can use it for:\n\nChatbots\nContent creation\nText summarization\nTranslation\nCode generation\nAudio transcription\nImage generation\nEmbedding generation",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#create-an-openai-account",
+    "href": "week-6/Module5.html#create-an-openai-account",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "Create an OpenAI Account",
+    "text": "Create an OpenAI Account\n\nGo to https://platform.openai.com\nSign up using your email, Google, or GitHub.\nNavigate to https://platform.openai.com/account/api-keys\nClick “Create new secret key”\nCopy and store your key securely.\n\n\n\n\n\n\n\nWarning\n\n\n\nYour secret key starts with sk- and should never be shared publicly.",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#install-the-openai-python-package",
+    "href": "week-6/Module5.html#install-the-openai-python-package",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "Install the OpenAI Python Package",
+    "text": "Install the OpenAI Python Package\npip install --upgrade openai",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#set-up-your-api-key-in-python",
+    "href": "week-6/Module5.html#set-up-your-api-key-in-python",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "Set Up Your API Key in Python",
+    "text": "Set Up Your API Key in Python\nYou can use your API key in two ways:\n\nOption 1: Set directly in code (for testing only)\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(api_key=\"your-api-key-here\")\n\n\nOption 2: Use environment variables (recommended)\n# In terminal\nexport OPENAI_API_KEY=\"your-api-key-here\"\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#available-functionalities-in-openai1.0.0",
+    "href": "week-6/Module5.html#available-functionalities-in-openai1.0.0",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "Available Functionalities in openai>=1.0.0",
+    "text": "Available Functionalities in openai&gt;=1.0.0\n\n1. Chat Completion\nresponse = client.chat.completions.create(\n    model=\"gpt-3.5-turbo\",\n    messages=[\n        {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n        {\"role\": \"user\", \"content\": \"Explain photosynthesis in simple words.\"}\n    ]\n)\nprint(response.choices[0].message.content)\n\n\n\n2. Image Generation\nresponse = client.images.generate(\n    model=\"dall-e-3\",\n    prompt=\"A futuristic city floating in the sky\",\n    size=\"1024x1024\",\n    quality=\"standard\",\n    n=1\n)\nimage_url = response.data[0].url\nprint(image_url)\n\n\n\n3. Embeddings\nresponse = client.embeddings.create(\n    input=\"Machine learning is fun.\",\n    model=\"text-embedding-ada-002\"\n)\nprint(response.data[0].embedding)\n\n\n\n4. Audio Transcription (Whisper)\nwith open(\"speech.mp3\", \"rb\") as audio_file:\n    transcript = client.audio.transcriptions.create(\n        model=\"whisper-1\",\n        file=audio_file\n    )\nprint(transcript.text)",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module5.html#summary",
+    "href": "week-6/Module5.html#summary",
+    "title": "Module 5: Getting Started with OpenAI API",
+    "section": "Summary",
+    "text": "Summary\n\nUse OpenAI() to create a client with your API key.\nModern usage recommends client.chat.completions.create() for chat interactions.\nYou can also generate images, extract embeddings, and transcribe audio using a consistent client interface.",
+    "crumbs": [
+      "Week 6",
+      "Module 5: Getting Started with OpenAI API"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html",
+    "href": "week-6/Module2.html",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "",
+    "text": "Zero-shot prompting\nFew-shot prompting\nChain-of-thought prompting\nInstruction-style prompting\nRole prompting or persona-based prompting\n\nEach technique gives the model better instructions, depending on what we want.",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#prompting-techniques-or-prompt-patterns",
+    "href": "week-6/Module2.html#prompting-techniques-or-prompt-patterns",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "",
+    "text": "Zero-shot prompting\nFew-shot prompting\nChain-of-thought prompting\nInstruction-style prompting\nRole prompting or persona-based prompting\n\nEach technique gives the model better instructions, depending on what we want.",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#zero-shot-prompting",
+    "href": "week-6/Module2.html#zero-shot-prompting",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "Zero-shot Prompting",
+    "text": "Zero-shot Prompting\nIn zero-shot prompting, we just ask the question or give the instruction without giving any examples.\n\nExample:\n\nPrompt: “Translate to Hindi: ‘How are you?’”\nOutput: “Aap kaise hain?”\n\nEven though we did not show any examples, the model understood the task. This is useful when:\n\nYou want a quick result\nYou believe the model already knows how to do the task.",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#few-shot-prompting",
+    "href": "week-6/Module2.html#few-shot-prompting",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "Few-shot Prompting",
+    "text": "Few-shot Prompting\nIn few-shot prompting, we give the model a few examples before asking it to do something new. This helps it understand the pattern better.\n```\n\nExample:\n\nPrompt: English: Hello\nHindi: Namaste\nEnglish: Thank you\nHindi: Dhanyavaad\nEnglish: Good morning\nHindi:\n\n\nOutput: Shubh prabhat\n\nThis method is useful when:\n\nYou want better accuracy\nYou’re not sure if the model knows the task\nYou can give 2–3 examples",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#chain-of-thought-prompting-cot",
+    "href": "week-6/Module2.html#chain-of-thought-prompting-cot",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "Chain-of-Thought Prompting (CoT)",
+    "text": "Chain-of-Thought Prompting (CoT)\nThis is a special technique where we ask the model to think step-by-step.\n\nExample:\n\nPrompt:\nI went to the market and bought 10 apples. I gave 2 apples to the neighbor and 2 to the repairman. I then went and bought 5 more apples and ate 1. How many apples did I remain with? Let’s think step by step.\n\n\nOutput:\nFirst, you started with 10 apples. You gave away 2 apples to the neighbor and 2 to the repairman, so you had 6 apples left. Then you bought 5 more apples, so now you had 11 apples. Finally, you ate 1 apple, so you would remain with 10 apples.\n\nChain-of-thought helps in:\n\nMath problems\nLogical reasoning\nMulti-step tasks",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#instruction-style-prompting",
+    "href": "week-6/Module2.html#instruction-style-prompting",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "Instruction-style Prompting",
+    "text": "Instruction-style Prompting\nHere, we give clear instructions in a natural language format. This is how ChatGPT and InstructGPT were trained.\n\nExample:\n\nPrompt:\n“Write a short summary of the movie Inception in 2-3 lines using simple English.”\n\n\nOutput:\nInception is a sci-fi movie where people enter dreams. A team tries to plant an idea in someone’s mind through dreams.\n\nInstruction-style prompts are useful for:\n\nSummarization\nContent creation\nRewriting tasks\nQuestions and answers",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-6/Module2.html#role-or-persona-prompting",
+    "href": "week-6/Module2.html#role-or-persona-prompting",
+    "title": "Module 2: Techniques in Prompting",
+    "section": "Role or Persona Prompting",
+    "text": "Role or Persona Prompting\nIn this type, we ask the model to act like someone. This helps set a context or tone.\n\nExample:\n\nPrompt:\n“You are a nutritionist. Explain why breakfast is important to a 10-year-old.”\nOutput:\nBreakfast gives your body energy after sleeping all night. It helps you focus in school and keeps you strong and healthy.\n\n\n  ⬅️ Module 1  \n  Module 3 ➡️",
+    "crumbs": [
+      "Week 6",
+      "Module 2: Techniques in Prompting"
+    ]
+  },
+  {
+    "objectID": "week-1/index.html",
+    "href": "week-1/index.html",
+    "title": "Week-1",
+    "section": "",
+    "text": "This week will reacquaint you with the following libraries that are fundamental to data science:\n\nNumPy\nMatplotlib\nPandas",
+    "crumbs": [
+      "Week-1"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "",
+    "text": "We will study contour plots and 3D plots for functions of two variables. We will also look at simple examples of unconstrained and constrained optimisation of functions of two variables.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html#import",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html#import",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "Import",
+    "text": "Import\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html#contour",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html#contour",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "Contour",
+    "text": "Contour\nDraw contours of the function:\n\\[\nf(x, y) = x^2 + y^2\n\\]\n\nx_ = np.linspace(-2, 2)\ny_ = np.linspace(-2, 2)\nx, y = np.meshgrid(x_, y_)\nz = x ** 2 + y ** 2\ncs = plt.contour(x, y, z,\n                levels = [0, 1, 2, 3, 4, 5] )\nplt.clabel(cs)\nplt.axis('equal')",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html#d-surface-plot",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html#d-surface-plot",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "3D surface plot",
+    "text": "3D surface plot\nPlot the following surface:\n\\[\nf(x, y) = \\exp \\left[ \\cfrac{-(x + 2)^2 - (y - 1)^2}{6} \\right]\n\\]\n\nfrom matplotlib import cm\nfig, ax = plt.subplots(subplot_kw = {'projection': '3d'})\nx_ = np.linspace(-7, 3)\ny_ = np.linspace(-4, 6)\nx, y = np.meshgrid(x_, y_)\nz = np.exp(-((x + 2) ** 2 + (y - 1) ** 2) / 6)\nax.plot_surface(x, y, z, cmap = cm.coolwarm,\n                antialiased = False);",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html#unconstrained-optimisation",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html#unconstrained-optimisation",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "Unconstrained Optimisation",
+    "text": "Unconstrained Optimisation\nLet us now try to find the maximum value of the above function. This is a simple, unconstrained optimisation problem. We will use SciPy’s optimisation routine for this.\n\\[\n\\max \\limits_{x, y} \\quad  \\exp \\left[ \\cfrac{-(x + 2)^2 - (y - 1)^2}{6} \\right]\n\\]\nSciPy’s optimization routines are in the form of minimizers, so we will negate the objective function and minimze it.\n\nfrom scipy import optimize\n\ndef f(x):\n    return -np.exp(-((x[0] + 2) ** 2 + (x[1] - 1) ** 2) / 6)\n\nres = optimize.minimize(f, np.zeros(2))\nres.x\n\narray([-1.99999576,  0.99999789])\n\n\nWe see that the value is close to \\((-2, 1)\\), which is indeed the maximum in this case.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-6.html#constrained-optimisation",
+    "href": "week-1/NumPy-Matplotlib/nb-6.html#constrained-optimisation",
+    "title": "Contour Plots, 3D Plots, Optimisation",
+    "section": "Constrained Optimisation",
+    "text": "Constrained Optimisation\nLet us move to the slightly more complex setup of a constraind optimisation problem.\n\\[\n\\max \\limits_{x, y} \\quad 1 - x^2 - y^2\n\\]\nsubject to:\n\\[\nx + y \\geq 1\n\\]\n\nfrom scipy import optimize\nfrom scipy.optimize import LinearConstraint\n\n# objective\ndef f(x):\n    return x[0] ** 2 + x[1] ** 2 - 1\n\n# optimize\nres = optimize.minimize(f, np.zeros(2),\n                        constraints = LinearConstraint(\n                        A = np.array([1, 1]),\n                        lb = 1))\nres.x\n\narray([0.5, 0.5])\n\n\n\nVerify\nLet us plot the contours of the objective function, the constraint and the optimum obtained.\n\n# contours of the objective\nx_ = np.linspace(-4, 4, 100)\ny_ = np.linspace(-4, 4, 100)\nx, y = np.meshgrid(x_, y_)\ncs = plt.contour(x, y, -f([x, y]), levels = [-1, -0.5, 0, 0.5, 1])\nplt.clabel(cs)\n# constraints\nplt.plot(x_, 1 - x_, linestyle = '--', color = 'black')\n# optimum\nplt.scatter(0.5, 0.5)\n# adjust plot\nplt.axis('equal');\nplt.xlim(-2, 2)\nplt.ylim(-2, 2)\n\n\n\n\n\n\n\n\nWe see that the maximum is indeed at \\((0.5, 0.5)\\) as obtained using SciPy.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Contour Plots, 3D Plots, Optimisation"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html",
+    "title": "Matrices",
+    "section": "",
+    "text": "import numpy as np",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#import",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#import",
+    "title": "Matrices",
+    "section": "",
+    "text": "import numpy as np",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#matrix-as-a-numpy-array",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#matrix-as-a-numpy-array",
+    "title": "Matrices",
+    "section": "Matrix as a NumPy array",
+    "text": "Matrix as a NumPy array\nEverything in NumPy is an array. A matrix is also an array. Let us create a simple matrix:\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nM\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#adding-two-matrices",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#adding-two-matrices",
+    "title": "Matrices",
+    "section": "Adding two matrices",
+    "text": "Adding two matrices\nLet us now add the following matrices:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nthen,\n\\[\n\\textbf{C} = \\textbf{A} + \\textbf{B}  = \\begin{bmatrix}\n6 & 8\\\\\n10 & 12\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nC = A + B\nC\n\narray([[ 6,  8],\n       [10, 12]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#scaling-a-matrix",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#scaling-a-matrix",
+    "title": "Matrices",
+    "section": "Scaling a matrix",
+    "text": "Scaling a matrix\nScaling a matrix is nothing but element-wise multiplication:\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nthen,\n\\[\n3 \\textbf{M} = \\begin{bmatrix}\n3 & 6 & 9\\\\\n12 & 15 & 18\\\\\n21 & 24 & 27\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\n3 * M\n\narray([[ 3,  6,  9],\n       [12, 15, 18],\n       [21, 24, 27]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#element-wise-multiplication-of-matrices",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#element-wise-multiplication-of-matrices",
+    "title": "Matrices",
+    "section": "Element-wise multiplication of matrices",
+    "text": "Element-wise multiplication of matrices\nConsider two matrices:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nThe element-wise product is given by \\(\\textbf{A} \\odot \\textbf{B}\\):\n\\[\n\\textbf{C} = \\textbf{A} \\odot \\textbf{B} = \\begin{bmatrix}\n5 & 12\\\\\n21 & 32\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]\n])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nC = A * B\nC\n\narray([[ 5, 12],\n       [21, 32]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#element-wise-functions-of-matrices",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#element-wise-functions-of-matrices",
+    "title": "Matrices",
+    "section": "Element-wise functions of matrices",
+    "text": "Element-wise functions of matrices\nGiven a matrix, we sometimes would want to apply a function to every element of the matrix. We will consider two examples.\n\nExample-1\nFor example, we may want to take the absolute value of all the elements. Let us say \\(f(x) = |x|\\), then:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n-1 & 2\\\\\n-3 & -4\n\\end{bmatrix}\n\\]\nthen:\n\\[\n\\begin{bmatrix}\nf(-1) & f(2)\\\\\nf(-3) & f(-4)\n\\end{bmatrix} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}\n\\]\nIn NumPy, this becomes:\n\nA = np.array([\n    [-1, 2],\n    [-3, -4]\n])\nnp.abs(A)\n\narray([[1, 2],\n       [3, 4]])\n\n\n\n\nExample-2\nWe might want to square each element of the matrix. If \\(\\textbf{A}\\) is a matrix, then \\(\\textbf{B}\\) could be defined element-wise as follows:\n\\[\nB_{ij} = A_{ij}^2\n\\]\nLet us compute \\(\\mathbf{B}\\) for the following matrix:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & \\sqrt{2}\\\\\n\\sqrt{3} & 2\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, np.sqrt(2)],\n    [np.sqrt(3), 2]\n])\nA ** 2\n\narray([[1., 2.],\n       [3., 4.]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#transpose-of-a-matrix",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#transpose-of-a-matrix",
+    "title": "Matrices",
+    "section": "Transpose of a matrix",
+    "text": "Transpose of a matrix\nGiven a matrix \\(\\textbf{M}\\):\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nthen, its transpose \\(\\textbf{M}^{T}\\) is:\n\\[\n\\textbf{M}^{T} = \\begin{bmatrix}\n1 & 4\\\\\n2 & 5\\\\\n3 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nnp.transpose(M)\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nAlternatively:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nM.transpose()\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nEquivalently, we have:\n\nM.T\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nThis is what we will be sticking to given that it is very close to the corresponding math notation.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#shape-and-dimension-of-a-matrix",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#shape-and-dimension-of-a-matrix",
+    "title": "Matrices",
+    "section": "Shape and dimension of a matrix",
+    "text": "Shape and dimension of a matrix\nMatrices are “two dimensional” arrays. So all matrices in NumPy have array-dimension equal to two. The shape of the NumPy array gives what we usually call the dimension of the matrix in the linear algebra sense.\nExplore these two ideas for:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nprint(M.shape)\nprint(M.ndim)\n\n(2, 3)\n2",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#vectors-as-matrices",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#vectors-as-matrices",
+    "title": "Matrices",
+    "section": "Vectors as matrices",
+    "text": "Vectors as matrices\nEach vector can be viewed as a matrix. Column vectors are matrices of shape \\((d, 1)\\). Row vectors are matrices of shape \\((1, d)\\). Let us look at how NumPy treats both these cases:\n\nx = np.array([\n    [1],\n    [2],\n     [3]\n])\nprint(x.shape)\nprint(x.ndim)\nx\n\n(3, 1)\n2\n\n\narray([[1],\n       [2],\n       [3]])\n\n\n\nx = np.array([\n    [1, 2, 3]\n])\nprint(x.shape)\nprint(x.ndim)\nx\n\n(1, 3)\n2\n\n\narray([[1, 2, 3]])\n\n\nTo create a row or column vector from a 1D NumPy array, we can use np.newaxis. Focus on the syntax for now; the reason we are doing this will become clear when we discuss indexing and slicing.\n\n# Column vector\nx = np.array([1, 2, 3])\nx = x[:, np.newaxis]\nx.shape\n\n(3, 1)\n\n\n\n# Row vector\nx = np.array([1, 2, 3])\nx = x[np.newaxis, :]\nx.shape\n\n(1, 3)\n\n\nAlternatively, we can also use a method called reshape:\n\n# Column vector\nx = np.array([1, 2, 3])\nx = x.reshape(3, 1)\nx.shape\n\n(3, 1)\n\n\n\n# Row vector\nx = np.array([1, 2, 3])\nx = x.reshape(1, 3)\nx.shape\n\n(1, 3)",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#products-involving-matrices-and-vectors",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#products-involving-matrices-and-vectors",
+    "title": "Matrices",
+    "section": "Products involving matrices and vectors",
+    "text": "Products involving matrices and vectors\nWe will look at the following products: - matrix - matrix - matrix - vector - vector - matrix - vector - vector\n\nProduct of two matrices\nGiven two matrices:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n6 & 7\\\\\n8 & 9\\\\\n10 & 11\n\\end{bmatrix}\n\\]\nthen,\n\\[\n\\textbf{C} = \\textbf{A} \\times \\textbf{B} = \\begin{bmatrix}\n52 & 58\\\\\n124 & 139\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nB = np.array([\n    [6, 7],\n    [8, 9],\n    [10, 11]\n])\nC = A @ B\nC\n\narray([[ 52,  58],\n       [124, 139]])\n\n\n\n\nProduct of a matrix and a (column) vector\nGiven the matrix \\(\\mathbf{A}\\) and the vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}, \\mathbf{x} = \\begin{bmatrix}\n6\\\\\n7\\\\\n8\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{Ax}\\) is given by:\n\\[\n\\mathbf{C} = \\mathbf{A x} = \\begin{bmatrix}\n44\\\\\n107\\\\\n170\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nx = np.array([6, 7, 8])\nC = A @ x\nC\n\narray([ 44, 107, 170])\n\n\n\n\nProduct of a (row) vector and a matrix\nGiven the matrix \\(\\mathbf{A}\\) and the vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}, \\mathbf{x} = \\begin{bmatrix}\n6\\\\\n7\\\\\n8\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x}^T \\mathbf{A}\\) is given by:\n\\[\n\\mathbf{C} = \\mathbf{x}^T \\mathbf{A} = \\begin{bmatrix}\n90 & 111 & 132\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nx = np.array([6, 7, 8])\nx @ A\n\narray([ 90, 111, 132])\n\n\n\n\n(Inner) Product of a (row) vector and a (column) vector\nThe product of a row vector and a column vector is nothing but the usual dot product:\n\\[\n\\mathbf{x}^T = \\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}, \\quad\n\\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x}^T \\mathbf{y}\\) is then:\n\\[\n\\mathbf{x}^T \\mathbf{y} = 32\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nx @ y\n\n32\n\n\n\n\n(Outer) Product of a (column) vector and a (row) vector\nThe product of a column vector and a row vector is an outer product:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\quad\n\\mathbf{y} = \\begin{bmatrix}\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x} \\mathbf{y}^T\\) is then:\n\\[\n\\mathbf{x} \\mathbf{y}^T = \\begin{bmatrix}\n4 & 5 & 6\\\\\n8 & 10 & 12\\\\\n12 & 15 & 18\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nnp.outer(x, y)\n\narray([[ 4,  5,  6],\n       [ 8, 10, 12],\n       [12, 15, 18]])\n\n\nEquivalently:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nx = x[:, np.newaxis]\ny = y[np.newaxis, :]\nx @ y\n\narray([[ 4,  5,  6],\n       [ 8, 10, 12],\n       [12, 15, 18]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#matrix-of-zeros",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#matrix-of-zeros",
+    "title": "Matrices",
+    "section": "Matrix of zeros",
+    "text": "Matrix of zeros\nIn many algorithms, we might have to initialize a matrix with zeros. For example, consider a \\(2 \\times 4\\) matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n0 & 0 & 0 & 0\\\\\n0 & 0 & 0 & 0\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.zeros((2, 4))\n\narray([[0., 0., 0., 0.],\n       [0., 0., 0., 0.]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#matrix-of-ones",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#matrix-of-ones",
+    "title": "Matrices",
+    "section": "Matrix of ones",
+    "text": "Matrix of ones\nSimilar to a matrix of zeros, we can come up with a matrix of ones.\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 1\\\\\n1 & 1\\\\\n1 & 1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.ones((3, 2))\n\narray([[1., 1.],\n       [1., 1.],\n       [1., 1.]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#identity-matrix",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#identity-matrix",
+    "title": "Matrices",
+    "section": "Identity matrix",
+    "text": "Identity matrix\nOften, we might have to deal with identity matrices. A \\(3 \\times 3\\) identity matrix is as follows:\n\\[\n\\mathbf{I} = \\begin{bmatrix}\n1 & 0 & 0\\\\\n0 & 1 & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.eye(5)\n\narray([[1., 0., 0., 0., 0.],\n       [0., 1., 0., 0., 0.],\n       [0., 0., 1., 0., 0.],\n       [0., 0., 0., 1., 0.],\n       [0., 0., 0., 0., 1.]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#diagonal-matrices",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#diagonal-matrices",
+    "title": "Matrices",
+    "section": "Diagonal matrices",
+    "text": "Diagonal matrices\nAnother special kind of matrix. Let us create the following matrix:\n\\[\n\\mathbf{D} = \\begin{bmatrix}\n1 & 0 & 0 & 0\\\\\n0 & 2 & 0 & 0\\\\\n0 & 0 & 3 & 0\\\\\n0 & 0 & 0 & 4\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.diag([1, 2, 3, 4])\n\narray([[1, 0, 0, 0],\n       [0, 2, 0, 0],\n       [0, 0, 3, 0],\n       [0, 0, 0, 4]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#indexing-and-slicing",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#indexing-and-slicing",
+    "title": "Matrices",
+    "section": "Indexing and Slicing",
+    "text": "Indexing and Slicing\nJust like lists in Python, NumPy arrays can be indexed and sliced. Slicing is useful if we want to work with a portion of an array. We will look at some examples.\n\nExample-1: Indexing\nConsider:\n\\[\nM = \\begin{bmatrix}\n1 & 3 & 0\\\\\n4 & 2 & 5\\\\\n9 & 8 & 7\n\\end{bmatrix}\n\\]\nTo get the element \\(5\\), we can do the following:\n\nM = np.array([\n    [1, 3, 0],\n    [4, 2, 5],\n    [9, 8, 7]\n])\nM[1][2]\n\n5\n\n\nAlternatively, we can also use:\n\nM = np.array([\n    [1, 3, 0],\n    [4, 2, 5],\n    [9, 8, 7]\n])\nM[1, 2]\n\n5\n\n\nNote that NumPy uses zero-indexing, just like Python. In general, M[row, col] is the element in the row row and columnn col assuming zero indexing.\n\n\nExample-2: Row-slice\nWe will extract the third row of the matrix \\(\\mathbf{M}\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\\\\\n7 & 8\\\\\n9 & 10\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.arange(1, 11).reshape(5, 2)\nM\n\narray([[ 1,  2],\n       [ 3,  4],\n       [ 5,  6],\n       [ 7,  8],\n       [ 9, 10]])\n\n\n\nM[2, :]\n\narray([5, 6])\n\n\nThe syntax is to be understood as follows. To extract the third row, we fix the row index to be \\(2\\) (zero-indexing) and get hold of all elements in that row. To do this, we use a : in the place of the column index so that it allows all elements to come in.\n\n\nExample-3: Column slice\nLet us now extract the second column of the following matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nM[:, 1]\n\narray([2, 5, 8])\n\n\nHere, we want the second column. So we fix the column index to \\(1\\) and set the row index to :, indicating that all elements in that column should be included.\n\n\nExample-4: Submatrix slice\nNow, we want to extract the \\(2 \\times 2\\) submatrix colored in blue from \\(M\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & \\color{blue}7 & \\color{blue}8\\\\\n9 & 10 & \\color{blue}{11} & \\color{blue}{12}\\\\\n13 & 14 & 15 & 16\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3, 4],\n    [5, 6, 7, 8],\n    [9, 10, 11, 12],\n    [13, 14, 15, 16]\n])\nM[1:3, 2:4]\n\narray([[ 7,  8],\n       [11, 12]])\n\n\nStart point of the slice is included and the end-point is excluded, just as we do in native Python.",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-3.html#other-matrix-operations",
+    "href": "week-1/NumPy-Matplotlib/nb-3.html#other-matrix-operations",
+    "title": "Matrices",
+    "section": "Other Matrix Operations",
+    "text": "Other Matrix Operations\nThere are several important matrix operations that we will list down here. The np.linalg module helps us perform these operations effortlessly.\n\nRank\nWe can get the rank of a matrix as follows. For example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\\\\\n9 & 10 & 11 & 12\\\\\n13 & 14 & 15 & 16\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [1, 2, 3, 4],\n    [5, 6, 7, 8],\n    [9, 10, 11, 12],\n    [13, 14, 15, 16]\n])\nnp.linalg.matrix_rank(M)\n\n2\n\n\n\n\nInverse\nWe can get the inverse as follows. For example:\n\\[\nM = \\begin{bmatrix}\n3 & -4\\\\\n4 & 3\n\\end{bmatrix}\n\\]\n\nM = np.array([[3, -4], [4, 3]])\nnp.linalg.inv(M)\n\narray([[ 0.12,  0.16],\n       [-0.16,  0.12]])\n\n\n\n\nPseuodoinverse\nThe pseudoinverse \\(\\mathbf{M}^{\\dagger}\\) of a matrix \\(\\mathbf{M}\\) can be computed using NumPy.\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n3 & 6 & 9\n\\end{bmatrix}\n\\]\n\nM = np.array([[1, 2, 3], [3, 6, 9]])\nnp.linalg.pinv(M)\n\narray([[0.00714286, 0.02142857],\n       [0.01428571, 0.04285714],\n       [0.02142857, 0.06428571]])\n\n\nThe pseudoinverse reduces to the inverse for square invertible matrices.\n\n\nEigenvalues and Eigenvectors\nGiven a symmetric matrix \\(\\mathbf{M}\\) let us find its eigenvalues and eigenvectors:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 0 & -3\\\\\n0 & 5 & 2\\\\\n-3 & 2 & 8\n\\end{bmatrix}\n\\]\n\nM = np.array([[1, 0, -3], [0, 5, 2], [-3, 2, 8]])\neigval, eigvec = np.linalg.eigh(M)\neigval\n\narray([-0.20942046,  4.36588492,  9.84353554])\n\n\nThe eigenvalues are arranged in ascending order. The corresponding eigenvectors appear in the columns of the matriix eigvec. The eigenpairs are given below:\n\neigval[0], eigvec[:, 0]\neigval[1], eigvec[:, 1]\neigval[2], eigvec[:, 2];",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "Matrices"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html",
+    "title": "NumPy Arrays",
+    "section": "",
+    "text": "We will study NumPy arrays in more detail.\nimport numpy as np",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#arrays",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#arrays",
+    "title": "NumPy Arrays",
+    "section": "Arrays",
+    "text": "Arrays\nIt should have become amply clear by now that both vectors and matrices are NumPy arrays. Each array in NumPy has a dimension. Vectors are one-dimensional arrays while matrices are two-dimensional arrays. For example:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix},\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\nM = np.array([\n    [1, 2],\n    [3, 4],\n    [5, 6]\n])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#reshaping",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#reshaping",
+    "title": "NumPy Arrays",
+    "section": "Reshaping",
+    "text": "Reshaping\nArrays can be reshaped. We will do a number of examples here.\n\nExample-1: Vector to matrix\nWe start with a vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1 & 2 & 3 & 4 & 5 & 6\n\\end{bmatrix}\n\\]\nWe can reshape it into the following matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3, 4, 5, 6])\nx\n\narray([1, 2, 3, 4, 5, 6])\n\n\n\nM = x.reshape(3, 2)\nM\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\n\n\nExample-2: Matrix to vector\nWe now start with a matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nWe can now reshape it into a vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1 & 2 & 3 & 4 & 5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nM\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\nx = M.reshape(6)\nx\n\narray([1, 2, 3, 4, 5, 6])\n\n\n\n\nExample-3: Matrix to matrix\nWe can reshape a matrix into another matrix as well. Sometimes, we may not want to specify the dimensions completely. In such cases, we can let NumPy figure them out by letting one of the dimensions to be \\(-1\\). For example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nLet us say we want to reshape it in such a way that there are three rows:\n\\[\n\\mathbf{P} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nP = M.reshape(3, -1)\nP\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\nA useful function that mirrors the range function in Python:\n\nx = np.arange(1, 6)\nx\n\narray([1, 2, 3, 4, 5])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#matrix-vector-addition",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#matrix-vector-addition",
+    "title": "NumPy Arrays",
+    "section": "Matrix-vector addition",
+    "text": "Matrix-vector addition\nSometimes we would have to add a vector to each row or column of a matrix. There are two cases to consider. If the vector to be added is a:\n\nrow vector\ncolumn vector\n\n\nRow-vector\nConsider the following matrix \\(\\mathbf{M}\\) and vector \\(\\mathbf{b}\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\mathbf{b} = \\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]\nThere is a slight abuse of notation as we can’t add a matrix and a vector together. However, the context often makes this clear:\n\\[\n\\mathbf{M} + \\mathbf{b} = \\begin{bmatrix}\n2 & 4 & 6\\\\\n5 & 7 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nb = np.array([1, 2, 3])\nM + b\n\narray([[2, 4, 6],\n       [5, 7, 9]])\n\n\n\n\n\nimage.png\n\n\n\n\nColumn-vector\nNow, consider another pair:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\mathbf{b} = \\begin{bmatrix}\n1\\\\\n2\n\\end{bmatrix}\n\\]\nIn this case, we have:\n\\[\n\\mathbf{M} + \\mathbf{b} = \\begin{bmatrix}\n2 & 3 & 4\\\\\n6 & 7 & 8\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nb = np.array([1, 2]).reshape(2, 1)\nM + b\n\narray([[2, 3, 4],\n       [6, 7, 8]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#advanced-indexing",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#advanced-indexing",
+    "title": "NumPy Arrays",
+    "section": "Advanced Indexing",
+    "text": "Advanced Indexing\nNumPy has some advanced indexing features.\n\nIndexing using arrays\nNumPy arrays themselves can be used as indices to retreive different parts of the array. For example:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n-1 & 0 & 4 & 3 & 7 & 8 & 1 & 9\n\\end{bmatrix}\n\\]\nLet us say that we are interested in retreiving indices: [1, 3, 6].\nIn NumPy:\n\nx = np.array([-1, 0, 4, 3, 7, 8, 1, 9])\nx[np.array([1, 3, 6])]\n\narray([0, 3, 1])\n\n\n\nx = np.array([-1, 0, 4, 3, 7, 8, 1, 9])\nx[[1, 3, 6]]\n\narray([0, 3, 1])\n\n\n\n\nFiltering particular values\nSometimes we are interested in those elements of the array that possess a particular property:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n3 & 1 & 5 & -4 & -2 & 1 & 5\n\\end{bmatrix}\n\\]\nLet us try to extract all elements that are positive.\nIn NumPy:\n\nx = np.array([3, 1, 5, -4, -2, 1, 5])\nx &gt; 0\n\narray([ True,  True,  True, False, False,  True,  True])\n\n\n\nx = np.array([3, 1, 5, -4, -2, 1, 5])\nx[x &gt; 0]\n\narray([3, 1, 5, 1, 5])\n\n\n\n\nFiltering and follow-up\nLet us try to implement the ReLU function.\n\\[\n\\text{ReLU}(x) = \\begin{cases}\nx, & x \\geqslant 0\\\\\n0, & x &lt; 0\n\\end{cases}\n\\]\n\ndef relu(x):\n    return np.where(x &gt; 0, x, 0)\nrelu(np.array([1, -2, 1, 3, -4, -3]))\n\narray([1, 0, 1, 3, 0, 0])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#operations-along-axes",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#operations-along-axes",
+    "title": "NumPy Arrays",
+    "section": "Operations along axes",
+    "text": "Operations along axes\nSometimes we may wish to do some operations on all the row-vectors of a matrix or all the column-vectors of the matrix. The idea of axis is important to understand how these operations can be done.\n\nTop-bottom\nTop-bottom operations are done on row-vectors. For example, consider the matrix:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\n\\end{bmatrix}\n\\]\nThe sum of the row-vectors of the matrix is a vector:\n\\[\n\\text{rsum}(\\mathbf{A}) = \\begin{bmatrix}\n6 & 8 & 10 & 12\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.arange(1, 9).reshape(2, 4)\nA.sum(axis = 0)\n\narray([ 6,  8, 10, 12])\n\n\n\n\nLeft-right\nLeft-right operations are done on column-vectors.\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\n\\end{bmatrix}\n\\]\nThe sum of the column-vectors of the matrix is a vector:\n\\[\n\\text{csum}(\\mathbf{A}) = \\begin{bmatrix}\n10\\\\\n26\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA.sum(axis = 1)\n\narray([10, 26])\n\n\n\n\nSum, Mean, Variance, Norm\nSome of the operations that can be done in this manner. Let us use the following matrix to demonstrate this:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nLet us find the following quantities:\n\nsum of column-vectors\nmean of row-vectors\nvariance of column-vectors\n\n\nM = np.arange(1, 10).reshape(3, 3)\nM\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\n# sum of column vectors\nM.sum(axis = 1)\n\narray([ 6, 15, 24])\n\n\n\n# mean of row vectors\nM.mean(axis = 0)\n\narray([4., 5., 6.])\n\n\n\n# variance of column vectors\nM.var(axis = 1)\n\narray([0.66666667, 0.66666667, 0.66666667])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#stacking-arrays",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#stacking-arrays",
+    "title": "NumPy Arrays",
+    "section": "Stacking arrays",
+    "text": "Stacking arrays\nSometimes, we would want to stack arrays. Consider the two matrices:\n\\[\n\\mathbf{A} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix},\n\\mathbf{B} =\n\\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nThere are two ways to stack these two matrices:\n\ntop-bottom\nleft-right\n\n\nTop-bottom\nWe could stack the two matrices along the rows, \\(\\mathbf{A}\\) on top of \\(\\mathbf{B}\\):\n\\[\n\\mathbf{C} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nnp.concatenate((A, B), axis = 0)\n\narray([[1, 2],\n       [3, 4],\n       [5, 6],\n       [7, 8]])\n\n\n\n\nLeft-right\nWe could stack the two matrices along the columns, \\(\\mathbf{A}\\) to the left of \\(\\mathbf{B}\\):\n\\[\n\\mathbf{C} =\n\\begin{bmatrix}\n1 & 2 & 5 & 6\\\\\n3 & 4 & 7 & 8\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nnp.concatenate((A, B), axis = 1)\n\narray([[1, 2, 5, 6],\n       [3, 4, 7, 8]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#misc-functions",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#misc-functions",
+    "title": "NumPy Arrays",
+    "section": "Misc functions",
+    "text": "Misc functions\nLet us look at a few other functions that are quite useful:\n\nmax and argmax\nmin and argmin\nsort and argsort\n\n\nx = np.array([10, -3, 2, 15, 5])\nx\n\narray([10, -3,  2, 15,  5])\n\n\n\n# max, argmax\nnp.max(x), np.argmax(x)\n\n(15, 3)\n\n\n\n# min, argmin\nnp.min(x), np.argmin(x)\n\n(-3, 1)\n\n\n\n# sort, argsort\nnp.sort(x), np.argsort(x)\n\n(array([-3,  2,  5, 10, 15]), array([1, 2, 4, 0, 3]))\n\n\nThese functions also work on arrays of dimension more than one. If we specify an axis, the maximum will be computed along that axis.\n\nM = np.array([\n    [1, 3, 5],\n    [3, -1, -4]\n])\nnp.max(M, axis = 1)\n\narray([5, 3])\n\n\nA similar mechanism holds for sort:\n\nM = np.array([\n    [1, 3, 5],\n    [3, -1, -4],\n    [5, -4, 10]\n])\nnp.sort(M, axis = 0)\n\narray([[ 1, -4, -4],\n       [ 3, -1,  5],\n       [ 5,  3, 10]])",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  },
+  {
+    "objectID": "week-1/NumPy-Matplotlib/nb-5.html#comparing-arrays",
+    "href": "week-1/NumPy-Matplotlib/nb-5.html#comparing-arrays",
+    "title": "NumPy Arrays",
+    "section": "Comparing Arrays",
+    "text": "Comparing Arrays\nTo check if two arrays are equal element-wise, we use np.array_equal:\n\nx = np.array([1, 2, 3])\ny = np.array([1, 2, 3])\nnp.array_equal(x, y)\n\nTrue\n\n\n\nx = np.array([1, 2, 4])\ny = np.array([1, 2, 3])\nnp.array_equal(x, y)\n\nFalse\n\n\nJust using x == y would result in a Boolean array. This can’t be used in a if-statement, for instance:\n\nx = np.array([1, 2, 4])\ny = np.array([1, 2, 3])\nnp.array_equal(x, y)\n\nFalse\n\n\nSometimes the arrays being compared may not be exactly equal because of finite precision used to represent real numbers. In such situation, we can use np.allclose and specify the tolerance we want.\n\nx = np.array([1.0001, 2.0001, 3.0001])\ny = np.array([1, 2, 3])\nnp.allclose(x, y, rtol = 0, atol = 1e-2)\n\nTrue",
+    "crumbs": [
+      "Week-1",
+      "NumPy Matplotlib",
+      "NumPy Arrays"
+    ]
+  }
+]

@@ -15,11 +15,11 @@ In this module, we will explore how prompt engineering can help us perform real-
 
 We’ll cover:
 
-- ✅ Text Summarization
-- ✅ Text Classification (like Sentiment Analysis)
-- ✅ Question Answering (QA)
-- ✅ Translation
-- ✅ Grammar Correction
+-  Text Summarization
+-  Text Classification (like Sentiment Analysis)
+-  Question Answering (QA)
+-  Translation
+-  Grammar Correction
 
 Each section has:
 - a simple explanation

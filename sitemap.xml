@@ -1,87 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-1.html</loc>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-1.html</loc>
     <lastmod>2025-08-18T10:27:23.775Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-4.html</loc>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-4.html</loc>
     <lastmod>2025-08-18T10:27:23.777Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-2.html</loc>
-    <lastmod>2025-08-18T10:27:23.776Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/index.html</loc>
+    <lastmod>2025-08-18T10:37:39.593Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module3.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/index.html</loc>
+    <lastmod>2025-08-18T10:45:53.645Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module1.html</loc>
-    <lastmod>2025-08-18T10:27:23.780Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module2.html</loc>
+    <lastmod>2025-08-18T10:39:18.560Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module4.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module5.html</loc>
+    <lastmod>2025-08-18T10:39:51.698Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module7.html</loc>
-    <lastmod>2025-08-18T10:27:23.782Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module6.html</loc>
+    <lastmod>2025-08-18T10:39:57.410Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module13.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module12.html</loc>
+    <lastmod>2025-08-18T10:40:37.408Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module10.html</loc>
-    <lastmod>2025-08-18T10:27:23.780Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module9.html</loc>
-    <lastmod>2025-08-18T10:27:23.782Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module8.html</loc>
-    <lastmod>2025-08-18T10:27:23.782Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module11.html</loc>
+    <lastmod>2025-08-18T10:40:30.235Z</lastmod>
   </url>
   <url>
     <loc>https://bsc-iitm.github.io/data-science-lab/week-6/index.html</loc>
     <lastmod>2025-08-18T10:27:23.783Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module11.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module8.html</loc>
+    <lastmod>2025-08-18T10:40:10.826Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module12.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module9.html</loc>
+    <lastmod>2025-08-18T10:40:17.746Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module6.html</loc>
-    <lastmod>2025-08-18T10:27:23.782Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module10.html</loc>
+    <lastmod>2025-08-18T10:40:23.858Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module5.html</loc>
-    <lastmod>2025-08-18T10:27:23.782Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module13.html</loc>
+    <lastmod>2025-08-18T10:40:53.994Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module2.html</loc>
-    <lastmod>2025-08-18T10:27:23.781Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module7.html</loc>
+    <lastmod>2025-08-18T10:40:04.445Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/index.html</loc>
-    <lastmod>2025-08-18T10:27:23.780Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module4.html</loc>
+    <lastmod>2025-08-18T10:50:31.705Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-6.html</loc>
-    <lastmod>2025-08-18T10:27:23.778Z</lastmod>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module1.html</loc>
+    <lastmod>2025-08-18T10:39:13.163Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-3.html</loc>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-6/Module3.html</loc>
+    <lastmod>2025-08-18T10:50:31.705Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-2.html</loc>
     <lastmod>2025-08-18T10:27:23.776Z</lastmod>
   </url>
   <url>
-    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/NumPy-Matplotlib/nb-5.html</loc>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-6.html</loc>
+    <lastmod>2025-08-18T10:27:23.778Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-3.html</loc>
+    <lastmod>2025-08-18T10:27:23.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bsc-iitm.github.io/data-science-lab/week-1/module-1/nb-5.html</loc>
     <lastmod>2025-08-18T10:27:23.777Z</lastmod>
   </url>
 </urlset>

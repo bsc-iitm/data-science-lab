@@ -53,7 +53,7 @@ LLM platforms provide access to powerful AI models that understand and generate 
   - LLM app integration (chatbots, agents)
 
 
-## ✅ Summary
+##  Summary
 
 - LLM platforms give access to powerful AI models through easy APIs.
 - They are used in almost every modern industry.

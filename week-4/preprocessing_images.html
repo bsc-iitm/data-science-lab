@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>preprocessing_images – Data Science Lab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../week-4/Transfer_Learning.html" rel="next">
+<link href="../week-4/Loading_Images.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html">Week 4</a></li><li class="breadcrumb-item"><a href="../week-4/preprocessing_images.html">— Data Augmentation Examples (PyTorch v2) —</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/module-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module-1- NumPy and Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting Simple Curves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contour Plots, 3D Plots, Optimisation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/apply_and_map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apply and Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Compare</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/introduction_to_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/PivotTable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PivotTable</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1: Introduction to Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2: Techniques in Prompting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Applications of Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Introduction to LLM Platforms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5: Getting Started with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6: Hands-on with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 7: Working with Text Completion in OpenAI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 8: Evaluating Prompt Quality and Output Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 9: Introduction to LangChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 12: LangChain Memory – Making LLMs Remember Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Week 10</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Date Time Index</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/2 Time_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Resampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/3 Classical_decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Classical_decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/4 STL_Decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 STL_Decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/5 Stationarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 Stationarity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/6 make_data_stationary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make data stationary</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Week 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-2/week-2-reference-notebook_v1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Objective</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Week 3</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pytorch</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/2 ANN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numpy array to Tensor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/3 CNN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 CNN using Pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/4 RNN using pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 RNN using pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/Pytorch_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DL workshop on PyTorch</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/preprocessing_images.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">— Data Augmentation Examples (PyTorch v2) —</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Transfer_Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transfer Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Week 5</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to the Hugging Face Ecosystem: Datasets and Tokenizers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Fine_tuning_hands-on.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fine Tuning Hands On</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Summarization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_Fine_TuningBERT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 Fine TuningBERT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_L2_FineTuningGPT2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 L2 FineTuningGPT2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Week 7</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LangChain Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/2_RAG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RAG</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/3_VectorDBs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vector Databases</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-augmentation-examples-pytorch-v2" id="toc-data-augmentation-examples-pytorch-v2" class="nav-link active" data-scroll-target="#data-augmentation-examples-pytorch-v2">— Data Augmentation Examples (PyTorch v2) —</a></li>
+  <li><a href="#data-augmentation-examples-tensorflow" id="toc-data-augmentation-examples-tensorflow" class="nav-link" data-scroll-target="#data-augmentation-examples-tensorflow">— Data Augmentation Examples (TensorFlow) —</a>
+  <ul class="collapse">
+  <li><a href="#normalizing-the-dataset" id="toc-normalizing-the-dataset" class="nav-link" data-scroll-target="#normalizing-the-dataset">Normalizing the dataset</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-4/preprocessing_images.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/preprocessing_images.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html">Week 4</a></li><li class="breadcrumb-item"><a href="../week-4/preprocessing_images.html">— Data Augmentation Examples (PyTorch v2) —</a></li></ol></nav></header>
+
+
+
+
+
+<p>Image Preprocessing for Deep Learning (PyTorch &amp; TensorFlow) Introduction: Why Preprocessing is Essential In the realm of deep learning, especially with Convolutional Neural Networks (CNNs) for computer vision tasks, images serve as the primary input. However, raw image data is often inconsistent, noisy, or not in an optimal format for direct consumption by neural networks. This is where image preprocessing comes into play.</p>
+<p>Technological Background: Deep learning models, particularly CNNs, are highly sensitive to the input data’s scale, distribution, and consistency. They learn to extract hierarchical features from images by identifying patterns. If the input images vary greatly in size, brightness, contrast, or orientation, the model might struggle to converge effectively, learn robust features, or generalize well to unseen data.</p>
+<p>Why Preprocessing is Needed:</p>
+<p>Standardization of Input: Neural networks, especially fixed-architecture CNNs, require inputs of a consistent size and format. Preprocessing ensures all images conform to these requirements.</p>
+<p>Normalization of Pixel Values: Raw pixel values (typically 0-255 for 8-bit images) can lead to large gradients during training, slowing down convergence or causing instability. Normalizing them to a smaller, consistent range (e.g., 0-1 or -1 to 1) helps the optimization process.</p>
+<p>Noise Reduction: Real-world images often contain noise (e.g., sensor noise, compression artifacts). Preprocessing techniques can help mitigate this noise, allowing the model to focus on meaningful features.</p>
+<p>Feature Enhancement: Some preprocessing steps can enhance specific features, like edges or textures, which can be beneficial for certain tasks.</p>
+<p>Data Augmentation: This is a crucial preprocessing technique that artificially expands the training dataset by applying various transformations (e.g., rotations, flips, zooms). This helps prevent overfitting and improves the model’s generalization capability by exposing it to a wider variety of plausible inputs.</p>
+<p>Computational Efficiency: Reducing image dimensions or converting to grayscale can reduce the computational burden and memory footprint, making training more efficient.</p>
+<p>Without proper preprocessing, deep learning models might:</p>
+<p>Exhibit slower convergence during training.</p>
+<p>Achieve lower accuracy and generalization performance.</p>
+<p>Be more prone to overfitting.</p>
+<p>Require more computational resources.</p>
+<div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2259c1dc-463e-4d3a-b9c3-7f79fe451f1a" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torchvision</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> torchvision.transforms <span class="im">as</span> transforms</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2 <span class="co"># Import v2 for modern transforms</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="im">import</span> os</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="im">import</span> skimage</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="im">from</span> skimage <span class="im">import</span> transform</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="bu">print</span>(<span class="ss">f"PyTorch Version: </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow Version: </span><span class="sc">{</span>tf<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PyTorch Version: 2.6.0+cu124
+TensorFlow Version: 2.18.0</code></pre>
+</div>
+</div>
+<p>Data Acquisition (Example Image) For demonstration purposes, we’ll download a sample image. In a real scenario, you’d typically load a dataset of images.</p>
+<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="c1289758-8a86-49a9-87d8-9c1e9ef3532d" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#Reading an image</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>original_image <span class="op">=</span> data.astronaut()  <span class="co"># Sample RGB image from skimage</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>plt.title(<span class="st">"original Image"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>plt.imshow(original_image)</span>
+<span id="cb3-5"><a href="#cb3-5"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8adffa58-aa96-4ff1-b167-a454f83e1c6b" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#checking shape</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>image <span class="op">=</span> original_image</span>
+<span id="cb4-3"><a href="#cb4-3"></a>image.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>(512, 512, 3)</code></pre>
+</div>
+</div>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="a9be6549-fbf1-4a29-d3a3-aa0792a07de1" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># preserving the height of the image and reshaping the width  and channel values</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>reshaped_image <span class="op">=</span> image.reshape(image.shape[<span class="dv">0</span>],<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(reshaped_image.shape)</span>
+<span id="cb6-4"><a href="#cb6-4"></a></span>
+<span id="cb6-5"><a href="#cb6-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">12</span>))</span>
+<span id="cb6-6"><a href="#cb6-6"></a>plt.title(<span class="st">"Reshaped Image"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7"></a>plt.imshow(reshaped_image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(512, 1536)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="e8ed4231-c6a5-47de-a4a3-ee5c852ba931" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># resize the original image to 100 by 300</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>image_resized <span class="op">=</span> skimage.transform.resize(image,(<span class="dv">100</span>,<span class="dv">300</span>))</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="bu">print</span>(image_resized.shape)</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">12</span>))</span>
+<span id="cb8-6"><a href="#cb8-6"></a>plt.title(<span class="st">"Resized Image"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7"></a>plt.imshow(image_resized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(100, 300, 3)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:580}}" data-outputid="2bbb91ef-0812-4db9-f363-58a4a9a6e49b" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">### Reversing color order from RGB to BGR</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Used in certain frameworks such as OpenCV</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>image_BGR <span class="op">=</span> image[:,:,(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>)]</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="bu">print</span>(image_BGR.shape)</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
+<span id="cb10-8"><a href="#cb10-8"></a>plt.title(<span class="st">"BGR Image"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9"></a>plt.imshow(image_BGR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(512, 512, 3)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="2f11bfeb-0b49-42ba-90a9-a9cf1398a347" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">### Gray scale</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co">## transfroming a color image to a gray image</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>image_gray <span class="op">=</span> skimage.color.rgb2gray(image)</span>
+<span id="cb12-4"><a href="#cb12-4"></a>plt.imshow(image_gray, cmap <span class="op">=</span> <span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Image Preprocessing with PyTorch PyTorch’s torchvision.transforms module provides a rich set of common image transformations. These transformations can be chained together using transforms.Compose.</p>
+<p>Let’s assume our model expects input images of size 224x224, normalized to a specific mean and standard deviation.</p>
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:480}}" data-outputid="a1304625-b010-4015-a8c2-90302992e331" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Convert PIL Image to PyTorch Tensor (CHW format)</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="co"># Why v2.ToImage() is needed: It's the recommended way in v2 to convert various input types</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="co"># (like PIL Images, NumPy arrays) into a torch.Tensor. This also handles the dimension</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="co"># rearrangement to Channel-Height-Width (CHW) format, which is standard for PyTorch.</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>img_tensor <span class="op">=</span> v2.ToImage()(original_image)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="co"># Define a sequence of transformations for preprocessing and augmentation</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="co"># Why v2.Compose is needed: It allows you to chain multiple transformations together</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="co"># in a sequential manner, applying them one after another to the image tensor.</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>pytorch_v2_transforms <span class="op">=</span> v2.Compose([</span>
+<span id="cb13-11"><a href="#cb13-11"></a>        <span class="co"># 1. Convert to uint8 (optional, but good practice for raw image data)</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>        <span class="co"># Why it's needed: Many raw image formats are 8-bit, and working with uint8 initially</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>        <span class="co"># can ensure data integrity before floating-point conversions. `scale=True` means</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>        <span class="co"># it will handle scaling if the input is not already in the 0-255 range.</span></span>
+<span id="cb13-15"><a href="#cb13-15"></a>    v2.ToDtype(torch.uint8, scale<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb13-16"><a href="#cb13-16"></a></span>
+<span id="cb13-17"><a href="#cb13-17"></a>        <span class="co"># 2. RandomResizedCrop</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>        <span class="co"># Why it's needed: This is a powerful data augmentation technique. Instead of just resizing,</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a>        <span class="co"># it first takes a random crop of the image (with a random size and aspect ratio) and then</span></span>
+<span id="cb13-20"><a href="#cb13-20"></a>        <span class="co"># resizes it to the specified `size` (224, 224). This helps the model become robust to</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>        <span class="co"># objects appearing at different scales and positions within the image.</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>        <span class="co"># `antialias=True` ensures smoother downsampling by applying an anti-aliasing filter,</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>        <span class="co"># which can improve image quality and model performance, especially when resizing significantly.</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a>    v2.RandomResizedCrop(size<span class="op">=</span>(<span class="dv">224</span>, <span class="dv">224</span>), antialias<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb13-25"><a href="#cb13-25"></a></span>
+<span id="cb13-26"><a href="#cb13-26"></a>        <span class="co"># 3. RandomHorizontalFlip</span></span>
+<span id="cb13-27"><a href="#cb13-27"></a>        <span class="co"># Why it's needed: A common data augmentation technique that randomly flips the image</span></span>
+<span id="cb13-28"><a href="#cb13-28"></a>        <span class="co"># horizontally with a given probability (here, 0.5 or 50%). This helps the model</span></span>
+<span id="cb13-29"><a href="#cb13-29"></a>        <span class="co"># learn to recognize objects regardless of their left-right orientation, increasing</span></span>
+<span id="cb13-30"><a href="#cb13-30"></a>        <span class="co"># the diversity of the training data and reducing overfitting.</span></span>
+<span id="cb13-31"><a href="#cb13-31"></a>        v2.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb13-32"><a href="#cb13-32"></a></span>
+<span id="cb13-33"><a href="#cb13-33"></a>        <span class="co"># 4. Convert to float32</span></span>
+<span id="cb13-34"><a href="#cb13-34"></a>        <span class="co"># Why it's needed: Deep learning models typically perform computations with floating-point</span></span>
+<span id="cb13-35"><a href="#cb13-35"></a>        <span class="co"># numbers (e.g., float32). This step converts the pixel values from integer (uint8)</span></span>
+<span id="cb13-36"><a href="#cb13-36"></a>        <span class="co"># to float, and `scale=True` automatically normalizes them from the [0, 255] range to [0.0, 1.0].</span></span>
+<span id="cb13-37"><a href="#cb13-37"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb13-38"><a href="#cb13-38"></a></span>
+<span id="cb13-39"><a href="#cb13-39"></a>        <span class="co"># 5. Normalize</span></span>
+<span id="cb13-40"><a href="#cb13-40"></a>        <span class="co"># Why it's needed: Normalization scales the pixel values of the image to a standard range</span></span>
+<span id="cb13-41"><a href="#cb13-41"></a>        <span class="co"># using the dataset's mean and standard deviation. This is crucial for:</span></span>
+<span id="cb13-42"><a href="#cb13-42"></a>        <span class="co">#   - Faster convergence: Input features with similar scales prevent some features</span></span>
+<span id="cb13-43"><a href="#cb13-43"></a>        <span class="co">#     from dominating others, leading to more stable and faster training.</span></span>
+<span id="cb13-44"><a href="#cb13-44"></a>        <span class="co">#   - Improved performance: Many pre-trained models (e.g., from ImageNet) are trained</span></span>
+<span id="cb13-45"><a href="#cb13-45"></a>        <span class="co">#     with specific normalization parameters. Applying the same normalization ensures</span></span>
+<span id="cb13-46"><a href="#cb13-46"></a>        <span class="co">#     the new input data aligns with what the pre-trained model expects.</span></span>
+<span id="cb13-47"><a href="#cb13-47"></a>        <span class="co"># The values (0.485, 0.456, 0.406) and (0.229, 0.224, 0.225) are common</span></span>
+<span id="cb13-48"><a href="#cb13-48"></a>        <span class="co"># mean and standard deviation for images trained on ImageNet.</span></span>
+<span id="cb13-49"><a href="#cb13-49"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb13-50"><a href="#cb13-50"></a>    ])</span>
+<span id="cb13-51"><a href="#cb13-51"></a></span>
+<span id="cb13-52"><a href="#cb13-52"></a>    <span class="co"># Apply the transformations</span></span>
+<span id="cb13-53"><a href="#cb13-53"></a>preprocessed_pytorch_image <span class="op">=</span> pytorch_v2_transforms(img_tensor)</span>
+<span id="cb13-54"><a href="#cb13-54"></a></span>
+<span id="cb13-55"><a href="#cb13-55"></a><span class="bu">print</span>(<span class="ss">f"PyTorch preprocessed image shape: </span><span class="sc">{</span>preprocessed_pytorch_image<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-56"><a href="#cb13-56"></a><span class="bu">print</span>(<span class="ss">f"PyTorch preprocessed image min value: </span><span class="sc">{</span>preprocessed_pytorch_image<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-57"><a href="#cb13-57"></a><span class="bu">print</span>(<span class="ss">f"PyTorch preprocessed image max value: </span><span class="sc">{</span>preprocessed_pytorch_image<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-58"><a href="#cb13-58"></a></span>
+<span id="cb13-59"><a href="#cb13-59"></a>    <span class="co"># Display the preprocessed image (denormalize for visualization)</span></span>
+<span id="cb13-60"><a href="#cb13-60"></a>    <span class="co"># Why denormalize for visualization: The `Normalize` transform shifts the pixel values</span></span>
+<span id="cb13-61"><a href="#cb13-61"></a>    <span class="co"># away from the standard [0,1] or [0,255] range, making direct visualization difficult</span></span>
+<span id="cb13-62"><a href="#cb13-62"></a>    <span class="co"># and potentially showing a black image. Denormalizing brings it back to a viewable range.</span></span>
+<span id="cb13-63"><a href="#cb13-63"></a>    <span class="co"># The normalization formula is: normalized = (pixel - mean) / std</span></span>
+<span id="cb13-64"><a href="#cb13-64"></a>    <span class="co"># So, to denormalize: pixel = normalized * std + mean</span></span>
+<span id="cb13-65"><a href="#cb13-65"></a>mean <span class="op">=</span> torch.tensor([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>]).view(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># Reshape for broadcasting (C, 1, 1)</span></span>
+<span id="cb13-66"><a href="#cb13-66"></a>std <span class="op">=</span> torch.tensor([<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]).view(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># Reshape for broadcasting (C, 1, 1)</span></span>
+<span id="cb13-67"><a href="#cb13-67"></a></span>
+<span id="cb13-68"><a href="#cb13-68"></a>display_image_pytorch <span class="op">=</span> preprocessed_pytorch_image <span class="op">*</span> std <span class="op">+</span> mean</span>
+<span id="cb13-69"><a href="#cb13-69"></a></span>
+<span id="cb13-70"><a href="#cb13-70"></a>    <span class="co"># Clamp values to [0, 1] as some denormalized values might fall outside this range</span></span>
+<span id="cb13-71"><a href="#cb13-71"></a>    <span class="co"># Why clamping: Pixel values typically range from 0 to 1 (or 0 to 255). Due to floating-point</span></span>
+<span id="cb13-72"><a href="#cb13-72"></a>    <span class="co"># arithmetic and the normalization/denormalization process, some pixel values might slightly</span></span>
+<span id="cb13-73"><a href="#cb13-73"></a>    <span class="co"># exceed 1 or go below 0. Clamping ensures they stay within a valid displayable range.</span></span>
+<span id="cb13-74"><a href="#cb13-74"></a>display_image_pytorch <span class="op">=</span> display_image_pytorch.clamp(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb13-75"><a href="#cb13-75"></a></span>
+<span id="cb13-76"><a href="#cb13-76"></a>plt.figure()</span>
+<span id="cb13-77"><a href="#cb13-77"></a>plt.imshow(display_image_pytorch.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy()) <span class="co"># PyTorch is C,H,W; Matplotlib expects H,W,C</span></span>
+<span id="cb13-78"><a href="#cb13-78"></a>plt.title(<span class="st">"PyTorch Preprocessed (for display)"</span>)</span>
+<span id="cb13-79"><a href="#cb13-79"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb13-80"><a href="#cb13-80"></a>plt.show()</span>
+<span id="cb13-81"><a href="#cb13-81"></a></span>
+<span id="cb13-82"><a href="#cb13-82"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>PyTorch preprocessed image shape: torch.Size([3, 224, 224])
+PyTorch preprocessed image min value: -2.1179039478302
+PyTorch preprocessed image max value: 2.6225709915161133</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-15-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Image Preprocessing with TensorFlow TensorFlow’s tf.image module provides a comprehensive set of functions for image manipulation. TensorFlow’s approach often involves applying these operations as part of the tf.data.Dataset pipeline for efficient data loading and preprocessing.</p>
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:480}}" data-outputid="364445b4-1367-4aa6-df1c-81755c065e63" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Convert PIL image to TensorFlow tensor</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>    <span class="co"># Why it's needed: TensorFlow operations work on tf.Tensor objects. This converts the image.</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>    <span class="co"># We also cast to float32 as neural networks typically operate on floating-point numbers.</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>raw_tf_image <span class="op">=</span> tf.convert_to_tensor(np.array(original_image), dtype<span class="op">=</span>tf.float32)</span>
+<span id="cb15-5"><a href="#cb15-5"></a></span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="co"># Add a batch dimension (TensorFlow often expects BATCH, HEIGHT, WIDTH, CHANNELS)</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a>    <span class="co"># Why it's needed: Many TensorFlow image operations and model inputs expect a batch dimension,</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a>    <span class="co"># even if you are processing a single image. This transforms (H, W, C) to (1, H, W, C).</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a>raw_tf_image1 <span class="op">=</span> tf.expand_dims(raw_tf_image, <span class="dv">0</span>)</span>
+<span id="cb15-10"><a href="#cb15-10"></a></span>
+<span id="cb15-11"><a href="#cb15-11"></a>    <span class="co"># 1. Resize</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>    <span class="co"># Why it's needed: Similar to PyTorch, models require consistent input dimensions.</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>    <span class="co"># tf.image.resize handles interpolation methods (e.g., bilinear, nearest_neighbor).</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a>resized_tf_image <span class="op">=</span> tf.image.resize(raw_tf_image1, [<span class="dv">224</span>, <span class="dv">224</span>])</span>
+<span id="cb15-15"><a href="#cb15-15"></a></span>
+<span id="cb15-16"><a href="#cb15-16"></a>    <span class="co"># 2. Normalize Pixel Values (to 0-1 range)</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a>    <span class="co"># Why it's needed: Rescaling pixels from [0, 255] to [0, 1] is a common normalization step.</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a>    <span class="co"># This helps stabilize training and is often a prerequisite for further normalization</span></span>
+<span id="cb15-19"><a href="#cb15-19"></a>    <span class="co"># (e.g., mean and std normalization).</span></span>
+<span id="cb15-20"><a href="#cb15-20"></a>normalized_tf_image_01 <span class="op">=</span> resized_tf_image <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb15-21"><a href="#cb15-21"></a></span>
+<span id="cb15-22"><a href="#cb15-22"></a>    <span class="co"># 3. Normalize Pixel Values (to -1 to 1 range, often used by certain models)</span></span>
+<span id="cb15-23"><a href="#cb15-23"></a>    <span class="co"># Why it's needed: Some neural network architectures (e.g., GANs or specific pre-trained models)</span></span>
+<span id="cb15-24"><a href="#cb15-24"></a>    <span class="co"># prefer input values in the range of [-1, 1]. This normalization centers the data around zero.</span></span>
+<span id="cb15-25"><a href="#cb15-25"></a>normalized_tf_image_neg1_1 <span class="op">=</span> (normalized_tf_image_01 <span class="op">*</span> <span class="fl">2.0</span>) <span class="op">-</span> <span class="fl">1.0</span></span>
+<span id="cb15-26"><a href="#cb15-26"></a></span>
+<span id="cb15-27"><a href="#cb15-27"></a>    <span class="co"># For display, we'll use the 0-1 normalized image</span></span>
+<span id="cb15-28"><a href="#cb15-28"></a>preprocessed_tf_image <span class="op">=</span> normalized_tf_image_01[<span class="dv">0</span>] <span class="co"># Remove batch dimension for display</span></span>
+<span id="cb15-29"><a href="#cb15-29"></a></span>
+<span id="cb15-30"><a href="#cb15-30"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow preprocessed image shape: </span><span class="sc">{</span>preprocessed_tf_image<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-31"><a href="#cb15-31"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow preprocessed image min value: </span><span class="sc">{</span>preprocessed_tf_image<span class="sc">.</span>numpy()<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-32"><a href="#cb15-32"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow preprocessed image max value: </span><span class="sc">{</span>preprocessed_tf_image<span class="sc">.</span>numpy()<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-33"><a href="#cb15-33"></a></span>
+<span id="cb15-34"><a href="#cb15-34"></a>plt.figure()</span>
+<span id="cb15-35"><a href="#cb15-35"></a>plt.imshow(preprocessed_tf_image.numpy()) <span class="co"># TensorFlow is H,W,C</span></span>
+<span id="cb15-36"><a href="#cb15-36"></a>plt.title(<span class="st">"TensorFlow Preprocessed (0-1 range)"</span>)</span>
+<span id="cb15-37"><a href="#cb15-37"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb15-38"><a href="#cb15-38"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>TensorFlow preprocessed image shape: (224, 224, 3)
+TensorFlow preprocessed image min value: 0.0
+TensorFlow preprocessed image max value: 1.0</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="data-augmentation-examples-pytorch-v2" class="level1">
+<h1>— Data Augmentation Examples (PyTorch v2) —</h1>
+<pre><code># Why data augmentation is needed: It's a crucial technique to prevent overfitting in deep learning models.
+# By creating slightly modified copies of existing training data, it artificially increases the size
+# and diversity of the training set. This helps the model generalize better to unseen data and
+# become more robust to variations in input (e.g., slight rotations, shifts, changes in brightness).
+
+# For demonstration, we'll apply the same transforms defined above as they include augmentation
+# If you wanted more specific augmentations, you'd add more v2 transforms here.</code></pre>
+<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:443}}" data-outputid="0fc039bc-2fba-40f6-8246-23417b41f039" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- PyTorch Data Augmentation Examples (using v2) ---"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    augmented_image_v2 <span class="op">=</span> pytorch_v2_transforms(img_tensor) <span class="co"># Apply the combined transforms</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a>    <span class="co"># Denormalize for display</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a>    display_augmented_image_v2 <span class="op">=</span> augmented_image_v2 <span class="op">*</span> std <span class="op">+</span> mean</span>
+<span id="cb18-8"><a href="#cb18-8"></a>    display_augmented_image_v2 <span class="op">=</span> display_augmented_image_v2.clamp(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a>    plt.subplot(<span class="dv">1</span>, <span class="dv">5</span>, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    plt.imshow(display_augmented_image_v2.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())</span>
+<span id="cb18-12"><a href="#cb18-12"></a>    plt.title(<span class="ss">f"Augmented </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>    plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb18-14"><a href="#cb18-14"></a>plt.suptitle(<span class="st">"PyTorch Augmented Images (v2 Transforms)"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+--- PyTorch Data Augmentation Examples (using v2) ---</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="data-augmentation-examples-tensorflow" class="level1">
+<h1>— Data Augmentation Examples (TensorFlow) —</h1>
+<pre><code>print("\n--- TensorFlow Data Augmentation Examples ---")
+
+# Data augmentation in TensorFlow is often done using `tf.keras.layers.experimental.preprocessing`
+# or directly with `tf.image` functions within a `tf.data` pipeline.
+
+# Convert original image to tensor (without adding batch dim here, will add inside the function)
+raw_tf_image = tf.convert_to_tensor(np.array(original_image), dtype=tf.float32)</code></pre>
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:418}}" data-outputid="e2981012-11d2-4c7d-f40c-f3f6fe2042df" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> tensorflow_augment(image_tensor):</span>
+<span id="cb21-2"><a href="#cb21-2"></a>    <span class="co"># Why it's needed: Similar to PyTorch, to prevent overfitting and improve generalization.</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a>      <span class="co"># These operations are applied randomly during training.</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>      <span class="co"># Resize (first step for consistent input size)</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a>    image_tensor <span class="op">=</span> tf.image.resize(image_tensor, [<span class="dv">256</span>, <span class="dv">256</span>])</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>        <span class="co"># Random Crop</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>        <span class="co"># Why it's needed: Helps the model learn to recognize objects even when partially obscured</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a>        <span class="co"># or in different positions within the image. `random_crop` takes a single image (H, W, C).</span></span>
+<span id="cb21-11"><a href="#cb21-11"></a>    image_tensor <span class="op">=</span> tf.image.random_crop(image_tensor, size<span class="op">=</span>[<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>])</span>
+<span id="cb21-12"><a href="#cb21-12"></a></span>
+<span id="cb21-13"><a href="#cb21-13"></a>        <span class="co"># Random Horizontal Flip</span></span>
+<span id="cb21-14"><a href="#cb21-14"></a>        <span class="co"># Why it's needed: Creates new training samples by mirroring the image, useful for objects</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a>        <span class="co"># that are symmetric or can appear in any orientation.</span></span>
+<span id="cb21-16"><a href="#cb21-16"></a>    image_tensor <span class="op">=</span> tf.image.random_flip_left_right(image_tensor)</span>
+<span id="cb21-17"><a href="#cb21-17"></a></span>
+<span id="cb21-18"><a href="#cb21-18"></a>        <span class="co"># Random Brightness</span></span>
+<span id="cb21-19"><a href="#cb21-19"></a>        <span class="co"># Why it's needed: Makes the model robust to varying lighting conditions.</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a>    image_tensor <span class="op">=</span> tf.image.random_brightness(image_tensor, max_delta<span class="op">=</span><span class="fl">0.2</span>) <span class="co"># Max delta for brightness change</span></span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a>        <span class="co"># Random Contrast</span></span>
+<span id="cb21-23"><a href="#cb21-23"></a>        <span class="co"># Why it's needed: Makes the model robust to varying contrast levels.</span></span>
+<span id="cb21-24"><a href="#cb21-24"></a>    image_tensor <span class="op">=</span> tf.image.random_contrast(image_tensor, lower<span class="op">=</span><span class="fl">0.8</span>, upper<span class="op">=</span><span class="fl">1.2</span>) <span class="co"># Factor range for contrast</span></span>
+<span id="cb21-25"><a href="#cb21-25"></a></span>
+<span id="cb21-26"><a href="#cb21-26"></a>        <span class="co"># Normalize to 0-1</span></span>
+<span id="cb21-27"><a href="#cb21-27"></a>    image_tensor <span class="op">=</span> image_tensor <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb21-28"><a href="#cb21-28"></a></span>
+<span id="cb21-29"><a href="#cb21-29"></a>    <span class="cf">return</span> image_tensor</span>
+<span id="cb21-30"><a href="#cb21-30"></a></span>
+<span id="cb21-31"><a href="#cb21-31"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb21-32"><a href="#cb21-32"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb21-33"><a href="#cb21-33"></a>      augmented_tf_image <span class="op">=</span> tensorflow_augment(raw_tf_image)</span>
+<span id="cb21-34"><a href="#cb21-34"></a>      plt.subplot(<span class="dv">1</span>, <span class="dv">5</span>, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb21-35"><a href="#cb21-35"></a>      plt.imshow(augmented_tf_image.numpy())</span>
+<span id="cb21-36"><a href="#cb21-36"></a>      plt.title(<span class="ss">f"Augmented </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-37"><a href="#cb21-37"></a>      plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb21-38"><a href="#cb21-38"></a>plt.suptitle(<span class="st">"TensorFlow Augmented Images"</span>)</span>
+<span id="cb21-39"><a href="#cb21-39"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-0.0009468228..1.0005664].
+WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-0.06451446..1.071233].
+WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-0.04985908..1.0507755].</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-23" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#Using PyTorch</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="co">#Most transformations accept both PIL images and tensor inputs.</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="co"># Both CPU and CUDA tensors are supported.</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="co">#The result of both backends (PIL or Tensors) should be very close.</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="co">#In general, we recommend relying on the tensor backend for performance.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:406}}" data-outputid="62a85998-f0ac-4b94-b9ed-dc798728ff93" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> torch</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    v2.ToImage(),  <span class="co"># Convert to tensor, only needed if you had a PIL image</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>    v2.ToDtype(torch.uint8, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># optional, most input are already uint8 at this point</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a>    v2.RandomResizedCrop(size<span class="op">=</span>(<span class="dv">224</span>, <span class="dv">224</span>), antialias<span class="op">=</span><span class="va">True</span>),<span class="co"># Or Resize(antialias=True)</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a>    v2.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb24-10"><a href="#cb24-10"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb24-12"><a href="#cb24-12"></a>])</span>
+<span id="cb24-13"><a href="#cb24-13"></a></span>
+<span id="cb24-14"><a href="#cb24-14"></a><span class="co"># Convert NumPy array to torch image</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="co">#img_tensor = v2.ToImage()(image)  # converts to torch.Tensor in CHW format</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a>img <span class="op">=</span> transforms(img_tensor)</span>
+<span id="cb24-17"><a href="#cb24-17"></a></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="co"># Convert back to [0,1] and NumPy for displaying</span></span>
+<span id="cb24-19"><a href="#cb24-19"></a>img <span class="op">=</span> img <span class="op">*</span> torch.tensor([<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]).view(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>) <span class="op">+</span> torch.tensor([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>]).view(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb24-20"><a href="#cb24-20"></a>img <span class="op">=</span> img.clamp(<span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Clamp to valid range</span></span>
+<span id="cb24-21"><a href="#cb24-21"></a></span>
+<span id="cb24-22"><a href="#cb24-22"></a>plt.imshow(img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())  <span class="co"># Convert to HWC for display</span></span>
+<span id="cb24-23"><a href="#cb24-23"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb24-24"><a href="#cb24-24"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Tensor image are expected to be of shape (C, H, W), where C is the number of channels, and H and W refer to height and width. Most transforms support batched tensor input. A batch of Tensor images is a tensor of shape (N, C, H, W), where N is a number of images in the batch. The v2 transforms generally accept an arbitrary number of leading dimensions (…, C, H, W) and can handle batched images or batched videos.</p>
+<p>Rely on the v2 transforms from torchvision.transforms.v2</p>
+<p>Use tensors instead of PIL images</p>
+<p>Use torch.uint8 dtype, especially for resizing</p>
+<p>Resize with bilinear or bicubic mode</p>
+<div id="cell-27" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<span id="cb25-2"><a href="#cb25-2"></a>    v2.ToImage(),  <span class="co"># Convert to tensor, only needed if you had a PIL image</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>    v2.ToDtype(torch.uint8, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># optional, most input are already uint8 at this point</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="co"># ...</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a>    v2.RandomResizedCrop(size<span class="op">=</span>(<span class="dv">224</span>, <span class="dv">224</span>), antialias<span class="op">=</span><span class="va">True</span>),  <span class="co"># Or Resize(antialias=True)</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a>    <span class="co"># ...</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># Normalize expects float input</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb25-9"><a href="#cb25-9"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The above should give you the best performance in a typical training environment that relies on the torch.utils.data.DataLoader.</p>
+<p>v2.Resize(size[, interpolation, max_size, …]) Resize the input to the given size.</p>
+<p>v2.ScaleJitter(target_size[, scale_range, …]) Perform Large Scale Jitter on the input according to “Simple Copy-Paste is a Strong Data Augmentation Method for Instance Segmentation”.</p>
+<p>v2.RandomShortestSize(min_size[, max_size, …]) Randomly resize the input.</p>
+<p>v2.RandomResize(min_size, max_size[, …]) Randomly resize the input.</p>
+<p>v2.RandomCrop(size[, padding, …]) Crop the input at a random location.</p>
+<p>v2.RandomResizedCrop(size[, scale, ratio, …]) Crop a random portion of the input and resize it to a given size.</p>
+<p>v2.RandomIoUCrop([min_scale, max_scale, …]) Random IoU crop transformation from “SSD: Single Shot MultiBox Detector”.</p>
+<p>v2.CenterCrop(size) Crop the input at the center.</p>
+<p>v2.FiveCrop(size) Crop the image or video into four corners and the central crop</p>
+<p>v2.TenCrop(size[, vertical_flip]) Crop the image or video into four corners and the central crop plus the flipped version of these (horizontal flipping is used by default).</p>
+<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:406}}" data-outputid="6c2332f5-f59a-45ae-ceb5-1089c3f3359e">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    v2.Resize(<span class="dv">100</span>),</span>
+<span id="cb26-3"><a href="#cb26-3"></a>    <span class="co">#v2.ToDtype(torch.uint8, scale=True),  # optional, most input are already uint8 at this point</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>    v2.CenterCrop(<span class="dv">256</span>),</span>
+<span id="cb26-5"><a href="#cb26-5"></a>    v2.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb26-6"><a href="#cb26-6"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb26-7"><a href="#cb26-7"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
+<span id="cb26-8"><a href="#cb26-8"></a>])</span>
+<span id="cb26-9"><a href="#cb26-9"></a></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="co"># Convert NumPy array to torch image</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a>img_tensor <span class="op">=</span> v2.ToImage()(image)  <span class="co"># converts to torch.Tensor in CHW format</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a>img <span class="op">=</span> transforms(img_tensor)</span>
+<span id="cb26-13"><a href="#cb26-13"></a></span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="co"># Convert back to [0,1] and NumPy for displaying</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a>img <span class="op">=</span> img <span class="op">*</span> torch.tensor([<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]).view(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>) <span class="op">+</span> torch.tensor([<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>]).view(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb26-16"><a href="#cb26-16"></a>img <span class="op">=</span> img.clamp(<span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Clamp to valid range</span></span>
+<span id="cb26-17"><a href="#cb26-17"></a></span>
+<span id="cb26-18"><a href="#cb26-18"></a>plt.imshow(img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())  <span class="co"># Convert to HWC for display</span></span>
+<span id="cb26-19"><a href="#cb26-19"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb26-20"><a href="#cb26-20"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-31" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">#transfrom in batches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-32" class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> torch</span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> torchvision</span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2</span>
+<span id="cb28-4"><a href="#cb28-4"></a></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co"># Define the transform pipeline</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<span id="cb28-7"><a href="#cb28-7"></a>    v2.ToImage(),  <span class="co"># Ensures input is TensorImage (for v2), replaces ToTensor()</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>    v2.Resize(<span class="dv">256</span>),  <span class="co"># Resize to a size &gt;= crop size</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a>    v2.CenterCrop(<span class="dv">224</span>),  <span class="co"># Crop to 224x224 (like ResNet input)</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a>    v2.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb28-11"><a href="#cb28-11"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># Converts to float32 and scales to [0,1]</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>])  <span class="co"># Normalize to ImageNet stats</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a>])</span>
+<span id="cb28-14"><a href="#cb28-14"></a></span>
+<span id="cb28-15"><a href="#cb28-15"></a><span class="co"># Load CIFAR-10 dataset with the transform</span></span>
+<span id="cb28-16"><a href="#cb28-16"></a>dataset <span class="op">=</span> torchvision.datasets.CIFAR10(root<span class="op">=</span><span class="st">'./Data/Train'</span>, download<span class="op">=</span><span class="va">True</span>, transform<span class="op">=</span>transforms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>ToTensor() or ToImage() converts a PIL image or NumPy array into a PyTorch tensor.</p>
+<p>All other v2 transforms like Resize, Crop, Flip, etc., expect tensor input.</p>
+<p>So ToTensor() must come before those transforms.</p>
+<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ec54e56c-d6f0-488b-c947-f843c3d51a0e">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre><code>Dataset CIFAR10
+    Number of datapoints: 50000
+    Root location: ./Data/Train
+    Split: Train
+    StandardTransform
+Transform: Compose(
+                 ToImage()
+                 Resize(size=[256], interpolation=InterpolationMode.BILINEAR, antialias=True)
+                 CenterCrop(size=(224, 224))
+                 RandomHorizontalFlip(p=0.5)
+                 ToDtype(scale=True)
+                 Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], inplace=False)
+           )</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:465}}" data-outputid="6b6c07d4-139c-4668-e318-674cfb21a6b8">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataloader <span class="op">=</span> torch.utils.data.DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">16</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="co"># get a batch</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>image_batch, labels_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dataloader))</span>
+<span id="cb31-5"><a href="#cb31-5"></a></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="co"># Show the first image</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a>plt.imshow(image_batch[<span class="dv">0</span>].permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))  <span class="co"># Convert CHW to HWC</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a>plt.title(<span class="ss">f"Label: </span><span class="sc">{</span>labels_batch[<span class="dv">0</span>]<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-2.0151556..1.7457986].</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-26-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e75f3b98-47d8-467b-d430-42975b15fbd7">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">print</span>(image_batch.shape, labels_batch.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.Size([16, 3, 224, 224]) torch.Size([16])</code></pre>
+</div>
+</div>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="dc272507-435c-46a0-f3d9-1e021606dfb9">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>labels_batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>tensor([4, 7, 9, 1, 2, 7, 9, 7, 2, 0, 8, 9, 6, 3, 6, 3])</code></pre>
+</div>
+</div>
+<p>each image is associated with a label there are 10 categories of images represented by numeric values (from 0 to 9)</p>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e1c289b8-56e4-470a-894f-ee3fb5577dc6">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>img <span class="op">=</span> torchvision.utils.make_grid(image_batch)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>torch.Size([3, 454, 1810])</code></pre>
+</div>
+</div>
+<p>we see above the channel (3) is in first dimension</p>
+<div id="cell-41" class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>img <span class="op">=</span> np.transpose(img, (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="43446b9b-0bb3-48f6-fe1c-41058dd54da3">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<pre><code>torch.Size([454, 1810, 3])</code></pre>
+</div>
+</div>
+<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:346}}" data-outputid="78b00009-fafb-4cfa-f44a-bb6f90c5a9aa">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">10</span>))</span>
+<span id="cb42-2"><a href="#cb42-2"></a>plt.imshow(img)</span>
+<span id="cb42-3"><a href="#cb42-3"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb42-4"><a href="#cb42-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-2.117904..2.64].</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-32-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="normalizing-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="normalizing-the-dataset">Normalizing the dataset</h2>
+<div id="cell-45" class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># mean and std for the entire data set</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>data_mean <span class="op">=</span>[]</span>
+<span id="cb44-3"><a href="#cb44-3"></a>data_std <span class="op">=</span> []</span>
+<span id="cb44-4"><a href="#cb44-4"></a></span>
+<span id="cb44-5"><a href="#cb44-5"></a><span class="cf">for</span> i, data <span class="kw">in</span> <span class="bu">enumerate</span>(dataloader,<span class="dv">0</span>):</span>
+<span id="cb44-6"><a href="#cb44-6"></a>    <span class="co">#extract images at index 0</span></span>
+<span id="cb44-7"><a href="#cb44-7"></a>    numpy_image <span class="op">=</span> data[<span class="dv">0</span>].numpy()</span>
+<span id="cb44-8"><a href="#cb44-8"></a></span>
+<span id="cb44-9"><a href="#cb44-9"></a>    <span class="co"># mean and std separatly for every channel</span></span>
+<span id="cb44-10"><a href="#cb44-10"></a>    batch_mean <span class="op">=</span> np.mean(numpy_image, axis <span class="op">=</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb44-11"><a href="#cb44-11"></a>    batch_std <span class="op">=</span> np.std(numpy_image, axis <span class="op">=</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb44-12"><a href="#cb44-12"></a></span>
+<span id="cb44-13"><a href="#cb44-13"></a>    <span class="co">#apped to the list</span></span>
+<span id="cb44-14"><a href="#cb44-14"></a>    data_mean.append(batch_mean)</span>
+<span id="cb44-15"><a href="#cb44-15"></a>    data_std.append(batch_std)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b8d967e8-14de-4e91-eb79-a358e9421355">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>data_mean <span class="op">=</span>np.array(data_mean)</span>
+<span id="cb45-2"><a href="#cb45-2"></a>data_std <span class="op">=</span> np.array(data_std)</span>
+<span id="cb45-3"><a href="#cb45-3"></a></span>
+<span id="cb45-4"><a href="#cb45-4"></a>data_mean.shape, data_std.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>((3125, 3), (3125, 3))</code></pre>
+</div>
+</div>
+<div id="cell-47" class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># average of mean and std acros each batch</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a>data_mean <span class="op">=</span> data_mean.mean(axis <span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb47-4"><a href="#cb47-4"></a>data_std  <span class="op">=</span> data_std.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb47-5"><a href="#cb47-5"></a></span>
+<span id="cb47-6"><a href="#cb47-6"></a><span class="bu">print</span>(data_mean)</span>
+<span id="cb47-7"><a href="#cb47-7"></a><span class="bu">print</span>(data_std)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-48" class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">def</span> unnormalize(img_tensor, mean, std):</span>
+<span id="cb48-2"><a href="#cb48-2"></a>    <span class="co">"""Unnormalize a tensor image using mean and std, returns a numpy image in HWC format."""</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>    img <span class="op">=</span> img_tensor.clone()</span>
+<span id="cb48-4"><a href="#cb48-4"></a>    <span class="cf">for</span> t, m, s <span class="kw">in</span> <span class="bu">zip</span>(img, mean, std):</span>
+<span id="cb48-5"><a href="#cb48-5"></a>        t.mul_(s).add_(m)</span>
+<span id="cb48-6"><a href="#cb48-6"></a>    <span class="cf">return</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:309}}" data-outputid="94ea22eb-314e-406d-eebc-5e26e6a9379c">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co">#applying transforms on the dataset</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>transform <span class="op">=</span> v2.Compose([</span>
+<span id="cb49-3"><a href="#cb49-3"></a>    v2.ToImage(),  <span class="co"># Ensures input is TensorImage (for v2), replaces ToTensor()</span></span>
+<span id="cb49-4"><a href="#cb49-4"></a>    v2.Resize(<span class="dv">256</span>),  <span class="co"># Resize to a size &gt;= crop size</span></span>
+<span id="cb49-5"><a href="#cb49-5"></a>    v2.CenterCrop(<span class="dv">224</span>),  <span class="co"># Crop to 224x224 (like ResNet input)</span></span>
+<span id="cb49-6"><a href="#cb49-6"></a>    v2.RandomHorizontalFlip(p<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb49-7"><a href="#cb49-7"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># Converts to float32 and scales to [0,1]</span></span>
+<span id="cb49-8"><a href="#cb49-8"></a>    v2.Normalize(data_mean,data_std)</span>
+<span id="cb49-9"><a href="#cb49-9"></a>])</span>
+<span id="cb49-10"><a href="#cb49-10"></a></span>
+<span id="cb49-11"><a href="#cb49-11"></a><span class="co"># load the CIFAR data again with applying transforms</span></span>
+<span id="cb49-12"><a href="#cb49-12"></a>trainset <span class="op">=</span> torchvision.datasets.CIFAR10(root<span class="op">=</span><span class="st">'./Data/trainset'</span>, download <span class="op">=</span> <span class="va">True</span>, transform <span class="op">=</span> transform)</span>
+<span id="cb49-13"><a href="#cb49-13"></a></span>
+<span id="cb49-14"><a href="#cb49-14"></a><span class="co"># new data loader</span></span>
+<span id="cb49-15"><a href="#cb49-15"></a>trainloader <span class="op">=</span> torch.utils.data.DataLoader(trainset, batch_size <span class="op">=</span> <span class="dv">16</span>, shuffle <span class="op">=</span> <span class="va">True</span>, num_workers <span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb49-16"><a href="#cb49-16"></a></span>
+<span id="cb49-17"><a href="#cb49-17"></a><span class="co">#acess one batch of the data</span></span>
+<span id="cb49-18"><a href="#cb49-18"></a>images_batch, labels_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(trainloader))</span>
+<span id="cb49-19"><a href="#cb49-19"></a></span>
+<span id="cb49-20"><a href="#cb49-20"></a><span class="co"># Create a grid of images from the batch</span></span>
+<span id="cb49-21"><a href="#cb49-21"></a>img <span class="op">=</span> torchvision.utils.make_grid(images_batch)  <span class="co"># shape: [3, H, W]</span></span>
+<span id="cb49-22"><a href="#cb49-22"></a></span>
+<span id="cb49-23"><a href="#cb49-23"></a><span class="co"># Unnormalize the grid</span></span>
+<span id="cb49-24"><a href="#cb49-24"></a>img <span class="op">=</span> unnormalize(img, data_mean, data_std)       <span class="co"># still [3, H, W]</span></span>
+<span id="cb49-25"><a href="#cb49-25"></a></span>
+<span id="cb49-26"><a href="#cb49-26"></a><span class="co"># Convert to HWC format and NumPy</span></span>
+<span id="cb49-27"><a href="#cb49-27"></a>img <span class="op">=</span> img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy()                <span class="co"># now [H, W, 3]</span></span>
+<span id="cb49-28"><a href="#cb49-28"></a></span>
+<span id="cb49-29"><a href="#cb49-29"></a><span class="co"># Clip to [0, 1]</span></span>
+<span id="cb49-30"><a href="#cb49-30"></a>img <span class="op">=</span> np.clip(img, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb49-31"><a href="#cb49-31"></a></span>
+<span id="cb49-32"><a href="#cb49-32"></a><span class="co"># Show the image grid</span></span>
+<span id="cb49-33"><a href="#cb49-33"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">10</span>))</span>
+<span id="cb49-34"><a href="#cb49-34"></a>plt.imshow(img)</span>
+<span id="cb49-35"><a href="#cb49-35"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb49-36"><a href="#cb49-36"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Reference : https://docs.pytorch.org/vision/main/transforms.html</p>
+<p>Preprocessing using Tensorflow</p>
+<div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5a5e743a-35b5-4649-da0e-c89fe0dcf18f">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb50-4"><a href="#cb50-4"></a></span>
+<span id="cb50-5"><a href="#cb50-5"></a>AUTOTUNE <span class="op">=</span> tf.data.AUTOTUNE</span>
+<span id="cb50-6"><a href="#cb50-6"></a></span>
+<span id="cb50-7"><a href="#cb50-7"></a><span class="co"># CIFAR-10 normalization stats</span></span>
+<span id="cb50-8"><a href="#cb50-8"></a>data_mean <span class="op">=</span> tf.constant([<span class="fl">0.4914</span>, <span class="fl">0.4822</span>, <span class="fl">0.4465</span>])</span>
+<span id="cb50-9"><a href="#cb50-9"></a>data_std <span class="op">=</span> tf.constant([<span class="fl">0.2023</span>, <span class="fl">0.1994</span>, <span class="fl">0.2010</span>])</span>
+<span id="cb50-10"><a href="#cb50-10"></a></span>
+<span id="cb50-11"><a href="#cb50-11"></a><span class="co"># Load CIFAR-10 dataset</span></span>
+<span id="cb50-12"><a href="#cb50-12"></a>(x_train, y_train), _ <span class="op">=</span> tf.keras.datasets.cifar10.load_data()</span>
+<span id="cb50-13"><a href="#cb50-13"></a><span class="bu">print</span>(<span class="st">"Training data shape:"</span>, x_train.shape)</span>
+<span id="cb50-14"><a href="#cb50-14"></a></span>
+<span id="cb50-15"><a href="#cb50-15"></a><span class="co"># Convert to tf.data.Dataset</span></span>
+<span id="cb50-16"><a href="#cb50-16"></a><span class="kw">def</span> preprocess_and_augment(image, label):</span>
+<span id="cb50-17"><a href="#cb50-17"></a>    image <span class="op">=</span> tf.image.resize(image, [<span class="dv">256</span>, <span class="dv">256</span>])</span>
+<span id="cb50-18"><a href="#cb50-18"></a>    image <span class="op">=</span> tf.image.random_crop(image, [<span class="dv">224</span>, <span class="dv">224</span>, <span class="dv">3</span>])</span>
+<span id="cb50-19"><a href="#cb50-19"></a>    image <span class="op">=</span> tf.image.random_flip_left_right(image)</span>
+<span id="cb50-20"><a href="#cb50-20"></a>    image <span class="op">=</span> tf.image.random_brightness(image, max_delta<span class="op">=</span><span class="fl">0.2</span>)</span>
+<span id="cb50-21"><a href="#cb50-21"></a>    image <span class="op">=</span> tf.image.random_contrast(image, lower<span class="op">=</span><span class="fl">0.8</span>, upper<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb50-22"><a href="#cb50-22"></a>    image <span class="op">=</span> tf.image.random_saturation(image, lower<span class="op">=</span><span class="fl">0.8</span>, upper<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb50-23"><a href="#cb50-23"></a>    image <span class="op">=</span> tf.image.rot90(image, k<span class="op">=</span>tf.random.uniform([], <span class="dv">0</span>, <span class="dv">4</span>, dtype<span class="op">=</span>tf.int32))</span>
+<span id="cb50-24"><a href="#cb50-24"></a>    image <span class="op">=</span> tf.cast(image, tf.float32) <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb50-25"><a href="#cb50-25"></a>    image <span class="op">=</span> (image <span class="op">-</span> data_mean) <span class="op">/</span> data_std</span>
+<span id="cb50-26"><a href="#cb50-26"></a>    <span class="cf">return</span> image, label</span>
+<span id="cb50-27"><a href="#cb50-27"></a></span>
+<span id="cb50-28"><a href="#cb50-28"></a>batch_size <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb50-29"><a href="#cb50-29"></a></span>
+<span id="cb50-30"><a href="#cb50-30"></a>train_ds <span class="op">=</span> tf.data.Dataset.from_tensor_slices((x_train, y_train))</span>
+<span id="cb50-31"><a href="#cb50-31"></a>train_ds <span class="op">=</span> train_ds.shuffle(buffer_size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb50-32"><a href="#cb50-32"></a>train_ds <span class="op">=</span> train_ds.<span class="bu">map</span>(preprocess_and_augment, num_parallel_calls<span class="op">=</span>AUTOTUNE)</span>
+<span id="cb50-33"><a href="#cb50-33"></a>train_ds <span class="op">=</span> train_ds.batch(batch_size).prefetch(AUTOTUNE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>Downloading data from https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+
+<span class="ansi-bold">170498071/170498071</span> <span class="ansi-green-fg">━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-bold">8s</span> 0us/step
+
+Training data shape: (50000, 32, 32, 3)
+</pre>
+</div>
+</div>
+</div>
+<p>Visualization of One Batch (Unnormalized)</p>
+<div id="cell-54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:559}}" data-outputid="f8d546fc-4281-4140-8ad9-5800875e12ca">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Unnormalize function for display</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a><span class="kw">def</span> unnormalize(image_batch):</span>
+<span id="cb51-3"><a href="#cb51-3"></a>    <span class="cf">return</span> tf.clip_by_value(image_batch <span class="op">*</span> data_std <span class="op">+</span> data_mean, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb51-4"><a href="#cb51-4"></a></span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="co"># Visualize a batch</span></span>
+<span id="cb51-6"><a href="#cb51-6"></a><span class="cf">for</span> images, labels <span class="kw">in</span> train_ds.take(<span class="dv">1</span>):</span>
+<span id="cb51-7"><a href="#cb51-7"></a>    images <span class="op">=</span> unnormalize(images)</span>
+<span id="cb51-8"><a href="#cb51-8"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb51-9"><a href="#cb51-9"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">min</span>(batch_size, <span class="dv">16</span>)):</span>
+<span id="cb51-10"><a href="#cb51-10"></a>        plt.subplot(<span class="dv">4</span>, <span class="dv">4</span>, i <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb51-11"><a href="#cb51-11"></a>        plt.imshow(images[i])</span>
+<span id="cb51-12"><a href="#cb51-12"></a>        plt.title(<span class="ss">f"Label: </span><span class="sc">{</span>labels[i]<span class="sc">.</span>numpy()[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb51-13"><a href="#cb51-13"></a>        plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb51-14"><a href="#cb51-14"></a>    plt.suptitle(<span class="st">"Augmented CIFAR-10 Images"</span>)</span>
+<span id="cb51-15"><a href="#cb51-15"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="preprocessing_images_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Output Each image is resized, cropped, flipped, color-jittered, and normalized.</p>
+<p>Batches are created and prefetching is enabled for performance.</p>
+<p>Images are shown unnormalized for correct display.</p>
+<div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9b941a9c-d028-4662-8da8-874fa5a060a1" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(<span class="st">"Conclusion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Conclusion</code></pre>
+</div>
+</div>
+<p>This Colab contains a comprehensive demonstration of image preprocessing steps using both PyTorch and TensorFlow, along with detailed explanations for each part.</p>
+<p>Here’s a breakdown of what’s included :</p>
+<p>Technological Background and Necessity of Preprocessing: The notebook starts with a clear introduction explaining why image preprocessing is essential for deep learning models, covering aspects like standardization of input, normalization, noise reduction, feature enhancement, data augmentation, and computational efficiency.</p>
+<p>PyTorch Preprocessing (using torchvision.transforms.v2):</p>
+<p>Setup: Imports necessary PyTorch libraries, including torchvision.transforms.v2.</p>
+<p>Data Acquisition: Loads a sample image using skimage.data.astronaut() for individual demonstrations.</p>
+<p>Deterministic Preprocessing: Defines and explains a v2.Compose pipeline for deterministic steps like v2.ToDtype(torch.uint8, scale=True), v2.Resize, v2.CenterCrop, v2.ToDtype(torch.float32, scale=True), and v2.Normalize. Each transform includes an explanation for its purpose.</p>
+<p>Data Augmentation: Demonstrates data augmentation using v2.RandomResizedCrop and v2.RandomHorizontalFlip, along with a note explaining why these random transforms result in different output images every time they are run. The denormalization step for visualization is also explained.</p>
+<p>TensorFlow Preprocessing (Individual and Batch Processing):</p>
+<p>Data Acquisition: Loads the CIFAR-10 dataset to demonstrate batch processing.</p>
+<p>Individual Image Preprocessing (Recap): Briefly recaps converting a PIL image to a TensorFlow tensor, adding a batch dimension, resizing, and normalizing pixel values (to 0-1 and -1 to 1 ranges). It also shows individual data augmentation examples with tf.image functions, again explaining the randomness.</p>
+<p>Batch Preprocessing with tf.data.Dataset: This section is well-detailed and crucial:</p>
+<p>Why Batch Processing: Explains the importance of batching for computational efficiency, stable gradient estimation, and memory management.</p>
+<p>Normalization Statistics: Provides and explains the use of CIFAR-10 specific mean and standard deviation for normalization.</p>
+<p>preprocess_and_augment_batch_item function: This function encapsulates a comprehensive set of augmentation steps, including tf.image.resize, tf.image.random_crop, tf.image.random_flip_left_right, tf.image.random_brightness, tf.image.random_contrast, tf.image.random_saturation, and tf.image.rot90. Each step has a comment explaining its purpose.</p>
+<p>tf.data.Dataset Pipeline: Demonstrates how to build an efficient data pipeline using:</p>
+<p>tf.data.Dataset.from_tensor_slices.</p>
+<p>.shuffle(buffer_size=…) with explanation.</p>
+<p>.map(…, num_parallel_calls=AUTOTUNE) with explanation.</p>
+<p>.batch(batch_size) with explanation.</p>
+<p>.prefetch(AUTOTUNE) with explanation.</p>
+<p>Visualization: Includes code to visualize an unnormalized batch of augmented CIFAR-10 images to show the effects of batch preprocessing and augmentation.</p>
+<p>The notebook is well-structured and provides a thorough explanation of image preprocessing for deep learning using both PyTorch and TensorFlow, making it an excellent resource for students.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsc-iitm\.github\.io\/data-science-lab\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../week-4/Loading_Images.html" class="pagination-link" aria-label="Part 1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Part 1</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../week-4/Transfer_Learning.html" class="pagination-link" aria-label="Transfer Learning">
+        <span class="nav-page-text">Transfer Learning</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025 @ IIT Madras</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-4/preprocessing_images.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/preprocessing_images.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

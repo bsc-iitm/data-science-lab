@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Module 12: LangChain Memory – Making LLMs Remember Context – Data Science Lab</title>
+<title>Week-5 – Data Science Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week-6/Module13.html" rel="next">
-<link href="../week-6/Module11.html" rel="prev">
+<link href="../week-5/Datasets_and_Tokenizers.html" rel="next">
+<link href="../week-4/Transfer_Learning.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -283,7 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-6/index.html">Week 6</a></li><li class="breadcrumb-item"><a href="../week-6/Module12.html">Module 12: LangChain Memory – Making LLMs Remember Context</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-5/index.html">Week-5</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -458,13 +423,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../week-5/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -501,11 +466,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -574,7 +539,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week-6/Module12.html" class="sidebar-item-text sidebar-link active">
+  <a href="../week-6/Module12.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 12: LangChain Memory – Making LLMs Remember Context</span></a>
   </div>
 </li>
@@ -714,25 +679,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#what-is-memory" id="toc-what-is-memory" class="nav-link active" data-scroll-target="#what-is-memory">What is Memory?</a></li>
-  <li><a href="#types-of-memory-in-langchain" id="toc-types-of-memory-in-langchain" class="nav-link" data-scroll-target="#types-of-memory-in-langchain">Types of Memory in LangChain</a></li>
-  <li><a href="#adding-memory-to-chains" id="toc-adding-memory-to-chains" class="nav-link" data-scroll-target="#adding-memory-to-chains">Adding Memory to Chains</a></li>
-  <li><a href="#customizing-memory" id="toc-customizing-memory" class="nav-link" data-scroll-target="#customizing-memory">Customizing Memory</a></li>
-  <li><a href="#full-stateful-chat-example" id="toc-full-stateful-chat-example" class="nav-link" data-scroll-target="#full-stateful-chat-example">Full Stateful Chat Example</a></li>
-  </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/bsc-iitm/data-science-lab/edit/master/week-6/Module12.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-6/Module12.qmd" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-6/index.html">Week 6</a></li><li class="breadcrumb-item"><a href="../week-6/Module12.html">Module 12: LangChain Memory – Making LLMs Remember Context</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Module 12: LangChain Memory – Making LLMs Remember Context</h1>
+<h1 class="title">Week-5</h1>
 </div>
 
 
@@ -749,152 +704,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In real-world applications, like chatbots and assistants, we often want the system to remember past conversations. This is where <strong>LangChain Memory</strong> comes into play.</p>
-<hr>
-<section id="what-is-memory" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-memory">What is Memory?</h2>
-<p>By default, LLMs are stateless. This means:</p>
-<ul>
-<li>They don’t remember anything from earlier user inputs.</li>
-<li>Each call to the LLM is treated like a blank slate.</li>
-</ul>
-<p>Memory allows us to <strong>maintain context</strong> between multiple inputs.</p>
-<hr>
-</section>
-<section id="types-of-memory-in-langchain" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-memory-in-langchain">Types of Memory in LangChain</h2>
-<p>LangChain provides several built-in memory classes for different use-cases.</p>
-<section id="conversationbuffermemory" class="level3">
-<h3 class="anchored" data-anchor-id="conversationbuffermemory">1. <code>ConversationBufferMemory</code></h3>
-<p>Stores the entire conversation in memory as a buffer (long text history). Best for simple dialogs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">from</span> langchain.memory <span class="im">import</span> ConversationBufferMemory</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>memory <span class="op">=</span> ConversationBufferMemory()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="conversationbufferwindowmemory" class="level3">
-<h3 class="anchored" data-anchor-id="conversationbufferwindowmemory">2. <code>ConversationBufferWindowMemory</code></h3>
-<p>Same as buffer memory but only keeps the <strong>last <code>k</code> messages</strong>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> langchain.memory <span class="im">import</span> ConversationBufferWindowMemory</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a>memory <span class="op">=</span> ConversationBufferWindowMemory(k<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="conversationsummarymemory" class="level3">
-<h3 class="anchored" data-anchor-id="conversationsummarymemory">3. <code>ConversationSummaryMemory</code></h3>
-<p>Summarizes the conversation so far to save tokens.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> langchain.chat_models <span class="im">import</span> ChatOpenAI</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> langchain.memory <span class="im">import</span> ConversationSummaryMemory</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>llm <span class="op">=</span> ChatOpenAI()</span>
-<span id="cb3-5"><a href="#cb3-5"></a>memory <span class="op">=</span> ConversationSummaryMemory(llm<span class="op">=</span>llm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="entitymemory" class="level3">
-<h3 class="anchored" data-anchor-id="entitymemory">4. <code>EntityMemory</code></h3>
-<p>Tracks information about entities (like names, places) throughout the conversation.</p>
-<hr>
-</section>
-</section>
-<section id="adding-memory-to-chains" class="level2">
-<h2 class="anchored" data-anchor-id="adding-memory-to-chains">Adding Memory to Chains</h2>
-<p>You can add memory to any chain. Most commonly used with <code>ConversationChain</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> ConversationChain</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="im">from</span> langchain.chat_models <span class="im">import</span> ChatOpenAI</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="im">from</span> langchain.memory <span class="im">import</span> ConversationBufferMemory</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a>llm <span class="op">=</span> ChatOpenAI()</span>
-<span id="cb4-6"><a href="#cb4-6"></a>memory <span class="op">=</span> ConversationBufferMemory()</span>
-<span id="cb4-7"><a href="#cb4-7"></a>conversation <span class="op">=</span> ConversationChain(llm<span class="op">=</span>llm, memory<span class="op">=</span>memory)</span>
-<span id="cb4-8"><a href="#cb4-8"></a></span>
-<span id="cb4-9"><a href="#cb4-9"></a>response <span class="op">=</span> conversation.run(<span class="st">"Hello, my name is Nitin."</span>)</span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="bu">print</span>(response)</span>
-<span id="cb4-11"><a href="#cb4-11"></a></span>
-<span id="cb4-12"><a href="#cb4-12"></a>response <span class="op">=</span> conversation.run(<span class="st">"What is my name?"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="bu">print</span>(response)  <span class="co"># Should recall 'Nitin'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="customizing-memory" class="level2">
-<h2 class="anchored" data-anchor-id="customizing-memory">Customizing Memory</h2>
-<p>You can customize memory parameters:</p>
-<ul>
-<li><code>k</code> in buffer window memory (controls how many turns to remember)</li>
-<li>LLM model for summarization in summary memory</li>
-<li>Prefix/suffix prompts for memory formatting</li>
-</ul>
-<hr>
-</section>
-<section id="full-stateful-chat-example" class="level2">
-<h2 class="anchored" data-anchor-id="full-stateful-chat-example">Full Stateful Chat Example</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> ConversationChain</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">from</span> langchain.chat_models <span class="im">import</span> ChatOpenAI</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="im">from</span> langchain.memory <span class="im">import</span> ConversationBufferWindowMemory</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a>llm <span class="op">=</span> ChatOpenAI()</span>
-<span id="cb5-6"><a href="#cb5-6"></a>memory <span class="op">=</span> ConversationBufferWindowMemory(k<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>conversation <span class="op">=</span> ConversationChain(</span>
-<span id="cb5-9"><a href="#cb5-9"></a>    llm<span class="op">=</span>llm,</span>
-<span id="cb5-10"><a href="#cb5-10"></a>    memory<span class="op">=</span>memory,</span>
-<span id="cb5-11"><a href="#cb5-11"></a>    verbose<span class="op">=</span><span class="va">True</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>)</span>
-<span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a>conversation.run(<span class="st">"Hi, I'm Anjali."</span>)</span>
-<span id="cb5-15"><a href="#cb5-15"></a>conversation.run(<span class="st">"I live in Delhi."</span>)</span>
-<span id="cb5-16"><a href="#cb5-16"></a>conversation.run(<span class="st">"Where do I live?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Situation</th>
-<th>Recommended Memory</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Simple chatbot</td>
-<td>ConversationBufferMemory</td>
-</tr>
-<tr class="even">
-<td>Long conversation</td>
-<td>ConversationSummaryMemory</td>
-</tr>
-<tr class="odd">
-<td>Entity-aware dialog</td>
-<td>EntityMemory</td>
-</tr>
-<tr class="even">
-<td>Limited token budget</td>
-<td>Summary or Window Memory</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<hr>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Memory is essential when building applications that require <strong>context awareness</strong>, like chatbots, customer support agents, or tutors.</p>
-</div>
-</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1311,13 +1122,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week-6/Module11.html" class="pagination-link" aria-label="Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain</span>
+      <a href="../week-4/Transfer_Learning.html" class="pagination-link" aria-label="Transfer Learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transfer Learning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week-6/Module13.html" class="pagination-link" aria-label="Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging">
-        <span class="nav-page-text">Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../week-5/Datasets_and_Tokenizers.html" class="pagination-link" aria-label="Introduction to the Hugging Face Ecosystem: Datasets and Tokenizers">
+        <span class="nav-page-text">Introduction to the Hugging Face Ecosystem: Datasets and Tokenizers</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1329,7 +1140,7 @@ Note
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2025 @ IIT Madras</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bsc-iitm/data-science-lab/edit/master/week-6/Module12.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-6/Module12.qmd" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+<div class="toc-actions"><ul><li><a href="https://github.com/bsc-iitm/data-science-lab/edit/master/week-5/index.md" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-5/index.md" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

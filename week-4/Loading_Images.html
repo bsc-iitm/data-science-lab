@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Aniruddha">
 
-<title>Part 1 – Data Science Lab</title>
+<title>Loading Images – Data Science Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,17 +66,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week-4/preprocessing_images.html" rel="next">
-<link href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" rel="prev">
+<link href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" rel="next">
+<link href="../week-4/index.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1100dc645a9806080dc50effd6ccb0f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5977e214c05d9207a6b9ecdb11453a52.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-1100dc645a9806080dc50effd6ccb0f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -133,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         toggleBodyColorMode(bsSheetEl);
       }
     }
-    const setColorSchemeToggle = (alternate) => {
+    window.setColorSchemeToggle = (alternate) => {
       const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
@@ -166,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
-      setColorSchemeToggle(alternate)
+      window.setColorSchemeToggle(alternate)
       // Hack to workaround the fact that safari doesn't
       // properly recolor the scrollbar when toggling (#1455)
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
@@ -206,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     const isFileUrl = () => {
       return window.location.protocol === 'file:';
     }
-    const hasAlternateSentinel = () => {
+    window.hasAlternateSentinel = () => {
       let styleSentinel = getColorSchemeSentinel();
       if (styleSentinel !== null) {
         return styleSentinel === "alternate";
@@ -234,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
       const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
       let newTheme = '';
-      if(authorPrefersDark) {
+      if(darkModeDefault) {
         newTheme = isAlternate ? baseTheme : alternateTheme;
       } else {
         newTheme = isAlternate ? alternateTheme : baseTheme;
@@ -257,22 +258,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         changeGiscusTheme();
       }
     };
-    const authorPrefersDark = false;
-    const darkModeDefault = authorPrefersDark;
+    const darkModeDefault = false;
       document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
       document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
     let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
     // Dark / light mode switch
     window.quartoToggleColorScheme = () => {
       // Read the current dark / light value
-      let toAlternate = !hasAlternateSentinel();
+      let toAlternate = !window.hasAlternateSentinel();
       toggleColorMode(toAlternate);
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
-      window.dispatchEvent(new Event('resize'));
     };
     // Switch to dark mode if need be
-    if (hasAlternateSentinel()) {
+    if (window.hasAlternateSentinel()) {
       toggleColorMode(true);
     } else {
       toggleColorMode(false);
@@ -286,7 +285,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Loading_Images.html">Part 1</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Loading_Images.html">Loading Images</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -419,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-2/week-2-reference-notebook_v1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Objective</span></a>
+ <span class="menu-text">Structured Approach to ML Projects</span></a>
   </div>
 </li>
       </ul>
@@ -470,14 +469,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+  <a href="../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Loading Images</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Part 1</span></a>
+  <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -733,15 +732,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Loading_Images.html">Part 1</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Loading_Images.html">Loading Images</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Part 1</h1>
+<h1 class="title">Loading Images</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Aniruddha </p>
+          </div>
+  </div>
     
   
     
@@ -762,13 +767,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="images-as-numpy-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="images-as-numpy-arrays">Images as Numpy Arrays</h2>
-<div id="cell-5" class="cell">
+<div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="visualizing-a-3-x-3-9-pixels-numpy-array-as-a-grayscale-image" class="level3">
 <h3 class="anchored" data-anchor-id="visualizing-a-3-x-3-9-pixels-numpy-array-as-a-grayscale-image">Visualizing a 3 x 3 (9 pixels) Numpy array as a grayscale image</h3>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753167988495,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:38,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="ea18473d-1e07-402a-b129-0697ff9e409b">
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:38,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753167988495,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="ea18473d-1e07-402a-b129-0697ff9e409b">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>np_image_1 <span class="op">=</span> np.array([[<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>],</span>
 <span id="cb2-2"><a href="#cb2-2"></a>                       [<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>],</span>
 <span id="cb2-3"><a href="#cb2-3"></a>                       [<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>]])</span>
@@ -780,7 +785,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  [  0   0   0]]</code></pre>
 </div>
 </div>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753168904335,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:30,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="e8b0c10c-53b4-4eef-9ea3-1f9ed24325b1">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:30,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753168904335,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="e8b0c10c-53b4-4eef-9ea3-1f9ed24325b1">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="bu">print</span>(<span class="st">"(H, W):"</span>, np_image_1.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(H, W): (3, 3)</code></pre>
@@ -790,7 +795,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>A pixel value of 0 would be represented as black</li>
 <li>A pixel value of 255 would be represented as white</li>
 </ul>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753168099210,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:108,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="0049c85a-fe7a-48fa-ccc5-4f8256830759">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:108,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753168099210,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="0049c85a-fe7a-48fa-ccc5-4f8256830759">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>plt.imshow(np_image_1, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>plt.title(<span class="st">'3 x 3 grayscale image'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a>plt.axis(<span class="st">'off'</span>)</span>
@@ -806,14 +811,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visualize-a-100-x-100-10000-pixels-numpy-array-as-a-grayscale-image" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-a-100-x-100-10000-pixels-numpy-array-as-a-grayscale-image">Visualize a 100 x 100 (10000 pixels) Numpy array as a grayscale image</h3>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169091193,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:35,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="8d1168e1-1384-4ba3-8f6b-264a2037cd68">
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:35,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169091193,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="8d1168e1-1384-4ba3-8f6b-264a2037cd68">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>np_image_2 <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">256</span>, (<span class="dv">100</span>, <span class="dv">100</span>))</span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="bu">print</span>(<span class="st">"(H, W):"</span>, np_image_2.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(H, W): (100, 100)</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169094160,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:389,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="1c7af2c3-21ae-4f94-8d61-85181bd69ec5">
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:389,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169094160,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1c7af2c3-21ae-4f94-8d61-85181bd69ec5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>plt.imshow(np_image_2, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>plt.title(<span class="st">"100 x 100 grayscale image"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3"></a>plt.colorbar()</span>
@@ -829,14 +834,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visualize-a-100-x-100-x-3-numpy-array-as-an-rgb-image" class="level3">
 <h3 class="anchored" data-anchor-id="visualize-a-100-x-100-x-3-numpy-array-as-an-rgb-image">Visualize a 100 x 100 X 3 Numpy array as an RGB image</h3>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169159137,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:21,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="17c7c6fa-70c2-4a0a-a37e-5863e977c8d4">
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169159137,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="17c7c6fa-70c2-4a0a-a37e-5863e977c8d4">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>np_image_3 <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">256</span>, (<span class="dv">100</span>, <span class="dv">100</span>, <span class="dv">3</span>))</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="bu">print</span>(<span class="st">"(H, W, C):"</span>, np_image_3.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(H, W, C): (100, 100, 3)</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169162550,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:255,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="d63e1cfe-9e9a-4b42-d092-f0d7d13d1d1a">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:255,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169162550,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="d63e1cfe-9e9a-4b42-d092-f0d7d13d1d1a">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>plt.imshow(np_image_3)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>plt.title(<span class="st">"100 x 100 RGB image"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -854,15 +859,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="loading-and-viewing-an-image">Loading and viewing an Image</h2>
 <section id="using-pil-to-open-an-uploaded-image-and-view-it-using-matplotlib" class="level3">
 <h3 class="anchored" data-anchor-id="using-pil-to-open-an-uploaded-image-and-view-it-using-matplotlib">Using PIL to open an uploaded image and view it using matplotlib</h3>
-<div id="cell-19" class="cell">
+<div id="cell-18" class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell">
+<div id="cell-19" class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>image_path <span class="op">=</span> <span class="st">'/content/ferrari.jpg'</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a></span>
 <span id="cb14-3"><a href="#cb14-3"></a>uploaded_image <span class="op">=</span> Image.<span class="bu">open</span>(image_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170026282,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:578,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="bf2338a2-2e67-4f9e-9c7d-46461bf7607b">
+<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:578,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170026282,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="bf2338a2-2e67-4f9e-9c7d-46461bf7607b">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.imshow(uploaded_image)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>plt.title(<span class="st">'Ferrari F1 Car'</span>)</span>
 <span id="cb15-3"><a href="#cb15-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -874,7 +879,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169823259,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:104,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="9496e1ed-430f-4c03-bace-2d0bcaa1c866">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:104,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169823259,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9496e1ed-430f-4c03-bace-2d0bcaa1c866">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">type</span>(uploaded_image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div style="max-width:800px; border: 1px solid var(--colab-border-color);"><style>
@@ -917,22 +922,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="convert-the-image-to-numpy-array" class="level3">
 <h3 class="anchored" data-anchor-id="convert-the-image-to-numpy-array">Convert the image to Numpy array</h3>
-<div id="cell-24" class="cell">
+<div id="cell-23" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>image_array <span class="op">=</span> np.array(uploaded_image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169989549,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:19,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="18603d23-3896-4ba0-d885-4ef1801230d2">
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:19,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753169989549,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="18603d23-3896-4ba0-d885-4ef1801230d2">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">type</span>(image_array)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>numpy.ndarray</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170017049,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:13,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="9ff2f039-de35-4d44-cb29-7229f92b20a1">
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:13,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170017049,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9ff2f039-de35-4d44-cb29-7229f92b20a1">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">print</span>(<span class="st">"(H, W, C):"</span>, image_array.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(H, W, C): (1280, 1920, 3)</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170061730,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:32,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="2b780427-9cb2-41ca-b202-496fe2153d7c">
+<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:32,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170061730,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="2b780427-9cb2-41ca-b202-496fe2153d7c">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">print</span>(<span class="st">'The min pixel value is'</span>,np.<span class="bu">min</span>(image_array))</span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="bu">print</span>(<span class="st">'The max pixel value is'</span>,np.<span class="bu">max</span>(image_array))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -942,7 +947,7 @@ The max pixel value is 255</code></pre>
 </div>
 <section id="visualize-the-same-image-but-as-a-numpy-array" class="level4">
 <h4 class="anchored" data-anchor-id="visualize-the-same-image-but-as-a-numpy-array">Visualize the same image but as a Numpy Array</h4>
-<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170531506,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:640,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="449ecd41-1b3b-4097-d0ec-a449774cc05f">
+<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:640,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170531506,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="449ecd41-1b3b-4097-d0ec-a449774cc05f">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>plt.imshow(image_array)</span>
 <span id="cb24-2"><a href="#cb24-2"></a>plt.title(<span class="st">'Ferrari F1 car'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -954,7 +959,7 @@ The max pixel value is 255</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170597297,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:453,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="d2c340b7-4a9d-4f65-9719-521adf4ccebf">
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:453,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170597297,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="d2c340b7-4a9d-4f65-9719-521adf4ccebf">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># Extract and visualize the part of the image containing the driver of the car</span></span>
 <span id="cb25-2"><a href="#cb25-2"></a>plt.imshow(image_array[<span class="dv">400</span>:<span class="dv">600</span>,<span class="dv">900</span>:<span class="dv">1100</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -968,7 +973,7 @@ The max pixel value is 255</code></pre>
 </section>
 <section id="observing-the-three-channels-in-the-image" class="level4">
 <h4 class="anchored" data-anchor-id="observing-the-three-channels-in-the-image">Observing the three channels in the Image</h4>
-<div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170372844,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:20,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="739703b6-380d-48e1-f478-0ddbb221e864">
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:20,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170372844,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="739703b6-380d-48e1-f478-0ddbb221e864">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#Each channel will be a matrix of shape (H, W)</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="bu">print</span>(<span class="st">'Shape of channel 1:'</span>,image_array[:,:,<span class="dv">0</span>].shape)</span>
 <span id="cb26-3"><a href="#cb26-3"></a><span class="bu">print</span>(<span class="st">'Shape of channel 2:'</span>,image_array[:,:,<span class="dv">1</span>].shape)</span>
@@ -979,7 +984,7 @@ Shape of channel 2: (1280, 1920)
 Shape of channel 3: (1280, 1920)</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170093169,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:3051,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="3f3f0605-e2c6-488b-90fa-b0399daa146d">
+<div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3051,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170093169,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3f3f0605-e2c6-488b-90fa-b0399daa146d">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">15</span>))</span>
 <span id="cb28-2"><a href="#cb28-2"></a></span>
 <span id="cb28-3"><a href="#cb28-3"></a>axes[<span class="dv">0</span>].imshow(image_array[:,:,<span class="dv">0</span>],cmap<span class="op">=</span><span class="st">'Reds_r'</span>)</span>
@@ -996,7 +1001,7 @@ Shape of channel 3: (1280, 1920)</code></pre>
 </section>
 <section id="convert-the-image-to-grayscale" class="level4">
 <h4 class="anchored" data-anchor-id="convert-the-image-to-grayscale">Convert the image to grayscale</h4>
-<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170845197,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:43,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="a20dfdf3-9f4c-43e2-d5fd-1268e1b17abe">
+<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:43,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170845197,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a20dfdf3-9f4c-43e2-d5fd-1268e1b17abe">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># The original image is converted to grayscale and then read as a numpy array</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a>gray_uploaded_image <span class="op">=</span> uploaded_image.convert(<span class="st">"L"</span>)</span>
 <span id="cb29-3"><a href="#cb29-3"></a>gray_image_array <span class="op">=</span> np.array(gray_uploaded_image)</span>
@@ -1006,7 +1011,7 @@ Shape of channel 3: (1280, 1920)</code></pre>
 <pre><code>(1280, 1920)</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170893879,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:678,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="b3b6c10d-3f1b-4d36-ce76-47fe005dfa9a">
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:678,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753170893879,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="b3b6c10d-3f1b-4d36-ce76-47fe005dfa9a">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>plt.imshow(gray_image_array, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
 <span id="cb31-2"><a href="#cb31-2"></a>plt.title(<span class="st">'Grayscale version of the image'</span>)</span>
 <span id="cb31-3"><a href="#cb31-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1031,7 +1036,7 @@ Shape of channel 3: (1280, 1920)</code></pre>
 <section id="dataset-structure" class="level1">
 <h1>Dataset Structure</h1>
 <p>A <a href="https://www.kaggle.com/datasets/aleemaparakatta/cats-and-dogs-mini-dataset">dataset</a> was downloaded from Kaggle. This is present as a zip file. Within it are two directories named cats_set and dogs_set, each of which contain images belonging to the respective categories</p>
-<div id="cell-39" class="cell">
+<div id="cell-38" class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># The directories containing the images are extracted from the zip file</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="im">import</span> os</span>
 <span id="cb32-3"><a href="#cb32-3"></a></span>
@@ -1053,7 +1058,7 @@ Shape of channel 3: (1280, 1920)</code></pre>
 <h1>Part 2</h1>
 <p>Problem * The images are present within the directories and they currently have no labels * The images are of different resolutions (H &amp; W are different for the images)</p>
 <p>Possible approach * Loop through all images and store as an array. The names of the directory can be stored as corresponding label * Resize all images to the same size and flatten to have them in a single dimension. These transformations will depend on the models being used and the specific usecases</p>
-<div id="cell-43" class="cell">
+<div id="cell-42" class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">def</span> create_image_and_labels(data_dir, target_size<span class="op">=</span>(<span class="dv">200</span>,<span class="dv">200</span>)):</span>
 <span id="cb33-2"><a href="#cb33-2"></a></span>
 <span id="cb33-3"><a href="#cb33-3"></a>  <span class="co"># Array for images and labels respectively</span></span>
@@ -1081,17 +1086,17 @@ Shape of channel 3: (1280, 1920)</code></pre>
 <span id="cb33-25"><a href="#cb33-25"></a></span>
 <span id="cb33-26"><a href="#cb33-26"></a>  <span class="cf">return</span> np.array(images), np.array(labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-44" class="cell">
+<div id="cell-43" class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>images, labels <span class="op">=</span> create_image_and_labels(<span class="st">'/content/dataset'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are a total of 1000 images. Each image was <em>resized</em> to (200,200) and converted to <em>grayscale</em> followed by <em>flattening</em>. This makes each image have a dimension of 40000</p>
-<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753173643170,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:25,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="97289833-91bc-4f00-9022-bab3edc76e70">
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:25,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753173643170,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="97289833-91bc-4f00-9022-bab3edc76e70">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>images.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>(1000, 40000)</code></pre>
 </div>
 </div>
-<div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753173785039,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:286,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="6d78f206-3126-47aa-c9d8-6e0d92165063">
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:286,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753173785039,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6d78f206-3126-47aa-c9d8-6e0d92165063">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Visualizing one of the images in our dataset. The transformations are reversed for the sake of visualizing</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a>plt.imshow(images[<span class="dv">0</span>].reshape(<span class="dv">200</span>,<span class="dv">200</span>)<span class="op">*</span><span class="dv">255</span>)</span>
 <span id="cb37-3"><a href="#cb37-3"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1106,13 +1111,13 @@ Shape of channel 3: (1280, 1920)</code></pre>
 </section>
 <section id="part-3" class="level1">
 <h1>Part 3</h1>
-<div id="cell-49" class="cell">
+<div id="cell-48" class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> torch</span>
 <span id="cb38-2"><a href="#cb38-2"></a><span class="im">import</span> torchvision</span>
 <span id="cb38-3"><a href="#cb38-3"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets, transforms</span>
 <span id="cb38-4"><a href="#cb38-4"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-50" class="cell">
+<div id="cell-49" class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># https://docs.pytorch.org/vision/0.8/transforms.html#torchvision.transforms.Compose</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a></span>
 <span id="cb39-3"><a href="#cb39-3"></a>transform <span class="op">=</span> transforms.Compose([</span>
@@ -1121,17 +1126,17 @@ Shape of channel 3: (1280, 1920)</code></pre>
 <span id="cb39-6"><a href="#cb39-6"></a>    transforms.Normalize(mean<span class="op">=</span>[<span class="fl">0.5</span>]<span class="op">*</span><span class="dv">3</span>, std<span class="op">=</span>[<span class="fl">0.5</span>]<span class="op">*</span><span class="dv">3</span>)</span>
 <span id="cb39-7"><a href="#cb39-7"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-51" class="cell">
+<div id="cell-50" class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># https://docs.pytorch.org/vision/main/generated/torchvision.datasets.ImageFolder.html#torchvision.datasets.ImageFolder</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a></span>
 <span id="cb40-3"><a href="#cb40-3"></a>dataset <span class="op">=</span> datasets.ImageFolder(root<span class="op">=</span><span class="st">"/content/dataset"</span>, transform<span class="op">=</span>transform)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-52" class="cell">
+<div id="cell-51" class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a></span>
 <span id="cb41-3"><a href="#cb41-3"></a>dataloader <span class="op">=</span> DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">4</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753177334856,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:197,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;}}}" data-outputid="c9744f4b-7bf7-43de-c47d-2d828cbd7243">
+<div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:197,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753177334856,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aniruddha A&quot;,&quot;userId&quot;:&quot;06401484481442754687&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c9744f4b-7bf7-43de-c47d-2d828cbd7243">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co">#For visualizing, we undo the transformation</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="kw">def</span> imshow(img_tensor):</span>
 <span id="cb42-3"><a href="#cb42-3"></a>    img <span class="op">=</span> img_tensor <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> <span class="fl">0.5</span></span>
@@ -1177,7 +1182,7 @@ Shape of channel 3: (1280, 1920)</code></pre>
       a.appendChild(i);
       window.document.body.appendChild(a);
     }
-    setColorSchemeToggle(hasAlternateSentinel())
+    window.setColorSchemeToggle(window.hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1577,13 +1582,13 @@ Shape of channel 3: (1280, 1920)</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="pagination-link" aria-label="A Practical Guide to Image Manipulation with Pillow and OpenCV">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span>
+      <a href="../week-4/index.html" class="pagination-link" aria-label="Week-4">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week-4</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week-4/preprocessing_images.html" class="pagination-link" aria-label="--- Data Augmentation Examples (PyTorch v2) ---">
-        <span class="nav-page-text">— Data Augmentation Examples (PyTorch v2) —</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="pagination-link" aria-label="A Practical Guide to Image Manipulation with Pillow and OpenCV">
+        <span class="nav-page-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

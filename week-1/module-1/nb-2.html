@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karthik Thiagarajan">
 
 <title>Plotting Simple Curves – Data Science Lab</title>
 <style>
@@ -386,12 +387,6 @@ window.Quarto = {
  <span class="menu-text">NumPy Arrays</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../week-1/module-1/nb-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contour Plots, 3D Plots, Optimisation</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -760,6 +755,12 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karthik Thiagarajan </p>
+          </div>
+  </div>
     
   
     
@@ -773,64 +774,47 @@ window.Quarto = {
 <section id="import-and-settings" class="level2">
 <h2 class="anchored" data-anchor-id="import-and-settings">Import and Settings</h2>
 <p>We will import <code>NumPy</code> and <code>matplotlib</code>. In addition, we will also start with some customised layout for the plot.</p>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755510176882,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:18,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-execution_count="1">
+<div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:13,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774148,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="partitioning-the-real-line" class="level2">
 <h2 class="anchored" data-anchor-id="partitioning-the-real-line">Partitioning the real line</h2>
-<p>In order to plot a curve, we need a set of <span class="math inline">\(x\)</span> values and the corresponding <span class="math inline">\(y\)</span> values. Since <span class="math inline">\(x\)</span> is the independent variable, we need to first generate a list of values for <span class="math inline">\(x\)</span>.</p>
-<p>In <code>NumPy</code>:</p>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="62ea2368-1981-4192-fe8c-81c649f6b7e4" data-execution_count="2">
+<p>In order to plot a curve, we need a set of <span class="math inline">\(x\)</span> values and the corresponding <span class="math inline">\(y\)</span> values. Since <span class="math inline">\(x\)</span> is the independent variable, we need to first generate a list of values for <span class="math inline">\(x\)</span>. This is done using the <code>linspace</code> method in NumPy. <code>np.linspace(a, b, n)</code> generates a sequence of <span class="math inline">\(n\)</span> numbers that are equally spaced between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, end-points included. As an example:</p>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:53,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="741c2a04-2c5c-418f-ef8e-ac2fd3a4c1a5" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">11</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
 </div>
 </div>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a731f5f3-ed39-41c4-bbb9-52405931e499" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(11,)</code></pre>
+</div>
+</div>
+<p>Here, <code>np.linspace(0, 1, 11)</code> generates a sequence of eleven numbers, starting from <span class="math inline">\(0\)</span> and ending at <span class="math inline">\(11\)</span>, with equal spacing. We could have also arrived at this result using the <code>arange</code> method by specifying a step size of <span class="math inline">\(0.1\)</span> and end-point that is greater than <span class="math inline">\(1\)</span>. But clearly, <code>linspace</code> is easier since it avoids these calculations:</p>
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="dd9d1ad6-fe93-420a-cf54-5dfc4c81df08" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
+</div>
+</div>
 </section>
 <section id="curves" class="level2">
 <h2 class="anchored" data-anchor-id="curves">Curves</h2>
-<p>We shall plot several curves, starting from simple curves to more complex ones. In this process, we will also learn how to add simple annotations to the plot.</p>
+<p>We shall plot several curves, starting from simple curves to more complex ones. In this process, we will also learn how to annotate plots.</p>
 <section id="curve-1" class="level3">
 <h3 class="anchored" data-anchor-id="curve-1">Curve-1</h3>
 <p>Plot <span class="math inline">\(y = x\)</span> for <span class="math inline">\(x \in [0, 1]\)</span>. Sample <span class="math inline">\(10\)</span> equally spaced points in this interval, inclusive of endpoints.</p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:448}}" data-outputid="e88b06b5-0786-4890-a097-e1fb0936433d" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb4-2"><a href="#cb4-2"></a>y <span class="op">=</span> x</span>
-<span id="cb4-3"><a href="#cb4-3"></a>plt.plot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nb-2_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>If we also wish to visualise the points, we can add a scatter plot along with the line plot.</p>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755510177157,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:114,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="fae265b4-e8c6-44c8-f863-caf1fd77c137" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>y <span class="op">=</span> x</span>
-<span id="cb5-3"><a href="#cb5-3"></a>plt.plot(x, y)<span class="op">;</span> <span class="co"># ; is added to suprress the output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nb-2_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="curve-2" class="level3">
-<h3 class="anchored" data-anchor-id="curve-2">Curve-2</h3>
-<p>Plot <span class="math inline">\(y = 5 - 3x\)</span> for <span class="math inline">\(x \in [-5, 5]\)</span>. Sample <span class="math inline">\(20\)</span> equally spaced points in this interval, inclusive of endpoints. Add a title to the plot which has the equation of the curve.</p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="6d3af438-c78b-4923-feb6-d91616defa8a" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>y <span class="op">=</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x</span>
-<span id="cb6-3"><a href="#cb6-3"></a>plt.plot(x, y)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>plt.title(<span class="st">'y = 5 - 3 x'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:124,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774323,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c4200e1f-1e4f-4111-ac1b-f6b65d85366b" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>y <span class="op">=</span> x</span>
+<span id="cb8-3"><a href="#cb8-3"></a>plt.plot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -839,23 +823,13 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section>
-<section id="curve-3" class="level3">
-<h3 class="anchored" data-anchor-id="curve-3">Curve-3</h3>
-<p>Plot <span class="math inline">\(y = x^2\)</span> for <span class="math inline">\(x \in [-1, 1]\)</span>. Try out four different samples for <code>x</code>:</p>
-<ul>
-<li><span class="math inline">\(5\)</span> equally spaced points in this interval, endpoints inclusive</li>
-<li><span class="math inline">\(10\)</span> equally spaced points in this interval, endpoints inclusive</li>
-<li><span class="math inline">\(20\)</span> equally spaced points in this interval, endpoints inclusive</li>
-<li><span class="math inline">\(50\)</span> equally spaced points in this interval, endpoints inclusive</li>
-</ul>
-<p>Observe the differences in these four plots. Which one would you choose? Add the equation of the curve as the title of the plot. Also add the x and y-axis to the plot.</p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:430}}" data-outputid="b42b09a3-7ef6-4ddd-a65a-d0bac9c02455" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>plt.plot(x, y)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>plt.axhline(color <span class="op">=</span> <span class="st">'black'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>plt.axvline(color <span class="op">=</span> <span class="st">'black'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>np.plot</code> connects the points that we have specified with the help of a straight line. If we also wish to visualise the location of the individual points, we can add a scatter plot along with the line plot. We will study scatter plots in greater detail in an upcoming notebook.</p>
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:145,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774468,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="398a0779-16e9-49e4-db43-2629ba91846e" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>y <span class="op">=</span> x</span>
+<span id="cb9-3"><a href="#cb9-3"></a>plt.scatter(x, y)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>plt.plot(x, y)<span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># ; suppresses output, compare with previous cell</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -864,30 +838,13 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section>
-<section id="curve-4" class="level3">
-<h3 class="anchored" data-anchor-id="curve-4">Curve-4</h3>
-<p>Plot <span class="math inline">\(y = 3\)</span> and <span class="math inline">\(x = 5\)</span> on the same plot. Color the first one green and the second one red. Limit your plot to the region <span class="math inline">\(x \in [0, 6]\)</span> and <span class="math inline">\(y \in [0, 6]\)</span>.</p>
-<ul>
-<li>Label the x and the y axes.</li>
-<li>Add a suitable title.</li>
-<li>Add a legend.</li>
-</ul>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="fb5a91a5-5df7-464d-86b6-99b73575b5c7" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># y = 3</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>y <span class="op">=</span> np.ones(<span class="dv">2</span>) <span class="op">*</span> <span class="dv">3</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">'blue'</span>, label <span class="op">=</span> <span class="st">'y = 3'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co"># x = 5</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>x <span class="op">=</span> np.ones(<span class="dv">2</span>) <span class="op">*</span> <span class="dv">5</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb8-9"><a href="#cb8-9"></a>plt.plot(x, y, color <span class="op">=</span> <span class="st">'red'</span>, label <span class="op">=</span> <span class="st">'x = 5'</span>)</span>
-<span id="cb8-10"><a href="#cb8-10"></a></span>
-<span id="cb8-11"><a href="#cb8-11"></a>plt.legend()</span>
-<span id="cb8-12"><a href="#cb8-12"></a>plt.title(<span class="st">'x = 5 and y = 3'</span>)</span>
-<span id="cb8-13"><a href="#cb8-13"></a>plt.axhline(color <span class="op">=</span> <span class="st">'black'</span>)</span>
-<span id="cb8-14"><a href="#cb8-14"></a>plt.axvline(color <span class="op">=</span> <span class="st">'black'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>;</code> after the plot command suppresses the output. We could have arrived at this line with the help of just two points, since it takes two distinct points to uniquely specify a line:</p>
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:146,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774615,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="bb7759a6-448a-4423-d9fc-03e1c9e98a66" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> x</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co"># order of plot and scatter doesn't matter here</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>plt.plot(x, y)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>plt.scatter(x, y)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -896,58 +853,167 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>The number of points chosen on the x-axis didn’t matter here. But we will soon see the effect that it has when we plot non-linear functions of the input.</p>
+</section>
+<section id="curve-2" class="level3">
+<h3 class="anchored" data-anchor-id="curve-2">Curve-2</h3>
+<p>Plot <span class="math inline">\(y = 5 - 3x\)</span> for <span class="math inline">\(x \in [-5, 5]\)</span>. Sample <span class="math inline">\(20\)</span> equally spaced points in this interval, inclusive of endpoints. Add a title to the plot which has the equation of the curve.</p>
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:156,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774772,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="88a52897-c8d2-4668-d399-1c96c0a47011" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>y <span class="op">=</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x</span>
+<span id="cb11-3"><a href="#cb11-3"></a>plt.plot(x, y)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>plt.title(<span class="st">'y = 5 - 3 x'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nb-2_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="curve-3" class="level3">
+<h3 class="anchored" data-anchor-id="curve-3">Curve-3</h3>
+<p>Plot <span class="math inline">\(y = x^2\)</span> for <span class="math inline">\(x \in [-1, 1]\)</span>. Try out four different partitions for <code>x</code>:</p>
+<ul>
+<li><span class="math inline">\(5\)</span> equally spaced points in this interval, endpoints inclusive</li>
+<li><span class="math inline">\(10\)</span> equally spaced points in this interval, endpoints inclusive</li>
+<li><span class="math inline">\(20\)</span> equally spaced points in this interval, endpoints inclusive</li>
+<li><span class="math inline">\(50\)</span> equally spaced points in this interval, endpoints inclusive</li>
+</ul>
+<p>Observe the differences in these four plots. Which one would you choose? Add the equation of the curve as the title of the plot. Also add the x and y-axis to the plot.</p>
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:164,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774937,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="ca93fa30-30d8-4c60-8a53-61080cdc10c6" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 5 points</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>plt.plot(x, y)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>plt.axhline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb12-6"><a href="#cb12-6"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb12-7"><a href="#cb12-7"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb12-8"><a href="#cb12-8"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb12-9"><a href="#cb12-9"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb12-10"><a href="#cb12-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nb-2_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice the effect of using a small number of points. Recall that <code>plot.plot</code> connects the points we have given using a straight line. To get a smoother curve that resembles <span class="math inline">\(y = x^2\)</span>, we need a finer partition of the x-axis.</p>
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:150,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775088,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f154c408-01e5-4ff7-d133-24c47c0cd9b5" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 50 points</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">50</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a>plt.plot(x, y)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>plt.axhline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb13-6"><a href="#cb13-6"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb13-7"><a href="#cb13-7"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb13-8"><a href="#cb13-8"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb13-9"><a href="#cb13-9"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb13-10"><a href="#cb13-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nb-2_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Though the curve appears smooth to our eyes given our finite resolution, note that <code>plt.plot</code> continues to connect consecutive points with a straight lines.</p>
+</section>
+<section id="curve-4" class="level3">
+<h3 class="anchored" data-anchor-id="curve-4">Curve-4</h3>
+<p>Plot <span class="math inline">\(y = 3\)</span> and <span class="math inline">\(x = 5\)</span> on the same plot. Color the first one blue and the second one red. Limit your plot to the region <span class="math inline">\(x \in [0, 6]\)</span> and <span class="math inline">\(y \in [0, 6]\)</span>.</p>
+<ul>
+<li>Label the x and the y axes.</li>
+<li>Add a suitable title.</li>
+<li>Add a legend.</li>
+</ul>
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:184,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775273,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c622abe5-1078-4130-cc75-d6d5d76a8e6e" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># y = 3</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">6</span>])</span>
+<span id="cb14-3"><a href="#cb14-3"></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">3</span>])</span>
+<span id="cb14-4"><a href="#cb14-4"></a>plt.plot(x, y,</span>
+<span id="cb14-5"><a href="#cb14-5"></a>         color<span class="op">=</span><span class="st">'blue'</span>,</span>
+<span id="cb14-6"><a href="#cb14-6"></a>         label<span class="op">=</span><span class="st">'y = 3'</span>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="co"># x = 5</span></span>
+<span id="cb14-9"><a href="#cb14-9"></a>x <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">5</span>])</span>
+<span id="cb14-10"><a href="#cb14-10"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">6</span>])</span>
+<span id="cb14-11"><a href="#cb14-11"></a>plt.plot(x, y,</span>
+<span id="cb14-12"><a href="#cb14-12"></a>         color<span class="op">=</span><span class="st">'red'</span>,</span>
+<span id="cb14-13"><a href="#cb14-13"></a>         label<span class="op">=</span><span class="st">'x = 5'</span>)</span>
+<span id="cb14-14"><a href="#cb14-14"></a></span>
+<span id="cb14-15"><a href="#cb14-15"></a>plt.legend()</span>
+<span id="cb14-16"><a href="#cb14-16"></a>plt.title(<span class="st">'x = 5 and y = 3'</span>)</span>
+<span id="cb14-17"><a href="#cb14-17"></a>plt.axhline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb14-18"><a href="#cb14-18"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb14-19"><a href="#cb14-19"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb14-20"><a href="#cb14-20"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
+<span id="cb14-21"><a href="#cb14-21"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
+<span id="cb14-22"><a href="#cb14-22"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nb-2_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="subplots" class="level2">
 <h2 class="anchored" data-anchor-id="subplots">Subplots</h2>
-<p>Sometimes we may have to plot multiple objects, each in a separate plot. Plot the following curves, each in a separe plot:</p>
+<p>Sometimes we may have to plot multiple curves, each in a separate plot. Plot the following curves, each in a separe plot:</p>
 <ul>
 <li><p><span class="math inline">\(y = \ln x, \quad x \in \left( \cfrac{1}{e^2}, e^3 \right)\)</span></p></li>
 <li><p><span class="math inline">\(y = e^x, \quad x \in (0, 3)\)</span></p></li>
 <li><p><span class="math inline">\(y = \sin x, \quad x \in [0, 2 \pi]\)</span></p></li>
-<li><p><span class="math inline">\(y = \cfrac{1}{x}, \quad x \in (0, 5)\)</span></p></li>
+<li><p><span class="math inline">\(y = \cfrac{1}{x}, \quad x \in (1, 5)\)</span></p></li>
 </ul>
 <p>Title each curve appropriately.</p>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:719}}" data-outputid="8d76e990-fa67-45eb-c58e-0ee88086b909" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># rcParams is like a dict</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># controls various configurations</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>]</span>
-<span id="cb9-4"><a href="#cb9-4"></a>plt.rcParams[<span class="st">'font.size'</span>] <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co"># Plot-1</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
-<span id="cb9-8"><a href="#cb9-8"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span> <span class="op">/</span> np.e <span class="op">**</span> <span class="dv">2</span>, np.e <span class="op">**</span> <span class="dv">3</span>)</span>
-<span id="cb9-9"><a href="#cb9-9"></a>y <span class="op">=</span> np.log(x)</span>
-<span id="cb9-10"><a href="#cb9-10"></a>plt.plot(x, y)</span>
-<span id="cb9-11"><a href="#cb9-11"></a>plt.title(<span class="st">'y = ln x'</span>)</span>
-<span id="cb9-12"><a href="#cb9-12"></a></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co"># Plot-2</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb9-15"><a href="#cb9-15"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>)</span>
-<span id="cb9-16"><a href="#cb9-16"></a>y <span class="op">=</span> np.exp(x)</span>
-<span id="cb9-17"><a href="#cb9-17"></a>plt.plot(x, y)</span>
-<span id="cb9-18"><a href="#cb9-18"></a>plt.title(<span class="st">'$y = e^x$'</span>)</span>
-<span id="cb9-19"><a href="#cb9-19"></a></span>
-<span id="cb9-20"><a href="#cb9-20"></a><span class="co"># Plot-3</span></span>
-<span id="cb9-21"><a href="#cb9-21"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb9-22"><a href="#cb9-22"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi)</span>
-<span id="cb9-23"><a href="#cb9-23"></a>y <span class="op">=</span> np.sin(x)</span>
-<span id="cb9-24"><a href="#cb9-24"></a>plt.plot(x, y)</span>
-<span id="cb9-25"><a href="#cb9-25"></a>plt.title(<span class="st">'y = sin x'</span>)</span>
-<span id="cb9-26"><a href="#cb9-26"></a></span>
-<span id="cb9-27"><a href="#cb9-27"></a><span class="co"># Plot-4</span></span>
-<span id="cb9-28"><a href="#cb9-28"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb9-29"><a href="#cb9-29"></a>x <span class="op">=</span> np.linspace(<span class="fl">0.1</span>, <span class="dv">5</span>)</span>
-<span id="cb9-30"><a href="#cb9-30"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> x</span>
-<span id="cb9-31"><a href="#cb9-31"></a>plt.plot(x, y)</span>
-<span id="cb9-32"><a href="#cb9-32"></a>plt.title(<span class="st">'y = 1 / x'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>Text(0.5, 1.0, 'y = 1 / x')</code></pre>
+<p>We will first increase the size of the plotting space. This can be manipulated by a parameter called <code>figure.figsize</code> which can be accessed via an object called <code>rcParams</code>, which can be used to change the configuration parameters for various aspects of the plot.</p>
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775275,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># rcParams is like a dict</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># controls various configurations</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><code>plt.subplot(r, c, ind)</code> divides the plotting region into <span class="math inline">\(r \times c\)</span> individual plotting windows and selects the plot at index <code>ind</code>. The index is set to <span class="math inline">\(1\)</span> for the top-left plot and increases by one point from left to right and top to bottom. The top-left plot window has index <span class="math inline">\(1\)</span>, the last window in the first row has index <span class="math inline">\(c\)</span>, and so on.</p>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:642,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775916,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="e08f54f4-e614-4502-9488-b207783750cf" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Plot-1</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb16-3"><a href="#cb16-3"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span> <span class="op">/</span> np.e <span class="op">**</span> <span class="dv">2</span>, np.e <span class="op">**</span> <span class="dv">3</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>y <span class="op">=</span> np.log(x)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>plt.plot(x, y)</span>
+<span id="cb16-6"><a href="#cb16-6"></a>plt.title(<span class="st">'y = ln x'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7"></a></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co"># Plot-2</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb16-10"><a href="#cb16-10"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb16-11"><a href="#cb16-11"></a>y <span class="op">=</span> np.exp(x)</span>
+<span id="cb16-12"><a href="#cb16-12"></a>plt.plot(x, y)</span>
+<span id="cb16-13"><a href="#cb16-13"></a><span class="co"># $ ... $ is used to render LaTeX</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a>plt.title(<span class="st">'$y = e^x$'</span>)</span>
+<span id="cb16-15"><a href="#cb16-15"></a></span>
+<span id="cb16-16"><a href="#cb16-16"></a><span class="co"># Plot-3</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb16-18"><a href="#cb16-18"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi)</span>
+<span id="cb16-19"><a href="#cb16-19"></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb16-20"><a href="#cb16-20"></a>plt.plot(x, y)</span>
+<span id="cb16-21"><a href="#cb16-21"></a>plt.title(<span class="st">'y = sin x'</span>)</span>
+<span id="cb16-22"><a href="#cb16-22"></a></span>
+<span id="cb16-23"><a href="#cb16-23"></a><span class="co"># Plot-4</span></span>
+<span id="cb16-24"><a href="#cb16-24"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb16-25"><a href="#cb16-25"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb16-26"><a href="#cb16-26"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> x</span>
+<span id="cb16-27"><a href="#cb16-27"></a>plt.plot(x, y)</span>
+<span id="cb16-28"><a href="#cb16-28"></a>plt.title(<span class="st">'y = 1 / x'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="nb-2_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="nb-2_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

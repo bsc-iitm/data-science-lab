@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Karthik Thiagarajan">
 
 <title>Matrices – Data Science Lab</title>
 <style>
@@ -386,12 +387,6 @@ window.Quarto = {
  <span class="menu-text">NumPy Arrays</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../week-1/module-1/nb-6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Contour Plots, 3D Plots, Optimisation</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -755,10 +750,13 @@ window.Quarto = {
   <li><a href="#inner-product-of-a-row-vector-and-a-column-vector" id="toc-inner-product-of-a-row-vector-and-a-column-vector" class="nav-link" data-scroll-target="#inner-product-of-a-row-vector-and-a-column-vector">(Inner) Product of a (row) vector and a (column) vector</a></li>
   <li><a href="#outer-product-of-a-column-vector-and-a-row-vector" id="toc-outer-product-of-a-column-vector-and-a-row-vector" class="nav-link" data-scroll-target="#outer-product-of-a-column-vector-and-a-row-vector">(Outer) Product of a (column) vector and a (row) vector</a></li>
   </ul></li>
+  <li><a href="#special-matrices" id="toc-special-matrices" class="nav-link" data-scroll-target="#special-matrices">Special matrices</a>
+  <ul class="collapse">
   <li><a href="#matrix-of-zeros" id="toc-matrix-of-zeros" class="nav-link" data-scroll-target="#matrix-of-zeros">Matrix of zeros</a></li>
   <li><a href="#matrix-of-ones" id="toc-matrix-of-ones" class="nav-link" data-scroll-target="#matrix-of-ones">Matrix of ones</a></li>
   <li><a href="#identity-matrix" id="toc-identity-matrix" class="nav-link" data-scroll-target="#identity-matrix">Identity matrix</a></li>
   <li><a href="#diagonal-matrices" id="toc-diagonal-matrices" class="nav-link" data-scroll-target="#diagonal-matrices">Diagonal matrices</a></li>
+  </ul></li>
   <li><a href="#indexing-and-slicing" id="toc-indexing-and-slicing" class="nav-link" data-scroll-target="#indexing-and-slicing">Indexing and Slicing</a>
   <ul class="collapse">
   <li><a href="#example-1-indexing" id="toc-example-1-indexing" class="nav-link" data-scroll-target="#example-1-indexing">Example-1: Indexing</a></li>
@@ -769,9 +767,14 @@ window.Quarto = {
   <li><a href="#other-matrix-operations" id="toc-other-matrix-operations" class="nav-link" data-scroll-target="#other-matrix-operations">Other Matrix Operations</a>
   <ul class="collapse">
   <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank">Rank</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">Determinant</a></li>
   <li><a href="#inverse" id="toc-inverse" class="nav-link" data-scroll-target="#inverse">Inverse</a></li>
   <li><a href="#pseuodoinverse" id="toc-pseuodoinverse" class="nav-link" data-scroll-target="#pseuodoinverse">Pseuodoinverse</a></li>
-  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#system-of-linear-equations" id="toc-system-of-linear-equations" class="nav-link" data-scroll-target="#system-of-linear-equations">System of Linear Equations</a></li>
+  <li><a href="#least-squares-solution" id="toc-least-squares-solution" class="nav-link" data-scroll-target="#least-squares-solution">Least Squares Solution</a></li>
+  <li><a href="#eigenvalues-and-eigenvectors-symmetric" id="toc-eigenvalues-and-eigenvectors-symmetric" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors-symmetric">Eigenvalues and Eigenvectors (symmetric)</a></li>
+  <li><a href="#eigenvalues-and-eigenvectors-general" id="toc-eigenvalues-and-eigenvectors-general" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors-general">Eigenvalues and Eigenvectors (general)</a></li>
+  <li><a href="#svd" id="toc-svd" class="nav-link" data-scroll-target="#svd">SVD</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-3.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-3.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
@@ -789,6 +792,12 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Karthik Thiagarajan </p>
+          </div>
+  </div>
     
   
     
@@ -801,7 +810,7 @@ window.Quarto = {
 
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">Import</h2>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947146350,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:631,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-execution_count="147">
+<div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:94,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056000,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -816,14 +825,14 @@ window.Quarto = {
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="015020fd-ad28-4ee7-c778-16ca8d0270a0" data-execution_count="148">
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056009,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9ed7afc5-20dd-48c6-87dd-16dedbabe990" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>M <span class="op">=</span> np.array([</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb2-3"><a href="#cb2-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb2-4"><a href="#cb2-4"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
 <span id="cb2-5"><a href="#cb2-5"></a>])</span>
 <span id="cb2-6"><a href="#cb2-6"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="148">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])</code></pre>
@@ -850,17 +859,18 @@ window.Quarto = {
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="aab2c0c8-a67d-4bc5-d40b-af0960e3da0e" data-execution_count="149">
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056013,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="48d9b1e5-5048-482c-e059-fa1a5eec4cfe" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb4-2"><a href="#cb4-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]])</span>
-<span id="cb4-4"><a href="#cb4-4"></a>B <span class="op">=</span> np.array([</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    [<span class="dv">5</span>, <span class="dv">6</span>],</span>
-<span id="cb4-6"><a href="#cb4-6"></a>    [<span class="dv">7</span>, <span class="dv">8</span>]</span>
-<span id="cb4-7"><a href="#cb4-7"></a>])</span>
-<span id="cb4-8"><a href="#cb4-8"></a>C <span class="op">=</span> A <span class="op">+</span> B</span>
-<span id="cb4-9"><a href="#cb4-9"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="149">
+<span id="cb4-3"><a href="#cb4-3"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb4-4"><a href="#cb4-4"></a>])</span>
+<span id="cb4-5"><a href="#cb4-5"></a>B <span class="op">=</span> np.array([</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    [<span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    [<span class="dv">7</span>, <span class="dv">8</span>]</span>
+<span id="cb4-8"><a href="#cb4-8"></a>])</span>
+<span id="cb4-9"><a href="#cb4-9"></a>C <span class="op">=</span> A <span class="op">+</span> B</span>
+<span id="cb4-10"><a href="#cb4-10"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>array([[ 6,  8],
        [10, 12]])</code></pre>
 </div>
@@ -885,14 +895,14 @@ window.Quarto = {
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147181,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:41,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="d8f2d8ff-4c66-40d7-960b-d1483687a08d" data-execution_count="150">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056015,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6bce9353-942b-4158-e593-3aefb33fc980" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>M <span class="op">=</span> np.array([</span>
 <span id="cb6-2"><a href="#cb6-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb6-3"><a href="#cb6-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
 <span id="cb6-4"><a href="#cb6-4"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
 <span id="cb6-5"><a href="#cb6-5"></a>])</span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="dv">3</span> <span class="op">*</span> M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="150">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>array([[ 3,  6,  9],
        [12, 15, 18],
        [21, 24, 27]])</code></pre>
@@ -919,7 +929,7 @@ window.Quarto = {
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147181,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:37,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="a8197fc8-094d-4638-d4df-0c87ece05c12" data-execution_count="151">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056018,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="55e86528-ef27-4b7d-ed94-5ba55eb904be" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb8-3"><a href="#cb8-3"></a>    [<span class="dv">3</span>, <span class="dv">4</span>]</span>
@@ -930,7 +940,7 @@ window.Quarto = {
 <span id="cb8-8"><a href="#cb8-8"></a>])</span>
 <span id="cb8-9"><a href="#cb8-9"></a>C <span class="op">=</span> A <span class="op">*</span> B</span>
 <span id="cb8-10"><a href="#cb8-10"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="151">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>array([[ 5, 12],
        [21, 32]])</code></pre>
 </div>
@@ -960,13 +970,13 @@ f(-3) &amp; f(-4)
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>, this becomes:</p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d0c090ed-7d1c-4de9-8a29-5b4cd2573bd0" data-execution_count="152">
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:17,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056035,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6b1290b7-62aa-41c5-c37d-1dd22af20db7" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    [<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb10-3"><a href="#cb10-3"></a>    [<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>]</span>
 <span id="cb10-4"><a href="#cb10-4"></a>])</span>
 <span id="cb10-5"><a href="#cb10-5"></a>np.<span class="bu">abs</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="152">
+<div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>array([[1, 2],
        [3, 4]])</code></pre>
 </div>
@@ -986,13 +996,13 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="34b74ba5-acdd-409d-e3df-df0981e659a2" data-execution_count="153">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056039,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9e88c626-5230-4fe5-dcef-29ef8d655dbf" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb12-2"><a href="#cb12-2"></a>    [<span class="dv">1</span>, np.sqrt(<span class="dv">2</span>)],</span>
 <span id="cb12-3"><a href="#cb12-3"></a>    [np.sqrt(<span class="dv">3</span>), <span class="dv">2</span>]</span>
 <span id="cb12-4"><a href="#cb12-4"></a>])</span>
 <span id="cb12-5"><a href="#cb12-5"></a>A <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="153">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>array([[1., 2.],
        [3., 4.]])</code></pre>
 </div>
@@ -1017,35 +1027,35 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4b6a0636-a0a4-49e8-df8e-f2b4c12c9254" data-execution_count="154">
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056050,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="8c89e9f1-683f-4b69-ee99-c3896570be87" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>M <span class="op">=</span> np.array([</span>
 <span id="cb14-2"><a href="#cb14-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb14-3"><a href="#cb14-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
 <span id="cb14-4"><a href="#cb14-4"></a>])</span>
 <span id="cb14-5"><a href="#cb14-5"></a>np.transpose(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="154">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>array([[1, 4],
        [2, 5],
        [3, 6]])</code></pre>
 </div>
 </div>
 <p>Alternatively:</p>
-<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147182,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:26,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="2e549bc1-d2d5-44f0-d267-04cd6c0a0214" data-execution_count="155">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056053,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3c7dc1c3-3be8-4c26-c697-1e0d56ec993e" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>M <span class="op">=</span> np.array([</span>
 <span id="cb16-2"><a href="#cb16-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb16-3"><a href="#cb16-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
 <span id="cb16-4"><a href="#cb16-4"></a>])</span>
 <span id="cb16-5"><a href="#cb16-5"></a>M.transpose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="155">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>array([[1, 4],
        [2, 5],
        [3, 6]])</code></pre>
 </div>
 </div>
 <p>Equivalently, we have:</p>
-<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147182,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:23,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="09a9b35a-6317-4f4b-c4c8-02ff2cd800b8" data-execution_count="156">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056055,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c831b33e-2fe9-4e33-f46a-f2e42a2eff44" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>M.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="156">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>array([[1, 4],
        [2, 5],
        [3, 6]])</code></pre>
@@ -1055,8 +1065,7 @@ B_{ij} = A_{ij}^2
 </section>
 <section id="shape-and-dimension-of-a-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="shape-and-dimension-of-a-matrix">Shape and dimension of a matrix</h2>
-<p>Matrices are “two dimensional” arrays. So all matrices in <code>NumPy</code> have array-dimension equal to two. The shape of the <code>NumPy</code> array gives what we usually call the dimension of the matrix in the linear algebra sense.</p>
-<p>Explore these two ideas for:</p>
+<p>Matrices are “two dimensional” arrays. So all matrices in <code>NumPy</code> have array-dimension equal to two. The shape of the <code>NumPy</code> array gives what we usually call the dimension of the matrix in the linear algebra sense. Let us explore these two ideas for:</p>
 <p><span class="math display">\[
 \mathbf{M} = \begin{bmatrix}
 1 &amp; 2 &amp; 3\\
@@ -1064,7 +1073,7 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1f53d38c-b2ea-4c61-a1ec-7fee33b9ba97" data-execution_count="157">
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056057,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="d452dd72-ce16-4c14-ee52-8d9322ddfd5d" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>M <span class="op">=</span> np.array([</span>
 <span id="cb20-2"><a href="#cb20-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb20-3"><a href="#cb20-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
@@ -1076,15 +1085,16 @@ B_{ij} = A_{ij}^2
 2</code></pre>
 </div>
 </div>
+<p><code>M</code> is a two dimensional NumPy array of shape <span class="math inline">\((2, 3)\)</span> which represents a matrix <span class="math inline">\(\mathbf{M} \in \mathbb{R}^{2 \times 3}\)</span>.</p>
 </section>
 <section id="vectors-as-matrices" class="level2">
 <h2 class="anchored" data-anchor-id="vectors-as-matrices">Vectors as matrices</h2>
 <p>Each vector can be viewed as a matrix. Column vectors are matrices of shape <span class="math inline">\((d, 1)\)</span>. Row vectors are matrices of shape <span class="math inline">\((1, d)\)</span>. Let us look at how NumPy treats both these cases:</p>
-<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="44a1e281-0261-4281-8bc7-a09aefdf1227" data-execution_count="158">
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056059,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3259d85c-4fc5-42f1-efde-63b8c5bb06c6" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>x <span class="op">=</span> np.array([</span>
 <span id="cb22-2"><a href="#cb22-2"></a>    [<span class="dv">1</span>],</span>
 <span id="cb22-3"><a href="#cb22-3"></a>    [<span class="dv">2</span>],</span>
-<span id="cb22-4"><a href="#cb22-4"></a>     [<span class="dv">3</span>]</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    [<span class="dv">3</span>]</span>
 <span id="cb22-5"><a href="#cb22-5"></a>])</span>
 <span id="cb22-6"><a href="#cb22-6"></a><span class="bu">print</span>(x.shape)</span>
 <span id="cb22-7"><a href="#cb22-7"></a><span class="bu">print</span>(x.ndim)</span>
@@ -1093,13 +1103,13 @@ B_{ij} = A_{ij}^2
 <pre><code>(3, 1)
 2</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="158">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>array([[1],
        [2],
        [3]])</code></pre>
 </div>
 </div>
-<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147182,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:14,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="205673b5-8efa-4d2a-8e67-9170e359c200" data-execution_count="159">
+<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056074,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="12e11182-2e17-4777-a4cd-8f1e14b8106f" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>x <span class="op">=</span> np.array([</span>
 <span id="cb25-2"><a href="#cb25-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb25-3"><a href="#cb25-3"></a>])</span>
@@ -1110,55 +1120,56 @@ B_{ij} = A_{ij}^2
 <pre><code>(1, 3)
 2</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="159">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>array([[1, 2, 3]])</code></pre>
 </div>
 </div>
 <p>To create a row or column vector from a 1D NumPy array, we can use <code>np.newaxis</code>. Focus on the syntax for now; the reason we are doing this will become clear when we discuss indexing and slicing.</p>
-<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147182,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:12,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="d262f5a2-9327-4edf-efc6-5cf7c7c4a335" data-execution_count="160">
+<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:18,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056093,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="700a069e-0bbb-45cb-8779-b2df0e86d302" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Column vector</span></span>
 <span id="cb28-2"><a href="#cb28-2"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb28-3"><a href="#cb28-3"></a>x <span class="op">=</span> x[:, np.newaxis]</span>
 <span id="cb28-4"><a href="#cb28-4"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="160">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>(3, 1)</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147182,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:10,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="0e274178-afc2-4de5-e8f4-daeb70bdbd47" data-execution_count="161">
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056096,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="65d20385-ec8f-47d7-a79a-c0d86646c58e" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Row vector</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb30-3"><a href="#cb30-3"></a>x <span class="op">=</span> x[np.newaxis, :]</span>
 <span id="cb30-4"><a href="#cb30-4"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="161">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>(1, 3)</code></pre>
 </div>
 </div>
 <p>Alternatively, we can also use a method called <code>reshape</code>:</p>
-<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147183,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:8,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="2aa4c6d9-023d-44ea-c36a-a9888501b53b" data-execution_count="162">
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056099,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="0e5b6f09-3166-486a-c9f4-4881c97956da" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Column vector</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb32-3"><a href="#cb32-3"></a>x <span class="op">=</span> x.reshape(<span class="dv">3</span>, <span class="dv">1</span>)</span>
 <span id="cb32-4"><a href="#cb32-4"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="162">
+<div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(3, 1)</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147748,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:571,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="59741089-2172-4f0c-acb6-34b9803f502d" data-execution_count="163">
+<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056101,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="07483e08-6254-4bcc-cec3-fbad32ed4441" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Row vector</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb34-3"><a href="#cb34-3"></a>x <span class="op">=</span> x.reshape(<span class="dv">1</span>, <span class="dv">3</span>)</span>
 <span id="cb34-4"><a href="#cb34-4"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="163">
+<div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>(1, 3)</code></pre>
 </div>
 </div>
+<p><code>reshape</code> is a powerful method and will come in handy in various applications.</p>
 </section>
 <section id="products-involving-matrices-and-vectors" class="level2">
 <h2 class="anchored" data-anchor-id="products-involving-matrices-and-vectors">Products involving matrices and vectors</h2>
 <p>We will look at the following products: - matrix - matrix - matrix - vector - vector - matrix - vector - vector</p>
 <section id="product-of-two-matrices" class="level3">
 <h3 class="anchored" data-anchor-id="product-of-two-matrices">Product of two matrices</h3>
-<p>Given two matrices:</p>
+<p>Given two matrices compatible for multiplication:</p>
 <p><span class="math display">\[
 \textbf{A} = \begin{bmatrix}
 1 &amp; 2 &amp; 3\\
@@ -1177,7 +1188,7 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="21763bde-85ef-4bca-e9df-a38ea6987fef" data-execution_count="164">
+<div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056104,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="33c606a5-7ded-40b9-f380-70e11f3ea325" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb36-2"><a href="#cb36-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb36-3"><a href="#cb36-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
@@ -1189,7 +1200,7 @@ B_{ij} = A_{ij}^2
 <span id="cb36-9"><a href="#cb36-9"></a>])</span>
 <span id="cb36-10"><a href="#cb36-10"></a>C <span class="op">=</span> A <span class="op">@</span> B</span>
 <span id="cb36-11"><a href="#cb36-11"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="164">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>array([[ 52,  58],
        [124, 139]])</code></pre>
 </div>
@@ -1218,7 +1229,7 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="38096a6d-d359-4943-fab9-020daf751a3b" data-execution_count="165">
+<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056105,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="e3db9abd-2610-4e79-c95a-359363424c3d" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb38-2"><a href="#cb38-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb38-3"><a href="#cb38-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1227,7 +1238,7 @@ B_{ij} = A_{ij}^2
 <span id="cb38-6"><a href="#cb38-6"></a>x <span class="op">=</span> np.array([<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
 <span id="cb38-7"><a href="#cb38-7"></a>C <span class="op">=</span> A <span class="op">@</span> x</span>
 <span id="cb38-8"><a href="#cb38-8"></a>C</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>array([ 44, 107, 170])</code></pre>
 </div>
 </div>
@@ -1253,7 +1264,7 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2ed82920-5414-4834-b56e-74132b6ced47" data-execution_count="166">
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:115,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056221,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="4f45ad90-d1ce-4b60-bb24-cc637c246b37" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>A <span class="op">=</span> np.array([</span>
 <span id="cb40-2"><a href="#cb40-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb40-3"><a href="#cb40-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
@@ -1261,7 +1272,7 @@ B_{ij} = A_{ij}^2
 <span id="cb40-5"><a href="#cb40-5"></a>])</span>
 <span id="cb40-6"><a href="#cb40-6"></a>x <span class="op">=</span> np.array([<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>])</span>
 <span id="cb40-7"><a href="#cb40-7"></a>x <span class="op">@</span> A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div class="cell-output cell-output-display" data-execution_count="60">
 <pre><code>array([ 90, 111, 132])</code></pre>
 </div>
 </div>
@@ -1284,12 +1295,12 @@ B_{ij} = A_{ij}^2
 \mathbf{x}^T \mathbf{y} = 32
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147749,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:46,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="3f747d7c-df60-457e-c743-2bc642632c3b" data-execution_count="167">
+<div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056228,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="7d9d9ec6-c9ca-4240-d582-c56c3719cbd4" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb42-2"><a href="#cb42-2"></a>y <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb42-3"><a href="#cb42-3"></a>x <span class="op">@</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="167">
-<pre><code>32</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="61">
+<pre><code>np.int64(32)</code></pre>
 </div>
 </div>
 </section>
@@ -1315,33 +1326,61 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a1d43e37-b58d-4916-b30d-7b99135a7499" data-execution_count="168">
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056230,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="420a8135-6229-4cde-e948-7f9b5ab93da1" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb44-2"><a href="#cb44-2"></a>y <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb44-3"><a href="#cb44-3"></a>np.outer(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="168">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <pre><code>array([[ 4,  5,  6],
        [ 8, 10, 12],
        [12, 15, 18]])</code></pre>
 </div>
 </div>
 <p>Equivalently:</p>
-<div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147749,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:41,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="7e0826cb-a7c2-42ca-c0f3-ef7ca0dbc521" data-execution_count="169">
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056238,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="63ca053c-34d4-454e-aa53-0d9ae17fdaa4" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
 <span id="cb46-2"><a href="#cb46-2"></a>y <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb46-3"><a href="#cb46-3"></a>x <span class="op">=</span> x[:, np.newaxis]</span>
 <span id="cb46-4"><a href="#cb46-4"></a>y <span class="op">=</span> y[np.newaxis, :]</span>
 <span id="cb46-5"><a href="#cb46-5"></a>x <span class="op">@</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="169">
+<div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>array([[ 4,  5,  6],
        [ 8, 10, 12],
        [12, 15, 18]])</code></pre>
 </div>
 </div>
+<p>Notice the amazing power of the <code>@</code> operator and the seemingly magical way in which <code>NumPy</code> combines the left and right operands. Let us see how <code>NumPy</code> achieves this in the particular case of a row-vector matrix product. Consider multiplying <span class="math inline">\(\begin{bmatrix}1 &amp; 2\end{bmatrix}\)</span> and <span class="math inline">\(\begin{bmatrix}3 &amp; 4\\5 &amp; 6\end{bmatrix}\)</span>.</p>
+<div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:37,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056275,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="4b7b04f3-4883-4bc1-80b8-6cb86ac7ff3b" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb48-2"><a href="#cb48-2"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb48-3"><a href="#cb48-3"></a>    [<span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb48-4"><a href="#cb48-4"></a>    [<span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb48-5"><a href="#cb48-5"></a>])</span>
+<span id="cb48-6"><a href="#cb48-6"></a>x <span class="op">@</span> M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="64">
+<pre><code>array([13, 16])</code></pre>
+</div>
+</div>
+<p>When we execute <code>x @ M</code>, <code>NumPy</code> does the following: - Convert the 1D array <code>x</code> into a 2D array by adding an extra dimension at the beginning so that the result is a row vector whose shape is <span class="math inline">\((1, 2)\)</span>. - Now that <code>x</code> and <code>M</code> are compatible for matrix multiplication because their shapes are <span class="math inline">\((1, 2)\)</span> and <span class="math inline">\((2, 2)\)</span> respectively, matrix multiplication happens. - The resulting output of this operation has shape <span class="math inline">\((1, 2)\)</span>. Since this is effectively a vector, <code>NumPy</code> drops the extra dimension and outputs a 1D array of shape <span class="math inline">\((2, )\)</span>.</p>
+<p><code>np.matmul</code> gives the same result. But we will stick to the <code>@</code> operator.</p>
+<div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056281,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f9ca8be1-bf5a-4033-e6b0-346d21f8aa2a" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb50-2"><a href="#cb50-2"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb50-3"><a href="#cb50-3"></a>    [<span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb50-4"><a href="#cb50-4"></a>    [<span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb50-5"><a href="#cb50-5"></a>])</span>
+<span id="cb50-6"><a href="#cb50-6"></a>np.matmul(x, M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="65">
+<pre><code>array([13, 16])</code></pre>
+</div>
+</div>
 </section>
 </section>
-<section id="matrix-of-zeros" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-of-zeros">Matrix of zeros</h2>
+<section id="special-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="special-matrices">Special matrices</h2>
+<p>Let us now look at some special matrices that can be generated using <code>NumPy</code>.</p>
+<section id="matrix-of-zeros" class="level3">
+<h3 class="anchored" data-anchor-id="matrix-of-zeros">Matrix of zeros</h3>
 <p>In many algorithms, we might have to initialize a matrix with zeros. For example, consider a <span class="math inline">\(2 \times 4\)</span> matrix:</p>
 <p><span class="math display">\[
 \mathbf{M} = \begin{bmatrix}
@@ -1350,16 +1389,16 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0d6c2c66-55dd-483a-f9ba-db61efba07ee" data-execution_count="170">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>np.zeros((<span class="dv">2</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="170">
+<div id="cell-55" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:12,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056293,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="5a0f023d-c46a-49ec-8ea6-dd7a15012f48" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>np.zeros((<span class="dv">2</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>array([[0., 0., 0., 0.],
        [0., 0., 0., 0.]])</code></pre>
 </div>
 </div>
 </section>
-<section id="matrix-of-ones" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-of-ones">Matrix of ones</h2>
+<section id="matrix-of-ones" class="level3">
+<h3 class="anchored" data-anchor-id="matrix-of-ones">Matrix of ones</h3>
 <p>Similar to a matrix of zeros, we can come up with a matrix of ones.</p>
 <p><span class="math display">\[
 \mathbf{M} = \begin{bmatrix}
@@ -1369,17 +1408,18 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="91092ac9-7b93-4b46-8890-76bb49d5a618" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>np.ones((<span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="171">
+<div id="cell-57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056296,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a4f8f0ad-9ca5-4ca9-bb76-d05808f7542a" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>np.ones((<span class="dv">3</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>array([[1., 1.],
        [1., 1.],
        [1., 1.]])</code></pre>
 </div>
 </div>
+<p>We have to be careful about the argument. It has to be a tuple (or some sequence, say a list). See what happens if pass it as two separate arguments: <code>np.ones(3, 2)</code>,</p>
 </section>
-<section id="identity-matrix" class="level2">
-<h2 class="anchored" data-anchor-id="identity-matrix">Identity matrix</h2>
+<section id="identity-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="identity-matrix">Identity matrix</h3>
 <p>Often, we might have to deal with identity matrices. A <span class="math inline">\(3 \times 3\)</span> identity matrix is as follows:</p>
 <p><span class="math display">\[
 \mathbf{I} = \begin{bmatrix}
@@ -1389,9 +1429,9 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b4954fef-cb01-4939-ca58-7bd87c229f76" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>np.eye(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="172">
+<div id="cell-60" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056299,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1780e306-e506-4e96-db29-a96b37c8bb0e" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>np.eye(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>array([[1., 0., 0., 0., 0.],
        [0., 1., 0., 0., 0.],
        [0., 0., 1., 0., 0.],
@@ -1399,9 +1439,10 @@ B_{ij} = A_{ij}^2
        [0., 0., 0., 0., 1.]])</code></pre>
 </div>
 </div>
+<p>A scalar matrix can be obtained by multiplying the identity matrix by the appropriate scalar.</p>
 </section>
-<section id="diagonal-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="diagonal-matrices">Diagonal matrices</h2>
+<section id="diagonal-matrices" class="level3">
+<h3 class="anchored" data-anchor-id="diagonal-matrices">Diagonal matrices</h3>
 <p>Another special kind of matrix. Let us create the following matrix:</p>
 <p><span class="math display">\[
 \mathbf{D} = \begin{bmatrix}
@@ -1412,15 +1453,16 @@ B_{ij} = A_{ij}^2
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-55" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="73c1bbf1-9b41-47d3-c585-ae4f2fbf5805" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>np.diag([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="173">
+<div id="cell-63" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:10,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056309,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="15159799-cf3d-4300-aaf8-6292420f6b60" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>np.diag([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>array([[1, 0, 0, 0],
        [0, 2, 0, 0],
        [0, 0, 3, 0],
        [0, 0, 0, 4]])</code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="indexing-and-slicing" class="level2">
 <h2 class="anchored" data-anchor-id="indexing-and-slicing">Indexing and Slicing</h2>
@@ -1431,32 +1473,32 @@ B_{ij} = A_{ij}^2
 <p><span class="math display">\[
 M = \begin{bmatrix}
 1 &amp; 3 &amp; 0\\
-4 &amp; 2 &amp; 5\\
+4 &amp; 2 &amp; \color{red}{5}\\
 9 &amp; 8 &amp; 7
 \end{bmatrix}
 \]</span></p>
-<p>To get the element <span class="math inline">\(5\)</span>, we can do the following:</p>
-<div id="cell-58" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147750,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:31,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="c71fe323-3d39-4ab8-8951-d759826bf046" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>M <span class="op">=</span> np.array([</span>
-<span id="cb56-2"><a href="#cb56-2"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb56-3"><a href="#cb56-3"></a>    [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>],</span>
-<span id="cb56-4"><a href="#cb56-4"></a>    [<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>]</span>
-<span id="cb56-5"><a href="#cb56-5"></a>])</span>
-<span id="cb56-6"><a href="#cb56-6"></a>M[<span class="dv">1</span>][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="174">
-<pre><code>5</code></pre>
+<p>To access the element <span class="math inline">\(5\)</span>, we can do the following:</p>
+<div id="cell-66" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056331,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1718888e-e99b-4706-ab46-ef98c9e72b15" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb60-2"><a href="#cb60-2"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb60-3"><a href="#cb60-3"></a>    [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb60-4"><a href="#cb60-4"></a>    [<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>]</span>
+<span id="cb60-5"><a href="#cb60-5"></a>])</span>
+<span id="cb60-6"><a href="#cb60-6"></a>M[<span class="dv">1</span>][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>np.int64(5)</code></pre>
 </div>
 </div>
 <p>Alternatively, we can also use:</p>
-<div id="cell-60" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147750,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:29,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="709649d3-cace-41a3-f6fe-a05251f2731e" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>M <span class="op">=</span> np.array([</span>
-<span id="cb58-2"><a href="#cb58-2"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
-<span id="cb58-3"><a href="#cb58-3"></a>    [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>],</span>
-<span id="cb58-4"><a href="#cb58-4"></a>    [<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>]</span>
-<span id="cb58-5"><a href="#cb58-5"></a>])</span>
-<span id="cb58-6"><a href="#cb58-6"></a>M[<span class="dv">1</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="175">
-<pre><code>5</code></pre>
+<div id="cell-68" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056331,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="954364c5-7216-4aff-b3e1-8a96db84647c" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb62-2"><a href="#cb62-2"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">0</span>],</span>
+<span id="cb62-3"><a href="#cb62-3"></a>    [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>],</span>
+<span id="cb62-4"><a href="#cb62-4"></a>    [<span class="dv">9</span>, <span class="dv">8</span>, <span class="dv">7</span>]</span>
+<span id="cb62-5"><a href="#cb62-5"></a>])</span>
+<span id="cb62-6"><a href="#cb62-6"></a>M[<span class="dv">1</span>, <span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>np.int64(5)</code></pre>
 </div>
 </div>
 <p>Note that NumPy uses zero-indexing, just like Python. In general, <code>M[row, col]</code> is the element in the row <code>row</code> and columnn <code>col</code> assuming zero indexing.</p>
@@ -1474,10 +1516,10 @@ M = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-63" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="77194007-a0ab-4f61-b34a-d773691736cf" data-execution_count="176">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>M <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>).reshape(<span class="dv">5</span>, <span class="dv">2</span>)</span>
-<span id="cb60-2"><a href="#cb60-2"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="176">
+<div id="cell-71" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:19,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056347,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c36dae43-5c5c-43de-ed33-b738cc912ef6" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>M <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>).reshape(<span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb64-2"><a href="#cb64-2"></a>M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>array([[ 1,  2],
        [ 3,  4],
        [ 5,  6],
@@ -1485,9 +1527,9 @@ M = \begin{bmatrix}
        [ 9, 10]])</code></pre>
 </div>
 </div>
-<div id="cell-64" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147750,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:24,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="a1d16bfe-75c1-4c48-f431-86f3564f43bb" data-execution_count="177">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>M[<span class="dv">2</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="177">
+<div id="cell-72" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:16,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056347,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="394de582-796a-4947-e09a-9f2282afdcb2" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>M[<span class="dv">2</span>, :]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>array([5, 6])</code></pre>
 </div>
 </div>
@@ -1504,10 +1546,14 @@ M = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-67" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f0d56cc1-79f7-45c9-cefb-e31d12858a33" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb64-2"><a href="#cb64-2"></a>M[:, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="178">
+<div id="cell-75" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056347,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3a39fc92-96c1-4a14-bae4-fffe115019ba" data-execution_count="74">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb68-2"><a href="#cb68-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb68-3"><a href="#cb68-3"></a>    [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb68-4"><a href="#cb68-4"></a>    [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]</span>
+<span id="cb68-5"><a href="#cb68-5"></a>])</span>
+<span id="cb68-6"><a href="#cb68-6"></a>M[:, <span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
 <pre><code>array([2, 5, 8])</code></pre>
 </div>
 </div>
@@ -1525,20 +1571,20 @@ M = \begin{bmatrix}
 \end{bmatrix}
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
-<div id="cell-70" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="eef693d5-b830-4588-a8af-f16e834c79ad" data-execution_count="179">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>M <span class="op">=</span> np.array([</span>
-<span id="cb66-2"><a href="#cb66-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb66-3"><a href="#cb66-3"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
-<span id="cb66-4"><a href="#cb66-4"></a>    [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
-<span id="cb66-5"><a href="#cb66-5"></a>    [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
-<span id="cb66-6"><a href="#cb66-6"></a>])</span>
-<span id="cb66-7"><a href="#cb66-7"></a>M[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="179">
+<div id="cell-78" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056415,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="70e359e9-5bbd-4888-bcd2-380360fef31f" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb70-2"><a href="#cb70-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb70-3"><a href="#cb70-3"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
+<span id="cb70-4"><a href="#cb70-4"></a>    [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
+<span id="cb70-5"><a href="#cb70-5"></a>    [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
+<span id="cb70-6"><a href="#cb70-6"></a>])</span>
+<span id="cb70-7"><a href="#cb70-7"></a>M[<span class="dv">1</span>:<span class="dv">3</span>, <span class="dv">2</span>:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
 <pre><code>array([[ 7,  8],
        [11, 12]])</code></pre>
 </div>
 </div>
-<p>Start point of the slice is included and the end-point is excluded, just as we do in native Python.</p>
+<p>The start-point of the slice is included and the end-point is excluded, just as we do in native Python.</p>
 </section>
 </section>
 <section id="other-matrix-operations" class="level2">
@@ -1555,16 +1601,38 @@ M = \begin{bmatrix}
 13 &amp; 14 &amp; 15 &amp; 16
 \end{bmatrix}
 \]</span></p>
-<div id="cell-74" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="149b2f69-6185-473e-9733-4e29196a0f83" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>M <span class="op">=</span> np.array([</span>
-<span id="cb68-2"><a href="#cb68-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
-<span id="cb68-3"><a href="#cb68-3"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
-<span id="cb68-4"><a href="#cb68-4"></a>    [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
-<span id="cb68-5"><a href="#cb68-5"></a>    [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
-<span id="cb68-6"><a href="#cb68-6"></a>])</span>
-<span id="cb68-7"><a href="#cb68-7"></a>np.linalg.matrix_rank(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="180">
-<pre><code>2</code></pre>
+<div id="cell-82" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056418,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="0f022551-e628-456d-b9f0-04affbf920ea" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb72-2"><a href="#cb72-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>],</span>
+<span id="cb72-3"><a href="#cb72-3"></a>    [<span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>],</span>
+<span id="cb72-4"><a href="#cb72-4"></a>    [<span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>],</span>
+<span id="cb72-5"><a href="#cb72-5"></a>    [<span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">16</span>]</span>
+<span id="cb72-6"><a href="#cb72-6"></a>])</span>
+<span id="cb72-7"><a href="#cb72-7"></a>np.linalg.matrix_rank(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>np.int64(2)</code></pre>
+</div>
+</div>
+</section>
+<section id="determinant" class="level3">
+<h3 class="anchored" data-anchor-id="determinant">Determinant</h3>
+<p>We can compute the determinant of a square matrix. For example:</p>
+<p><span class="math display">\[
+\mathbf{M} = \begin{bmatrix}
+1 &amp; 2 &amp; -1\\
+0 &amp; 1 &amp; -1\\
+1 &amp; 0 &amp; 2
+\end{bmatrix}
+\]</span></p>
+<div id="cell-84" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:59,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757084340906,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="aa495752-c19e-46ce-d92a-84f9f3ccb79e" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb74-2"><a href="#cb74-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb74-3"><a href="#cb74-3"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb74-4"><a href="#cb74-4"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>]</span>
+<span id="cb74-5"><a href="#cb74-5"></a>])</span>
+<span id="cb74-6"><a href="#cb74-6"></a>np.linalg.det(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre><code>np.float64(1.0)</code></pre>
 </div>
 </div>
 </section>
@@ -1577,10 +1645,13 @@ M = \begin{bmatrix}
 4 &amp; 3
 \end{bmatrix}
 \]</span></p>
-<div id="cell-76" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147750,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:13,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-outputid="e83ffb36-480e-41c2-99df-d024cba55c37" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>M <span class="op">=</span> np.array([[<span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>], [<span class="dv">4</span>, <span class="dv">3</span>]])</span>
-<span id="cb70-2"><a href="#cb70-2"></a>np.linalg.inv(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="181">
+<div id="cell-86" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:10,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056428,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="252f31dd-1afb-4300-d454-fa3bd95fa96b" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb76-2"><a href="#cb76-2"></a>    [<span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>],</span>
+<span id="cb76-3"><a href="#cb76-3"></a>    [<span class="dv">4</span>, <span class="dv">3</span>]</span>
+<span id="cb76-4"><a href="#cb76-4"></a>])</span>
+<span id="cb76-5"><a href="#cb76-5"></a>np.linalg.inv(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>array([[ 0.12,  0.16],
        [-0.16,  0.12]])</code></pre>
 </div>
@@ -1588,26 +1659,89 @@ M = \begin{bmatrix}
 </section>
 <section id="pseuodoinverse" class="level3">
 <h3 class="anchored" data-anchor-id="pseuodoinverse">Pseuodoinverse</h3>
-<p>The pseudoinverse <span class="math inline">\(\mathbf{M}^{\dagger}\)</span> of a matrix <span class="math inline">\(\mathbf{M}\)</span> can be computed using NumPy.</p>
+<p>The Moore Penrose pseudoinverse <span class="math inline">\(\mathbf{M}^{\dagger}\)</span> of a matrix <span class="math inline">\(\mathbf{M}\)</span> can be computed:</p>
 <p><span class="math display">\[
 \mathbf{M} = \begin{bmatrix}
 1 &amp; 2 &amp; 3\\
 3 &amp; 6 &amp; 9
 \end{bmatrix}
 \]</span></p>
-<div id="cell-78" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="563f3ed7-1916-430d-cb4b-c91531e4692e" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>]])</span>
-<span id="cb72-2"><a href="#cb72-2"></a>np.linalg.pinv(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="182">
+<p>In <code>NumPy</code>:</p>
+<div id="cell-88" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056433,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f01bbb1b-7b86-4515-f263-6b5265651c2a" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb78-2"><a href="#cb78-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb78-3"><a href="#cb78-3"></a>     [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">9</span>]</span>
+<span id="cb78-4"><a href="#cb78-4"></a>])</span>
+<span id="cb78-5"><a href="#cb78-5"></a>np.linalg.pinv(M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>array([[0.00714286, 0.02142857],
        [0.01428571, 0.04285714],
        [0.02142857, 0.06428571]])</code></pre>
 </div>
 </div>
-<p>The pseudoinverse reduces to the inverse for square invertible matrices.</p>
+<p>Recall that every matrix has a pseudoinverse. The pseudoinverse reduces to the inverse for square invertible matrices.</p>
 </section>
-<section id="eigenvalues-and-eigenvectors" class="level3">
-<h3 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h3>
+<section id="system-of-linear-equations" class="level3">
+<h3 class="anchored" data-anchor-id="system-of-linear-equations">System of Linear Equations</h3>
+<p>We can solve a system of linear equations of the form <span class="math inline">\(\mathbf{A} \boldsymbol{\theta} = \mathbf{b}\)</span>. Consider the following example:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2x + 3y - 4z &amp;= -4\\
+x + y - z &amp;= 0\\
+2x + y + z &amp;= 7
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{\theta} = (x, y, z)\)</span> and <span class="math inline">\(\mathbf{A}\)</span> is the matrix of coefficients. The following method in <code>NumPy</code> returns the exact solution if the matrix <span class="math inline">\(\mathbf{A}\)</span> is invertible.</p>
+<div id="cell-91" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:10,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757084140873,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c2cb7509-68cb-40f9-aa1a-2a054527cb9a" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>A <span class="op">=</span> np.array([</span>
+<span id="cb80-2"><a href="#cb80-2"></a>    [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>],</span>
+<span id="cb80-3"><a href="#cb80-3"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb80-4"><a href="#cb80-4"></a>    [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>]</span>
+<span id="cb80-5"><a href="#cb80-5"></a>])</span>
+<span id="cb80-6"><a href="#cb80-6"></a>b <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">7</span>])</span>
+<span id="cb80-7"><a href="#cb80-7"></a>theta <span class="op">=</span> np.linalg.solve(A, b)</span>
+<span id="cb80-8"><a href="#cb80-8"></a>theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="94">
+<pre><code>array([1., 2., 3.])</code></pre>
+</div>
+</div>
+<p>If <span class="math inline">\(\mathbf{A}\)</span> is not a square matrix or if it is singular, then the method will return an error.</p>
+</section>
+<section id="least-squares-solution" class="level3">
+<h3 class="anchored" data-anchor-id="least-squares-solution">Least Squares Solution</h3>
+<p>In general, <span class="math inline">\(\mathbf{A} \boldsymbol{\theta} = \mathbf{b}\)</span> may not be solvable, or even if it is, it may not have a unique solution. In such situations, we look for the least square solution. Consider:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2x + 3y - 4z &amp;= -4\\
+x + y - z &amp;= 0\\
+2x + 2y - 2z &amp;= 0.1
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(\boldsymbol{\theta} = (x, y, z)\)</span> and <span class="math inline">\(\mathbf{A}\)</span> is the matrix of coefficients. The following method in <code>NumPy</code> returns the least squares solution of minimum norm.</p>
+<div id="cell-94" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:48,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757085225972,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="acadfb23-87af-4196-8e75-58ec5d2340d6" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>A <span class="op">=</span> np.array([</span>
+<span id="cb82-2"><a href="#cb82-2"></a>    [<span class="dv">2</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>],</span>
+<span id="cb82-3"><a href="#cb82-3"></a>    [<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb82-4"><a href="#cb82-4"></a>    [<span class="dv">2</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">2</span>]</span>
+<span id="cb82-5"><a href="#cb82-5"></a>])</span>
+<span id="cb82-6"><a href="#cb82-6"></a>b <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">4</span>, <span class="dv">0</span>, <span class="fl">0.1</span>])</span>
+<span id="cb82-7"><a href="#cb82-7"></a>theta <span class="op">=</span> np.linalg.lstsq(A, b)[<span class="dv">0</span>]</span>
+<span id="cb82-8"><a href="#cb82-8"></a>theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<pre><code>array([2.07333333, 0.01333333, 2.04666667])</code></pre>
+</div>
+</div>
+<p><code>np.linalg.lstsq</code> returns three objects, the first of which is the least square solution. To see how close this solution is to the vector <span class="math inline">\(\mathbf{b}\)</span>, let us compute <span class="math inline">\(\mathbf{A} \boldsymbol{\theta}\)</span>:</p>
+<div id="cell-96" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:17,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757085234758,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c46a76df-adcf-4f50-ec73-2ec3010e6f6f" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>A <span class="op">@</span> theta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="111">
+<pre><code>array([-4.  ,  0.04,  0.08])</code></pre>
+</div>
+</div>
+<p>Notice that this is quite close to the vector <span class="math inline">\(\mathbf{b} = (-4, 0, 0.1)\)</span>, which is what we expect of a least squares solution.</p>
+</section>
+<section id="eigenvalues-and-eigenvectors-symmetric" class="level3">
+<h3 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors-symmetric">Eigenvalues and Eigenvectors (symmetric)</h3>
 <p>Given a symmetric matrix <span class="math inline">\(\mathbf{M}\)</span> let us find its eigenvalues and eigenvectors:</p>
 <p><span class="math display">\[
 \mathbf{M} = \begin{bmatrix}
@@ -1616,20 +1750,108 @@ M = \begin{bmatrix}
 -3 &amp; 2 &amp; 8
 \end{bmatrix}
 \]</span></p>
-<div id="cell-81" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d8ce2247-cfe7-43a3-89d0-f7dd28b5f2aa" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>M <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>], [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>], [<span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>]])</span>
-<span id="cb74-2"><a href="#cb74-2"></a>eigval, eigvec <span class="op">=</span> np.linalg.eigh(M)</span>
-<span id="cb74-3"><a href="#cb74-3"></a>eigval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="183">
+<div id="cell-99" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056439,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="d7847c3d-45a0-42fb-8711-3d71399ec1cb" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb86-2"><a href="#cb86-2"></a>    [<span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">3</span>],</span>
+<span id="cb86-3"><a href="#cb86-3"></a>    [<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2</span>],</span>
+<span id="cb86-4"><a href="#cb86-4"></a>    [<span class="op">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">8</span>]</span>
+<span id="cb86-5"><a href="#cb86-5"></a>])</span>
+<span id="cb86-6"><a href="#cb86-6"></a>eigval, eigvec <span class="op">=</span> np.linalg.eigh(M)</span>
+<span id="cb86-7"><a href="#cb86-7"></a>eigval</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
 <pre><code>array([-0.20942046,  4.36588492,  9.84353554])</code></pre>
 </div>
 </div>
-<p>The eigenvalues are arranged in ascending order. The corresponding eigenvectors appear in the columns of the matriix <code>eigvec</code>. The eigenpairs are given below:</p>
-<div id="cell-83" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1725947147750,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:7,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik POD&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;}}}" data-execution_count="184">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>eigval[<span class="dv">0</span>], eigvec[:, <span class="dv">0</span>]</span>
-<span id="cb76-2"><a href="#cb76-2"></a>eigval[<span class="dv">1</span>], eigvec[:, <span class="dv">1</span>]</span>
-<span id="cb76-3"><a href="#cb76-3"></a>eigval[<span class="dv">2</span>], eigvec[:, <span class="dv">2</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>h</code> in <code>eigh</code> referes to Hermitian. Recall that Hermitian matrices are the complex analogue of symmetric (real) matrices. The eigenvalues of Hermitian matrices are real and <code>NumPy</code> outputs them in ascending order. The corresponding eigenvectors appear in the columns of the matriix <code>eigvec</code>. The eigenpairs are given below:</p>
+<div id="cell-101" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:0,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083056440,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>eigval[<span class="dv">0</span>], eigvec[:, <span class="dv">0</span>]</span>
+<span id="cb88-2"><a href="#cb88-2"></a>eigval[<span class="dv">1</span>], eigvec[:, <span class="dv">1</span>]</span>
+<span id="cb88-3"><a href="#cb88-3"></a>eigval[<span class="dv">2</span>], eigvec[:, <span class="dv">2</span>]<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="eigenvalues-and-eigenvectors-general" class="level3">
+<h3 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors-general">Eigenvalues and Eigenvectors (general)</h3>
+<p>For a square matrix <span class="math inline">\(\mathbf{M}\)</span>, not necessarily square, let us find its eigenvalues and eigenvectors. Consider:</p>
+<p><span class="math display">\[
+\mathbf{M} = \begin{bmatrix}
+1 &amp; 2\\
+-1 &amp; 3
+\end{bmatrix}
+\]</span></p>
+<div id="cell-103" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:52,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757084683330,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="7854430e-6da6-4411-edcf-f6677daa00ee" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb89-2"><a href="#cb89-2"></a>    [<span class="dv">1</span>, <span class="dv">2</span>],</span>
+<span id="cb89-3"><a href="#cb89-3"></a>    [<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>]</span>
+<span id="cb89-4"><a href="#cb89-4"></a>])</span>
+<span id="cb89-5"><a href="#cb89-5"></a>eigval, eigvec <span class="op">=</span> np.linalg.eig(M)</span>
+<span id="cb89-6"><a href="#cb89-6"></a><span class="bu">print</span>(eigval)</span>
+<span id="cb89-7"><a href="#cb89-7"></a><span class="bu">print</span>(eigvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2.+1.j 2.-1.j]
+[[0.81649658+0.j         0.81649658-0.j        ]
+ [0.40824829+0.40824829j 0.40824829-0.40824829j]]</code></pre>
+</div>
+</div>
+<p>Note that the eigenvalues could be complex, which is the case here. This means that the eigenvalues returned by <code>NumPy</code> may not have any ordering.</p>
+</section>
+<section id="svd" class="level3">
+<h3 class="anchored" data-anchor-id="svd">SVD</h3>
+<p>The singular value decomposition of a matrix <span class="math inline">\(\mathbf{M}\)</span> is of the form:</p>
+<p><span class="math display">\[
+\mathbf{M} = \mathbf{U} \boldsymbol{\Sigma} \mathbf{V}^{T}
+\]</span></p>
+<p>Consider an example:</p>
+<p><span class="math display">\[
+\mathbf{M} = \begin{bmatrix}
+1 &amp; 3 &amp; 1\\
+2 &amp; 4 &amp; 2
+\end{bmatrix}
+\]</span></p>
+<p>The dimensions of the matrices should turn out to be:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{U} \rightarrow (2, 2)\)</span></li>
+<li><span class="math inline">\(\boldsymbol{\Sigma} \rightarrow (2, 3)\)</span></li>
+<li><span class="math inline">\(\mathbf{V} \rightarrow (3, 3)\)</span></li>
+</ul>
+<div id="cell-106" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:42,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757084779364,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="7e9ce4c0-3b4f-4d9f-c7b9-53b65206bb34" data-execution_count="104">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>M <span class="op">=</span> np.array([</span>
+<span id="cb91-2"><a href="#cb91-2"></a>    [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
+<span id="cb91-3"><a href="#cb91-3"></a>    [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>]</span>
+<span id="cb91-4"><a href="#cb91-4"></a>])</span>
+<span id="cb91-5"><a href="#cb91-5"></a>U, Sigma, V <span class="op">=</span> np.linalg.svd(M)</span>
+<span id="cb91-6"><a href="#cb91-6"></a><span class="bu">print</span>(U.shape)</span>
+<span id="cb91-7"><a href="#cb91-7"></a><span class="bu">print</span>(Sigma.shape)</span>
+<span id="cb91-8"><a href="#cb91-8"></a><span class="bu">print</span>(V.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(2, 2)
+(2,)
+(3, 3)</code></pre>
+</div>
+</div>
+<p>Notice that the method returns a vector of singular values. We can easily recover the diagonal-ish <span class="math inline">\(\boldsymbol{\Sigma}\)</span> matrix from this. In contrast to the eigenvalues returned by the <code>eigh</code> method which are in ascending order, the singular values are sorted in descending order, as is the convention in the linear algebra literature.</p>
+<div id="cell-108" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:43,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083489873,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="bff3d679-2f06-490d-b66a-086149f66cdd" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>Sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="92">
+<pre><code>array([5.89660208, 0.47967068])</code></pre>
+</div>
+</div>
+<p>Recall that <span class="math inline">\(\mathbf{U}\)</span> and <span class="math inline">\(\mathbf{V}\)</span> are orthogonal matrices. That is, <span class="math inline">\(\mathbf{U U}^{T} = \mathbf{U}^{T} \mathbf{U} = \mathbf{I}\)</span>. A similar result holds for <span class="math inline">\(\mathbf{V}\)</span>. Let us quickly see if this is the case:</p>
+<div id="cell-110" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:16,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083268272,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="ee8e1c3f-d3d6-4dc6-e7e9-6c0c87fd2044" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>U <span class="op">@</span> U.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>array([[ 1.00000000e+00, -1.08094514e-16],
+       [-1.08094514e-16,  1.00000000e+00]])</code></pre>
+</div>
+</div>
+<div id="cell-111" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757083270486,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f485e1cb-fdd0-44b8-d755-313925757ff7" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a>V <span class="op">@</span> V.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>array([[ 1.00000000e+00,  2.97804097e-17,  1.56730402e-17],
+       [ 2.97804097e-17,  1.00000000e+00, -2.93975883e-17],
+       [ 1.56730402e-17, -2.93975883e-17,  1.00000000e+00]])</code></pre>
+</div>
+</div>
+<p>In upcoming notebooks, we will see how we can compare two matrices element by element. For now, it suffices to note that the non-diagonal elements are vanishingly small and are as good as zero.</p>
 
 
 </section>

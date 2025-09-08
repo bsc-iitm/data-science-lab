@@ -64,7 +64,7 @@
     "text": "We will study NumPy arrays in more detail.\nimport numpy as np",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -76,7 +76,7 @@
     "text": "Arrays and Types\nIt should have become amply clear by now that both vectors and matrices are NumPy arrays. Each array in NumPy has a dimension. Vectors are one-dimensional arrays while matrices are two-dimensional arrays. For example:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix},\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\nprint(x.ndim)\nM = np.array([\n    [1, 2],\n    [3, 4],\n    [5, 6]\n])\nprint(M.ndim)\n\n1\n2\n\n\nSo far we have not looked at the data-types of the elements of an array. Each array in NumPy has a specific type and all the elements of the array partake of this type. Thus we could also characterize a NumPy array as a homogenous collection of elements arranged in a contiguous block in the memory. We shall look at four common types that arrays come in:\n\ninteger\nfloat\nBoolean\nstring\n\nThere are variations in some of these types. We won’t go into too much detail here. The type of the NumPy array is stored in the attribute dtype.\nAn example of int and float types.\n\nx_int = np.array([1, 2, 3])\nx_int.dtype\n\ndtype('int64')\n\n\n\nx_float = np.array([1.0, 2.0, 3.0])\nx_float.dtype\n\ndtype('float64')\n\n\nA Boolean array is an array of Boolean values. That is, each component is either a True or False. For example:\n\nx_bool = np.array([True, False, True])\nx_bool.dtype\n\ndtype('bool')\n\n\n\nx_str = np.array(['Red', 'Green', 'Blue'])\nx_str.dtype\n\ndtype('&lt;U5')\n\n\nSometimes it might be necessary to convert from one data-type to another. We can use astype for this conversion:\n\nx = np.array([1, 2, 3])\ny = x.astype(np.float32)\nx.dtype, y.dtype\n\n(dtype('int64'), dtype('float32'))",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -88,7 +88,7 @@
     "text": "Reshaping\nArrays can be reshaped. We will do a number of examples here.\n\nExample-1: Vector to matrix\nWe start with a vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1 & 2 & 3 & 4 & 5 & 6\n\\end{bmatrix}\n\\]\nWe can reshape it into the following matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 7)\nx\n\narray([1, 2, 3, 4, 5, 6])\n\n\n\nM = x.reshape(3, 2)\nM\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\nNote that we could have packed the six elements into a matrix in two ways:\n\\[\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}, \\quad \\quad \\begin{bmatrix}\n1 & 4\\\\\n2 & 5\\\\\n3 & 6\n\\end{bmatrix}\n\\]\n\nThe one on the left is called row-major ordering or C ordering, where we fill the first row completely, then move on to the second row and so on.\nThe one on the right follows a column major ordering or Fortran ordering, where the first column is filled first, followed by the second and so on.\n\nBy default, the reshape method follows the row-major ordering. To force a column-major ordering, we can pass an additional argument called order. By default, NumPy follows row-major ordering.\n\nx = np.arange(1, 7)\n# F refers to Fortran\nM = x.reshape(3, 2,\n              order='F')\nM\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\n\n\nExample-2: Matrix to vector\nWe now start with a matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nWe can now reshape it into a vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1 & 2 & 3 & 4 & 5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nM\n\narray([[1, 2, 3],\n       [4, 5, 6]])\n\n\n\nx = M.reshape(6)\nx\n\narray([1, 2, 3, 4, 5, 6])\n\n\nAlternatively, we could also use the ravel method to achieve this:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nx = M.ravel()\nx\n\narray([1, 2, 3, 4, 5, 6])\n\n\nNote that ravel also follows a row-major ordering by default. To force a column-major ordering, we set order='F':\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nx = M.ravel(order='F')\nx\n\narray([1, 4, 2, 5, 3, 6])\n\n\n\n\nExample-3: Matrix to matrix\nWe can reshape a matrix into another matrix as well. Sometimes, we may be lazy to compute both the dimensions. In such cases, we can leave out one of the two dimensions and let NumPy figure it out. The way to do it is to replace the unknown dimension with \\(-1\\). For example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nLet us say we want to reshape it in such a way that there are three rows:\n\\[\n\\mathbf{P} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nP = M.reshape(3, -1)\nP\n\narray([[1, 2],\n       [3, 4],\n       [5, 6]])\n\n\nThe \\(-1\\) trick may seem pointless in this case. But it does come in handy when reshaping arrays with several dimensions. In fact, stepping back a bit and looking at the previous example, we can convert a matrix into a vector in the following manner as well:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nx = M.reshape(-1)\nx\n\narray([1, 2, 3, 4, 5, 6])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -100,7 +100,7 @@
     "text": "Matrix-vector addition\nSometimes we would have to add a vector to each row or column of a matrix. There are two cases to consider. If the vector to be added is a:\n\nrow vector\ncolumn vector\n\n\nRow-vector\nConsider the following matrix \\(\\mathbf{M}\\) and vector \\(\\mathbf{b}\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\mathbf{b} = \\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]\nThere is a slight abuse of notation as we can’t add a matrix and a vector together. However, the context often makes this clear:\n\\[\n\\mathbf{M} + \\mathbf{b} = \\begin{bmatrix}\n2 & 4 & 6\\\\\n5 & 7 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nb = np.array([1, 2, 3])\nM + b\n\narray([[2, 4, 6],\n       [5, 7, 9]])\n\n\nWhat does NumPy do here? When presented with an operation that has two arrays (operands) of different shapes, NumPy does an operation called broadcasting. In this case, the shapes of the two operands are \\((4, 3)\\) and \\((3, )\\).\nConceptually, the effect of broadcasting is to stretch the second array along the first axis (the rows), creating four copies of the same array so that the two original arrays can be added. In reality, NumPy has a more sophisticated, memory-efficient way of achieving this without actually having to create four copies.\n\n\n\nimage.png\n\n\nThere are broadcasting rules that specify when two arrays can be combined in an operation. Since this is an introduction to NumPy, we won’t go into great detail. But in the event that we get a broadcasting error, note that we are trying to combine two arrays in an operation that are not compatible for broadcasting.\n\n\nColumn-vector\nNow, consider another pair:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\mathbf{b} = \\begin{bmatrix}\n1\\\\\n2\n\\end{bmatrix}\n\\]\nIn this case, we have:\n\\[\n\\mathbf{M} + \\mathbf{b} = \\begin{bmatrix}\n2 & 3 & 4\\\\\n6 & 7 & 8\n\\end{bmatrix}\n\\]\nLet us first try to replicate the same process that we followed while adding a row vector.\n\ntry:\n    M = np.array([\n        [1, 2, 3],\n        [4, 5, 6]\n    ])\n    b = np.array([1, 2])\n    M + b\nexcept:\n    print('incompatible shapes for broadcasting')\n\nincompatible shapes for broadcasting\n\n\nThis is an instance where the shapes of the arrays are \\((2, 3)\\) and \\((2, )\\), which are not compatible for broadcasting according to NumPy’s rules. To make them compatible, what we do is to add an extra dimension to the vector so as to turn it into a column vector.\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nb = np.array([1, 2]).reshape(2, 1)\nM + b\n\narray([[2, 3, 4],\n       [6, 7, 8]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -112,7 +112,7 @@
     "text": "Advanced Indexing\nNumPy has some advanced indexing features that are useful in various applications.\n\nIndexing using arrays\nLists or NumPy arrays themselves can be used as indices to retreive different parts of the array. For example:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n-1 & 0 & 4 & 3 & 7 & 8 & 1 & 9\n\\end{bmatrix}\n\\]\nLet us say that we are interested in retreiving indices: [1, 3, 6].\nIn NumPy:\n\n# using a NumPy array\nx = np.array([-1, 0, 4, 3, 7, 8, 1, 9])\nx[np.array([1, 3, 6])]\n\narray([0, 3, 1])\n\n\n\n# using a list\nx = np.array([-1, 0, 4, 3, 7, 8, 1, 9])\nx[[1, 3, 6]]\n\narray([0, 3, 1])\n\n\nWe could also use a Boolean array to index into NumPy arrays.\n\n# using a Boolean array\nind = np.array([False, True, False, True, False, False, True, False])\nx = np.array([-1, 0, 4, 3, 7, 8, 1, 9])\nx[ind]\n\narray([0, 3, 1])\n\n\n\n\nFiltering particular values\nSometimes we are interested in those elements of the array that possess a particular property:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n3 & 1 & 5 & -4 & -2 & 1 & 5\n\\end{bmatrix}\n\\]\nLet us try to extract all elements that are positive.\nIn NumPy:\n\nx = np.array([3, 1, 5, -4, -2, 1, 5])\nx &gt; 0\n\narray([ True,  True,  True, False, False,  True,  True])\n\n\nThe operation x &gt; 0 returns a Boolean array which can then be used as an advanced index. Rather than doing this in two steps, we can combine it into a single operation.\n\nx = np.array([3, 1, 5, -4, -2, 1, 5])\nx[x &gt; 0]\n\narray([3, 1, 5, 1, 5])\n\n\nWe could also specify multiple conditions using the operators AND, OR and NOT. In NumPy, these three operators are invoked using the following symbols:\n\nNOT: ~\nAND: &\nOR: |\n\nFor example, let us say we want to extract all positive even numbers from the following array:\n\nx = np.array([3, 2, -4, 0, 6, 8, -2])\nx[(x &gt; 0) & (x % 2 == 0)]\n\narray([2, 6, 8])\n\n\nNow onsider two arrays of the same size. We might want to extract all values in the array x for which the corresponding array y satisfies some property. For example, we might want to extract all values of x for which the corresponding y values are either “red” or “green”. More concretely, we can think of y as the array of class labels and x as the array of features in a classification problem.\n\nx = np.array([1, 3, 0, 4, 5, 7, 8])\ny = np.array([\"red\", \"green\", \"yellow\", \"red\", \"yellow\", \"green\", \"yellow\"])\nx[(y == \"red\") | (y == \"green\")]\n\narray([1, 3, 4, 7])\n\n\nAlternatively, since y has only three unique strings, we could use the NOT operator:\n\nx = np.array([1, 3, 0, 4, 5, 7, 8])\ny = np.array([\"red\", \"green\", \"yellow\", \"red\", \"yellow\", \"green\", \"yellow\"])\nx[~(y == \"yellow\")]\n\narray([1, 3, 4, 7])\n\n\n\n\nFiltering and follow-up\nSometimes we might want to filter some elements and do some post processing on the resulting array. This is best explained with an example. Consider the ReLU function.\n\\[\n\\text{ReLU}(x) = \\begin{cases}\nx, & x \\geqslant 0\\\\\n0, & x &lt; 0\n\\end{cases}\n\\]\nHere, we filter all elements that are non-negative and retain their values while relegating the negative elements to the value zero. This can be achieved using the where method in NumPy:\n\ndef relu(x):\n    return np.where(x &gt;= 0, x, 0)\nrelu(np.array([1, -2, 1, 3, -4, -3]))\n\narray([1, 0, 1, 3, 0, 0])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -124,7 +124,7 @@
     "text": "View and Copy\nConsider the following operation:\n\nx = np.arange(1, 6)\ny = x[:3]\ny[0] = 10\nx\n\narray([10,  2,  3,  4,  5])\n\n\ny is a slice of x, the first three elements. However, when the first element of y is modified, the fiirst element of x also undergoes the same modification. This suggests that y is closely tied to x in some way. In NumPy, y is called a view of x.\nWhen creating a view of a NumPy array, the underlying data in the memory is not duplicated. Rather, NumPy figures out a clever way to access the same data using a different object, which we call the view. Slicing always creates views and hence we must be very careful when working with sliced arrays. One more example:\n\nM = np.arange(12).reshape(3, 4)\nM\n\narray([[ 0,  1,  2,  3],\n       [ 4,  5,  6,  7],\n       [ 8,  9, 10, 11]])\n\n\n\nN = M[1:3]\nN\n\narray([[ 4,  5,  6,  7],\n       [ 8,  9, 10, 11]])\n\n\n\nN[0] = [3, 2, 1, 0]\nM\n\narray([[ 0,  1,  2,  3],\n       [ 3,  2,  1,  0],\n       [ 8,  9, 10, 11]])\n\n\nThis is rather detailed example. Note that N is initialized as the slice of the matrix M, the last two rows of M, to be precise. N is a view. In the next cell, the first row of N is modified in-place. Since N is a view, this ends up changing the underlying data which is shared with M as well. The first row of N corresponds to the second row of M .\nIn some situations, we might want to create a copy of the data such that the two objects do not share the underlying data. This is done using the copy method:\n\nM = np.arange(12).reshape(3, 4)\nN = M[1:3].copy()\nN[0] = [3, 2, 1, 0]\nM\n\narray([[ 0,  1,  2,  3],\n       [ 4,  5,  6,  7],\n       [ 8,  9, 10, 11]])\n\n\nNotice that M is undisturbed by the changes to M.\nSome operations produce views while others produce copies. We noted that simple slicing always returns views. On the other hand, advanced indexing always returns copies. For example:\n\nx = np.array([1, -1, 4, 5, -2, -3, 8])\ny = x[x &gt; 0]\ny\n\narray([1, 4, 5, 8])\n\n\nLet’s change y in-place and see what happens:\n\ny[:3] = [1, 1, 1]\nx\n\narray([ 1, -1,  4,  5, -2, -3,  8])\n\n\nx remains undisturbed since y is a copy and not a view. To determine if an object is a view or copy of another object, we can use the following command:\n\ny.base is None\n\nTrue\n\n\nIf y is a copy, then the y.base will be None. However, if y is a view, then it will point to the parent object. For example:\n\nx = np.array([1, 2, 3, 4])\ny = x[:2]\ny.base\n\narray([1, 2, 3, 4])\n\n\nBefore we end this section, it is important to know that the reshape method returns a view whenever possible. As an example:\n\nx = np.arange(10)\nM = x.reshape(5, 2)\nM.base is None\n\nFalse\n\n\nNotice that M is a view here and not a copy.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -136,7 +136,7 @@
     "text": "Operations along axes\nSometimes we may wish to do some operations on all the row-vectors of a matrix or all the column-vectors of the matrix. The idea of axis is important to understand how these operations can be done.\n\nTop-bottom\nTop-bottom operations are done on row-vectors. For example, consider the matrix:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\n\\end{bmatrix}\n\\]\nThe sum of the row-vectors of the matrix is a vector:\n\\[\n\\text{rsum}(\\mathbf{A}) = \\begin{bmatrix}\n6 & 8 & 10 & 12\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.arange(1, 9).reshape(2, 4)\nA.sum(axis=0)\n\narray([ 6,  8, 10, 12])\n\n\n\n\nLeft-right\nLeft-right operations are done on column-vectors.\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\n\\end{bmatrix}\n\\]\nThe sum of the column-vectors of the matrix is a vector:\n\\[\n\\text{csum}(\\mathbf{A}) = \\begin{bmatrix}\n10\\\\\n26\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA.sum(axis=1)\n\narray([10, 26])\n\n\n\n\nSum, Mean, Variance, Norm\nLet us look at a few more important operations that sweep accross a particular axis of an array. We shall use the following matrix to demonstrate this:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nLet us find the following quantities:\n\nsum of column-vectors\nmean of row-vectors\nvariance of column-vectors\n\n\nM = np.arange(1, 10).reshape(3, 3)\nM\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])\n\n\n\n# sum of column vectors\nM.sum(axis=1)\n\narray([ 6, 15, 24])\n\n\n\n# mean of row vectors\nM.mean(axis=0)\n\narray([4., 5., 6.])\n\n\n\n# variance of column vectors\nM.var(axis=1)\n\narray([0.66666667, 0.66666667, 0.66666667])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -148,7 +148,7 @@
     "text": "Stacking arrays\nSometimes, we would need to stack arrays. Consider the two matrices:\n\\[\n\\mathbf{A} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix},\n\\mathbf{B} =\n\\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nThere are two ways to stack these two matrices:\n\ntop-bottom\nleft-right\n\n\nTop-bottom\nWe could stack the two matrices along the rows, \\(\\mathbf{A}\\) on top of \\(\\mathbf{B}\\):\n\\[\n\\mathbf{C} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]\n])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nnp.concatenate((A, B),\n               axis=0)\n\narray([[1, 2],\n       [3, 4],\n       [5, 6],\n       [7, 8]])\n\n\n\n\nLeft-right\nWe could stack the two matrices along the columns, \\(\\mathbf{A}\\) to the left of \\(\\mathbf{B}\\):\n\\[\n\\mathbf{C} =\n\\begin{bmatrix}\n1 & 2 & 5 & 6\\\\\n3 & 4 & 7 & 8\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]\n])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nnp.concatenate((A, B),\n               axis=1)\n\narray([[1, 2, 5, 6],\n       [3, 4, 7, 8]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -160,7 +160,7 @@
     "text": "Misc functions\nLet us look at a few other functions that are quite useful:\n\nunique\nmaximum\nmax and argmax\nmin and argmin\nsort and argsort\n\n\nx = np.array([10, -3, 2, 15, 5, -3, 2, 12])\nx\n\narray([10, -3,  2, 15,  5, -3,  2, 12])\n\n\n\nnp.unique(x)\n\narray([-3,  2,  5, 10, 12, 15])\n\n\n\n# max, argmax\nnp.max(x), np.argmax(x)\n\n(np.int64(15), np.int64(3))\n\n\n\n# min, argmin\nnp.min(x), np.argmin(x)\n\n(np.int64(-3), np.int64(1))\n\n\n\n# sort, argsort\nnp.sort(x), np.argsort(x)\n\n(array([-3, -3,  2,  2,  5, 10, 12, 15]), array([1, 5, 6, 2, 4, 0, 7, 3]))\n\n\nThese functions also work on arrays of dimension more than one. If we specify an axis, the maximum will be computed along that axis.\n\nM = np.array([\n    [1, 3, 5],\n    [3, -1, -4]\n])\nnp.max(M, axis = 1)\n\narray([5, 3])\n\n\nA similar mechanism holds for sort:\n\nM = np.array([\n    [1, 3, 5],\n    [3, -1, -4],\n    [5, -4, 10]\n])\nnp.sort(M, axis = 0)\n\narray([[ 1, -4, -4],\n       [ 3, -1,  5],\n       [ 5,  3, 10]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -172,7 +172,7 @@
     "text": "Comparing Arrays\nTo check if two arrays are equal element-wise, we use np.array_equal:\n\nx = np.array([1, 2, 3])\ny = np.array([1, 2, 3])\nnp.array_equal(x, y)\n\nTrue\n\n\n\nx = np.array([1, 2, 4])\ny = np.array([1, 2, 3])\nnp.array_equal(x, y)\n\nFalse\n\n\nJust using x == y would result in a Boolean array. This can’t be used in an if-statement. If we insist on using it, the result is an exception:\n\ntry:\n    x = np.array([1, 2, 4])\n    y = np.array([1, 2, 3])\n    if x == y:\n        print('works')\nexcept:\n    print('does not work')\n\ndoes not work\n\n\nSometimes the arrays being compared may not be exactly equal because of finite precision used to represent real numbers. In such situation, we can use np.allclose and specify the tolerance we want.\n\nx = np.array([1.001, 2.001, 3.001])\ny = np.array([1, 2, 3])\nnp.allclose(x, y,\n            rtol=0,\n            atol=1e-2)\n\nTrue\n\n\nnp.allclose(x, y, atol=delta, rtol=0) will return true if the absolute value of the difference between every pair of corresponding elements of x and y is at most delta. That is, the following condition should evaluate to True for all indices:\nabs(x[i] - y[i]) &lt;= delta",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -184,7 +184,7 @@
     "text": "Higher dimensional Arrays\nSo far we have studied 1D and 2D NumPy arrays. We also have higher dimensional arrays. A classic example of a 3D NumPy array is an image dataset. Let us take a look at the legendary MNIST dataset.\n\nimport matplotlib.pyplot as plt\nfrom keras.datasets import mnist\n\n\ntrain, test = mnist.load_data()\n\n\nX, y = train\n\n\nprint(X.shape)\nprint(y.shape)\n\n(60000, 28, 28)\n(60000,)\n\n\nWe see that X is a 3D array. The first dimension is the index of the sample, the other two correspond to the location of the pixels in an image.\nLet us look at a sample image. It is of shape \\(28 \\times 28\\).\n\n# extract an image with label \"7\"\nimg = X[y == 7][0]\nprint(img.shape)\n# Plot this image\nplt.imshow(img, cmap = 'gray');\n\n(28, 28)\n\n\n\n\n\n\n\n\n\nIf we wish to treat \\(X\\) this as a tabular dataset, we can would have to reshapt it so that it is of the form \\(d \\times n\\). Here is where the index \\(-1\\) comes in handy:\n\nprint('Original shape', X.shape)\nX_reshaped = X.reshape(60000, -1).T\nprint('Final shape', X_reshaped.shape)\n\nOriginal shape (60000, 28, 28)\nFinal shape (784, 60000)\n\n\nWe can now treat this as a data-matrix of shape \\(d \\times n\\), where \\(d = 784\\) and \\(n = 60,000\\). Notice that we didn’t have to compute the value \\(784\\) explicitly and left NumPy to do that task for us. Let us quickly check whether X_reshaped is a view or a copy.\n\nX_reshaped.base is X\n\nTrue\n\n\nIt turns out that X_reshaped is a view.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "NumPy Arrays"
     ]
   },
@@ -196,7 +196,7 @@
     "text": "import numpy as np",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -208,7 +208,7 @@
     "text": "import numpy as np",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -220,7 +220,7 @@
     "text": "Matrix as a NumPy array\nEverything in NumPy is an array. A matrix is also an array. Let us create a simple matrix:\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nM\n\narray([[1, 2, 3],\n       [4, 5, 6],\n       [7, 8, 9]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -232,7 +232,7 @@
     "text": "Adding two matrices\nLet us now add the following matrices:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nthen,\n\\[\n\\textbf{C} = \\textbf{A} + \\textbf{B}  = \\begin{bmatrix}\n6 & 8\\\\\n10 & 12\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]\n])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nC = A + B\nC\n\narray([[ 6,  8],\n       [10, 12]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -244,7 +244,7 @@
     "text": "Scaling a matrix\nScaling a matrix is nothing but element-wise multiplication:\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nthen,\n\\[\n3 \\textbf{M} = \\begin{bmatrix}\n3 & 6 & 9\\\\\n12 & 15 & 18\\\\\n21 & 24 & 27\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\n3 * M\n\narray([[ 3,  6,  9],\n       [12, 15, 18],\n       [21, 24, 27]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -256,7 +256,7 @@
     "text": "Element-wise multiplication of matrices\nConsider two matrices:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n5 & 6\\\\\n7 & 8\n\\end{bmatrix}\n\\]\nThe element-wise product is given by \\(\\textbf{A} \\odot \\textbf{B}\\):\n\\[\n\\textbf{C} = \\textbf{A} \\odot \\textbf{B} = \\begin{bmatrix}\n5 & 12\\\\\n21 & 32\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2],\n    [3, 4]\n])\nB = np.array([\n    [5, 6],\n    [7, 8]\n])\nC = A * B\nC\n\narray([[ 5, 12],\n       [21, 32]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -268,7 +268,7 @@
     "text": "Element-wise functions of matrices\nGiven a matrix, we sometimes would want to apply a function to every element of the matrix. We will consider two examples.\n\nExample-1\nFor example, we may want to take the absolute value of all the elements. Let us say \\(f(x) = |x|\\), then:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n-1 & 2\\\\\n-3 & -4\n\\end{bmatrix}\n\\]\nthen:\n\\[\n\\begin{bmatrix}\nf(-1) & f(2)\\\\\nf(-3) & f(-4)\n\\end{bmatrix} =\n\\begin{bmatrix}\n1 & 2\\\\\n3 & 4\n\\end{bmatrix}\n\\]\nIn NumPy, this becomes:\n\nA = np.array([\n    [-1, 2],\n    [-3, -4]\n])\nnp.abs(A)\n\narray([[1, 2],\n       [3, 4]])\n\n\n\n\nExample-2\nWe might want to square each element of the matrix. If \\(\\textbf{A}\\) is a matrix, then \\(\\textbf{B}\\) could be defined element-wise as follows:\n\\[\nB_{ij} = A_{ij}^2\n\\]\nLet us compute \\(\\mathbf{B}\\) for the following matrix:\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & \\sqrt{2}\\\\\n\\sqrt{3} & 2\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, np.sqrt(2)],\n    [np.sqrt(3), 2]\n])\nA ** 2\n\narray([[1., 2.],\n       [3., 4.]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -280,7 +280,7 @@
     "text": "Transpose of a matrix\nGiven a matrix \\(\\textbf{M}\\):\n\\[\n\\textbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nthen, its transpose \\(\\textbf{M}^{T}\\) is:\n\\[\n\\textbf{M}^{T} = \\begin{bmatrix}\n1 & 4\\\\\n2 & 5\\\\\n3 & 6\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nnp.transpose(M)\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nAlternatively:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nM.transpose()\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nEquivalently, we have:\n\nM.T\n\narray([[1, 4],\n       [2, 5],\n       [3, 6]])\n\n\nThis is what we will be sticking to given that it is very close to the corresponding math notation.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -292,7 +292,7 @@
     "text": "Shape and dimension of a matrix\nMatrices are “two dimensional” arrays. So all matrices in NumPy have array-dimension equal to two. The shape of the NumPy array gives what we usually call the dimension of the matrix in the linear algebra sense. Let us explore these two ideas for:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nprint(M.shape)\nprint(M.ndim)\n\n(2, 3)\n2\n\n\nM is a two dimensional NumPy array of shape \\((2, 3)\\) which represents a matrix \\(\\mathbf{M} \\in \\mathbb{R}^{2 \\times 3}\\).",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -304,7 +304,7 @@
     "text": "Vectors as matrices\nEach vector can be viewed as a matrix. Column vectors are matrices of shape \\((d, 1)\\). Row vectors are matrices of shape \\((1, d)\\). Let us look at how NumPy treats both these cases:\n\nx = np.array([\n    [1],\n    [2],\n    [3]\n])\nprint(x.shape)\nprint(x.ndim)\nx\n\n(3, 1)\n2\n\n\narray([[1],\n       [2],\n       [3]])\n\n\n\nx = np.array([\n    [1, 2, 3]\n])\nprint(x.shape)\nprint(x.ndim)\nx\n\n(1, 3)\n2\n\n\narray([[1, 2, 3]])\n\n\nTo create a row or column vector from a 1D NumPy array, we can use np.newaxis. Focus on the syntax for now; the reason we are doing this will become clear when we discuss indexing and slicing.\n\n# Column vector\nx = np.array([1, 2, 3])\nx = x[:, np.newaxis]\nx.shape\n\n(3, 1)\n\n\n\n# Row vector\nx = np.array([1, 2, 3])\nx = x[np.newaxis, :]\nx.shape\n\n(1, 3)\n\n\nAlternatively, we can also use a method called reshape:\n\n# Column vector\nx = np.array([1, 2, 3])\nx = x.reshape(3, 1)\nx.shape\n\n(3, 1)\n\n\n\n# Row vector\nx = np.array([1, 2, 3])\nx = x.reshape(1, 3)\nx.shape\n\n(1, 3)\n\n\nreshape is a powerful method and will come in handy in various applications.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -316,7 +316,7 @@
     "text": "Products involving matrices and vectors\nWe will look at the following products: - matrix - matrix - matrix - vector - vector - matrix - vector - vector\n\nProduct of two matrices\nGiven two matrices compatible for multiplication:\n\\[\n\\textbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\n\\end{bmatrix}, \\textbf{B} = \\begin{bmatrix}\n6 & 7\\\\\n8 & 9\\\\\n10 & 11\n\\end{bmatrix}\n\\]\nthen,\n\\[\n\\textbf{C} = \\textbf{A} \\times \\textbf{B} = \\begin{bmatrix}\n52 & 58\\\\\n124 & 139\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6]\n])\nB = np.array([\n    [6, 7],\n    [8, 9],\n    [10, 11]\n])\nC = A @ B\nC\n\narray([[ 52,  58],\n       [124, 139]])\n\n\n\n\nProduct of a matrix and a (column) vector\nGiven the matrix \\(\\mathbf{A}\\) and the vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}, \\mathbf{x} = \\begin{bmatrix}\n6\\\\\n7\\\\\n8\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{Ax}\\) is given by:\n\\[\n\\mathbf{C} = \\mathbf{A x} = \\begin{bmatrix}\n44\\\\\n107\\\\\n170\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nx = np.array([6, 7, 8])\nC = A @ x\nC\n\narray([ 44, 107, 170])\n\n\n\n\nProduct of a (row) vector and a matrix\nGiven the matrix \\(\\mathbf{A}\\) and the vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{A} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}, \\mathbf{x} = \\begin{bmatrix}\n6\\\\\n7\\\\\n8\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x}^T \\mathbf{A}\\) is given by:\n\\[\n\\mathbf{C} = \\mathbf{x}^T \\mathbf{A} = \\begin{bmatrix}\n90 & 111 & 132\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nA = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nx = np.array([6, 7, 8])\nx @ A\n\narray([ 90, 111, 132])\n\n\n\n\n(Inner) Product of a (row) vector and a (column) vector\nThe product of a row vector and a column vector is nothing but the usual dot product:\n\\[\n\\mathbf{x}^T = \\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}, \\quad\n\\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x}^T \\mathbf{y}\\) is then:\n\\[\n\\mathbf{x}^T \\mathbf{y} = 32\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nx @ y\n\nnp.int64(32)\n\n\n\n\n(Outer) Product of a (column) vector and a (row) vector\nThe product of a column vector and a row vector is an outer product:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\quad\n\\mathbf{y} = \\begin{bmatrix}\n4 & 5 & 6\n\\end{bmatrix}\n\\]\nThe product \\(\\mathbf{x} \\mathbf{y}^T\\) is then:\n\\[\n\\mathbf{x} \\mathbf{y}^T = \\begin{bmatrix}\n4 & 5 & 6\\\\\n8 & 10 & 12\\\\\n12 & 15 & 18\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nnp.outer(x, y)\n\narray([[ 4,  5,  6],\n       [ 8, 10, 12],\n       [12, 15, 18]])\n\n\nEquivalently:\n\nx = np.array([1, 2, 3])\ny = np.array([4, 5, 6])\nx = x[:, np.newaxis]\ny = y[np.newaxis, :]\nx @ y\n\narray([[ 4,  5,  6],\n       [ 8, 10, 12],\n       [12, 15, 18]])\n\n\nNotice the amazing power of the @ operator and the seemingly magical way in which NumPy combines the left and right operands. Let us see how NumPy achieves this in the particular case of a row-vector matrix product. Consider multiplying \\(\\begin{bmatrix}1 & 2\\end{bmatrix}\\) and \\(\\begin{bmatrix}3 & 4\\\\5 & 6\\end{bmatrix}\\).\n\nx = np.array([1, 2])\nM = np.array([\n    [3, 4],\n    [5, 6]\n])\nx @ M\n\narray([13, 16])\n\n\nWhen we execute x @ M, NumPy does the following: - Convert the 1D array x into a 2D array by adding an extra dimension at the beginning so that the result is a row vector whose shape is \\((1, 2)\\). - Now that x and M are compatible for matrix multiplication because their shapes are \\((1, 2)\\) and \\((2, 2)\\) respectively, matrix multiplication happens. - The resulting output of this operation has shape \\((1, 2)\\). Since this is effectively a vector, NumPy drops the extra dimension and outputs a 1D array of shape \\((2, )\\).\nnp.matmul gives the same result. But we will stick to the @ operator.\n\nx = np.array([1, 2])\nM = np.array([\n    [3, 4],\n    [5, 6]\n])\nnp.matmul(x, M)\n\narray([13, 16])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -328,7 +328,7 @@
     "text": "Special matrices\nLet us now look at some special matrices that can be generated using NumPy.\n\nMatrix of zeros\nIn many algorithms, we might have to initialize a matrix with zeros. For example, consider a \\(2 \\times 4\\) matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n0 & 0 & 0 & 0\\\\\n0 & 0 & 0 & 0\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.zeros((2, 4))\n\narray([[0., 0., 0., 0.],\n       [0., 0., 0., 0.]])\n\n\n\n\nMatrix of ones\nSimilar to a matrix of zeros, we can come up with a matrix of ones.\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 1\\\\\n1 & 1\\\\\n1 & 1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.ones((3, 2))\n\narray([[1., 1.],\n       [1., 1.],\n       [1., 1.]])\n\n\nWe have to be careful about the argument. It has to be a tuple (or some sequence, say a list). See what happens if pass it as two separate arguments: np.ones(3, 2),\n\n\nIdentity matrix\nOften, we might have to deal with identity matrices. A \\(3 \\times 3\\) identity matrix is as follows:\n\\[\n\\mathbf{I} = \\begin{bmatrix}\n1 & 0 & 0\\\\\n0 & 1 & 0\\\\\n0 & 0 & 1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.eye(5)\n\narray([[1., 0., 0., 0., 0.],\n       [0., 1., 0., 0., 0.],\n       [0., 0., 1., 0., 0.],\n       [0., 0., 0., 1., 0.],\n       [0., 0., 0., 0., 1.]])\n\n\nA scalar matrix can be obtained by multiplying the identity matrix by the appropriate scalar.\n\n\nDiagonal matrices\nAnother special kind of matrix. Let us create the following matrix:\n\\[\n\\mathbf{D} = \\begin{bmatrix}\n1 & 0 & 0 & 0\\\\\n0 & 2 & 0 & 0\\\\\n0 & 0 & 3 & 0\\\\\n0 & 0 & 0 & 4\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nnp.diag([1, 2, 3, 4])\n\narray([[1, 0, 0, 0],\n       [0, 2, 0, 0],\n       [0, 0, 3, 0],\n       [0, 0, 0, 4]])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -340,7 +340,7 @@
     "text": "Indexing and Slicing\nJust like lists in Python, NumPy arrays can be indexed and sliced. Slicing is useful if we want to work with a portion of an array. We will look at some examples.\n\nExample-1: Indexing\nConsider:\n\\[\nM = \\begin{bmatrix}\n1 & 3 & 0\\\\\n4 & 2 & \\color{red}{5}\\\\\n9 & 8 & 7\n\\end{bmatrix}\n\\]\nTo access the element \\(5\\), we can do the following:\n\nM = np.array([\n    [1, 3, 0],\n    [4, 2, 5],\n    [9, 8, 7]\n])\nM[1][2]\n\nnp.int64(5)\n\n\nAlternatively, we can also use:\n\nM = np.array([\n    [1, 3, 0],\n    [4, 2, 5],\n    [9, 8, 7]\n])\nM[1, 2]\n\nnp.int64(5)\n\n\nNote that NumPy uses zero-indexing, just like Python. In general, M[row, col] is the element in the row row and columnn col assuming zero indexing.\n\n\nExample-2: Row-slice\nWe will extract the third row of the matrix \\(\\mathbf{M}\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n3 & 4\\\\\n5 & 6\\\\\n7 & 8\\\\\n9 & 10\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.arange(1, 11).reshape(5, 2)\nM\n\narray([[ 1,  2],\n       [ 3,  4],\n       [ 5,  6],\n       [ 7,  8],\n       [ 9, 10]])\n\n\n\nM[2, :]\n\narray([5, 6])\n\n\nThe syntax is to be understood as follows. To extract the third row, we fix the row index to be \\(2\\) (zero-indexing) and get hold of all elements in that row. To do this, we use a : in the place of the column index so that it allows all elements to come in.\n\n\nExample-3: Column slice\nLet us now extract the second column of the following matrix:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n4 & 5 & 6\\\\\n7 & 8 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\nM[:, 1]\n\narray([2, 5, 8])\n\n\nHere, we want the second column. So we fix the column index to \\(1\\) and set the row index to :, indicating that all elements in that column should be included.\n\n\nExample-4: Submatrix slice\nNow, we want to extract the \\(2 \\times 2\\) submatrix colored in blue from \\(M\\):\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & \\color{blue}7 & \\color{blue}8\\\\\n9 & 10 & \\color{blue}{11} & \\color{blue}{12}\\\\\n13 & 14 & 15 & 16\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3, 4],\n    [5, 6, 7, 8],\n    [9, 10, 11, 12],\n    [13, 14, 15, 16]\n])\nM[1:3, 2:4]\n\narray([[ 7,  8],\n       [11, 12]])\n\n\nThe start-point of the slice is included and the end-point is excluded, just as we do in native Python.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -352,7 +352,7 @@
     "text": "Other Matrix Operations\nThere are several important matrix operations that we will list down here. The np.linalg module helps us perform these operations effortlessly.\n\nRank\nWe can get the rank of a matrix as follows. For example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3 & 4\\\\\n5 & 6 & 7 & 8\\\\\n9 & 10 & 11 & 12\\\\\n13 & 14 & 15 & 16\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [1, 2, 3, 4],\n    [5, 6, 7, 8],\n    [9, 10, 11, 12],\n    [13, 14, 15, 16]\n])\nnp.linalg.matrix_rank(M)\n\nnp.int64(2)\n\n\n\n\nDeterminant\nWe can compute the determinant of a square matrix. For example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & -1\\\\\n0 & 1 & -1\\\\\n1 & 0 & 2\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [1, 2, -1],\n    [0, 1, -1],\n    [1, 0, 2]\n])\nnp.linalg.det(M)\n\nnp.float64(1.0)\n\n\n\n\nInverse\nWe can get the inverse as follows. For example:\n\\[\nM = \\begin{bmatrix}\n3 & -4\\\\\n4 & 3\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [3, -4],\n    [4, 3]\n])\nnp.linalg.inv(M)\n\narray([[ 0.12,  0.16],\n       [-0.16,  0.12]])\n\n\n\n\nPseuodoinverse\nThe Moore Penrose pseudoinverse \\(\\mathbf{M}^{\\dagger}\\) of a matrix \\(\\mathbf{M}\\) can be computed:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2 & 3\\\\\n3 & 6 & 9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nM = np.array([\n    [1, 2, 3],\n     [3, 6, 9]\n])\nnp.linalg.pinv(M)\n\narray([[0.00714286, 0.02142857],\n       [0.01428571, 0.04285714],\n       [0.02142857, 0.06428571]])\n\n\nRecall that every matrix has a pseudoinverse. The pseudoinverse reduces to the inverse for square invertible matrices.\n\n\nSystem of Linear Equations\nWe can solve a system of linear equations of the form \\(\\mathbf{A} \\boldsymbol{\\theta} = \\mathbf{b}\\). Consider the following example:\n\\[\n\\begin{aligned}\n2x + 3y - 4z &= -4\\\\\nx + y - z &= 0\\\\\n2x + y + z &= 7\n\\end{aligned}\n\\]\nwhere \\(\\boldsymbol{\\theta} = (x, y, z)\\) and \\(\\mathbf{A}\\) is the matrix of coefficients. The following method in NumPy returns the exact solution if the matrix \\(\\mathbf{A}\\) is invertible.\n\nA = np.array([\n    [2, 3, -4],\n    [1, 1, -1],\n    [2, 1, 1]\n])\nb = np.array([-4, 0, 7])\ntheta = np.linalg.solve(A, b)\ntheta\n\narray([1., 2., 3.])\n\n\nIf \\(\\mathbf{A}\\) is not a square matrix or if it is singular, then the method will return an error.\n\n\nLeast Squares Solution\nIn general, \\(\\mathbf{A} \\boldsymbol{\\theta} = \\mathbf{b}\\) may not be solvable, or even if it is, it may not have a unique solution. In such situations, we look for the least square solution. Consider:\n\\[\n\\begin{aligned}\n2x + 3y - 4z &= -4\\\\\nx + y - z &= 0\\\\\n2x + 2y - 2z &= 0.1\n\\end{aligned}\n\\]\nwhere \\(\\boldsymbol{\\theta} = (x, y, z)\\) and \\(\\mathbf{A}\\) is the matrix of coefficients. The following method in NumPy returns the least squares solution of minimum norm.\n\nA = np.array([\n    [2, 3, -4],\n    [1, 1, -1],\n    [2, 2, -2]\n])\nb = np.array([-4, 0, 0.1])\ntheta = np.linalg.lstsq(A, b)[0]\ntheta\n\narray([2.07333333, 0.01333333, 2.04666667])\n\n\nnp.linalg.lstsq returns three objects, the first of which is the least square solution. To see how close this solution is to the vector \\(\\mathbf{b}\\), let us compute \\(\\mathbf{A} \\boldsymbol{\\theta}\\):\n\nA @ theta\n\narray([-4.  ,  0.04,  0.08])\n\n\nNotice that this is quite close to the vector \\(\\mathbf{b} = (-4, 0, 0.1)\\), which is what we expect of a least squares solution.\n\n\nEigenvalues and Eigenvectors (symmetric)\nGiven a symmetric matrix \\(\\mathbf{M}\\) let us find its eigenvalues and eigenvectors:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 0 & -3\\\\\n0 & 5 & 2\\\\\n-3 & 2 & 8\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [1, 0, -3],\n    [0, 5, 2],\n    [-3, 2, 8]\n])\neigval, eigvec = np.linalg.eigh(M)\neigval\n\narray([-0.20942046,  4.36588492,  9.84353554])\n\n\nThe h in eigh referes to Hermitian. Recall that Hermitian matrices are the complex analogue of symmetric (real) matrices. The eigenvalues of Hermitian matrices are real and NumPy outputs them in ascending order. The corresponding eigenvectors appear in the columns of the matriix eigvec. The eigenpairs are given below:\n\neigval[0], eigvec[:, 0]\neigval[1], eigvec[:, 1]\neigval[2], eigvec[:, 2];\n\n\n\nEigenvalues and Eigenvectors (general)\nFor a square matrix \\(\\mathbf{M}\\), not necessarily square, let us find its eigenvalues and eigenvectors. Consider:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 2\\\\\n-1 & 3\n\\end{bmatrix}\n\\]\n\nM = np.array([\n    [1, 2],\n    [-1, 3]\n])\neigval, eigvec = np.linalg.eig(M)\nprint(eigval)\nprint(eigvec)\n\n[2.+1.j 2.-1.j]\n[[0.81649658+0.j         0.81649658-0.j        ]\n [0.40824829+0.40824829j 0.40824829-0.40824829j]]\n\n\nNote that the eigenvalues could be complex, which is the case here. This means that the eigenvalues returned by NumPy may not have any ordering.\n\n\nSVD\nThe singular value decomposition of a matrix \\(\\mathbf{M}\\) is of the form:\n\\[\n\\mathbf{M} = \\mathbf{U} \\boldsymbol{\\Sigma} \\mathbf{V}^{T}\n\\]\nConsider an example:\n\\[\n\\mathbf{M} = \\begin{bmatrix}\n1 & 3 & 1\\\\\n2 & 4 & 2\n\\end{bmatrix}\n\\]\nThe dimensions of the matrices should turn out to be:\n\n\\(\\mathbf{U} \\rightarrow (2, 2)\\)\n\\(\\boldsymbol{\\Sigma} \\rightarrow (2, 3)\\)\n\\(\\mathbf{V} \\rightarrow (3, 3)\\)\n\n\nM = np.array([\n    [1, 3, 1],\n    [2, 4, 2]\n])\nU, Sigma, V = np.linalg.svd(M)\nprint(U.shape)\nprint(Sigma.shape)\nprint(V.shape)\n\n(2, 2)\n(2,)\n(3, 3)\n\n\nNotice that the method returns a vector of singular values. We can easily recover the diagonal-ish \\(\\boldsymbol{\\Sigma}\\) matrix from this. In contrast to the eigenvalues returned by the eigh method which are in ascending order, the singular values are sorted in descending order, as is the convention in the linear algebra literature.\n\nSigma\n\narray([5.89660208, 0.47967068])\n\n\nRecall that \\(\\mathbf{U}\\) and \\(\\mathbf{V}\\) are orthogonal matrices. That is, \\(\\mathbf{U U}^{T} = \\mathbf{U}^{T} \\mathbf{U} = \\mathbf{I}\\). A similar result holds for \\(\\mathbf{V}\\). Let us quickly see if this is the case:\n\nU @ U.T\n\narray([[ 1.00000000e+00, -1.08094514e-16],\n       [-1.08094514e-16,  1.00000000e+00]])\n\n\n\nV @ V.T\n\narray([[ 1.00000000e+00,  2.97804097e-17,  1.56730402e-17],\n       [ 2.97804097e-17,  1.00000000e+00, -2.93975883e-17],\n       [ 1.56730402e-17, -2.93975883e-17,  1.00000000e+00]])\n\n\nIn upcoming notebooks, we will see how we can compare two matrices element by element. For now, it suffices to note that the non-diagonal elements are vanishingly small and are as good as zero.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Matrices"
     ]
   },
@@ -361,10 +361,10 @@
     "href": "week-1/module-1/index.html",
     "title": "NumPy and Matplotlib",
     "section": "",
-    "text": "This modules is a self-contained introduction to the libraries NumPy and Matplotlib. The module is divided into five notebooks:\n\nVectors\nPlotting Simple Curves\nMatrices\nSampling from Distributions, Bar Plots, Histograms and Scatter plots\nNumPy arrays\n\nWe will start with the simplest of NumPy arrays, 1D arrays that can be used to represent vectors. Then we will look at simple line plots that we can draw with Matplotlib. Then we move on to 2D arrays that can be used to represent matrices. From there, we study how we can sample from distributions and represent samples using plots such as histograms and scatter plots. Finally, we return to NumPy arrays and study them in greater detail.\nThe five notebooks are best read in the order presented here. If you are already familiar with some of the basic concepts of NumPy or Matplotlib, then you can pick and choose whatever seems unfmailiar.",
+    "text": "This module is a self-contained introduction to the libraries NumPy and Matplotlib. The module is divided into five notebooks:\n\nVectors\nPlotting Simple Curves\nMatrices\nSampling from Distributions, Bar Plots, Histograms and Scatter plots\nNumPy arrays\n\nWe will start with the simplest of NumPy arrays, 1D arrays that can be used to represent vectors. Then we will look at simple line plots that we can draw with Matplotlib. Then we move on to 2D arrays that can be used to represent matrices. From there, we study how we can sample from distributions and represent samples using plots such as histograms and scatter plots. Finally, we return to NumPy arrays and study them in greater detail.\nThe five notebooks are best read in the order presented here. If you are already familiar with some of the basic concepts of NumPy or Matplotlib, then you can pick and choose whatever seems unfmailiar.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib"
+      "NumPy and Matplotlib"
     ]
   },
   {
@@ -1869,7 +1869,7 @@
     "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Plotting Simple Curves"
     ]
   },
@@ -1881,7 +1881,7 @@
     "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Plotting Simple Curves"
     ]
   },
@@ -1893,7 +1893,7 @@
     "text": "Partitioning the real line\nIn order to plot a curve, we need a set of \\(x\\) values and the corresponding \\(y\\) values. Since \\(x\\) is the independent variable, we need to first generate a list of values for \\(x\\). This is done using the linspace method in NumPy. np.linspace(a, b, n) generates a sequence of \\(n\\) numbers that are equally spaced between \\(a\\) and \\(b\\), end-points included. As an example:\n\nx = np.linspace(0, 1, 11)\nx\n\narray([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])\n\n\n\nx.shape\n\n(11,)\n\n\nHere, np.linspace(0, 1, 11) generates a sequence of eleven numbers, starting from \\(0\\) and ending at \\(11\\), with equal spacing. We could have also arrived at this result using the arange method by specifying a step size of \\(0.1\\) and end-point that is greater than \\(1\\). But clearly, linspace is easier since it avoids these calculations:\n\nx = np.arange(0, 1.1, 0.1)\nx\n\narray([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Plotting Simple Curves"
     ]
   },
@@ -1905,7 +1905,7 @@
     "text": "Curves\nWe shall plot several curves, starting from simple curves to more complex ones. In this process, we will also learn how to annotate plots.\n\nCurve-1\nPlot \\(y = x\\) for \\(x \\in [0, 1]\\). Sample \\(10\\) equally spaced points in this interval, inclusive of endpoints.\nIn NumPy:\n\nx = np.linspace(0, 1, 10)\ny = x\nplt.plot(x, y)\n\n\n\n\n\n\n\n\nnp.plot connects the points that we have specified with the help of a straight line. If we also wish to visualise the location of the individual points, we can add a scatter plot along with the line plot. We will study scatter plots in greater detail in an upcoming notebook.\n\nx = np.linspace(0, 1, 10)\ny = x\nplt.scatter(x, y)\nplt.plot(x, y);\n# ; suppresses output, compare with previous cell\n\n\n\n\n\n\n\n\nThe ; after the plot command suppresses the output. We could have arrived at this line with the help of just two points, since it takes two distinct points to uniquely specify a line:\n\nx = np.array([0, 1])\ny = x\n# order of plot and scatter doesn't matter here\nplt.plot(x, y)\nplt.scatter(x, y);\n\n\n\n\n\n\n\n\nThe number of points chosen on the x-axis didn’t matter here. But we will soon see the effect that it has when we plot non-linear functions of the input.\n\n\nCurve-2\nPlot \\(y = 5 - 3x\\) for \\(x \\in [-5, 5]\\). Sample \\(20\\) equally spaced points in this interval, inclusive of endpoints. Add a title to the plot which has the equation of the curve.\n\nx = np.linspace(-5, 5, 20)\ny = 5 - 3 * x\nplt.plot(x, y)\nplt.title('y = 5 - 3 x');\n\n\n\n\n\n\n\n\n\n\nCurve-3\nPlot \\(y = x^2\\) for \\(x \\in [-1, 1]\\). Try out four different partitions for x:\n\n\\(5\\) equally spaced points in this interval, endpoints inclusive\n\\(10\\) equally spaced points in this interval, endpoints inclusive\n\\(20\\) equally spaced points in this interval, endpoints inclusive\n\\(50\\) equally spaced points in this interval, endpoints inclusive\n\nObserve the differences in these four plots. Which one would you choose? Add the equation of the curve as the title of the plot. Also add the x and y-axis to the plot.\n\n# 5 points\nx = np.linspace(-1, 1, 5)\ny = x ** 2\nplt.plot(x, y)\nplt.axhline(color='black',\n            linestyle='--',\n            linewidth=0.8)\nplt.axvline(color='black',\n            linestyle='--',\n            linewidth = 0.8);\n\n\n\n\n\n\n\n\nNotice the effect of using a small number of points. Recall that plot.plot connects the points we have given using a straight line. To get a smoother curve that resembles \\(y = x^2\\), we need a finer partition of the x-axis.\n\n# 50 points\nx = np.linspace(-1, 1, 50)\ny = x ** 2\nplt.plot(x, y)\nplt.axhline(color='black',\n            linestyle='--',\n            linewidth=0.8)\nplt.axvline(color='black',\n            linestyle='--',\n            linewidth = 0.8);\n\n\n\n\n\n\n\n\nThough the curve appears smooth to our eyes given our finite resolution, note that plt.plot continues to connect consecutive points with a straight lines.\n\n\nCurve-4\nPlot \\(y = 3\\) and \\(x = 5\\) on the same plot. Color the first one blue and the second one red. Limit your plot to the region \\(x \\in [0, 6]\\) and \\(y \\in [0, 6]\\).\n\nLabel the x and the y axes.\nAdd a suitable title.\nAdd a legend.\n\n\n# y = 3\nx = np.array([0, 6])\ny = np.array([3, 3])\nplt.plot(x, y,\n         color='blue',\n         label='y = 3')\n\n# x = 5\nx = np.array([5, 5])\ny = np.array([0, 6])\nplt.plot(x, y,\n         color='red',\n         label='x = 5')\n\nplt.legend()\nplt.title('x = 5 and y = 3')\nplt.axhline(color='black',\n            linestyle='--',\n            linewidth=0.8)\nplt.axvline(color='black',\n            linestyle='--',\n            linewidth=0.8);",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Plotting Simple Curves"
     ]
   },
@@ -1917,7 +1917,7 @@
     "text": "Subplots\nSometimes we may have to plot multiple curves, each in a separate plot. Plot the following curves, each in a separe plot:\n\n\\(y = \\ln x, \\quad x \\in \\left( \\cfrac{1}{e^2}, e^3 \\right)\\)\n\\(y = e^x, \\quad x \\in (0, 3)\\)\n\\(y = \\sin x, \\quad x \\in [0, 2 \\pi]\\)\n\\(y = \\cfrac{1}{x}, \\quad x \\in (1, 5)\\)\n\nTitle each curve appropriately.\nWe will first increase the size of the plotting space. This can be manipulated by a parameter called figure.figsize which can be accessed via an object called rcParams, which can be used to change the configuration parameters for various aspects of the plot.\n\n# rcParams is like a dict\n# controls various configurations\nplt.rcParams['figure.figsize'] = [8, 8]\n\nplt.subplot(r, c, ind) divides the plotting region into \\(r \\times c\\) individual plotting windows and selects the plot at index ind. The index is set to \\(1\\) for the top-left plot and increases by one point from left to right and top to bottom. The top-left plot window has index \\(1\\), the last window in the first row has index \\(c\\), and so on.\n\n# Plot-1\nplt.subplot(2, 2, 1)\nx = np.linspace(1 / np.e ** 2, np.e ** 3)\ny = np.log(x)\nplt.plot(x, y)\nplt.title('y = ln x')\n\n# Plot-2\nplt.subplot(2, 2, 2)\nx = np.linspace(0, 3)\ny = np.exp(x)\nplt.plot(x, y)\n# $ ... $ is used to render LaTeX\nplt.title('$y = e^x$')\n\n# Plot-3\nplt.subplot(2, 2, 3)\nx = np.linspace(0, 2 * np.pi)\ny = np.sin(x)\nplt.plot(x, y)\nplt.title('y = sin x')\n\n# Plot-4\nplt.subplot(2, 2, 4)\nx = np.linspace(1, 5)\ny = 1 / x\nplt.plot(x, y)\nplt.title('y = 1 / x');",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Plotting Simple Curves"
     ]
   },
@@ -1929,7 +1929,7 @@
     "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
     ]
   },
@@ -1941,7 +1941,7 @@
     "text": "We will import NumPy and matplotlib. In addition, we will also start with some customised layout for the plot.\n\nimport numpy as np\nimport matplotlib.pyplot as plt",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
     ]
   },
@@ -1953,7 +1953,7 @@
     "text": "Random Number Generator\nA random number generator allows us to generate “pseudo random numbers”. These aren’t truly random, but come close enough for all practical purposes. NumPy has a random module that helps us define such a generator:\n\nrng = np.random.default_rng(seed=42)\n\nThe seed value ensures that our simulations are reproducible. Run the following code multiple times with and without a seed value and notice the behaviour.\n\nrng = np.random.default_rng(seed=42)\nrng.integers(0, 10, 5)\n\narray([0, 7, 6, 4, 4])\n\n\nLet us quickly look at sampling from a uniform distribution.\nrng.integers(a, b, endpoint=True, size=n) returns a sample of \\(n\\) integers in the interval \\([a, b]\\) drawn from the discrete uniform distribution.\n\nrng.integers(0, 5,\n             endpoint=True,\n             size=50\n)\n\narray([5, 2, 3, 5, 5, 0, 2, 2, 5, 3, 2, 1, 4, 2, 5, 0, 1, 3, 1, 3, 3, 1,\n       2, 4, 3, 3, 2, 2, 0, 1, 2, 3, 3, 5, 1, 2, 4, 1, 3, 5, 1, 5, 1, 5,\n       3, 3, 1, 2, 5, 2])\n\n\nTo sample from the continuous uniform distribution \\(U[a, b]\\), we run:\n\nrng.uniform(0, 1,\n            size=50)\n\narray([0.98796486, 0.76410381, 0.10498714, 0.03107057, 0.93128712,\n       0.96552035, 0.21928765, 0.44180262, 0.55841242, 0.26566918,\n       0.05186467, 0.34936711, 0.26823169, 0.51232861, 0.47317588,\n       0.31202876, 0.42502523, 0.4537047 , 0.99292336, 0.63649573,\n       0.40598673, 0.62687924, 0.09587909, 0.19025823, 0.57653219,\n       0.65941569, 0.82635908, 0.05680779, 0.79063923, 0.18256108,\n       0.06228407, 0.11270523, 0.81318061, 0.62981147, 0.46985742,\n       0.08367527, 0.95083251, 0.68161831, 0.47453638, 0.85001569,\n       0.17413239, 0.08551654, 0.06614779, 0.63247482, 0.48444714,\n       0.9989611 , 0.05181891, 0.0821462 , 0.23662616, 0.52679687])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
     ]
   },
@@ -1965,7 +1965,7 @@
     "text": "Sampling and Plotting\nArmed with a pseudo random number generator, we shall try to sample points from various probability distributions. Once we have a sample, we can then represent it pictorially using suitable plots.\n\nSampling: Bernoulli\nLet us generate a sample of \\(1000\\) points from the \\(\\text{Br}(0.7)\\). Recall that this is the same as tossing a biased coin \\(1000\\) times, which has \\(P(H) = 0.7\\).\nIn NumPy:\n\nX = rng.choice(\n    [0, 1],\n    p=[0.3, 0.7],\n    size=1000)\nX.shape\n\n(1000,)\n\n\n\n\nPlotting: Bar plot\nLet us visualise the sample using a bar plot. For this, we first need the height of the bars or the frequencies.\n\nfrom collections import Counter\nfreq = Counter(X)\nprint(freq)\nplt.bar([0, 1], [freq[0], freq[1]])\nplt.xticks([0, 1]);\n\nCounter({np.int64(1): 690, np.int64(0): 310})\n\n\n\n\n\n\n\n\n\nThe xticks method ensures appropriate labeling of the bars on the x-axis.\n\n\nSampling: Gaussian\nWe now generate a sample of \\(10,000\\) points from \\(\\mathcal{N}(50, 4)\\). Recall that \\(\\mu = 1\\) and \\(\\sigma^2 = 4\\). As a concrete example, we could use a normal distribution to model the heights or weights of people in a room, or the marks of students in an exam.\n\nX = rng.normal(50, 2,\n               size=10_000)\nX.shape\n\n(10000,)\n\n\n\n\nPlotting: Histogram\nWe can now visualise the sample using a histogram.\n\nplt.hist(X,\n         bins=10,\n         edgecolor='black');\n\n\n\n\n\n\n\n\n\n\nSampling: Bivariate Gaussian\nLet us now sample \\(1000\\) points from the following Bivariate Gaussian:\n\\[\n\\mathcal{N} \\left( \\begin{bmatrix}1 \\\\ 2\\end{bmatrix}, \\begin{bmatrix}1 & 0\\\\0 & 5\\end{bmatrix} \\right)\n\\]\nAs a concrete example, a Bivariate Gaussian could model the distribution of the landing positions of balls on a cricket pitch in a given cricekt match.\n\nmu = np.array([1, 2])\ncov = np.array([\n    [1, 0],\n    [0, 5]\n])\nX = rng.multivariate_normal(\n    mu,\n    cov,\n    size=1000).T\n# we transpose so that the data-matrix is (d, n) and not (n, d)\nd, n = X.shape\n\n\n\nPlotting: Scatter plot\nLet us now visualise the sample using a scatter plot. Zooming out of the scatter plot gives us a better understanding. Changing the covariance matrix also helps in understanding how the sampled points depend on it.\n\nplt.scatter(X[0], X[1],\n            alpha=0.1)\nplt.axis('equal')\nplt.axhline(color='black',\n            linestyle='--',\n            linewidth='0.8')\nplt.axvline(color='black',\n            linestyle='--',\n            linewidth='0.8');\n\n\n\n\n\n\n\n\nalpha allows us to control the transparency of points in a scatter plot. By default alpha=1, indicating complete opacity.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
     ]
   },
@@ -1977,7 +1977,7 @@
     "text": "GMM\nWe can now combine the concepts learnt above to sample points from a Gaussian Mixture Model. We shall draw \\(1,000,000\\) samples from a Gaussian Mixture Model (GMM) that has three components, with mixture probabilities \\([0.2, 0.3, 0.5]\\) and means \\([10, 15, 18]\\). The standard deviation of all three Gaussians is the same and is equal to \\(1\\). We can visualise the sample using a histogram.\n\nn = 1_000_000\ncomp = rng.choice(\n    [0, 1, 2],\n    p=[0.2, 0.3, 0.5],\n    size=n)\nmu = np.array([10, 15, 18])\nX = np.zeros(n)\nfor i in range(n):\n    X[i] = rng.normal(mu[comp[i]], 1)\nplt.hist(X,\n         bins=1000,\n         edgecolor='black');\n\n\n\n\n\n\n\n\nA concrete example of a GMM would be in modeling the incomes of a people in a population in which there are distinct economic categories. Consider three groups whose salaries are distributed normally around means 10 lpa, 15 lpa and 18 lpa, with unit variance. The three groups are represented in the proportion \\(2 : 3 : 5\\). We could model the distribution of the income of an individual from this population as a GMM. The above plot would be the histogram of a sample from this population.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Sampling from Distributions, Bar Plots, Histograms and Scatter plots"
     ]
   },
@@ -1989,7 +1989,7 @@
     "text": "First we shall import the NumPy package.\n\nimport numpy as np",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2001,7 +2001,7 @@
     "text": "First we shall import the NumPy package.\n\nimport numpy as np",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2013,7 +2013,7 @@
     "text": "Python Lists\nConsider the following vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nOne of the simplest operations that we can think of is to add these two vectors:\n\\[\n\\mathbf{z} = \\mathbf{x} + \\mathbf{y}= \\begin{bmatrix}\n5\\\\\n7\\\\\n9\n\\end{bmatrix}\n\\]\nLet us first see how this is done in native Python, using lists:\n\nx = [1, 2, 3]\ny = [4, 5, 6]\nz = [ ]\nfor x_i, y_i in zip(x, y):\n    z.append(x_i + y_i)\nz\n\n[5, 7, 9]\n\n\nIn a moment, we shall study how NumPy simplifies this operation. But before that, we need to understand how vectors are represented in NumPy.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2025,7 +2025,7 @@
     "text": "Vectors as NumPy arrays\nConsider the following vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.array([1, 2, 3])\nx\n\narray([1, 2, 3])\n\n\nWe can also arrive at this using the arange method. The arange method in NumPy is similar to the range function in Python. The right end-point is excluded and the step size is \\(1\\) by default.\n\nx = np.arange(1, 4)\nx\n\narray([1, 2, 3])\n\n\nNotice that x is a new kind of object and is called a NumPy array. To be more precise, it is an object of type ndarray.\n\ntype(x)\n\nnumpy.ndarray\n\n\nWe can now turn to vector addition in NumPy.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2037,7 +2037,7 @@
     "text": "Vector addition\nAddition is one of the elementary operations that can be performed on vectors. Given two vectors\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{z} = \\mathbf{x} + \\mathbf{y}= \\begin{bmatrix}\n5\\\\\n7\\\\\n9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = np.arange(4, 7)\nz = x + y\nz\n\narray([5, 7, 9])\n\n\nCompare the NumPy code with the Python code that involved lists and notice the differences. At least two are worth pointing:\n\nThere is no explicit loop in the case of NumPy.\nThe code is succinct and more readable.\n\nWe will soon see that there are also improvements to efficiency when using NumPy, especially when working with large arrays. Next we turn to some useful operations on vectors that can be performed with the help of NumPy.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2049,7 +2049,7 @@
     "text": "Element-wise multiplication\nElement-wise multiplication of two vectors is called the Hadamard product. The operator corresponding to it is \\(\\odot\\). For example, given two vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n4\\\\\n5\\\\\n6\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{z} = \\mathbf{x} \\odot \\mathbf{y}= \\begin{bmatrix}\n4\\\\\n10\\\\\n18\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = np.arange(4, 7)\nz = x * y\nz\n\narray([ 4, 10, 18])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2061,7 +2061,7 @@
     "text": "Scaling vectors\nIf \\(\\mathbf{x}\\) is a vector, scaling it by a constant \\(k\\) is equivalent to element-wise multiplication by \\(k\\). For example, given\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nwe have:\n\\[\n\\mathbf{y} = 3 \\mathbf{x} = \\begin{bmatrix}\n3\\\\\n6\\\\\n9\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 4)\ny = 3 * x\ny\n\narray([3, 6, 9])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2073,7 +2073,7 @@
     "text": "Python Lists vs NumPy Arrays\nA small detour. Let us now compare the difference in speed between Python lists and NumPy arrays. Consider a sequence of the first million positive integers. We wish to multiply each element by 2. Let us do it in two ways, one using Python lists and other using NumPy arrays, and observe the difference in speeds.\n\npy_list = list(range(1, 1_000_000))\nnp_array = np.arange(1, 1_000_000)\n\n\n%timeit [2 * x for x in py_list]\n\n67.3 ms ± 11.7 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)\n\n\n\n%timeit 2 * np_array\n\n796 µs ± 137 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)\n\n\n\nround((67.3 * 10 ** (-3)) / (796 * 10 ** (-6)))\n\n85\n\n\nWe will look at some common operations on vectors and see how they can be achieved with NumPy.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2085,7 +2085,7 @@
     "text": "Element-wise functions of vectors\nScaling a vector \\(\\mathbf{x}\\) by a constant \\(k\\) can be seen as the outcome of the function \\(f(x) = kx\\) applied element-wise:\n\\[\n\\begin{bmatrix}\nf(x_1)\\\\\n\\vdots\\\\\nf(x_d)\n\\end{bmatrix} = \\begin{bmatrix}\nkx_1\\\\\n\\vdots\\\\\nk x_d\n\\end{bmatrix}\n\\]\nNumPy extends this feature for any arbitrary function.\n\nExample-1\nFor example, consider the function \\(f(x) = x^2\\). This can be applied element-wise:\n\\[\n\\begin{bmatrix}\nx_1^2\\\\\n\\vdots\\\\\nx_d^2\n\\end{bmatrix}\n\\]\nLet us do this for:\n\\[\n\\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 5)\nx ** 2\n\narray([ 1,  4,  9, 16])\n\n\n\n\nExample-2.1\nAs another example, consider \\(f(x) = \\log(x)\\). This can also be applied element-wise:\n\\[\n\\begin{bmatrix}\n\\log(x_1)\\\\\n\\vdots\\\\\n\\log(x_d)\n\\end{bmatrix}\n\\]\nLet us do this for \\(\\begin{bmatrix}1 & 10 & 100 & 1000 & 10000 & 100000\\end{bmatrix}^T\\). Use base \\(10\\).\nIn NumPy:\n\nx = np.array([1, 10, 100, 1000, 10_000, 100_000])\nnp.log10(x)\n\narray([0., 1., 2., 3., 4., 5.])\n\n\n\n\nExample 2.2\nWe can also use log to the base \\(e\\), the natural logarithm. For this, let us take a specific vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\ne\\\\\ne^2\\\\\ne^3\n\\end{bmatrix}\n\\]\nand apply the function \\(f(x) = \\ln(x)\\) element-wise.\nIn NumPy:\n\nx = np.array([1, np.e, np.e ** 2, np.e ** 3])\nnp.log(x)\n\narray([0., 1., 2., 3.])\n\n\n\n\nExample 3\nJust as we can scale a vector, we can also add a constant to each component. This is equivalent to applying the element-wise function \\(f(x) = x + c\\). Let us take the case of \\(\\begin{bmatrix}1 & 2 & 3\\end{bmatrix}^T\\) and \\(c = 5\\).\nIn NumPy:\n\nx = np.arange(1, 4)\nc = 5\nx + c\n\narray([6, 7, 8])\n\n\n\n\nExample 4\nNow for a slightly more involved example with \\(f(x) = 5x - 2\\) applied element-wise on the following vector:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n-1\\\\\n0\\\\\n1\\\\\n2\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(-1, 3)\n5 * x - 2\n\narray([-7, -2,  3,  8])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2097,7 +2097,7 @@
     "text": "Dot Product\nThe dot product between two vectors \\(\\mathbf{x}\\) and \\(\\mathbf{y}\\) is given as follows:\n\\[\nz = \\mathbf{x}^T \\mathbf{y} =  \\mathbf{x} \\cdot \\mathbf{y} = \\sum \\limits_{j = 1}^{m} x_j y_j\n\\]\nLet us use the following vectors:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\\\\\n\\end{bmatrix}, \\mathbf{y} = \\begin{bmatrix}\n-4\\\\\n-5\\\\\n-6\\\\\n-7\\\\\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nx = np.arange(1, 5)\ny = np.arange(-4, -8, -1)\nnp.dot(x, y)\n\nnp.int64(-60)\n\n\nAlternatively, we can do the following.\n\nx @ y\n\nnp.int64(-60)\n\n\nSince this resembles the mathematical expression quite accurately, we shall stick to this.",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2109,7 +2109,7 @@
     "text": "Vector of zeros or ones\nOn many occassions, we might want to create a NumPy array all of whose elements are zeros or ones or some other constant. Let us create the following vectors:\n\\[\n\\mathbf{0} = \\begin{bmatrix}\n0\\\\\n0\\\\\n0\\\\\n0\\\\\n0\n\\end{bmatrix}, \\mathbf{1} = \\begin{bmatrix}\n1\\\\\n1\\\\\n1\\\\\n1\\\\\n1\n\\end{bmatrix}\n\\]\nIn NumPy:\n\nzeros = np.zeros(5)\nzeros\n\narray([0., 0., 0., 0., 0.])\n\n\n\nones = np.ones(5)\nones\n\narray([1., 1., 1., 1., 1.])\n\n\nWhat if we wanted to create a vector all of whose elements are equal to \\(5\\)?\n\nfives = np.ones(5) * 5\nfives\n\narray([5., 5., 5., 5., 5.])",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2121,7 +2121,7 @@
     "text": "Norm of a vector\nFor a vector \\(\\mathbf{x}\\):\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\n\\end{bmatrix}\n\\]\nThe \\(L_2\\) norm is defind as:\n\\[\n||\\mathbf{x}||_2 = \\sqrt{1^2 + 2^2 + 3^2} = \\sqrt{14}\n\\]\nThe \\(L_1\\) norm is defind as:\n\\[\n||\\mathbf{x}||_1 = |1| + |2| + |3| = 6\n\\]\nIn NumPy:\n\n# L2-norm\nx = np.arange(1, 4)\nnorm = np.linalg.norm(x)\nnorm\n\nnp.float64(3.7416573867739413)\n\n\nBy default, the norm computed is the L2 norm. If we want to compute the L1 norm, we have to pass an additional argument to the function.\n\n# L1-norm\nx = np.arange(1, 4)\nnorm = np.linalg.norm(x, ord=1)\nnorm\n\nnp.float64(6.0)",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },
@@ -2133,7 +2133,7 @@
     "text": "Shape and dimension of a vector\nVectors are “one dimensional” arrays. So all vectors in NumPy have array-dimension equal to one. The term “array-dimension” here is defined for a NumPy array. It is different from the dimension used in the vector-space sense. The vector-space dimension can be obtaind by looking at the shape of the NumPy array. Let us explore these two ideas for:\n\\[\n\\mathbf{x} = \\begin{bmatrix}\n1\\\\\n2\\\\\n3\\\\\n4\n\\end{bmatrix}\n\\]\n\n# Shape\nx = np.arange(1, 5)\nx.shape\n\n(4,)\n\n\n\n# N-dim\nx = np.arange(1, 5)\nx.ndim\n\n1",
     "crumbs": [
       "Week-1",
-      "Module-1- NumPy and Matplotlib",
+      "NumPy and Matplotlib",
       "Vectors"
     ]
   },

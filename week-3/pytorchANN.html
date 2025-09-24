@@ -1,0 +1,2350 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>pytorchann – Data Science Lab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../week-3/pytorch/Autograd.html" rel="next">
+<link href="../week-3/Pytorch_basics.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-3/index.html">Week-3</a></li><li class="breadcrumb-item"><a href="../week-3/pytorchANN.html">Mini batch gradient descent</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/module-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy and Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting Simple Curves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Arrays</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/apply_and_map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apply and Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Compare</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/introduction_to_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/pandas_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/PivotTable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PivotTable</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-2/week-2-reference-notebook_v1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structured Approach to ML Projects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/2 ANN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numpy array to Tensor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/3 CNN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 CNN using Pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/4 RNN using pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 RNN using pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/Pytorch_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DL workshop on PyTorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorchANN.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Mini batch gradient descent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pytorch</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/Autograd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gradient accumulation and clearing the gradients</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-4/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-4</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading Images</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/preprocessing_images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">— Data Augmentation Examples (PyTorch v2) —</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Transfer_Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transfer Learning</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-5</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to the Hugging Face Ecosystem: Datasets and Tokenizers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Fine_tuning_hands-on.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fine Tuning Hands On</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Summarization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_Fine_TuningBERT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 Fine TuningBERT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_L2_FineTuningGPT2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 L2 FineTuningGPT2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1: Introduction to Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2: Techniques in Prompting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Applications of Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Introduction to LLM Platforms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5: Getting Started with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6: Hands-on with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 7: Working with Text Completion in OpenAI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 8: Evaluating Prompt Quality and Output Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 9: Introduction to LangChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 12: LangChain Memory – Making LLMs Remember Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-7</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LangChain Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/2_RAG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RAG</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/3_VectorDBs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vector Databases</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-10</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Date Time Index</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/2 Time_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Resampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/3 Classical_decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Classical_decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/4 STL_Decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 STL_Decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/5 Stationarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 Stationarity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/6 make_data_stationary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make data stationary</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mini-batch-gradient-descent" id="toc-mini-batch-gradient-descent" class="nav-link active" data-scroll-target="#mini-batch-gradient-descent">Mini batch gradient descent</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-3/pytorchANN.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-3/pytorchANN.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-3/index.html">Week-3</a></li><li class="breadcrumb-item"><a href="../week-3/pytorchANN.html">Mini batch gradient descent</a></li></ol></nav></header>
+
+
+
+
+
+<p><a href="https://colab.research.google.com/github/manojkhara/data-science-lab/blob/main/week-3/pytorchANN.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<ul>
+<li><p>Training Pipeline</p>
+<ul>
+<li>Define Model</li>
+<li>for epoch in range(epochs):
+<ul>
+<li>Forward pass</li>
+<li>Loss calculation</li>
+<li>Backward pass</li>
+<li>Parameters update</li>
+</ul></li>
+</ul></li>
+<li><p>Model Evaluation</p></li>
+<li><p>Improve Training Pipeline using nn.Module and torch.optim</p>
+<ul>
+<li>Activation Functions(nn.ReLU, nn.Sigmoid, nn.Softmax)</li>
+<li>nn.Sequential Container</li>
+<li>Loss Functions (nn.BCELoss, nn.CrossEntropyLoss etc.)</li>
+</ul></li>
+<li><p>torch.optim (SGD,ADAM etc)</p></li>
+<li><p>Improve training pipeline using torch.utils.data Dataset and DataLoader</p>
+<ul>
+<li>Data Loading</li>
+<li>batching</li>
+<li>shuffling sampling</li>
+<li>Parallelization (num_workers)</li>
+</ul></li>
+</ul>
+<div id="cell-4" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> torch <span class="im">import</span> optim</span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset, DataLoader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data:image/png;base64,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alX973//M2aHDRumFStWSJLatWunfv36JXkkezpz5oyaNGliHC9ZskQPP/ywaQZwNkKqB1izZo3eeecdSVKBAgW0fPly64jtDBgwQBs2bJAktW/fXn379rWOSETVuyK2AgAAAPAGRFLnSk08TWrPnj16+eWXjeNVq1YpX758phm7mTBhgsLDwyVJdevW1bhx46wjgNMRUj1Eu3btdPDgQUlS79691blzZ+uIbWzdulV9+vQxjleuXKn8+fObZu6EqJo6xFYAAAAA7kQkTRv3Gk+t+vfvr++//16S1KJFC4WGhlpHbOOvv/5Sq1atjOOZM2eqUqVKphnAFQipHiLpWakZMmRQRESEChUqZB2zhY4dO+q3334zbieNqilFVHUOYisAAACAe0EkdS9nxdOkrGelzpgxQ4899phpxi4GDhyoyMhISVL9+vU1ZswY6wjgEoRUD9KnTx9t3bpVklSrVi19+OGH1hGPN2PGDH322WeSpICAAH355ZfKli2bdSxViKquRWwFAAAA0hciqWdyRTy1GjVqlJYtWyZJKl26tObPn28d8XhfffWVRo4caRwvXrxYQUFBphnAVQipHuTgwYNq166dcdynTx917NjRNOPJfvjhB73++uvG8dChQ/XMM8+YZu4XUdU9iK0AAACAPRBJ7SUt4mlSly5dUqtWrRQdHS1Jat26tQYOHGgd81h//PGHOnbsqPj4eElSz549jTe6BtICIdXDfP7555o0aZJx/OGHH6pWrVqmGU90/PhxdenSRTExMZKkp59+WsOGDbOOORVR1bMQWwEAAADXIpJ6h7SOp1Zr1641XR/1rbfeMl1v1FPFx8erS5cu+v333yVJlStX1ieffGIdA1yKkOqBQkNDtXbtWunf0DR9+nRVqFDBOuYxLl26pF69ehlfzIKCgjRv3jxlyZLFOuoyRFV7cGZsTfrkj9gKAAAAu7tx48Z/Plcmktqbu+Op1cSJE00v6x87dqzq1atnmvE0/fr106ZNmyRJ2bNn17x581S0aFHrGOBShFQPdP36dXXt2tUIkw8++KA++ugjlStXzjrqdpcvX1a/fv30888/S/9Gr08//VTBwcHW0TRDVLU3YisAAAC8jasiaUBAgHx8fEz3g+fwtHhqlTRMStL48eNVu3Zt04ynGDRokNatW2cce/KvFd6NkOqhjh8/rl69eunEiRPS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SUlJcfsdu1LO75sk065dO7NmzRpTWlpq3azWOD9r5/+fpxrZ+p3Izc01kZGRbv9vnds6axZ3y9V8twBc+5KTk43D4TAff/yxtemKFBYWmt69e5sOHTqY06dPV2hLTk42YWFhJicnp8J6T0aMGFHl9nbt5rK+e8SIEWbTpk2mefPmZv78+W77D2eNIskkJia67QPq4jV4y9o/XIkrrRmMMWb58uXG4XCY5cuXV1jvjrPGiIyMNLm5uRXaqBns1UbNUFpaahYvXmyioqJcNYK/v78ZM2aM28ypuurViNQ333xTDodDq1evVqtWrazNuuWWW/T6669LkhYsWFDliIKPPvpImzZt0saNG9WxY0drsySpTZs2Sk1NVbt27TRhwgQdPXrUusl1rUmTJlqzZo3eeustt8OafX199cILL6hbt25auHBhhTNZDRo00OOPP66cnBxt27atwuPcWb9+vU6fPq3/+q//qjCKYN++ffr973+v6OhoLV682O3n3rRpU7311lvq0qWLpk2bpvz8fOsmUvmlDvPmzdPbb7+tnj17Wpuv2Jdffqnp06dLkhITE/XFF1+oV69edTbK1FsFBQWaNWuWgoKCNGDAAGuz/P399eyzz+rYsWMyxsgYo7y8PKWkpKhp06bWzQHghmGM0axZs7Rlyxa9//77mjBhgtvf/EaNGiklJUWDBg3SihUrrM0uhw4dUlJSkqKjo7V582aPIwecMwV/8sknOnXqlLXZZf78+Zo3b57+8pe/aPLkyW7PqHfs2FELFy5UdnZ2lRNlfPbZZ5o3b57S09PVv3//SiP9fH199cwzz6hv375auHBhte5BVRueeuopffrpp+rYsWOl56rykad//OMf9dFHH1UYjVtTdUt+fr5GjRqlkJAQrV27Vh06dKjwOJV/L1544QUNGTJEf/3rX6u8PZFzBM/EiRPdfseuxIkTJzRlyhRdunRJMTEx2r17t+Lj4+v9/USNMVq0aJEOHDjgusXE5W699VZlZ2e7ahZ3y6JFiyo8BsCNZf/+/QoMDFTLli2tTVekSZMmuu2223T27Fm3l4DXlVOnTumFF17Q22+/rVGjRrntP5w1SmJiot555x2tXr3ausl170prBkmKjo5WRESEUlNTVVZWVqHNKisrS5s2bVJCQoJatGjhWk/NUHvsagZfX18NHz5cX3/9tatGKCoq0jvv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rqrDGKOysrJaP86srvDwcDVp0sS62qMWLVrI4XC4HRh1o7iSmqFx48YaMmSItm/frq+++sraLGOM0tPTdeeddyo6OrpCGzXD1avPNUO9ClJr8pLs6k6WUxMHONeikpISLV68WJGRkWrUqJHatGmjhx9+WK+99pqOHTum2NhYjRgxwvowl0aNGmn48OHavXu32x+XLVu2KDs7u9JkDSoPUqt777vFixerqKjI7Rmjtm3bVqtDudbddNNN6tevn5599lnFxcVp06ZNKiwsVEJCguLi4jRt2jTOOgJANZWUlKi0tLRaJ2SrUlhYqODgYIWGhlqbqq24uFgnTpzQp59+qiZNmlTqI90toaGhOn78uNvQUOUn5RxejpStD4wx2rFjh+Li4nTTTTepRYsWio6OVlJSkj777DN16tRJY8eO9Xh/vKutW1R+6wXr++xpmTJlin788UdduHChwr4kyc/Pr0a+F9eSjh07auTIkZo6daqOHDmizMxM/epXv9JLL72k1atX64MPPrA+BAC81qpVK33//feVbkl3pc6fP6+DBw9W+6RjbfP396/WyMTAwEDb2wFdj662ZpCk3/zmN7r55puVnp5ubapw+6bLJ5kSNUONqM81Q70KUuuS84t+I/nmm290991364knnlCnTp2UlpamnJwclZWVqaioSJmZmZo/f36lmyZb9erVSy1atNCKFStkLpsVuKSkRAsXLtR9991XabIGp4CAAM2dO1erVq3yevn73/9e5Y9dTfLz83MN0V+6dKlrxrfqLNnZ2br11lutu64xzsteCwoKlJycLF9fX7388svKzc1VSkrKDX3mEQCq69y5cx4vqboStTGCs0+fPpX6Rrtl3Lhx1t1cc4qLizVq1Cj17NlTOTk5evvtt3Xw4EGVlJTo4sWLOnr0qFauXKnnn3++yhPqV1O3OK8Gsb6/VS3Lli1T27ZtrbuqFb6+vq6D/eeee65STeLNUlxcrC5dulh3XaOGDRum3r17a/r06Tpx4oQee+wx9enTRy+//HKt/M8AuDF06dJFZWVl2rdvn7XpiuTm5urIkSOKiIi4pgfs5Ofnuw3nrmc1VTOEhYXp/vvv1wcffKC8vLwKbevXr1dxcbHHvISaoWbUx5qBILX8TEVJSYkaN25co6Ni67P8/HwNHTpUISEhys7O1sqVKzVw4EDdeuut1b6nZps2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" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+<div id="cell-6" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>) <span class="co"># preactivation</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>h1_layer <span class="op">=</span> nn.Sigmoid() <span class="co"># activation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>a2_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">2</span>, out_features<span class="op">=</span><span class="dv">3</span>) <span class="co"># preactivation</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>h2_layer <span class="op">=</span> nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>) <span class="co"># activation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b3f01429-7f5c-4bf0-849a-81024162774b">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>network <span class="op">=</span> nn.Sequential(nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                         nn.Sigmoid(),</span>
+<span id="cb4-3"><a href="#cb4-3"></a>                        nn.Linear(in_features<span class="op">=</span> <span class="dv">2</span>, out_features<span class="op">=</span><span class="dv">3</span>),</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                        nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>))</span>
+<span id="cb4-5"><a href="#cb4-5"></a>network</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>Sequential(
+  (0): Linear(in_features=3, out_features=2, bias=True)
+  (1): Sigmoid()
+  (2): Linear(in_features=2, out_features=3, bias=True)
+  (3): Softmax(dim=1)
+)</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ef139f76-fe95-4908-cdec-f961166f489c">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>X <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">3</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>tensor([[ 0.3367,  0.1288,  0.2345],
+        [ 0.2303, -1.1229, -0.1863],
+        [ 2.2082, -0.6380,  0.4617],
+        [ 0.2674,  0.5349,  0.8094]])</code></pre>
+</div>
+</div>
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ff6aa107-762e-4bb6-d43d-71a51ba24bfb">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>network.forward(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>tensor([[0.2952, 0.2121, 0.4927],
+        [0.2772, 0.2178, 0.5050],
+        [0.2873, 0.2515, 0.4612],
+        [0.3054, 0.2065, 0.4882]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b2c78c62-7bf9-4047-8ef9-8e5789859627">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(<span class="op">*</span>network.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter containing:
+tensor([[-0.5367,  0.0189,  0.0133],
+        [-0.0725, -0.4260, -0.4458]], requires_grad=True) Parameter containing:
+tensor([ 0.1976, -0.2580], requires_grad=True) Parameter containing:
+tensor([[ 0.4253, -0.2915],
+        [-0.3648,  0.2378],
+        [ 0.6337,  0.1885]], requires_grad=True) Parameter containing:
+tensor([ 0.0870, -0.0512,  0.3060], requires_grad=True)</code></pre>
+</div>
+</div>
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1e7cd226-8980-4035-f929-556bb6931060">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> params <span class="kw">in</span> network.parameters():</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="bu">print</span>(params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter containing:
+tensor([[-0.5367,  0.0189,  0.0133],
+        [-0.0725, -0.4260, -0.4458]], requires_grad=True)
+Parameter containing:
+tensor([ 0.1976, -0.2580], requires_grad=True)
+Parameter containing:
+tensor([[ 0.4253, -0.2915],
+        [-0.3648,  0.2378],
+        [ 0.6337,  0.1885]], requires_grad=True)
+Parameter containing:
+tensor([ 0.0870, -0.0512,  0.3060], requires_grad=True)</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f24fefe2-a385-4cb6-f0e7-8dff4775941c">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
+<span id="cb14-2"><a href="#cb14-2"></a>summary(network, input_size<span class="op">=</span>(<span class="dv">3</span>,))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Linear-1                    [-1, 2]               8
+           Sigmoid-2                    [-1, 2]               0
+            Linear-3                    [-1, 3]               9
+           Softmax-4                    [-1, 3]               0
+================================================================
+Total params: 17
+Trainable params: 17
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.00
+Estimated Total Size (MB): 0.00
+----------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7573d78f-c0f4-41eb-9341-59d97db7b8a5">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a1 <span class="op">=</span> a1_layer.forward(X)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>a1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>tensor([[-0.4496, -0.2900],
+        [-0.1047, -0.6958],
+        [-1.2237, -0.0836],
+        [-0.5369, -0.1279]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2a46f02c-9553-457b-d41c-0f84641cabaa">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>h1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>tensor([[0.3895, 0.4280],
+        [0.4738, 0.3327],
+        [0.2273, 0.4791],
+        [0.3689, 0.4681]], grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8b755452-105e-424d-943c-6cf8d75d2d99">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>a2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor([[ 0.0386, -0.1262, -0.1017],
+        [ 0.0432, -0.1389, -0.0482],
+        [ 0.0757, -0.1711, -0.1333],
+        [ 0.0317, -0.1143, -0.1238]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9a0415c9-2726-4859-edd5-73d4f8e984eb">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>tensor([[0.3680, 0.3121, 0.3199],
+        [0.3641, 0.3035, 0.3323],
+        [0.3857, 0.3013, 0.3130],
+        [0.3676, 0.3177, 0.3147]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-18" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> softmax(x):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="cf">return</span> torch.exp(x) <span class="op">/</span> torch.<span class="bu">sum</span>(torch.exp(x), axis<span class="op">=-</span><span class="dv">1</span>, keepdim<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="87e447d6-4aa5-474b-d231-b9ff88c97251">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>softmax(a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>tensor([[0.3680, 0.3121, 0.3199],
+        [0.3641, 0.3035, 0.3323],
+        [0.3857, 0.3013, 0.3130],
+        [0.3676, 0.3177, 0.3147]], grad_fn=&lt;DivBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>X, y <span class="op">=</span> load_diabetes(return_X_y<span class="op">=</span><span class="va">True</span>, as_frame<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="b4b1b693-5037-4da7-bc4c-d91bb09c0523">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>X.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div id="df-872ff0e3-3dbc-4a6e-8e8f-ae058a00aa7a" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">sex</th>
+<th data-quarto-table-cell-role="th">bmi</th>
+<th data-quarto-table-cell-role="th">bp</th>
+<th data-quarto-table-cell-role="th">s1</th>
+<th data-quarto-table-cell-role="th">s2</th>
+<th data-quarto-table-cell-role="th">s3</th>
+<th data-quarto-table-cell-role="th">s4</th>
+<th data-quarto-table-cell-role="th">s5</th>
+<th data-quarto-table-cell-role="th">s6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.038076</td>
+<td>0.050680</td>
+<td>0.061696</td>
+<td>0.021872</td>
+<td>-0.044223</td>
+<td>-0.034821</td>
+<td>-0.043401</td>
+<td>-0.002592</td>
+<td>0.019907</td>
+<td>-0.017646</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.001882</td>
+<td>-0.044642</td>
+<td>-0.051474</td>
+<td>-0.026328</td>
+<td>-0.008449</td>
+<td>-0.019163</td>
+<td>0.074412</td>
+<td>-0.039493</td>
+<td>-0.068332</td>
+<td>-0.092204</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.085299</td>
+<td>0.050680</td>
+<td>0.044451</td>
+<td>-0.005670</td>
+<td>-0.045599</td>
+<td>-0.034194</td>
+<td>-0.032356</td>
+<td>-0.002592</td>
+<td>0.002861</td>
+<td>-0.025930</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-0.089063</td>
+<td>-0.044642</td>
+<td>-0.011595</td>
+<td>-0.036656</td>
+<td>0.012191</td>
+<td>0.024991</td>
+<td>-0.036038</td>
+<td>0.034309</td>
+<td>0.022688</td>
+<td>-0.009362</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.005383</td>
+<td>-0.044642</td>
+<td>-0.036385</td>
+<td>0.021872</td>
+<td>0.003935</td>
+<td>0.015596</td>
+<td>0.008142</td>
+<td>-0.002592</td>
+<td>-0.031988</td>
+<td>-0.046641</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-872ff0e3-3dbc-4a6e-8e8f-ae058a00aa7a')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-872ff0e3-3dbc-4a6e-8e8f-ae058a00aa7a button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-872ff0e3-3dbc-4a6e-8e8f-ae058a00aa7a');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-4e1fe1f4-296f-4d2d-a8e5-345f76b37506">
+      <button class="colab-df-quickchart" onclick="quickchart('df-4e1fe1f4-296f-4d2d-a8e5-345f76b37506')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-4e1fe1f4-296f-4d2d-a8e5-345f76b37506 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:241}}" data-outputid="ab3ebb7c-781a-447f-8e70-510776eaf5cf">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>y.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>151.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>75.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>141.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>206.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>135.0</td>
+</tr>
+</tbody>
+</table>
+
+</div><br><label><b>dtype:</b> float64</label>
+</div>
+</div>
+<div id="cell-24" class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-25" class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>X_tr, X_te, y_tr, y_te <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="930da8c2-4428-4442-a6aa-a330923abe95">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>device</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>device(type='cuda')</code></pre>
+</div>
+</div>
+<div id="cell-27" class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>X_train <span class="op">=</span> torch.tensor(X_tr.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
+<span id="cb34-2"><a href="#cb34-2"></a>X_test <span class="op">=</span> torch.tensor(X_te.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>y_train <span class="op">=</span> torch.tensor(y_tr.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>y_test <span class="op">=</span> torch.tensor(y_te.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f3c6fcf3-ae0f-4d07-f427-f1ffb548de75">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>tensor([[ 0.0708,  0.0507,  0.0121,  ...,  0.0343,  0.0274, -0.0011],
+        [-0.0091,  0.0507, -0.0181,  ...,  0.0712,  0.0003,  0.0196],
+        [ 0.0054, -0.0446,  0.0498,  ..., -0.0026,  0.0170, -0.0135],
+        ...,
+        [ 0.0308, -0.0446, -0.0202,  ..., -0.0395, -0.0109, -0.0011],
+        [-0.0128, -0.0446, -0.0235,  ..., -0.0026, -0.0385, -0.0384],
+        [-0.0927, -0.0446,  0.0283,  ..., -0.0395, -0.0051, -0.0011]],
+       device='cuda:0')</code></pre>
+</div>
+</div>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cccc32bb-aefe-4294-c30e-fc5d1ed92da8">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>tensor([[ 0.0708,  0.0507,  0.0121,  ...,  0.0343,  0.0274, -0.0011],
+        [-0.0091,  0.0507, -0.0181,  ...,  0.0712,  0.0003,  0.0196],
+        [ 0.0054, -0.0446,  0.0498,  ..., -0.0026,  0.0170, -0.0135],
+        ...,
+        [ 0.0308, -0.0446, -0.0202,  ..., -0.0395, -0.0109, -0.0011],
+        [-0.0128, -0.0446, -0.0235,  ..., -0.0026, -0.0385, -0.0384],
+        [-0.0927, -0.0446,  0.0283,  ..., -0.0395, -0.0051, -0.0011]])</code></pre>
+</div>
+</div>
+<div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a051434b-a612-4e94-fe79-8756875a9813">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>X_train.shape[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>10</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> X_train.shape[<span class="dv">1</span>] , out_features<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a>h1_layer <span class="op">=</span> nn.Sigmoid()</span>
+<span id="cb41-3"><a href="#cb41-3"></a>a2_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb41-4"><a href="#cb41-4"></a>h2_layer <span class="op">=</span> nn.Sigmoid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c53ce530-83f6-42ba-cbf5-60a0c2911632">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>a1 <span class="op">=</span> a1_layer.forward(X_train)</span>
+<span id="cb42-2"><a href="#cb42-2"></a>a1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>tensor([[ 0.3426,  0.0776,  0.0932,  ..., -0.1501,  0.0304, -0.3136],
+        [ 0.3109,  0.0243,  0.0776,  ..., -0.1472,  0.0022, -0.2639],
+        [ 0.3463,  0.1017,  0.1175,  ..., -0.1069,  0.0907, -0.3036],
+        ...,
+        [ 0.3198,  0.0756,  0.0980,  ..., -0.0765,  0.0844, -0.2897],
+        [ 0.3202,  0.0422,  0.0986,  ..., -0.0960,  0.0534, -0.2469],
+        [ 0.3014,  0.0656,  0.1323,  ..., -0.0479,  0.0574, -0.2741]],
+       grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2f22bc63-996a-4165-8b54-8e657200bbbc">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
+<span id="cb44-2"><a href="#cb44-2"></a>h1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>tensor([[0.5848, 0.5194, 0.5233,  ..., 0.4625, 0.5076, 0.4222],
+        [0.5771, 0.5061, 0.5194,  ..., 0.4633, 0.5006, 0.4344],
+        [0.5857, 0.5254, 0.5293,  ..., 0.4733, 0.5226, 0.4247],
+        ...,
+        [0.5793, 0.5189, 0.5245,  ..., 0.4809, 0.5211, 0.4281],
+        [0.5794, 0.5105, 0.5246,  ..., 0.4760, 0.5134, 0.4386],
+        [0.5748, 0.5164, 0.5330,  ..., 0.4880, 0.5143, 0.4319]],
+       grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b07dec02-577b-4a1b-a42c-dd42c6c17e3b">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
+<span id="cb46-2"><a href="#cb46-2"></a>a2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>tensor([[-0.5215, -0.0766, -0.2861,  ...,  0.0357, -0.0974, -0.1406],
+        [-0.5183, -0.0653, -0.2851,  ...,  0.0343, -0.1039, -0.1331],
+        [-0.5308, -0.0809, -0.2918,  ...,  0.0360, -0.0939, -0.1446],
+        ...,
+        [-0.5318, -0.0791, -0.2942,  ...,  0.0327, -0.0974, -0.1428],
+        [-0.5285, -0.0717, -0.2950,  ...,  0.0339, -0.1015, -0.1393],
+        [-0.5311, -0.0744, -0.2992,  ...,  0.0315, -0.0967, -0.1487]],
+       grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8b690c5a-b22d-48f4-a982-751394e193e6">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>tensor([[0.3725, 0.4809, 0.4290,  ..., 0.5089, 0.4757, 0.4649],
+        [0.3733, 0.4837, 0.4292,  ..., 0.5086, 0.4741, 0.4668],
+        [0.3703, 0.4798, 0.4276,  ..., 0.5090, 0.4765, 0.4639],
+        ...,
+        [0.3701, 0.4802, 0.4270,  ..., 0.5082, 0.4757, 0.4644],
+        [0.3709, 0.4821, 0.4268,  ..., 0.5085, 0.4746, 0.4652],
+        [0.3703, 0.4814, 0.4257,  ..., 0.5079, 0.4758, 0.4629]],
+       grad_fn=&lt;SigmoidBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="72aff414-d80e-4d80-818f-e6ad91458d2e">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>model <span class="op">=</span> nn.Sequential(</span>
+<span id="cb50-2"><a href="#cb50-2"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">10</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb50-3"><a href="#cb50-3"></a>     nn.Sigmoid(),</span>
+<span id="cb50-4"><a href="#cb50-4"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb50-5"><a href="#cb50-5"></a>     nn.Sigmoid(),</span>
+<span id="cb50-6"><a href="#cb50-6"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb50-7"><a href="#cb50-7"></a>)</span>
+<span id="cb50-8"><a href="#cb50-8"></a></span>
+<span id="cb50-9"><a href="#cb50-9"></a>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>Sequential(
+  (0): Linear(in_features=10, out_features=8, bias=True)
+  (1): Sigmoid()
+  (2): Linear(in_features=8, out_features=8, bias=True)
+  (3): Sigmoid()
+  (4): Linear(in_features=8, out_features=1, bias=True)
+)</code></pre>
+</div>
+</div>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e6448d4c-bd99-4ff0-aa0a-f0beff1d5fae">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>y_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>tensor([144., 150., 280., 125.,  59.,  65., 281., 277., 167.,  90.,  72., 178.,
+         88., 270., 101., 197.,  97.,  53.,  71., 262.,  52., 102., 166., 189.,
+        173., 220., 206.,  97.,  60.,  61., 242., 121., 128., 104., 265., 132.,
+        283., 174., 129., 257., 137.,  63.,  93., 232., 208., 261., 179., 258.,
+        262.,  51., 237.,  71., 139., 268.,  69., 317., 249., 154., 192., 116.,
+         81., 122., 259., 191., 292.,  55., 107., 210.,  91., 253.,  85., 252.,
+         59.,  78., 200.,  78., 245., 175.,  42., 127.,  53.,  94., 104., 199.,
+        265., 281., 248., 257., 215., 303., 170.,  59., 277., 209., 138., 198.,
+        124.,  96., 288., 225., 265., 101.,  55., 198.,  51., 252.,  64., 220.,
+        131., 212., 142., 103., 155., 121.,  86., 111.,  65., 131.,  51., 128.,
+        141.,  48., 109., 178.,  88.,  84., 216., 150.,  60.,  96., 190.,  74.,
+        279., 182., 160., 245., 276., 174., 180., 150., 196., 138.,  97., 246.,
+        321., 308., 109.,  69., 182., 258., 161., 178., 214.,  45., 150., 160.,
+         55., 197., 185., 268., 310., 123.,  68.,  72., 185., 144., 147., 168.,
+        178., 246., 151., 127.,  83., 332., 152., 109.,  90.,  66., 214.,  85.,
+        129.,  89., 259., 229., 200.,  77.,  54.,  31., 109., 206., 144., 118.,
+         83., 242., 259.,  72., 163., 181., 141.,  71., 137., 195., 179., 102.,
+        131.,  47., 235.,  77., 198.,  93., 162., 225., 275., 183., 306.,  81.,
+         55., 146., 196., 230., 310.,  40., 135., 346.,  43., 128.,  77., 235.,
+         49.,  74.,  92.,  84., 263., 144., 142., 341., 115., 158., 273.,  85.,
+         88., 220.,  39.,  80., 172., 217., 336.,  52., 272., 115., 110., 131.,
+         71., 275., 118.,  25., 100., 281., 221., 248., 200., 132.,  91.,  67.,
+        202.,  73.,  85., 275., 243.,  66., 293., 236., 243.,  87.,  39., 217.,
+         92., 296., 292., 142.,  50.,  53., 104.,  75., 120., 142., 143.,  99.,
+         65., 116., 233., 164.,  95.,  59., 139., 145., 177., 185.,  97.,  42.,
+        201., 241.,  70.,  78.,  49., 103.,  44., 111., 191.,  47., 182.,  58.,
+        155., 151.,  79., 104., 143., 152., 170.,  75., 200., 124.,  91.,  49.,
+        163.,  53., 283., 178., 219., 200., 113., 113.,  63., 114., 126., 274.,
+         88., 311.,  83.,  71., 134., 244.,  65., 173.,  57.,  68., 141., 270.,
+        134., 202., 148.,  64., 302.])</code></pre>
+</div>
+</div>
+<div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f5180a98-4ea5-4dd1-ef13-516f0af72291">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>y_hat <span class="op">=</span> model.forward(X_train).squeeze()</span>
+<span id="cb54-2"><a href="#cb54-2"></a>y_hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>tensor([-0.1268, -0.1265, -0.1282, -0.1283, -0.1281, -0.1283, -0.1279, -0.1271,
+        -0.1280, -0.1284, -0.1275, -0.1272, -0.1269, -0.1281, -0.1273, -0.1271,
+        -0.1287, -0.1270, -0.1268, -0.1276, -0.1284, -0.1264, -0.1283, -0.1270,
+        -0.1277, -0.1268, -0.1277, -0.1280, -0.1274, -0.1287, -0.1280, -0.1284,
+        -0.1278, -0.1273, -0.1273, -0.1271, -0.1274, -0.1273, -0.1273, -0.1266,
+        -0.1283, -0.1268, -0.1280, -0.1272, -0.1271, -0.1281, -0.1268, -0.1283,
+        -0.1267, -0.1277, -0.1285, -0.1276, -0.1265, -0.1264, -0.1281, -0.1269,
+        -0.1268, -0.1276, -0.1273, -0.1264, -0.1264, -0.1269, -0.1293, -0.1283,
+        -0.1263, -0.1271, -0.1271, -0.1284, -0.1272, -0.1263, -0.1272, -0.1274,
+        -0.1279, -0.1274, -0.1277, -0.1275, -0.1270, -0.1286, -0.1279, -0.1277,
+        -0.1274, -0.1270, -0.1269, -0.1269, -0.1282, -0.1282, -0.1259, -0.1284,
+        -0.1279, -0.1280, -0.1267, -0.1282, -0.1266, -0.1267, -0.1274, -0.1278,
+        -0.1265, -0.1276, -0.1284, -0.1272, -0.1279, -0.1283, -0.1287, -0.1271,
+        -0.1267, -0.1270, -0.1281, -0.1275, -0.1262, -0.1266, -0.1289, -0.1279,
+        -0.1275, -0.1275, -0.1279, -0.1279, -0.1269, -0.1276, -0.1279, -0.1283,
+        -0.1274, -0.1282, -0.1271, -0.1278, -0.1269, -0.1257, -0.1282, -0.1268,
+        -0.1283, -0.1279, -0.1271, -0.1271, -0.1281, -0.1284, -0.1269, -0.1266,
+        -0.1282, -0.1269, -0.1269, -0.1274, -0.1266, -0.1265, -0.1270, -0.1279,
+        -0.1278, -0.1278, -0.1282, -0.1268, -0.1283, -0.1272, -0.1271, -0.1274,
+        -0.1279, -0.1275, -0.1284, -0.1280, -0.1271, -0.1266, -0.1282, -0.1274,
+        -0.1271, -0.1267, -0.1272, -0.1275, -0.1267, -0.1283, -0.1283, -0.1283,
+        -0.1272, -0.1282, -0.1275, -0.1272, -0.1271, -0.1272, -0.1285, -0.1278,
+        -0.1283, -0.1276, -0.1278, -0.1282, -0.1268, -0.1261, -0.1266, -0.1263,
+        -0.1281, -0.1278, -0.1272, -0.1283, -0.1275, -0.1272, -0.1278, -0.1270,
+        -0.1274, -0.1262, -0.1271, -0.1281, -0.1266, -0.1280, -0.1287, -0.1279,
+        -0.1269, -0.1282, -0.1280, -0.1271, -0.1280, -0.1274, -0.1271, -0.1273,
+        -0.1278, -0.1278, -0.1277, -0.1273, -0.1273, -0.1272, -0.1272, -0.1280,
+        -0.1280, -0.1272, -0.1271, -0.1272, -0.1267, -0.1282, -0.1277, -0.1288,
+        -0.1277, -0.1278, -0.1276, -0.1268, -0.1276, -0.1281, -0.1276, -0.1284,
+        -0.1276, -0.1268, -0.1281, -0.1272, -0.1272, -0.1273, -0.1273, -0.1286,
+        -0.1273, -0.1268, -0.1283, -0.1270, -0.1282, -0.1270, -0.1278, -0.1276,
+        -0.1278, -0.1280, -0.1275, -0.1267, -0.1272, -0.1282, -0.1280, -0.1282,
+        -0.1266, -0.1281, -0.1278, -0.1262, -0.1273, -0.1280, -0.1268, -0.1274,
+        -0.1283, -0.1279, -0.1278, -0.1284, -0.1270, -0.1271, -0.1286, -0.1278,
+        -0.1273, -0.1282, -0.1271, -0.1266, -0.1280, -0.1277, -0.1275, -0.1269,
+        -0.1276, -0.1269, -0.1277, -0.1280, -0.1262, -0.1269, -0.1277, -0.1283,
+        -0.1279, -0.1273, -0.1275, -0.1277, -0.1275, -0.1279, -0.1266, -0.1275,
+        -0.1270, -0.1272, -0.1279, -0.1272, -0.1284, -0.1261, -0.1276, -0.1284,
+        -0.1280, -0.1287, -0.1275, -0.1269, -0.1280, -0.1270, -0.1284, -0.1269,
+        -0.1280, -0.1275, -0.1275, -0.1267, -0.1286, -0.1270, -0.1279, -0.1271,
+        -0.1278, -0.1268, -0.1279, -0.1277, -0.1271, -0.1278, -0.1278, -0.1273,
+        -0.1274, -0.1287, -0.1282, -0.1284, -0.1273, -0.1283, -0.1268, -0.1279,
+        -0.1281, -0.1267, -0.1272, -0.1271, -0.1279, -0.1269, -0.1283, -0.1275,
+        -0.1276, -0.1278, -0.1278, -0.1279, -0.1281, -0.1277, -0.1279, -0.1278,
+        -0.1285], grad_fn=&lt;SqueezeBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="821137ab-10ae-4a61-90fe-080f207b55ab">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">print</span>(<span class="op">*</span>model.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter containing:
+tensor([[-0.0559, -0.0942,  0.2021,  0.2718, -0.0313, -0.0708,  0.0046, -0.0189,
+          0.0760,  0.0886],
+        [-0.2872, -0.1167,  0.2663,  0.1232, -0.0157, -0.1907, -0.1935, -0.2833,
+         -0.1031,  0.1068],
+        [ 0.2016,  0.1460, -0.2795, -0.1902, -0.0499,  0.3059,  0.0457, -0.0819,
+          0.1308, -0.1204],
+        [-0.2047,  0.2308, -0.1438, -0.0634, -0.3146,  0.2116,  0.2396,  0.1152,
+         -0.2205, -0.3121],
+        [-0.2568,  0.2358,  0.1518,  0.2661,  0.1657,  0.0800, -0.0031, -0.2405,
+         -0.2709, -0.2958],
+        [ 0.1295, -0.1553, -0.0636, -0.1820, -0.0576, -0.2226, -0.2066,  0.1049,
+         -0.0940,  0.1952],
+        [-0.1014, -0.2320, -0.0558, -0.1533, -0.0967, -0.3010,  0.1769, -0.2202,
+          0.1589,  0.1435],
+        [ 0.2259, -0.2426,  0.2274, -0.1495,  0.1173,  0.2970, -0.0446, -0.0024,
+         -0.0728, -0.2640]], requires_grad=True) Parameter containing:
+tensor([ 0.1518, -0.3139,  0.1963,  0.2366,  0.2991, -0.0746, -0.2598,  0.0711],
+       requires_grad=True) Parameter containing:
+tensor([[ 0.1953, -0.3519, -0.0803, -0.2119, -0.0309, -0.1740, -0.1445, -0.1122],
+        [-0.3360,  0.2901,  0.2964, -0.0555, -0.0403, -0.1443, -0.3193, -0.3441],
+        [ 0.1314, -0.1941, -0.2273, -0.0276, -0.1177, -0.1144,  0.0114, -0.0750],
+        [-0.1217, -0.1693, -0.2877,  0.2965, -0.1415,  0.0937, -0.1227,  0.0287],
+        [ 0.3296,  0.1629, -0.3064,  0.1403,  0.3356,  0.0930,  0.2370,  0.3486],
+        [-0.0542,  0.0734, -0.2457, -0.0729,  0.2618,  0.1812, -0.2237, -0.2835],
+        [-0.2416, -0.3489, -0.2728, -0.0874,  0.2386,  0.0592, -0.2689, -0.2836],
+        [ 0.1759, -0.2630, -0.0435,  0.1696, -0.1636, -0.0386, -0.0308, -0.0836]],
+       requires_grad=True) Parameter containing:
+tensor([-0.1793, -0.3152, -0.2858, -0.1893,  0.3415, -0.1708, -0.2374,  0.0857],
+       requires_grad=True) Parameter containing:
+tensor([[ 0.0974,  0.1937,  0.2687,  0.1969, -0.3505,  0.0314,  0.2142, -0.0327]],
+       requires_grad=True) Parameter containing:
+tensor([-0.2083], requires_grad=True)</code></pre>
+</div>
+</div>
+<ul>
+<li>Training Pipeline
+<ul>
+<li>Define Model</li>
+<li>for epoch in range(epochs):
+<ul>
+<li>Forward pass</li>
+<li>Loss calculation</li>
+<li>Backward pass</li>
+<li>Parameters update</li>
+</ul></li>
+</ul></li>
+<li>Model Evaluation</li>
+</ul>
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bf44ff48-0178-4e48-8b28-787e4966187c">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>model <span class="op">=</span> nn.Sequential(</span>
+<span id="cb58-2"><a href="#cb58-2"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">10</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb58-3"><a href="#cb58-3"></a>     nn.Sigmoid(),</span>
+<span id="cb58-4"><a href="#cb58-4"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb58-5"><a href="#cb58-5"></a>     nn.Sigmoid(),</span>
+<span id="cb58-6"><a href="#cb58-6"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">1</span>),</span>
+<span id="cb58-7"><a href="#cb58-7"></a>) <span class="co">#class</span></span>
+<span id="cb58-8"><a href="#cb58-8"></a></span>
+<span id="cb58-9"><a href="#cb58-9"></a>model.to(device)</span>
+<span id="cb58-10"><a href="#cb58-10"></a></span>
+<span id="cb58-11"><a href="#cb58-11"></a>loss_func <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb58-12"><a href="#cb58-12"></a>epochs<span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb58-13"><a href="#cb58-13"></a>learning_rate <span class="op">=</span> <span class="fl">0.01</span></span>
+<span id="cb58-14"><a href="#cb58-14"></a></span>
+<span id="cb58-15"><a href="#cb58-15"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb58-16"><a href="#cb58-16"></a></span>
+<span id="cb58-17"><a href="#cb58-17"></a>  <span class="co"># forward pass</span></span>
+<span id="cb58-18"><a href="#cb58-18"></a>  y_hat<span class="op">=</span> model.forward(X_train)</span>
+<span id="cb58-19"><a href="#cb58-19"></a></span>
+<span id="cb58-20"><a href="#cb58-20"></a>  <span class="co"># Compute loss</span></span>
+<span id="cb58-21"><a href="#cb58-21"></a></span>
+<span id="cb58-22"><a href="#cb58-22"></a>  loss <span class="op">=</span> loss_func(y_hat.squeeze(), y_train)</span>
+<span id="cb58-23"><a href="#cb58-23"></a>  <span class="bu">print</span>(loss)</span>
+<span id="cb58-24"><a href="#cb58-24"></a></span>
+<span id="cb58-25"><a href="#cb58-25"></a>  <span class="co"># Backward pass</span></span>
+<span id="cb58-26"><a href="#cb58-26"></a>  loss.backward()</span>
+<span id="cb58-27"><a href="#cb58-27"></a></span>
+<span id="cb58-28"><a href="#cb58-28"></a>  <span class="co"># Update parameters</span></span>
+<span id="cb58-29"><a href="#cb58-29"></a>  <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb58-30"><a href="#cb58-30"></a>    <span class="cf">for</span> param <span class="kw">in</span> model.parameters():</span>
+<span id="cb58-31"><a href="#cb58-31"></a>      param <span class="op">-=</span> learning_rate <span class="op">*</span> param.grad <span class="co"># optimizer = sgd , adam, rmsprop</span></span>
+<span id="cb58-32"><a href="#cb58-32"></a></span>
+<span id="cb58-33"><a href="#cb58-33"></a>  model.zero_grad() <span class="co"># making gradients zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor(29657.1719, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)
+tensor(26898.1895, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)
+tensor(21850.9570, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-43" class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-44" class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a></span>
+<span id="cb61-2"><a href="#cb61-2"></a><span class="kw">class</span> myModel(nn.Module):</span>
+<span id="cb61-3"><a href="#cb61-3"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,in_features,out_features):</span>
+<span id="cb61-4"><a href="#cb61-4"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb61-5"><a href="#cb61-5"></a></span>
+<span id="cb61-6"><a href="#cb61-6"></a>    <span class="va">self</span>.network <span class="op">=</span> nn.Sequential(</span>
+<span id="cb61-7"><a href="#cb61-7"></a>      nn.Linear(in_features<span class="op">=</span>in_features, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb61-8"><a href="#cb61-8"></a>      nn.BatchNorm1d(<span class="dv">8</span>),</span>
+<span id="cb61-9"><a href="#cb61-9"></a>      nn.Sigmoid(),</span>
+<span id="cb61-10"><a href="#cb61-10"></a>      nn.Dropout(p<span class="op">=</span><span class="fl">0.3</span>),</span>
+<span id="cb61-11"><a href="#cb61-11"></a></span>
+<span id="cb61-12"><a href="#cb61-12"></a>      nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
+<span id="cb61-13"><a href="#cb61-13"></a>      nn.Sigmoid(),</span>
+<span id="cb61-14"><a href="#cb61-14"></a>      nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span>out_features),</span>
+<span id="cb61-15"><a href="#cb61-15"></a>      ) <span class="co">#class</span></span>
+<span id="cb61-16"><a href="#cb61-16"></a></span>
+<span id="cb61-17"><a href="#cb61-17"></a>  <span class="kw">def</span> forward(<span class="va">self</span>,X):</span>
+<span id="cb61-18"><a href="#cb61-18"></a>    <span class="cf">return</span> <span class="va">self</span>.network(X) <span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e78b2541-aac6-4930-974e-43dbe985edf8">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<span id="cb62-2"><a href="#cb62-2"></a>model1.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>myModel(
+  (network): Sequential(
+    (0): Linear(in_features=10, out_features=8, bias=True)
+    (1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): Sigmoid()
+    (3): Dropout(p=0.3, inplace=False)
+    (4): Linear(in_features=8, out_features=8, bias=True)
+    (5): Sigmoid()
+    (6): Linear(in_features=8, out_features=1, bias=True)
+  )
+)</code></pre>
+</div>
+</div>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="714c3b05-09da-4fea-bdc2-c77814c63071">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
+<span id="cb64-2"><a href="#cb64-2"></a>summary(model1, input_size<span class="op">=</span>(<span class="dv">10</span>,))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Linear-1                    [-1, 8]              88
+       BatchNorm1d-2                    [-1, 8]              16
+           Sigmoid-3                    [-1, 8]               0
+           Dropout-4                    [-1, 8]               0
+            Linear-5                    [-1, 8]              72
+           Sigmoid-6                    [-1, 8]               0
+            Linear-7                    [-1, 1]               9
+================================================================
+Total params: 185
+Trainable params: 185
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.00
+Params size (MB): 0.00
+Estimated Total Size (MB): 0.00
+----------------------------------------------------------------</code></pre>
+</div>
+</div>
+<div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fc6b2abe-eb67-4bc9-8acd-238de1b8a3a2">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="bu">print</span>(<span class="op">*</span>model1.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Parameter containing:
+tensor([[ 0.2063, -0.0787, -0.2234,  0.0329, -0.0974, -0.3025, -0.0834,  0.1873,
+          0.2895, -0.2872],
+        [-0.0731,  0.0789,  0.2411, -0.2322, -0.1357, -0.0143, -0.1572,  0.2763,
+         -0.1081, -0.0084],
+        [ 0.0364, -0.1405, -0.0034, -0.0446, -0.2778,  0.2605,  0.1065,  0.1657,
+         -0.1565, -0.1346],
+        [ 0.0944,  0.1933, -0.1780,  0.0292,  0.1555,  0.1553,  0.0545,  0.2242,
+         -0.2406,  0.1314],
+        [ 0.0683, -0.2544,  0.0432, -0.1762, -0.2926,  0.0600, -0.0228, -0.0101,
+         -0.1442, -0.0538],
+        [ 0.0169, -0.0267,  0.1635,  0.2191, -0.2758,  0.0982,  0.3116,  0.1714,
+          0.2843, -0.0888],
+        [-0.0741,  0.2874, -0.0180,  0.1483,  0.1154,  0.2485, -0.2716,  0.1821,
+         -0.0379,  0.1709],
+        [ 0.1974,  0.1815, -0.1033,  0.1058,  0.1667, -0.0939,  0.1933, -0.1139,
+          0.2362, -0.0632]], device='cuda:0', requires_grad=True) Parameter containing:
+tensor([-0.1940,  0.2471,  0.0743, -0.1250, -0.1652, -0.2702, -0.1908, -0.1593],
+       device='cuda:0', requires_grad=True) Parameter containing:
+tensor([[-0.1162, -0.0289,  0.0049,  0.1561, -0.2746,  0.0054, -0.1004, -0.3068],
+        [-0.3112, -0.1142,  0.2879, -0.2859, -0.1646, -0.2061, -0.1853, -0.1349],
+        [-0.2419,  0.1768,  0.2520, -0.1731,  0.2843,  0.2381, -0.1931, -0.0036],
+        [-0.0369, -0.1294,  0.0006, -0.2742,  0.3449, -0.0560,  0.1096,  0.0398],
+        [ 0.0992, -0.1438, -0.3110, -0.1562,  0.2735,  0.2359, -0.2960,  0.2879],
+        [-0.0926, -0.1715, -0.3446, -0.1940, -0.0619, -0.3025, -0.3404, -0.0529],
+        [ 0.0658,  0.1410,  0.2938,  0.1971,  0.3055,  0.2018, -0.2553,  0.2592],
+        [ 0.3386,  0.2923,  0.2470,  0.1289,  0.1827, -0.1374, -0.2041, -0.0861]],
+       device='cuda:0', requires_grad=True) Parameter containing:
+tensor([ 0.2328, -0.2944,  0.0388, -0.0574, -0.1074, -0.2041, -0.1065,  0.0836],
+       device='cuda:0', requires_grad=True) Parameter containing:
+tensor([[-0.1407, -0.3338,  0.2235,  0.2996,  0.1608,  0.2131, -0.1965,  0.3067]],
+       device='cuda:0', requires_grad=True) Parameter containing:
+tensor([-0.3426], device='cuda:0', requires_grad=True)</code></pre>
+</div>
+</div>
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="47dbfc1e-960d-4589-9a9f-36fbcd11a987">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<span id="cb68-2"><a href="#cb68-2"></a>model1.to(device)</span>
+<span id="cb68-3"><a href="#cb68-3"></a></span>
+<span id="cb68-4"><a href="#cb68-4"></a>loss_func <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb68-5"><a href="#cb68-5"></a></span>
+<span id="cb68-6"><a href="#cb68-6"></a><span class="co"># optimizers</span></span>
+<span id="cb68-7"><a href="#cb68-7"></a>optimizer <span class="op">=</span> torch.optim.SGD(model1.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>) <span class="co"># GD</span></span>
+<span id="cb68-8"><a href="#cb68-8"></a></span>
+<span id="cb68-9"><a href="#cb68-9"></a>epochs<span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb68-10"><a href="#cb68-10"></a></span>
+<span id="cb68-11"><a href="#cb68-11"></a>model1.train() <span class="co"># training phase</span></span>
+<span id="cb68-12"><a href="#cb68-12"></a></span>
+<span id="cb68-13"><a href="#cb68-13"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb68-14"><a href="#cb68-14"></a></span>
+<span id="cb68-15"><a href="#cb68-15"></a>  <span class="co"># forward pass</span></span>
+<span id="cb68-16"><a href="#cb68-16"></a>  y_hat<span class="op">=</span> model1(X_train)</span>
+<span id="cb68-17"><a href="#cb68-17"></a></span>
+<span id="cb68-18"><a href="#cb68-18"></a>  <span class="co"># Compute loss</span></span>
+<span id="cb68-19"><a href="#cb68-19"></a></span>
+<span id="cb68-20"><a href="#cb68-20"></a>  loss <span class="op">=</span> loss_func(y_hat.squeeze(), y_train)</span>
+<span id="cb68-21"><a href="#cb68-21"></a>  <span class="bu">print</span>(loss.item())</span>
+<span id="cb68-22"><a href="#cb68-22"></a></span>
+<span id="cb68-23"><a href="#cb68-23"></a>  optimizer.zero_grad()</span>
+<span id="cb68-24"><a href="#cb68-24"></a></span>
+<span id="cb68-25"><a href="#cb68-25"></a>  <span class="co"># Backward pass</span></span>
+<span id="cb68-26"><a href="#cb68-26"></a>  loss.backward()</span>
+<span id="cb68-27"><a href="#cb68-27"></a></span>
+<span id="cb68-28"><a href="#cb68-28"></a>  <span class="co"># update the weights</span></span>
+<span id="cb68-29"><a href="#cb68-29"></a>  optimizer.step()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>29728.98046875
+27254.515625
+22565.62890625</code></pre>
+</div>
+</div>
+<div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8243d5c0-9f66-429a-9660-ce7b10559750">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># model to evaluation phase</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a></span>
+<span id="cb70-3"><a href="#cb70-3"></a>model1.<span class="bu">eval</span>() <span class="co"># batchnorm and dropouts will freeze</span></span>
+<span id="cb70-4"><a href="#cb70-4"></a></span>
+<span id="cb70-5"><a href="#cb70-5"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb70-6"><a href="#cb70-6"></a>  <span class="co"># forward pass</span></span>
+<span id="cb70-7"><a href="#cb70-7"></a>  y_hat<span class="op">=</span> model1(X_test)</span>
+<span id="cb70-8"><a href="#cb70-8"></a></span>
+<span id="cb70-9"><a href="#cb70-9"></a>  <span class="co"># Compute loss</span></span>
+<span id="cb70-10"><a href="#cb70-10"></a></span>
+<span id="cb70-11"><a href="#cb70-11"></a>  loss <span class="op">=</span> loss_func(y_hat.squeeze(), y_test)</span>
+<span id="cb70-12"><a href="#cb70-12"></a>  <span class="bu">print</span>(loss.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>14941.1845703125</code></pre>
+</div>
+</div>
+<div id="cell-50" class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader, TensorDataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d69497a1-992e-4090-d66b-346d5ea1225f">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>TensorDataset(X_train,y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>&lt;torch.utils.data.dataset.TensorDataset at 0x79e9ed435f10&gt;</code></pre>
+</div>
+</div>
+<div id="cell-52" class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>train_loader <span class="op">=</span> DataLoader(TensorDataset(X_train,y_train), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb75-2"><a href="#cb75-2"></a>test_loader <span class="op">=</span> DataLoader(TensorDataset(X_test,y_test), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">False</span>) <span class="co"># consistency</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4e3b02c5-d359-4308-bcf5-3d89c9212f24">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="cf">for</span> features, labels <span class="kw">in</span> train_loader:</span>
+<span id="cb76-2"><a href="#cb76-2"></a>  <span class="bu">print</span>(features)</span>
+<span id="cb76-3"><a href="#cb76-3"></a>  <span class="bu">print</span>(labels)</span>
+<span id="cb76-4"><a href="#cb76-4"></a>  <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[ 0.0018,  0.0507,  0.0261, -0.0091,  0.0246,  0.0385, -0.0213,  0.0343,
+          0.0094,  0.0031],
+        [ 0.0054,  0.0507, -0.0019,  0.0081, -0.0043, -0.0157, -0.0029, -0.0026,
+          0.0384, -0.0135],
+        [-0.0745, -0.0446, -0.0461, -0.0435, -0.0291, -0.0232,  0.0155, -0.0395,
+         -0.0398, -0.0218],
+        [ 0.0417,  0.0507, -0.0321, -0.0229, -0.0497, -0.0401,  0.0302, -0.0395,
+         -0.1261,  0.0155],
+        [ 0.0381,  0.0507,  0.0056,  0.0322,  0.0067,  0.0175, -0.0250,  0.0343,
+          0.0148,  0.0611],
+        [-0.0927, -0.0446, -0.0407, -0.0194, -0.0690, -0.0793,  0.0413, -0.0764,
+         -0.0412, -0.0963],
+        [ 0.0344,  0.0507, -0.0094,  0.0597, -0.0360, -0.0076, -0.0765,  0.0712,
+          0.0110, -0.0218],
+        [-0.0200, -0.0446, -0.0547, -0.0539, -0.0662, -0.0574,  0.0118, -0.0395,
+         -0.0741, -0.0052],
+        [-0.0055,  0.0507, -0.0084, -0.0022, -0.0332, -0.0636, -0.0360, -0.0026,
+          0.0806,  0.0072],
+        [ 0.0163, -0.0446, -0.0450, -0.0573, -0.0346, -0.0539,  0.0744, -0.0764,
+         -0.0426,  0.0403],
+        [ 0.0417,  0.0507,  0.0121,  0.0391,  0.0548,  0.0444,  0.0045, -0.0026,
+          0.0456, -0.0011],
+        [-0.0455, -0.0446, -0.0482, -0.0194, -0.0002, -0.0160,  0.0670, -0.0395,
+         -0.0248,  0.0196],
+        [ 0.0381,  0.0507,  0.0164,  0.0219,  0.0397,  0.0450, -0.0434,  0.0712,
+          0.0498,  0.0155],
+        [-0.0128, -0.0446,  0.0606,  0.0529,  0.0480,  0.0294, -0.0176,  0.0343,
+          0.0702,  0.0072],
+        [ 0.0235,  0.0507, -0.0375, -0.0470, -0.0910, -0.0755, -0.0324, -0.0395,
+         -0.0307, -0.0135],
+        [ 0.0453, -0.0446,  0.0714,  0.0012, -0.0098, -0.0010,  0.0155, -0.0395,
+         -0.0412, -0.0715],
+        [ 0.0453, -0.0446,  0.0391,  0.0460,  0.0067, -0.0242,  0.0081, -0.0126,
+          0.0643,  0.0569],
+        [ 0.0054, -0.0446, -0.0482, -0.0126,  0.0012, -0.0066,  0.0634, -0.0395,
+         -0.0514, -0.0591],
+        [-0.1072, -0.0446, -0.0116, -0.0401,  0.0493,  0.0644, -0.0139,  0.0343,
+          0.0070, -0.0301],
+        [-0.0709,  0.0507, -0.0752, -0.0401, -0.0511, -0.0151, -0.0397, -0.0026,
+         -0.0964, -0.0342],
+        [-0.0745, -0.0446, -0.0235, -0.0057, -0.0208, -0.0142,  0.0155, -0.0395,
+         -0.0385, -0.0301],
+        [ 0.0163, -0.0446, -0.0472, -0.0022, -0.0195, -0.0430,  0.0339, -0.0395,
+          0.0274,  0.0279],
+        [-0.0019, -0.0446, -0.0515, -0.0263, -0.0084, -0.0192,  0.0744, -0.0395,
+         -0.0683, -0.0922],
+        [ 0.0235,  0.0507, -0.0191,  0.0494, -0.0635, -0.0611,  0.0045, -0.0395,
+         -0.0260, -0.0135],
+        [ 0.0018,  0.0507, -0.0051, -0.0126, -0.0153, -0.0138,  0.0081, -0.0395,
+         -0.0061, -0.0674],
+        [ 0.0635, -0.0446,  0.0175,  0.0219,  0.0081,  0.0215, -0.0360,  0.0343,
+          0.0199,  0.0113],
+        [ 0.0090, -0.0446, -0.0127,  0.0288, -0.0181, -0.0051, -0.0471,  0.0343,
+          0.0234, -0.0052],
+        [ 0.0744, -0.0446,  0.0315,  0.1011,  0.0466,  0.0369,  0.0155, -0.0026,
+          0.0337,  0.0445],
+        [-0.0164, -0.0446, -0.0138,  0.1320, -0.0098, -0.0038,  0.0192, -0.0395,
+         -0.0358, -0.0301],
+        [-0.0636, -0.0446, -0.0332, -0.0332,  0.0012,  0.0241, -0.0250, -0.0026,
+         -0.0225, -0.0591],
+        [ 0.0562, -0.0446, -0.0579, -0.0080,  0.0521,  0.0491,  0.0560, -0.0214,
+         -0.0283,  0.0445],
+        [-0.0527,  0.0507,  0.0983,  0.0873,  0.0603,  0.0488, -0.0581,  0.1081,
+          0.0845,  0.0403],
+        [-0.0636,  0.0507,  0.0962,  0.1045, -0.0029, -0.0048, -0.0066, -0.0026,
+          0.0227,  0.0735]], device='cuda:0')
+tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
+        212., 215., 129., 141., 246.,  96., 200.,  55., 144., 200.,  75., 219.,
+         92., 173., 292., 296., 216., 214., 158., 243., 274.], device='cuda:0')</code></pre>
+</div>
+</div>
+<section id="mini-batch-gradient-descent" class="level1">
+<h1>Mini batch gradient descent</h1>
+<div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e6f40d10-24eb-40e7-b72f-a566dbf28257">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<span id="cb78-2"><a href="#cb78-2"></a>model1.to(device)</span>
+<span id="cb78-3"><a href="#cb78-3"></a></span>
+<span id="cb78-4"><a href="#cb78-4"></a>loss_func <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb78-5"><a href="#cb78-5"></a></span>
+<span id="cb78-6"><a href="#cb78-6"></a><span class="co"># optimizers</span></span>
+<span id="cb78-7"><a href="#cb78-7"></a>optimizer <span class="op">=</span> torch.optim.SGD(model1.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>) <span class="co"># GD</span></span>
+<span id="cb78-8"><a href="#cb78-8"></a></span>
+<span id="cb78-9"><a href="#cb78-9"></a>epochs<span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb78-10"><a href="#cb78-10"></a></span>
+<span id="cb78-11"><a href="#cb78-11"></a>model1.train() <span class="co"># training phase</span></span>
+<span id="cb78-12"><a href="#cb78-12"></a></span>
+<span id="cb78-13"><a href="#cb78-13"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(epochs):</span>
+<span id="cb78-14"><a href="#cb78-14"></a>  loss_per_epoch <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb78-15"><a href="#cb78-15"></a>  <span class="co"># forward pass</span></span>
+<span id="cb78-16"><a href="#cb78-16"></a>  <span class="cf">for</span> features, labels <span class="kw">in</span> train_loader:</span>
+<span id="cb78-17"><a href="#cb78-17"></a>    features <span class="op">=</span> features.to(device)</span>
+<span id="cb78-18"><a href="#cb78-18"></a>    labels <span class="op">=</span> labels.to(device)</span>
+<span id="cb78-19"><a href="#cb78-19"></a></span>
+<span id="cb78-20"><a href="#cb78-20"></a>    y_hat <span class="op">=</span> model1(features)</span>
+<span id="cb78-21"><a href="#cb78-21"></a></span>
+<span id="cb78-22"><a href="#cb78-22"></a>    loss <span class="op">=</span> loss_func(y_hat.squeeze(), labels)</span>
+<span id="cb78-23"><a href="#cb78-23"></a></span>
+<span id="cb78-24"><a href="#cb78-24"></a>    loss_per_epoch <span class="op">+=</span> loss.item()</span>
+<span id="cb78-25"><a href="#cb78-25"></a></span>
+<span id="cb78-26"><a href="#cb78-26"></a>    optimizer.zero_grad()</span>
+<span id="cb78-27"><a href="#cb78-27"></a></span>
+<span id="cb78-28"><a href="#cb78-28"></a>    <span class="co"># Backward pass</span></span>
+<span id="cb78-29"><a href="#cb78-29"></a>    loss.backward()</span>
+<span id="cb78-30"><a href="#cb78-30"></a></span>
+<span id="cb78-31"><a href="#cb78-31"></a>    <span class="co"># update the weights</span></span>
+<span id="cb78-32"><a href="#cb78-32"></a>    optimizer.step()</span>
+<span id="cb78-33"><a href="#cb78-33"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>156514.27978515625
+64164.4521484375
+54641.5380859375</code></pre>
+</div>
+</div>
+<div id="cell-57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9f1c1fd8-f835-41f0-e66c-63e580047225">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># model to evaluation phase</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a></span>
+<span id="cb80-3"><a href="#cb80-3"></a>model1.<span class="bu">eval</span>() <span class="co"># batchnorm and dropouts will freeze</span></span>
+<span id="cb80-4"><a href="#cb80-4"></a></span>
+<span id="cb80-5"><a href="#cb80-5"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb80-6"><a href="#cb80-6"></a>  loss_per_epoch <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb80-7"><a href="#cb80-7"></a>  <span class="co"># forward pass</span></span>
+<span id="cb80-8"><a href="#cb80-8"></a>  <span class="cf">for</span> features, labels <span class="kw">in</span> test_loader:</span>
+<span id="cb80-9"><a href="#cb80-9"></a>    features <span class="op">=</span> features.to(device)</span>
+<span id="cb80-10"><a href="#cb80-10"></a>    labels <span class="op">=</span> labels.to(device)</span>
+<span id="cb80-11"><a href="#cb80-11"></a></span>
+<span id="cb80-12"><a href="#cb80-12"></a>    y_hat <span class="op">=</span> model1(features)</span>
+<span id="cb80-13"><a href="#cb80-13"></a></span>
+<span id="cb80-14"><a href="#cb80-14"></a>    loss <span class="op">=</span> loss_func(y_hat.squeeze(), labels)</span>
+<span id="cb80-15"><a href="#cb80-15"></a></span>
+<span id="cb80-16"><a href="#cb80-16"></a>    loss_per_epoch <span class="op">+=</span> loss.item()</span>
+<span id="cb80-17"><a href="#cb80-17"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10029.10205078125</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsc-iitm\.github\.io\/data-science-lab\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../week-3/Pytorch_basics.html" class="pagination-link" aria-label="DL workshop on PyTorch">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">DL workshop on PyTorch</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../week-3/pytorch/Autograd.html" class="pagination-link" aria-label="Gradient accumulation and clearing the gradients">
+        <span class="nav-page-text">Gradient accumulation and clearing the gradients</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025 @ IIT Madras</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-3/pytorchANN.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-3/pytorchANN.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

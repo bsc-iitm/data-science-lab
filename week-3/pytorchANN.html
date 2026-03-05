@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-3/Pytorch_basics.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -301,7 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -515,17 +517,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -562,11 +604,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -651,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -774,13 +816,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 <div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> torch <span class="im">import</span> nn</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_diabetes</span>
 <span id="cb1-4"><a href="#cb1-4"></a></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="im">from</span> torch <span class="im">import</span> optim</span>
 <span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset, DataLoader</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> Dataset, DataLoader</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -789,19 +831,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>) <span class="co"># preactivation</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>h1_layer <span class="op">=</span> nn.Sigmoid() <span class="co"># activation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>) <span class="co"># preactivation</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>h1_layer <span class="op">=</span> nn.Sigmoid() <span class="co"># activation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>a2_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">2</span>, out_features<span class="op">=</span><span class="dv">3</span>) <span class="co"># preactivation</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>h2_layer <span class="op">=</span> nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>) <span class="co"># activation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>a2_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> <span class="dv">2</span>, out_features<span class="op">=</span><span class="dv">3</span>) <span class="co"># preactivation</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>h2_layer <span class="op">=</span> nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>) <span class="co"># activation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b3f01429-7f5c-4bf0-849a-81024162774b">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>network <span class="op">=</span> nn.Sequential(nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>),</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>network <span class="op">=</span> nn.Sequential(nn.Linear(in_features<span class="op">=</span> <span class="dv">3</span>, out_features<span class="op">=</span><span class="dv">2</span>),</span>
 <span id="cb4-2"><a href="#cb4-2"></a>                         nn.Sigmoid(),</span>
 <span id="cb4-3"><a href="#cb4-3"></a>                        nn.Linear(in_features<span class="op">=</span> <span class="dv">2</span>, out_features<span class="op">=</span><span class="dv">3</span>),</span>
 <span id="cb4-4"><a href="#cb4-4"></a>                        nn.Softmax(dim<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb4-5"><a href="#cb4-5"></a>network</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5"></a>network</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>Sequential(
   (0): Linear(in_features=3, out_features=2, bias=True)
@@ -812,9 +854,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ef139f76-fe95-4908-cdec-f961166f489c">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>X <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">3</span>)</span>
-<span id="cb6-3"><a href="#cb6-3"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3"></a>X</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>tensor([[ 0.3367,  0.1288,  0.2345],
         [ 0.2303, -1.1229, -0.1863],
@@ -823,7 +865,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ff6aa107-762e-4bb6-d43d-71a51ba24bfb">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>network.forward(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>network.forward(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([[0.2952, 0.2121, 0.4927],
         [0.2772, 0.2178, 0.5050],
@@ -832,7 +874,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b2c78c62-7bf9-4047-8ef9-8e5789859627">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(<span class="op">*</span>network.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="bu">print</span>(<span class="op">*</span>network.parameters())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
 tensor([[-0.5367,  0.0189,  0.0133],
@@ -845,8 +887,8 @@ tensor([ 0.0870, -0.0512,  0.3060], requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1e7cd226-8980-4035-f929-556bb6931060">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> params <span class="kw">in</span> network.parameters():</span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="bu">print</span>(params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> params <span class="kw">in</span> network.parameters():</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="bu">print</span>(params)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
 tensor([[-0.5367,  0.0189,  0.0133],
@@ -862,8 +904,8 @@ tensor([ 0.0870, -0.0512,  0.3060], requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f24fefe2-a385-4cb6-f0e7-8dff4775941c">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
-<span id="cb14-2"><a href="#cb14-2"></a>summary(network, input_size<span class="op">=</span>(<span class="dv">3</span>,))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
+<span id="cb14-2"><a href="#cb14-2"></a>summary(network, input_size<span class="op">=</span>(<span class="dv">3</span>,))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
@@ -885,8 +927,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7573d78f-c0f4-41eb-9341-59d97db7b8a5">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a1 <span class="op">=</span> a1_layer.forward(X)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>a1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>a1 <span class="op">=</span> a1_layer.forward(X)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>a1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>tensor([[-0.4496, -0.2900],
         [-0.1047, -0.6958],
@@ -895,8 +937,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2a46f02c-9553-457b-d41c-0f84641cabaa">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
-<span id="cb18-2"><a href="#cb18-2"></a>h1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>h1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>tensor([[0.3895, 0.4280],
         [0.4738, 0.3327],
@@ -905,8 +947,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8b755452-105e-424d-943c-6cf8d75d2d99">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
-<span id="cb20-2"><a href="#cb20-2"></a>a2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>a2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>tensor([[ 0.0386, -0.1262, -0.1017],
         [ 0.0432, -0.1389, -0.0482],
@@ -915,8 +957,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9a0415c9-2726-4859-edd5-73d4f8e984eb">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
+<span id="cb22-2"><a href="#cb22-2"></a>h2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor([[0.3680, 0.3121, 0.3199],
         [0.3641, 0.3035, 0.3323],
@@ -925,11 +967,11 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-18" class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> softmax(x):</span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="cf">return</span> torch.exp(x) <span class="op">/</span> torch.<span class="bu">sum</span>(torch.exp(x), axis<span class="op">=-</span><span class="dv">1</span>, keepdim<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> softmax(x):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="cf">return</span> torch.exp(x) <span class="op">/</span> torch.<span class="bu">sum</span>(torch.exp(x), axis<span class="op">=-</span><span class="dv">1</span>, keepdim<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="87e447d6-4aa5-474b-d231-b9ff88c97251">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>softmax(a2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>softmax(a2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>tensor([[0.3680, 0.3121, 0.3199],
         [0.3641, 0.3035, 0.3323],
@@ -938,16 +980,16 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>X, y <span class="op">=</span> load_diabetes(return_X_y<span class="op">=</span><span class="va">True</span>, as_frame<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>X, y <span class="op">=</span> load_diabetes(return_X_y<span class="op">=</span><span class="va">True</span>, as_frame<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="b4b1b693-5037-4da7-bc4c-d91bb09c0523">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>X.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>X.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div id="df-872ff0e3-3dbc-4a6e-8e8f-ae058a00aa7a" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -965,7 +1007,7 @@ Estimated Total Size (MB): 0.00
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>0.038076</td>
 <td>0.050680</td>
 <td>0.061696</td>
@@ -978,7 +1020,7 @@ Estimated Total Size (MB): 0.00
 <td>-0.017646</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-0.001882</td>
 <td>-0.044642</td>
 <td>-0.051474</td>
@@ -991,7 +1033,7 @@ Estimated Total Size (MB): 0.00
 <td>-0.092204</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>0.085299</td>
 <td>0.050680</td>
 <td>0.044451</td>
@@ -1004,7 +1046,7 @@ Estimated Total Size (MB): 0.00
 <td>-0.025930</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-0.089063</td>
 <td>-0.044642</td>
 <td>-0.011595</td>
@@ -1017,7 +1059,7 @@ Estimated Total Size (MB): 0.00
 <td>-0.009362</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>0.005383</td>
 <td>-0.044642</td>
 <td>-0.036385</td>
@@ -1240,12 +1282,12 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:241}}" data-outputid="ab3ebb7c-781a-447f-8e70-510776eaf5cf">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>y.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>y.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1254,23 +1296,23 @@ Estimated Total Size (MB): 0.00
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>151.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>75.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>141.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>206.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>135.0</td>
 </tr>
 </tbody>
@@ -1280,26 +1322,26 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-24" class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-25" class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>X_tr, X_te, y_tr, y_te <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>X_tr, X_te, y_tr, y_te <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.20</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="930da8c2-4428-4442-a6aa-a330923abe95">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span>
-<span id="cb32-2"><a href="#cb32-2"></a>device</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>device(type='cuda')</code></pre>
 </div>
 </div>
 <div id="cell-27" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>X_train <span class="op">=</span> torch.tensor(X_tr.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>X_train <span class="op">=</span> torch.tensor(X_tr.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
 <span id="cb34-2"><a href="#cb34-2"></a>X_test <span class="op">=</span> torch.tensor(X_te.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
 <span id="cb34-3"><a href="#cb34-3"></a>y_train <span class="op">=</span> torch.tensor(y_tr.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span>
-<span id="cb34-4"><a href="#cb34-4"></a>y_test <span class="op">=</span> torch.tensor(y_te.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-4"><a href="#cb34-4"></a>y_test <span class="op">=</span> torch.tensor(y_te.values, dtype<span class="op">=</span> torch.float32, device<span class="op">=</span> device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f3c6fcf3-ae0f-4d07-f427-f1ffb548de75">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>X_train</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>tensor([[ 0.0708,  0.0507,  0.0121,  ...,  0.0343,  0.0274, -0.0011],
         [-0.0091,  0.0507, -0.0181,  ...,  0.0712,  0.0003,  0.0196],
@@ -1312,7 +1354,7 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cccc32bb-aefe-4294-c30e-fc5d1ed92da8">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>X_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>X_train</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>tensor([[ 0.0708,  0.0507,  0.0121,  ...,  0.0343,  0.0274, -0.0011],
         [-0.0091,  0.0507, -0.0181,  ...,  0.0712,  0.0003,  0.0196],
@@ -1324,20 +1366,20 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a051434b-a612-4e94-fe79-8756875a9813">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>X_train.shape[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>X_train.shape[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>10</code></pre>
 </div>
 </div>
 <div id="cell-31" class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> X_train.shape[<span class="dv">1</span>] , out_features<span class="op">=</span><span class="dv">8</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>a1_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span> X_train.shape[<span class="dv">1</span>] , out_features<span class="op">=</span><span class="dv">8</span>)</span>
 <span id="cb41-2"><a href="#cb41-2"></a>h1_layer <span class="op">=</span> nn.Sigmoid()</span>
 <span id="cb41-3"><a href="#cb41-3"></a>a2_layer <span class="op">=</span> nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb41-4"><a href="#cb41-4"></a>h2_layer <span class="op">=</span> nn.Sigmoid()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-4"><a href="#cb41-4"></a>h2_layer <span class="op">=</span> nn.Sigmoid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c53ce530-83f6-42ba-cbf5-60a0c2911632">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>a1 <span class="op">=</span> a1_layer.forward(X_train)</span>
-<span id="cb42-2"><a href="#cb42-2"></a>a1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>a1 <span class="op">=</span> a1_layer.forward(X_train)</span>
+<span id="cb42-2"><a href="#cb42-2"></a>a1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>tensor([[ 0.3426,  0.0776,  0.0932,  ..., -0.1501,  0.0304, -0.3136],
         [ 0.3109,  0.0243,  0.0776,  ..., -0.1472,  0.0022, -0.2639],
@@ -1350,8 +1392,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2f22bc63-996a-4165-8b54-8e657200bbbc">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
-<span id="cb44-2"><a href="#cb44-2"></a>h1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>h1 <span class="op">=</span> h1_layer.forward(a1)</span>
+<span id="cb44-2"><a href="#cb44-2"></a>h1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>tensor([[0.5848, 0.5194, 0.5233,  ..., 0.4625, 0.5076, 0.4222],
         [0.5771, 0.5061, 0.5194,  ..., 0.4633, 0.5006, 0.4344],
@@ -1364,8 +1406,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b07dec02-577b-4a1b-a42c-dd42c6c17e3b">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
-<span id="cb46-2"><a href="#cb46-2"></a>a2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>a2 <span class="op">=</span> a2_layer.forward(h1)</span>
+<span id="cb46-2"><a href="#cb46-2"></a>a2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>tensor([[-0.5215, -0.0766, -0.2861,  ...,  0.0357, -0.0974, -0.1406],
         [-0.5183, -0.0653, -0.2851,  ...,  0.0343, -0.1039, -0.1331],
@@ -1378,8 +1420,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8b690c5a-b22d-48f4-a982-751394e193e6">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
-<span id="cb48-2"><a href="#cb48-2"></a>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>h2 <span class="op">=</span> h2_layer.forward(a2)</span>
+<span id="cb48-2"><a href="#cb48-2"></a>h2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>tensor([[0.3725, 0.4809, 0.4290,  ..., 0.5089, 0.4757, 0.4649],
         [0.3733, 0.4837, 0.4292,  ..., 0.5086, 0.4741, 0.4668],
@@ -1392,7 +1434,7 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="72aff414-d80e-4d80-818f-e6ad91458d2e">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>model <span class="op">=</span> nn.Sequential(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>model <span class="op">=</span> nn.Sequential(</span>
 <span id="cb50-2"><a href="#cb50-2"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">10</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
 <span id="cb50-3"><a href="#cb50-3"></a>     nn.Sigmoid(),</span>
 <span id="cb50-4"><a href="#cb50-4"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
@@ -1400,7 +1442,7 @@ Estimated Total Size (MB): 0.00
 <span id="cb50-6"><a href="#cb50-6"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">1</span>),</span>
 <span id="cb50-7"><a href="#cb50-7"></a>)</span>
 <span id="cb50-8"><a href="#cb50-8"></a></span>
-<span id="cb50-9"><a href="#cb50-9"></a>model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-9"><a href="#cb50-9"></a>model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>Sequential(
   (0): Linear(in_features=10, out_features=8, bias=True)
@@ -1412,7 +1454,7 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e6448d4c-bd99-4ff0-aa0a-f0beff1d5fae">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>y_train</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>y_train</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>tensor([144., 150., 280., 125.,  59.,  65., 281., 277., 167.,  90.,  72., 178.,
          88., 270., 101., 197.,  97.,  53.,  71., 262.,  52., 102., 166., 189.,
@@ -1447,8 +1489,8 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f5180a98-4ea5-4dd1-ef13-516f0af72291">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>y_hat <span class="op">=</span> model.forward(X_train).squeeze()</span>
-<span id="cb54-2"><a href="#cb54-2"></a>y_hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>y_hat <span class="op">=</span> model.forward(X_train).squeeze()</span>
+<span id="cb54-2"><a href="#cb54-2"></a>y_hat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>tensor([-0.1268, -0.1265, -0.1282, -0.1283, -0.1281, -0.1283, -0.1279, -0.1271,
         -0.1280, -0.1284, -0.1275, -0.1272, -0.1269, -0.1281, -0.1273, -0.1271,
@@ -1498,7 +1540,7 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="821137ab-10ae-4a61-90fe-080f207b55ab">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">print</span>(<span class="op">*</span>model.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="bu">print</span>(<span class="op">*</span>model.parameters())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
 tensor([[-0.0559, -0.0942,  0.2021,  0.2718, -0.0313, -0.0708,  0.0046, -0.0189,
@@ -1550,7 +1592,7 @@ tensor([-0.2083], requires_grad=True)</code></pre>
 <li>Model Evaluation</li>
 </ul>
 <div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bf44ff48-0178-4e48-8b28-787e4966187c">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>model <span class="op">=</span> nn.Sequential(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>model <span class="op">=</span> nn.Sequential(</span>
 <span id="cb58-2"><a href="#cb58-2"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">10</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
 <span id="cb58-3"><a href="#cb58-3"></a>     nn.Sigmoid(),</span>
 <span id="cb58-4"><a href="#cb58-4"></a>     nn.Linear(in_features<span class="op">=</span><span class="dv">8</span>, out_features<span class="op">=</span><span class="dv">8</span>),</span>
@@ -1582,7 +1624,7 @@ tensor([-0.2083], requires_grad=True)</code></pre>
 <span id="cb58-30"><a href="#cb58-30"></a>    <span class="cf">for</span> param <span class="kw">in</span> model.parameters():</span>
 <span id="cb58-31"><a href="#cb58-31"></a>      param <span class="op">-=</span> learning_rate <span class="op">*</span> param.grad <span class="co"># optimizer = sgd , adam, rmsprop</span></span>
 <span id="cb58-32"><a href="#cb58-32"></a></span>
-<span id="cb58-33"><a href="#cb58-33"></a>  model.zero_grad() <span class="co"># making gradients zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-33"><a href="#cb58-33"></a>  model.zero_grad() <span class="co"># making gradients zero</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor(29657.1719, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)
 tensor(26898.1895, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)
@@ -1590,10 +1632,10 @@ tensor(21850.9570, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)</code></pr
 </div>
 </div>
 <div id="cell-43" class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="im">from</span> torch <span class="im">import</span> nn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-44" class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a></span>
 <span id="cb61-2"><a href="#cb61-2"></a><span class="kw">class</span> myModel(nn.Module):</span>
 <span id="cb61-3"><a href="#cb61-3"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>,in_features,out_features):</span>
 <span id="cb61-4"><a href="#cb61-4"></a>    <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
@@ -1610,11 +1652,11 @@ tensor(21850.9570, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)</code></pr
 <span id="cb61-15"><a href="#cb61-15"></a>      ) <span class="co">#class</span></span>
 <span id="cb61-16"><a href="#cb61-16"></a></span>
 <span id="cb61-17"><a href="#cb61-17"></a>  <span class="kw">def</span> forward(<span class="va">self</span>,X):</span>
-<span id="cb61-18"><a href="#cb61-18"></a>    <span class="cf">return</span> <span class="va">self</span>.network(X) <span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb61-18"><a href="#cb61-18"></a>    <span class="cf">return</span> <span class="va">self</span>.network(X) <span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e78b2541-aac6-4930-974e-43dbe985edf8">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
-<span id="cb62-2"><a href="#cb62-2"></a>model1.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<span id="cb62-2"><a href="#cb62-2"></a>model1.to(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>myModel(
   (network): Sequential(
@@ -1630,8 +1672,8 @@ tensor(21850.9570, device='cuda:0', grad_fn=&lt;MseLossBackward0&gt;)</code></pr
 </div>
 </div>
 <div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="714c3b05-09da-4fea-bdc2-c77814c63071">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
-<span id="cb64-2"><a href="#cb64-2"></a>summary(model1, input_size<span class="op">=</span>(<span class="dv">10</span>,))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="im">from</span> torchsummary <span class="im">import</span> summary</span>
+<span id="cb64-2"><a href="#cb64-2"></a>summary(model1, input_size<span class="op">=</span>(<span class="dv">10</span>,))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
@@ -1656,7 +1698,7 @@ Estimated Total Size (MB): 0.00
 </div>
 </div>
 <div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fc6b2abe-eb67-4bc9-8acd-238de1b8a3a2">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="bu">print</span>(<span class="op">*</span>model1.parameters())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="bu">print</span>(<span class="op">*</span>model1.parameters())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Parameter containing:
 tensor([[ 0.2063, -0.0787, -0.2234,  0.0329, -0.0974, -0.3025, -0.0834,  0.1873,
@@ -1694,7 +1736,7 @@ tensor([-0.3426], device='cuda:0', requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="47dbfc1e-960d-4589-9a9f-36fbcd11a987">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
 <span id="cb68-2"><a href="#cb68-2"></a>model1.to(device)</span>
 <span id="cb68-3"><a href="#cb68-3"></a></span>
 <span id="cb68-4"><a href="#cb68-4"></a>loss_func <span class="op">=</span> nn.MSELoss()</span>
@@ -1722,7 +1764,7 @@ tensor([-0.3426], device='cuda:0', requires_grad=True)</code></pre>
 <span id="cb68-26"><a href="#cb68-26"></a>  loss.backward()</span>
 <span id="cb68-27"><a href="#cb68-27"></a></span>
 <span id="cb68-28"><a href="#cb68-28"></a>  <span class="co"># update the weights</span></span>
-<span id="cb68-29"><a href="#cb68-29"></a>  optimizer.step()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-29"><a href="#cb68-29"></a>  optimizer.step()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>29728.98046875
 27254.515625
@@ -1730,7 +1772,7 @@ tensor([-0.3426], device='cuda:0', requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8243d5c0-9f66-429a-9660-ce7b10559750">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># model to evaluation phase</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># model to evaluation phase</span></span>
 <span id="cb70-2"><a href="#cb70-2"></a></span>
 <span id="cb70-3"><a href="#cb70-3"></a>model1.<span class="bu">eval</span>() <span class="co"># batchnorm and dropouts will freeze</span></span>
 <span id="cb70-4"><a href="#cb70-4"></a></span>
@@ -1741,29 +1783,29 @@ tensor([-0.3426], device='cuda:0', requires_grad=True)</code></pre>
 <span id="cb70-9"><a href="#cb70-9"></a>  <span class="co"># Compute loss</span></span>
 <span id="cb70-10"><a href="#cb70-10"></a></span>
 <span id="cb70-11"><a href="#cb70-11"></a>  loss <span class="op">=</span> loss_func(y_hat.squeeze(), y_test)</span>
-<span id="cb70-12"><a href="#cb70-12"></a>  <span class="bu">print</span>(loss.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-12"><a href="#cb70-12"></a>  <span class="bu">print</span>(loss.item())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>14941.1845703125</code></pre>
 </div>
 </div>
 <div id="cell-50" class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader, TensorDataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader, TensorDataset</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d69497a1-992e-4090-d66b-346d5ea1225f">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>TensorDataset(X_train,y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>TensorDataset(X_train,y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>&lt;torch.utils.data.dataset.TensorDataset at 0x79e9ed435f10&gt;</code></pre>
 </div>
 </div>
 <div id="cell-52" class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>train_loader <span class="op">=</span> DataLoader(TensorDataset(X_train,y_train), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb75-2"><a href="#cb75-2"></a>test_loader <span class="op">=</span> DataLoader(TensorDataset(X_test,y_test), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">False</span>) <span class="co"># consistency</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>train_loader <span class="op">=</span> DataLoader(TensorDataset(X_train,y_train), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb75-2"><a href="#cb75-2"></a>test_loader <span class="op">=</span> DataLoader(TensorDataset(X_test,y_test), batch_size<span class="op">=</span> <span class="dv">33</span>, shuffle<span class="op">=</span><span class="va">False</span>) <span class="co"># consistency</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4e3b02c5-d359-4308-bcf5-3d89c9212f24">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="cf">for</span> features, labels <span class="kw">in</span> train_loader:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="cf">for</span> features, labels <span class="kw">in</span> train_loader:</span>
 <span id="cb76-2"><a href="#cb76-2"></a>  <span class="bu">print</span>(features)</span>
 <span id="cb76-3"><a href="#cb76-3"></a>  <span class="bu">print</span>(labels)</span>
-<span id="cb76-4"><a href="#cb76-4"></a>  <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb76-4"><a href="#cb76-4"></a>  <span class="cf">break</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[ 0.0018,  0.0507,  0.0261, -0.0091,  0.0246,  0.0385, -0.0213,  0.0343,
           0.0094,  0.0031],
@@ -1839,7 +1881,7 @@ tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
 <section id="mini-batch-gradient-descent" class="level1">
 <h1>Mini batch gradient descent</h1>
 <div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e6f40d10-24eb-40e7-b72f-a566dbf28257">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>model1 <span class="op">=</span> myModel(<span class="dv">10</span>,<span class="dv">1</span>)</span>
 <span id="cb78-2"><a href="#cb78-2"></a>model1.to(device)</span>
 <span id="cb78-3"><a href="#cb78-3"></a></span>
 <span id="cb78-4"><a href="#cb78-4"></a>loss_func <span class="op">=</span> nn.MSELoss()</span>
@@ -1871,7 +1913,7 @@ tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
 <span id="cb78-30"><a href="#cb78-30"></a></span>
 <span id="cb78-31"><a href="#cb78-31"></a>    <span class="co"># update the weights</span></span>
 <span id="cb78-32"><a href="#cb78-32"></a>    optimizer.step()</span>
-<span id="cb78-33"><a href="#cb78-33"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb78-33"><a href="#cb78-33"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>156514.27978515625
 64164.4521484375
@@ -1879,7 +1921,7 @@ tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
 </div>
 </div>
 <div id="cell-57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9f1c1fd8-f835-41f0-e66c-63e580047225">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># model to evaluation phase</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># model to evaluation phase</span></span>
 <span id="cb80-2"><a href="#cb80-2"></a></span>
 <span id="cb80-3"><a href="#cb80-3"></a>model1.<span class="bu">eval</span>() <span class="co"># batchnorm and dropouts will freeze</span></span>
 <span id="cb80-4"><a href="#cb80-4"></a></span>
@@ -1895,7 +1937,7 @@ tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
 <span id="cb80-14"><a href="#cb80-14"></a>    loss <span class="op">=</span> loss_func(y_hat.squeeze(), labels)</span>
 <span id="cb80-15"><a href="#cb80-15"></a></span>
 <span id="cb80-16"><a href="#cb80-16"></a>    loss_per_epoch <span class="op">+=</span> loss.item()</span>
-<span id="cb80-17"><a href="#cb80-17"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb80-17"><a href="#cb80-17"></a>  <span class="bu">print</span>(loss_per_epoch)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>10029.10205078125</code></pre>
 </div>
@@ -1969,13 +2011,14 @@ tensor([196., 185.,  69., 104., 311.,  97., 257.,  42., 161.,  93., 235., 111.,
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../week-1/pandas/introduction_to_pandas.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -301,7 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -515,17 +517,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -562,11 +604,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -651,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -769,18 +811,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="anatomy-of-a-dataframe">Anatomy of a dataframe</h3>
 <p>Columns, index and data</p>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="ba659067-729c-4de2-c4eb-3eb1a0be667d" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Create a sample DataFrame</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], <span class="st">'col3'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]}</span>
 <span id="cb1-5"><a href="#cb1-5"></a>df <span class="op">=</span> pd.DataFrame(data, index<span class="op">=</span>[<span class="st">'row1'</span>, <span class="st">'row2'</span>, <span class="st">'row3'</span>])</span>
-<span id="cb1-6"><a href="#cb1-6"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div id="df-c12fcf9a-773a-42c1-ad75-216bf7207479" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -791,19 +833,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">row1</td>
+<th data-quarto-table-cell-role="th">row1</th>
 <td>1</td>
 <td>4</td>
 <td>7</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">row2</td>
+<th data-quarto-table-cell-role="th">row2</th>
 <td>2</td>
 <td>5</td>
 <td>8</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">row3</td>
+<th data-quarto-table-cell-role="th">row3</th>
 <td>3</td>
 <td>6</td>
 <td>9</td>
@@ -1071,16 +1113,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="76aaf494-8f84-41f4-9749-6f9643d327b8" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Create a sample DataFrame</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Create a sample DataFrame</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>data <span class="op">=</span> {<span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], <span class="st">'col3'</span>: [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]}</span>
 <span id="cb2-3"><a href="#cb2-3"></a>df <span class="op">=</span> pd.DataFrame(data)<span class="co">#, index=['row1', 'row2', 'row3'])</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div id="df-dc44f009-cb78-4fd0-aa0a-56a3dfd83609" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1091,19 +1133,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1</td>
 <td>4</td>
 <td>7</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>2</td>
 <td>5</td>
 <td>8</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>3</td>
 <td>6</td>
 <td>9</td>
@@ -1371,22 +1413,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="87de05b4-b770-4279-e225-991a3247ab2d" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Display columns</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Display columns</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>df.columns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>Index(['col1', 'col2', 'col3'], dtype='object')</code></pre>
 </div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7d9a55fe-efeb-4b3c-b21a-4e70de3694d9" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>Index(['row1', 'row2', 'row3'], dtype='object')</code></pre>
 </div>
 </div>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ed376891-608a-48c1-9bce-d09282911e1f" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co"># Display data (values)</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>df.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3"></a>df.values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([[1, 4, 7],
        [2, 5, 8],
@@ -1402,16 +1444,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>From dictionaries</li>
 </ul>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="5a988326-13f4-40bc-8409-7581f7757f4e" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># From lists of lists</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># From lists of lists</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a>list_of_lists_data <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]]</span>
 <span id="cb9-3"><a href="#cb9-3"></a>df_from_list <span class="op">=</span> pd.DataFrame(list_of_lists_data, columns<span class="op">=</span>[<span class="st">'Age'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>])</span>
-<span id="cb9-4"><a href="#cb9-4"></a>df_from_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a>df_from_list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div id="df-2c060e3a-0b1f-47e8-a5bc-452b76e594d4" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1422,19 +1464,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1</td>
 <td>2</td>
 <td>3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>4</td>
 <td>5</td>
 <td>6</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>7</td>
 <td>8</td>
 <td>9</td>
@@ -1702,12 +1744,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:178}}" data-outputid="fa2e1db3-0172-43bb-daaf-32a454ab7340" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>pd.Series([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>pd.Series([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="109">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1716,15 +1758,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>2</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>3</td>
 </tr>
 </tbody>
@@ -1734,12 +1776,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:180}}" data-outputid="418e93ec-ac12-463b-a61b-8cc0e1943a0c" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># From series objects</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># From series objects</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>series_data <span class="op">=</span> {<span class="st">'col1'</span>: pd.Series([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]),</span>
 <span id="cb11-3"><a href="#cb11-3"></a>               <span class="st">'col2'</span>: pd.Series([<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])}</span>
 <span id="cb11-4"><a href="#cb11-4"></a>df_from_series <span class="op">=</span> pd.DataFrame(series_data)</span>
 <span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DataFrame from series objects:"</span>)</span>
-<span id="cb11-6"><a href="#cb11-6"></a>df_from_series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6"></a>df_from_series</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 DataFrame from series objects:</code></pre>
@@ -1749,7 +1791,7 @@ DataFrame from series objects:</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1759,17 +1801,17 @@ DataFrame from series objects:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>2</td>
 <td>5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>3</td>
 <td>6</td>
 </tr>
@@ -2036,7 +2078,7 @@ DataFrame from series objects:</code></pre>
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:180}}" data-outputid="227b15ed-48fa-4810-85ba-ba267be8e655" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># From dictionaries</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># From dictionaries</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>dictionary_data <span class="op">=</span> {</span>
 <span id="cb13-3"><a href="#cb13-3"></a>    <span class="st">'col1'</span>: [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
 <span id="cb13-4"><a href="#cb13-4"></a>    <span class="st">'col2'</span>: [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
@@ -2044,7 +2086,7 @@ DataFrame from series objects:</code></pre>
 <span id="cb13-6"><a href="#cb13-6"></a></span>
 <span id="cb13-7"><a href="#cb13-7"></a>df_from_dict <span class="op">=</span> pd.DataFrame(dictionary_data)</span>
 <span id="cb13-8"><a href="#cb13-8"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DataFrame from dictionaries:"</span>)</span>
-<span id="cb13-9"><a href="#cb13-9"></a>df_from_dict</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-9"><a href="#cb13-9"></a>df_from_dict</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 DataFrame from dictionaries:</code></pre>
@@ -2054,7 +2096,7 @@ DataFrame from dictionaries:</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2064,17 +2106,17 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1</td>
 <td>4</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>2</td>
 <td>5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>3</td>
 <td>6</td>
 </tr>
@@ -2350,14 +2392,14 @@ DataFrame from dictionaries:</code></pre>
 <li>load data from html file</li>
 </ul>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="4ab433bc-6c60-40ae-e2b1-6e4a43a1f9ad" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df_csv <span class="op">=</span> pd.read_csv(<span class="st">"/content/sample_data/california_housing_test.csv"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>df_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df_csv <span class="op">=</span> pd.read_csv(<span class="st">"/content/sample_data/california_housing_test.csv"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>df_csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div id="df-ac625559-d25f-4773-bb95-fe7e618f1d99" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2374,7 +2416,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -2386,7 +2428,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -2398,7 +2440,7 @@ DataFrame from dictionaries:</code></pre>
 <td>176500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -2410,7 +2452,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -2422,7 +2464,7 @@ DataFrame from dictionaries:</code></pre>
 <td>330000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -2434,7 +2476,7 @@ DataFrame from dictionaries:</code></pre>
 <td>81700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -2446,7 +2488,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -2458,7 +2500,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -2470,7 +2512,7 @@ DataFrame from dictionaries:</code></pre>
 <td>237200.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -2482,7 +2524,7 @@ DataFrame from dictionaries:</code></pre>
 <td>62000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -2494,7 +2536,7 @@ DataFrame from dictionaries:</code></pre>
 <td>162500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -2769,14 +2811,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="79e1276a-5d1d-4b3b-f698-e7d561df6a36" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df_json <span class="op">=</span> pd.read_json(<span class="st">"/content/sample_data/anscombe.json"</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>df_json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df_json <span class="op">=</span> pd.read_json(<span class="st">"/content/sample_data/anscombe.json"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a>df_json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div id="df-d04bc652-a6a4-49f9-9d8e-24d3400ca38c" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2787,265 +2829,265 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>I</td>
 <td>10</td>
 <td>8.04</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>I</td>
 <td>8</td>
 <td>6.95</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>I</td>
 <td>13</td>
 <td>7.58</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>I</td>
 <td>9</td>
 <td>8.81</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>I</td>
 <td>11</td>
 <td>8.33</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>I</td>
 <td>14</td>
 <td>9.96</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>I</td>
 <td>6</td>
 <td>7.24</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>I</td>
 <td>4</td>
 <td>4.26</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>I</td>
 <td>12</td>
 <td>10.84</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>I</td>
 <td>7</td>
 <td>4.81</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
+<th data-quarto-table-cell-role="th">10</th>
 <td>I</td>
 <td>5</td>
 <td>5.68</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
+<th data-quarto-table-cell-role="th">11</th>
 <td>II</td>
 <td>10</td>
 <td>9.14</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
+<th data-quarto-table-cell-role="th">12</th>
 <td>II</td>
 <td>8</td>
 <td>8.14</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
+<th data-quarto-table-cell-role="th">13</th>
 <td>II</td>
 <td>13</td>
 <td>8.74</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
+<th data-quarto-table-cell-role="th">14</th>
 <td>II</td>
 <td>9</td>
 <td>8.77</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
+<th data-quarto-table-cell-role="th">15</th>
 <td>II</td>
 <td>11</td>
 <td>9.26</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
+<th data-quarto-table-cell-role="th">16</th>
 <td>II</td>
 <td>14</td>
 <td>8.10</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
+<th data-quarto-table-cell-role="th">17</th>
 <td>II</td>
 <td>6</td>
 <td>6.13</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
+<th data-quarto-table-cell-role="th">18</th>
 <td>II</td>
 <td>4</td>
 <td>3.10</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
+<th data-quarto-table-cell-role="th">19</th>
 <td>II</td>
 <td>12</td>
 <td>9.13</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
+<th data-quarto-table-cell-role="th">20</th>
 <td>II</td>
 <td>7</td>
 <td>7.26</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
+<th data-quarto-table-cell-role="th">21</th>
 <td>II</td>
 <td>5</td>
 <td>4.74</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
+<th data-quarto-table-cell-role="th">22</th>
 <td>III</td>
 <td>10</td>
 <td>7.46</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
+<th data-quarto-table-cell-role="th">23</th>
 <td>III</td>
 <td>8</td>
 <td>6.77</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
+<th data-quarto-table-cell-role="th">24</th>
 <td>III</td>
 <td>13</td>
 <td>12.74</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
+<th data-quarto-table-cell-role="th">25</th>
 <td>III</td>
 <td>9</td>
 <td>7.11</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
+<th data-quarto-table-cell-role="th">26</th>
 <td>III</td>
 <td>11</td>
 <td>7.81</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
+<th data-quarto-table-cell-role="th">27</th>
 <td>III</td>
 <td>14</td>
 <td>8.84</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
+<th data-quarto-table-cell-role="th">28</th>
 <td>III</td>
 <td>6</td>
 <td>6.08</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
+<th data-quarto-table-cell-role="th">29</th>
 <td>III</td>
 <td>4</td>
 <td>5.39</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
+<th data-quarto-table-cell-role="th">30</th>
 <td>III</td>
 <td>12</td>
 <td>8.15</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
+<th data-quarto-table-cell-role="th">31</th>
 <td>III</td>
 <td>7</td>
 <td>6.42</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
+<th data-quarto-table-cell-role="th">32</th>
 <td>III</td>
 <td>5</td>
 <td>5.73</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
+<th data-quarto-table-cell-role="th">33</th>
 <td>IV</td>
 <td>8</td>
 <td>6.58</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
+<th data-quarto-table-cell-role="th">34</th>
 <td>IV</td>
 <td>8</td>
 <td>5.76</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
+<th data-quarto-table-cell-role="th">35</th>
 <td>IV</td>
 <td>8</td>
 <td>7.71</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
+<th data-quarto-table-cell-role="th">36</th>
 <td>IV</td>
 <td>8</td>
 <td>8.84</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
+<th data-quarto-table-cell-role="th">37</th>
 <td>IV</td>
 <td>8</td>
 <td>8.47</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">38</td>
+<th data-quarto-table-cell-role="th">38</th>
 <td>IV</td>
 <td>8</td>
 <td>7.04</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">39</td>
+<th data-quarto-table-cell-role="th">39</th>
 <td>IV</td>
 <td>8</td>
 <td>5.25</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">40</td>
+<th data-quarto-table-cell-role="th">40</th>
 <td>IV</td>
 <td>19</td>
 <td>12.50</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">41</td>
+<th data-quarto-table-cell-role="th">41</th>
 <td>IV</td>
 <td>8</td>
 <td>5.56</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">42</td>
+<th data-quarto-table-cell-role="th">42</th>
 <td>IV</td>
 <td>8</td>
 <td>7.91</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">43</td>
+<th data-quarto-table-cell-role="th">43</th>
 <td>IV</td>
 <td>8</td>
 <td>6.89</td>
@@ -3313,7 +3355,7 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:442}}" data-outputid="d72c9a22-07d3-4462-93f0-a96c8ad8efab" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb17-2"><a href="#cb17-2"></a></span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="co"># URL of the Wikipedia page</span></span>
 <span id="cb17-4"><a href="#cb17-4"></a>url <span class="op">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_countries_by_population_(United_Nations)'</span></span>
@@ -3326,7 +3368,7 @@ DataFrame from dictionaries:</code></pre>
 <span id="cb17-11"><a href="#cb17-11"></a>tables[<span class="dv">0</span>]</span>
 <span id="cb17-12"><a href="#cb17-12"></a></span>
 <span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="st">"DataFrame loaded from Wikipedia table:"</span>)</span>
-<span id="cb17-14"><a href="#cb17-14"></a>tables[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-14"><a href="#cb17-14"></a>tables[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame loaded from Wikipedia table:</code></pre>
 </div>
@@ -3335,7 +3377,7 @@ DataFrame from dictionaries:</code></pre>
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3349,7 +3391,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>World</td>
 <td>8021407192</td>
 <td>8091734930</td>
@@ -3358,7 +3400,7 @@ DataFrame from dictionaries:</code></pre>
 <td>–</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>India</td>
 <td>1425423212</td>
 <td>1438069596</td>
@@ -3367,7 +3409,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Southern Asia</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>China[a]</td>
 <td>1425179569</td>
 <td>1422584933</td>
@@ -3376,7 +3418,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Eastern Asia</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>United States</td>
 <td>341534046</td>
 <td>343477335</td>
@@ -3385,7 +3427,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Northern America</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Indonesia</td>
 <td>278830529</td>
 <td>281190067</td>
@@ -3394,7 +3436,7 @@ DataFrame from dictionaries:</code></pre>
 <td>South-eastern Asia</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -3403,7 +3445,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">233</td>
+<th data-quarto-table-cell-role="th">233</th>
 <td>Montserrat (United Kingdom)</td>
 <td>4453</td>
 <td>4420</td>
@@ -3412,7 +3454,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Caribbean</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">234</td>
+<th data-quarto-table-cell-role="th">234</th>
 <td>Falkland Islands (United Kingdom)</td>
 <td>3490</td>
 <td>3477</td>
@@ -3421,7 +3463,7 @@ DataFrame from dictionaries:</code></pre>
 <td>South America</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">235</td>
+<th data-quarto-table-cell-role="th">235</th>
 <td>Tokelau (New Zealand)</td>
 <td>2290</td>
 <td>2397</td>
@@ -3430,7 +3472,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Polynesia</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">236</td>
+<th data-quarto-table-cell-role="th">236</th>
 <td>Niue (New Zealand)</td>
 <td>1821</td>
 <td>1817</td>
@@ -3439,7 +3481,7 @@ DataFrame from dictionaries:</code></pre>
 <td>Polynesia</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">237</td>
+<th data-quarto-table-cell-role="th">237</th>
 <td>Vatican City[w]</td>
 <td>505</td>
 <td>496</td>
@@ -3659,13 +3701,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:457}}" data-outputid="53bc750f-516a-46a1-de1a-ce854f5d9fca" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>tables[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>tables[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div id="df-33dc850c-5a84-4888-981b-6a9f4377e194" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3675,67 +3717,67 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>Global</td>
 <td>Current population United Nations Demographics...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>Continents/subregions</td>
 <td>Africa Antarctica Asia Europe North America Ca...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>Intercontinental</td>
 <td>Americas Arab world Commonwealth of Nations Eu...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>Cities/urban areas</td>
 <td>World cities National capitals Megacities Mega...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>Past and future</td>
 <td>Past and future population Estimates of histor...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>Population density</td>
 <td>Current density Past and future population den...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>Growth indicators</td>
 <td>Population growth rate Natural increase Net re...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>Life expectancy</td>
 <td>World Africa Asia Europe North America Oceania...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>Other demographics</td>
 <td>Age at childbearing Age at first marriage Age ...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>Health</td>
 <td>Antidepressant consumption Antiviral medicatio...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
+<th data-quarto-table-cell-role="th">10</th>
 <td>Education and innovation</td>
 <td>Bloomberg Innovation Index Education Index Glo...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
+<th data-quarto-table-cell-role="th">11</th>
 <td>Economic</td>
 <td>Access to financial services Development aid d...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
+<th data-quarto-table-cell-role="th">12</th>
 <td>List of international rankings Lists by country</td>
 <td>List of international rankings Lists by country</td>
 </tr>
@@ -3958,12 +4000,12 @@ DataFrame from dictionaries:</code></pre>
 <li>object</li>
 </ul>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:366}}" data-outputid="0f54be2f-6858-42ae-d904-8c67d0305882" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df_csv.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df_csv.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -3972,39 +4014,39 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">longitude</td>
+<th data-quarto-table-cell-role="th">longitude</th>
 <td>float64</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">latitude</td>
+<th data-quarto-table-cell-role="th">latitude</th>
 <td>float64</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">housing_median_age</td>
+<th data-quarto-table-cell-role="th">housing_median_age</th>
 <td>float64</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">total_rooms</td>
+<th data-quarto-table-cell-role="th">total_rooms</th>
 <td>float64</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">total_bedrooms</td>
+<th data-quarto-table-cell-role="th">total_bedrooms</th>
 <td>float64</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">population</td>
+<th data-quarto-table-cell-role="th">population</th>
 <td>float64</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">households</td>
+<th data-quarto-table-cell-role="th">households</th>
 <td>float64</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">median_income</td>
+<th data-quarto-table-cell-role="th">median_income</th>
 <td>float64</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">median_house_value</td>
+<th data-quarto-table-cell-role="th">median_house_value</th>
 <td>float64</td>
 </tr>
 </tbody>
@@ -4014,12 +4056,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:272}}" data-outputid="d560b307-845e-476f-bf05-3e849c9b6834" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>tables[<span class="dv">0</span>].dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>tables[<span class="dv">0</span>].dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4028,27 +4070,27 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Country or territory</td>
+<th data-quarto-table-cell-role="th">Country or territory</th>
 <td>object</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Population (1 July 2022)</td>
+<th data-quarto-table-cell-role="th">Population (1 July 2022)</th>
 <td>int64</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Population (1 July 2023)</td>
+<th data-quarto-table-cell-role="th">Population (1 July 2023)</th>
 <td>int64</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Change (%)</td>
+<th data-quarto-table-cell-role="th">Change (%)</th>
 <td>object</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">UN continental region[1]</td>
+<th data-quarto-table-cell-role="th">UN continental region[1]</th>
 <td>object</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">UN statistical subregion[1]</td>
+<th data-quarto-table-cell-role="th">UN statistical subregion[1]</th>
 <td>object</td>
 </tr>
 </tbody>
@@ -4066,16 +4108,16 @@ DataFrame from dictionaries:</code></pre>
 <li><code>value_counts()</code> for categorical columns</li>
 </ul>
 <div id="cell-24" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df <span class="op">=</span> df_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df <span class="op">=</span> df_csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="f65a9870-3e9f-4643-e4fd-d0ec72122f63" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div id="df-98be3d3e-65a8-4833-90f0-218976cb93d1" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4092,7 +4134,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">count</td>
+<th data-quarto-table-cell-role="th">count</th>
 <td>3000.000000</td>
 <td>3000.00000</td>
 <td>3000.000000</td>
@@ -4104,7 +4146,7 @@ DataFrame from dictionaries:</code></pre>
 <td>3000.00000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">mean</td>
+<th data-quarto-table-cell-role="th">mean</th>
 <td>-119.589200</td>
 <td>35.63539</td>
 <td>28.845333</td>
@@ -4116,7 +4158,7 @@ DataFrame from dictionaries:</code></pre>
 <td>205846.27500</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">std</td>
+<th data-quarto-table-cell-role="th">std</th>
 <td>1.994936</td>
 <td>2.12967</td>
 <td>12.555396</td>
@@ -4128,7 +4170,7 @@ DataFrame from dictionaries:</code></pre>
 <td>113119.68747</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">min</td>
+<th data-quarto-table-cell-role="th">min</th>
 <td>-124.180000</td>
 <td>32.56000</td>
 <td>1.000000</td>
@@ -4140,7 +4182,7 @@ DataFrame from dictionaries:</code></pre>
 <td>22500.00000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">25%</td>
+<th data-quarto-table-cell-role="th">25%</th>
 <td>-121.810000</td>
 <td>33.93000</td>
 <td>18.000000</td>
@@ -4152,7 +4194,7 @@ DataFrame from dictionaries:</code></pre>
 <td>121200.00000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">50%</td>
+<th data-quarto-table-cell-role="th">50%</th>
 <td>-118.485000</td>
 <td>34.27000</td>
 <td>29.000000</td>
@@ -4164,7 +4206,7 @@ DataFrame from dictionaries:</code></pre>
 <td>177650.00000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">75%</td>
+<th data-quarto-table-cell-role="th">75%</th>
 <td>-118.020000</td>
 <td>37.69000</td>
 <td>37.000000</td>
@@ -4176,7 +4218,7 @@ DataFrame from dictionaries:</code></pre>
 <td>263975.00000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">max</td>
+<th data-quarto-table-cell-role="th">max</th>
 <td>-114.490000</td>
 <td>41.92000</td>
 <td>52.000000</td>
@@ -4398,12 +4440,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:366}}" data-outputid="6c8cb6aa-977a-477e-a79d-164a99f57c3e" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df.isnull().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4412,39 +4454,39 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">longitude</td>
+<th data-quarto-table-cell-role="th">longitude</th>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">latitude</td>
+<th data-quarto-table-cell-role="th">latitude</th>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">housing_median_age</td>
+<th data-quarto-table-cell-role="th">housing_median_age</th>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">total_rooms</td>
+<th data-quarto-table-cell-role="th">total_rooms</th>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">total_bedrooms</td>
+<th data-quarto-table-cell-role="th">total_bedrooms</th>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">population</td>
+<th data-quarto-table-cell-role="th">population</th>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">households</td>
+<th data-quarto-table-cell-role="th">households</th>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">median_income</td>
+<th data-quarto-table-cell-role="th">median_income</th>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">median_house_value</td>
+<th data-quarto-table-cell-role="th">median_house_value</th>
 <td>0</td>
 </tr>
 </tbody>
@@ -4454,12 +4496,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:303}}" data-outputid="a01ce4e6-8c5d-4193-8cd0-ceffa35a764b" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>tables[<span class="dv">0</span>][<span class="st">"UN continental region[1]"</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>tables[<span class="dv">0</span>][<span class="st">"UN continental region[1]"</span>].value_counts()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4472,27 +4514,27 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Africa</td>
+<th data-quarto-table-cell-role="th">Africa</th>
 <td>58</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Americas</td>
+<th data-quarto-table-cell-role="th">Americas</th>
 <td>55</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Asia</td>
+<th data-quarto-table-cell-role="th">Asia</th>
 <td>51</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Europe</td>
+<th data-quarto-table-cell-role="th">Europe</th>
 <td>50</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Oceania</td>
+<th data-quarto-table-cell-role="th">Oceania</th>
 <td>23</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">–</td>
+<th data-quarto-table-cell-role="th">–</th>
 <td>1</td>
 </tr>
 </tbody>
@@ -4517,14 +4559,14 @@ DataFrame from dictionaries:</code></pre>
 <li>Order columns</li>
 </ul>
 <div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="020337f4-2067-4343-c285-438421ccdebb" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#Select Column(s)</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a>df[[<span class="st">'longitude'</span>, <span class="st">'latitude'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#Select Column(s)</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>df[[<span class="st">'longitude'</span>, <span class="st">'latitude'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div id="df-e60fd19b-e420-4606-a6b0-efaa2e188459" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4534,57 +4576,57 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 </tr>
@@ -4800,14 +4842,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="aa0c01aa-6e96-4f3b-8335-e862af7dde81" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Select row(s)</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>df.iloc[<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Select row(s)</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>df.iloc[<span class="dv">0</span>:<span class="dv">3</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div id="df-89644ea6-e501-4672-9f48-6f1cb6fe653d" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -4824,7 +4866,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -4836,7 +4878,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -4848,7 +4890,7 @@ DataFrame from dictionaries:</code></pre>
 <td>176500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -5070,14 +5112,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="9aee5ea9-32c4-4773-ca91-0b1432e505c6" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Select columns and rows</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>df.iloc[<span class="dv">0</span>:<span class="dv">3</span>, <span class="dv">0</span>:<span class="dv">2</span>] <span class="co"># rows , columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Select columns and rows</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a>df.iloc[<span class="dv">0</span>:<span class="dv">3</span>, <span class="dv">0</span>:<span class="dv">2</span>] <span class="co"># rows , columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <div id="df-438907ec-348f-4b94-8d3e-cc2caf128485" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5087,17 +5129,17 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 </tr>
@@ -5312,14 +5354,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:175}}" data-outputid="f267938b-ab77-4069-914b-fddc4bc49596" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Select columns and rows</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a>df.loc[<span class="dv">0</span>:<span class="dv">3</span>, [<span class="st">'longitude'</span>, <span class="st">'latitude'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Select columns and rows</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>df.loc[<span class="dv">0</span>:<span class="dv">3</span>, [<span class="st">'longitude'</span>, <span class="st">'latitude'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div id="df-0e3a36dc-fae2-480f-be9d-6bcd1765e7fa" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5329,22 +5371,22 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 </tr>
@@ -5559,13 +5601,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="dd0820e1-2f58-482d-fed3-1d7bf06f7dfc" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># boolean indexing</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a>df[<span class="st">'population'</span>] <span class="op">&gt;</span> <span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># boolean indexing</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>df[<span class="st">'population'</span>] <span class="op">&gt;</span> <span class="dv">1000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5574,47 +5616,47 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>True</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>False</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>True</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>False</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>False</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>True</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>True</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>False</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>False</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>False</td>
 </tr>
 </tbody>
@@ -5625,14 +5667,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="70d0428e-9fc8-4e4d-8cb5-4071ebaf5a7b" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Conditional selection</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a>df[df[<span class="st">'population'</span>] <span class="op">&gt;</span> <span class="dv">1000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># Conditional selection</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>df[df[<span class="st">'population'</span>] <span class="op">&gt;</span> <span class="dv">1000</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div id="df-57e5d055-2fbe-4fab-8cbf-59aee74eace7" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -5649,7 +5691,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -5661,7 +5703,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -5673,7 +5715,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>-120.65</td>
 <td>35.48</td>
 <td>19.0</td>
@@ -5685,7 +5727,7 @@ DataFrame from dictionaries:</code></pre>
 <td>166900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>-122.84</td>
 <td>38.40</td>
 <td>15.0</td>
@@ -5697,7 +5739,7 @@ DataFrame from dictionaries:</code></pre>
 <td>194400.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>-118.02</td>
 <td>34.08</td>
 <td>31.0</td>
@@ -5709,7 +5751,7 @@ DataFrame from dictionaries:</code></pre>
 <td>164200.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -5721,7 +5763,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2988</td>
+<th data-quarto-table-cell-role="th">2988</th>
 <td>-122.01</td>
 <td>36.97</td>
 <td>43.0</td>
@@ -5733,7 +5775,7 @@ DataFrame from dictionaries:</code></pre>
 <td>260900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2989</td>
+<th data-quarto-table-cell-role="th">2989</th>
 <td>-122.02</td>
 <td>37.60</td>
 <td>32.0</td>
@@ -5745,7 +5787,7 @@ DataFrame from dictionaries:</code></pre>
 <td>149600.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2990</td>
+<th data-quarto-table-cell-role="th">2990</th>
 <td>-118.23</td>
 <td>34.09</td>
 <td>49.0</td>
@@ -5757,7 +5799,7 @@ DataFrame from dictionaries:</code></pre>
 <td>150000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -5769,7 +5811,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -5992,15 +6034,15 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="040ed1ea-37f8-47a1-f6db-2339749c740c" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Special selection methods</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Special selection methods</span></span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="co"># query</span></span>
-<span id="cb32-3"><a href="#cb32-3"></a>df.query(<span class="st">'population &gt; 1000'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb32-3"><a href="#cb32-3"></a>df.query(<span class="st">'population &gt; 1000'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div id="df-4b534fa1-842a-4380-b6bc-10fa6f9bb72b" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6017,7 +6059,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -6029,7 +6071,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -6041,7 +6083,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>-120.65</td>
 <td>35.48</td>
 <td>19.0</td>
@@ -6053,7 +6095,7 @@ DataFrame from dictionaries:</code></pre>
 <td>166900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>-122.84</td>
 <td>38.40</td>
 <td>15.0</td>
@@ -6065,7 +6107,7 @@ DataFrame from dictionaries:</code></pre>
 <td>194400.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>-118.02</td>
 <td>34.08</td>
 <td>31.0</td>
@@ -6077,7 +6119,7 @@ DataFrame from dictionaries:</code></pre>
 <td>164200.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -6089,7 +6131,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2988</td>
+<th data-quarto-table-cell-role="th">2988</th>
 <td>-122.01</td>
 <td>36.97</td>
 <td>43.0</td>
@@ -6101,7 +6143,7 @@ DataFrame from dictionaries:</code></pre>
 <td>260900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2989</td>
+<th data-quarto-table-cell-role="th">2989</th>
 <td>-122.02</td>
 <td>37.60</td>
 <td>32.0</td>
@@ -6113,7 +6155,7 @@ DataFrame from dictionaries:</code></pre>
 <td>149600.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2990</td>
+<th data-quarto-table-cell-role="th">2990</th>
 <td>-118.23</td>
 <td>34.09</td>
 <td>49.0</td>
@@ -6125,7 +6167,7 @@ DataFrame from dictionaries:</code></pre>
 <td>150000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -6137,7 +6179,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -6360,13 +6402,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="78de85c1-3a77-4398-93c8-78c2e5a2b8a3" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df.query(<span class="st">'population &gt; 1000 and housing_median_age &lt; 10'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df.query(<span class="st">'population &gt; 1000 and housing_median_age &lt; 10'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <div id="df-3e4dd9b2-61d4-4b00-a85c-64184c2e8cef" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6383,7 +6425,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">33</td>
+<th data-quarto-table-cell-role="th">33</th>
 <td>-118.08</td>
 <td>34.55</td>
 <td>5.0</td>
@@ -6395,7 +6437,7 @@ DataFrame from dictionaries:</code></pre>
 <td>141800.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">45</td>
+<th data-quarto-table-cell-role="th">45</th>
 <td>-117.24</td>
 <td>33.17</td>
 <td>4.0</td>
@@ -6407,7 +6449,7 @@ DataFrame from dictionaries:</code></pre>
 <td>237500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">93</td>
+<th data-quarto-table-cell-role="th">93</th>
 <td>-117.50</td>
 <td>33.87</td>
 <td>4.0</td>
@@ -6419,7 +6461,7 @@ DataFrame from dictionaries:</code></pre>
 <td>239800.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">153</td>
+<th data-quarto-table-cell-role="th">153</th>
 <td>-118.38</td>
 <td>34.27</td>
 <td>8.0</td>
@@ -6431,7 +6473,7 @@ DataFrame from dictionaries:</code></pre>
 <td>158300.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">182</td>
+<th data-quarto-table-cell-role="th">182</th>
 <td>-122.24</td>
 <td>37.55</td>
 <td>3.0</td>
@@ -6443,7 +6485,7 @@ DataFrame from dictionaries:</code></pre>
 <td>435900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -6455,7 +6497,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2899</td>
+<th data-quarto-table-cell-role="th">2899</th>
 <td>-121.92</td>
 <td>38.02</td>
 <td>8.0</td>
@@ -6467,7 +6509,7 @@ DataFrame from dictionaries:</code></pre>
 <td>156500.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2913</td>
+<th data-quarto-table-cell-role="th">2913</th>
 <td>-122.39</td>
 <td>37.78</td>
 <td>3.0</td>
@@ -6479,7 +6521,7 @@ DataFrame from dictionaries:</code></pre>
 <td>275000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2930</td>
+<th data-quarto-table-cell-role="th">2930</th>
 <td>-121.84</td>
 <td>37.29</td>
 <td>4.0</td>
@@ -6491,7 +6533,7 @@ DataFrame from dictionaries:</code></pre>
 <td>160400.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2936</td>
+<th data-quarto-table-cell-role="th">2936</th>
 <td>-119.75</td>
 <td>36.87</td>
 <td>3.0</td>
@@ -6503,7 +6545,7 @@ DataFrame from dictionaries:</code></pre>
 <td>143700.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2969</td>
+<th data-quarto-table-cell-role="th">2969</th>
 <td>-118.11</td>
 <td>34.68</td>
 <td>6.0</td>
@@ -6726,13 +6768,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="05d1c307-a45b-4a0f-c70f-d5c3c1a49aee" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df.query(<span class="st">'population &gt; 1000 or housing_median_age &lt; 10'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df.query(<span class="st">'population &gt; 1000 or housing_median_age &lt; 10'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div id="df-05e424e8-07d8-4d5d-8522-860cce346357" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -6749,7 +6791,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -6761,7 +6803,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -6773,7 +6815,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>-120.65</td>
 <td>35.48</td>
 <td>19.0</td>
@@ -6785,7 +6827,7 @@ DataFrame from dictionaries:</code></pre>
 <td>166900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>-122.84</td>
 <td>38.40</td>
 <td>15.0</td>
@@ -6797,7 +6839,7 @@ DataFrame from dictionaries:</code></pre>
 <td>194400.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>-118.02</td>
 <td>34.08</td>
 <td>31.0</td>
@@ -6809,7 +6851,7 @@ DataFrame from dictionaries:</code></pre>
 <td>164200.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -6821,7 +6863,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2988</td>
+<th data-quarto-table-cell-role="th">2988</th>
 <td>-122.01</td>
 <td>36.97</td>
 <td>43.0</td>
@@ -6833,7 +6875,7 @@ DataFrame from dictionaries:</code></pre>
 <td>260900.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2989</td>
+<th data-quarto-table-cell-role="th">2989</th>
 <td>-122.02</td>
 <td>37.60</td>
 <td>32.0</td>
@@ -6845,7 +6887,7 @@ DataFrame from dictionaries:</code></pre>
 <td>149600.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2990</td>
+<th data-quarto-table-cell-role="th">2990</th>
 <td>-118.23</td>
 <td>34.09</td>
 <td>49.0</td>
@@ -6857,7 +6899,7 @@ DataFrame from dictionaries:</code></pre>
 <td>150000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -6869,7 +6911,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -7092,13 +7134,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="8b43d375-f2fa-48ba-a3c0-aea3e5179302" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>df.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]) <span class="co"># Selects all numeric columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>df.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]) <span class="co"># Selects all numeric columns</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div id="df-6c2d0330-9766-42f8-9c54-ed304a9b26da" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7115,7 +7157,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -7127,7 +7169,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -7139,7 +7181,7 @@ DataFrame from dictionaries:</code></pre>
 <td>176500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -7151,7 +7193,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -7163,7 +7205,7 @@ DataFrame from dictionaries:</code></pre>
 <td>330000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -7175,7 +7217,7 @@ DataFrame from dictionaries:</code></pre>
 <td>81700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -7187,7 +7229,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -7199,7 +7241,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -7211,7 +7253,7 @@ DataFrame from dictionaries:</code></pre>
 <td>237200.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -7223,7 +7265,7 @@ DataFrame from dictionaries:</code></pre>
 <td>62000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -7235,7 +7277,7 @@ DataFrame from dictionaries:</code></pre>
 <td>162500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -7458,13 +7500,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="b86eead1-e600-4342-cb99-9eb687f4de0f" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df.select_dtypes(include<span class="op">=</span>[<span class="st">'int64'</span>, <span class="st">'float64'</span>]) <span class="co"># Selects specific numeric types</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df.select_dtypes(include<span class="op">=</span>[<span class="st">'int64'</span>, <span class="st">'float64'</span>]) <span class="co"># Selects specific numeric types</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div id="df-6c906d85-7ec0-40f8-aa46-188103c9cc4e" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7481,7 +7523,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -7493,7 +7535,7 @@ DataFrame from dictionaries:</code></pre>
 <td>344700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -7505,7 +7547,7 @@ DataFrame from dictionaries:</code></pre>
 <td>176500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -7517,7 +7559,7 @@ DataFrame from dictionaries:</code></pre>
 <td>270500.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -7529,7 +7571,7 @@ DataFrame from dictionaries:</code></pre>
 <td>330000.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -7541,7 +7583,7 @@ DataFrame from dictionaries:</code></pre>
 <td>81700.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -7553,7 +7595,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -7565,7 +7607,7 @@ DataFrame from dictionaries:</code></pre>
 <td>225000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -7577,7 +7619,7 @@ DataFrame from dictionaries:</code></pre>
 <td>237200.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -7589,7 +7631,7 @@ DataFrame from dictionaries:</code></pre>
 <td>62000.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -7601,7 +7643,7 @@ DataFrame from dictionaries:</code></pre>
 <td>162500.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -7824,12 +7866,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:209}}" data-outputid="af3e09c4-cf1b-4bc2-bb3d-46c7a74f7ccc" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>tables[<span class="dv">0</span>].select_dtypes(exclude<span class="op">=</span> [<span class="st">"number"</span>]).dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>tables[<span class="dv">0</span>].select_dtypes(exclude<span class="op">=</span> [<span class="st">"number"</span>]).dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7838,19 +7880,19 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Country or territory</td>
+<th data-quarto-table-cell-role="th">Country or territory</th>
 <td>object</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Change (%)</td>
+<th data-quarto-table-cell-role="th">Change (%)</th>
 <td>object</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">UN continental region[1]</td>
+<th data-quarto-table-cell-role="th">UN continental region[1]</th>
 <td>object</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">UN statistical subregion[1]</td>
+<th data-quarto-table-cell-role="th">UN statistical subregion[1]</th>
 <td>object</td>
 </tr>
 </tbody>
@@ -7860,13 +7902,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="bef0c4e8-8f19-4725-c50e-b2c2b843db71" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df.sample(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df.sample(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <div id="df-72ac6218-9aea-4c77-9019-54edfe389987" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -7883,7 +7925,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">334</td>
+<th data-quarto-table-cell-role="th">334</th>
 <td>-118.13</td>
 <td>34.01</td>
 <td>45.0</td>
@@ -7895,7 +7937,7 @@ DataFrame from dictionaries:</code></pre>
 <td>161800.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">649</td>
+<th data-quarto-table-cell-role="th">649</th>
 <td>-122.27</td>
 <td>37.80</td>
 <td>39.0</td>
@@ -7907,7 +7949,7 @@ DataFrame from dictionaries:</code></pre>
 <td>179200.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">604</td>
+<th data-quarto-table-cell-role="th">604</th>
 <td>-121.93</td>
 <td>38.01</td>
 <td>9.0</td>
@@ -7919,7 +7961,7 @@ DataFrame from dictionaries:</code></pre>
 <td>160800.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">716</td>
+<th data-quarto-table-cell-role="th">716</th>
 <td>-121.17</td>
 <td>37.97</td>
 <td>28.0</td>
@@ -7931,7 +7973,7 @@ DataFrame from dictionaries:</code></pre>
 <td>130400.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2981</td>
+<th data-quarto-table-cell-role="th">2981</th>
 <td>-120.66</td>
 <td>35.49</td>
 <td>17.0</td>
@@ -8163,12 +8205,12 @@ DataFrame from dictionaries:</code></pre>
 </ul></li>
 </ul>
 <div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:241}}" data-outputid="d3377265-0f0f-401d-acb3-e0d5f2aa5b87" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df[<span class="st">'housing_median_age'</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>df[<span class="st">'housing_median_age'</span>].head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8177,23 +8219,23 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>27.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>43.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>27.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>28.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>19.0</td>
 </tr>
 </tbody>
@@ -8203,12 +8245,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="4e78abaf-3aef-4c61-c790-f13a30287569" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>df[<span class="st">'housing_median_age'</span>] <span class="op">*</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>df[<span class="st">'housing_median_age'</span>] <span class="op">*</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8217,47 +8259,47 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>54.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>86.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>54.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>56.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>38.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>46.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>54.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>20.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>80.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>84.0</td>
 </tr>
 </tbody>
@@ -8268,12 +8310,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:458}}" data-outputid="0246f445-3780-4b2e-dc5b-5963bb462155" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df[<span class="st">"total_rooms"</span>] <span class="op">+</span>     df[<span class="st">"total_bedrooms"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>df[<span class="st">"total_rooms"</span>] <span class="op">+</span>     df[<span class="st">"total_bedrooms"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8282,47 +8324,47 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>2092.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>6339.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>1157.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>110.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>2028.0</td>
 </tr>
 </tbody>
@@ -8340,14 +8382,14 @@ DataFrame from dictionaries:</code></pre>
 <li>rename columns</li>
 </ul>
 <div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="decccc64-1529-4a3e-9965-7029447a2e10" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>df[<span class="st">"extra column"</span>] <span class="op">=</span> df[<span class="st">"total_rooms"</span>] <span class="op">+</span>    df[<span class="st">"total_bedrooms"</span>]</span>
-<span id="cb42-2"><a href="#cb42-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>df[<span class="st">"extra column"</span>] <span class="op">=</span> df[<span class="st">"total_rooms"</span>] <span class="op">+</span>    df[<span class="st">"total_bedrooms"</span>]</span>
+<span id="cb42-2"><a href="#cb42-2"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="55">
 <div id="df-2f5cc555-e36f-4d91-86dd-25133da752db" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8365,7 +8407,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -8378,7 +8420,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -8391,7 +8433,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -8404,7 +8446,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -8417,7 +8459,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -8640,19 +8682,19 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:363}}" data-outputid="0b90c452-954e-49db-e5c1-8f7cefde18f5" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Create a new row using loc</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># Create a new row using loc</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a></span>
 <span id="cb43-3"><a href="#cb43-3"></a>df_new <span class="op">=</span> pd.DataFrame()</span>
 <span id="cb43-4"><a href="#cb43-4"></a></span>
 <span id="cb43-5"><a href="#cb43-5"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb43-6"><a href="#cb43-6"></a>  df_new.loc[i,<span class="st">"new_col"</span>] <span class="op">=</span> (i<span class="op">+</span><span class="dv">2</span>)<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb43-7"><a href="#cb43-7"></a>df_new</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-7"><a href="#cb43-7"></a>df_new</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <div id="df-b848da0b-e8ce-43ed-b0a6-1be5e9f9ed35" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8661,43 +8703,43 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>1.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>1.5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>2.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>2.5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>3.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>3.5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>4.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>4.5</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>5.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>5.5</td>
 </tr>
 </tbody>
@@ -8963,13 +9005,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="03fac8b6-93f3-410c-effa-b828263dff08" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <div id="df-def2e134-ae59-4214-a369-df1b7c1e24d5" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -8987,7 +9029,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -9000,7 +9042,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -9013,7 +9055,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -9026,7 +9068,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -9039,7 +9081,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -9052,7 +9094,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -9065,7 +9107,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2995</td>
+<th data-quarto-table-cell-role="th">2995</th>
 <td>-119.86</td>
 <td>34.42</td>
 <td>23.0</td>
@@ -9078,7 +9120,7 @@ DataFrame from dictionaries:</code></pre>
 <td>2092.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -9091,7 +9133,7 @@ DataFrame from dictionaries:</code></pre>
 <td>6339.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -9104,7 +9146,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1157.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -9117,7 +9159,7 @@ DataFrame from dictionaries:</code></pre>
 <td>110.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -9393,15 +9435,15 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="8f68246f-4cfb-4371-bd52-c20909c4d65e" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Create a new row using loc</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># Create a new row using loc</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>df.loc[<span class="dv">3000</span>, <span class="st">"longitude"</span>] <span class="op">=</span> <span class="dv">30</span></span>
-<span id="cb45-3"><a href="#cb45-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-3"><a href="#cb45-3"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div id="df-c445cc2b-6f0e-4471-98fd-468a77c3000f" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -9419,7 +9461,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -9432,7 +9474,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -9445,7 +9487,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -9458,7 +9500,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -9471,7 +9513,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -9484,7 +9526,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -9497,7 +9539,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2996</td>
+<th data-quarto-table-cell-role="th">2996</th>
 <td>-118.14</td>
 <td>34.06</td>
 <td>27.0</td>
@@ -9510,7 +9552,7 @@ DataFrame from dictionaries:</code></pre>
 <td>6339.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -9523,7 +9565,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1157.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -9536,7 +9578,7 @@ DataFrame from dictionaries:</code></pre>
 <td>110.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -9549,7 +9591,7 @@ DataFrame from dictionaries:</code></pre>
 <td>2028.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">3000</td>
+<th data-quarto-table-cell-role="th">3000</th>
 <td>30.00</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -9825,12 +9867,12 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:397}}" data-outputid="c3ec8dc3-5ae6-40a1-b437-a3b026d4e09b" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>df.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>df.isnull().<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="60">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -9839,43 +9881,43 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">longitude</td>
+<th data-quarto-table-cell-role="th">longitude</th>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">latitude</td>
+<th data-quarto-table-cell-role="th">latitude</th>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">housing_median_age</td>
+<th data-quarto-table-cell-role="th">housing_median_age</th>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">total_rooms</td>
+<th data-quarto-table-cell-role="th">total_rooms</th>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">total_bedrooms</td>
+<th data-quarto-table-cell-role="th">total_bedrooms</th>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">population</td>
+<th data-quarto-table-cell-role="th">population</th>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">households</td>
+<th data-quarto-table-cell-role="th">households</th>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">median_income</td>
+<th data-quarto-table-cell-role="th">median_income</th>
 <td>1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">median_house_value</td>
+<th data-quarto-table-cell-role="th">median_house_value</th>
 <td>1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">extra column</td>
+<th data-quarto-table-cell-role="th">extra column</th>
 <td>1</td>
 </tr>
 </tbody>
@@ -9885,13 +9927,13 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:397}}" data-outputid="e7810e29-5833-4a33-a36f-84342f0d7598" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>a_row <span class="op">=</span> df.iloc[<span class="dv">0</span>]</span>
-<span id="cb47-2"><a href="#cb47-2"></a>a_row</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>a_row <span class="op">=</span> df.iloc[<span class="dv">0</span>]</span>
+<span id="cb47-2"><a href="#cb47-2"></a>a_row</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -9900,43 +9942,43 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">longitude</td>
+<th data-quarto-table-cell-role="th">longitude</th>
 <td>-122.0500</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">latitude</td>
+<th data-quarto-table-cell-role="th">latitude</th>
 <td>37.3700</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">housing_median_age</td>
+<th data-quarto-table-cell-role="th">housing_median_age</th>
 <td>27.0000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">total_rooms</td>
+<th data-quarto-table-cell-role="th">total_rooms</th>
 <td>3885.0000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">total_bedrooms</td>
+<th data-quarto-table-cell-role="th">total_bedrooms</th>
 <td>661.0000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">population</td>
+<th data-quarto-table-cell-role="th">population</th>
 <td>1537.0000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">households</td>
+<th data-quarto-table-cell-role="th">households</th>
 <td>606.0000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">median_income</td>
+<th data-quarto-table-cell-role="th">median_income</th>
 <td>6.6085</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">median_house_value</td>
+<th data-quarto-table-cell-role="th">median_house_value</th>
 <td>344700.0000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">extra column</td>
+<th data-quarto-table-cell-role="th">extra column</th>
 <td>4546.0000</td>
 </tr>
 </tbody>
@@ -9946,15 +9988,15 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="80f4a787-f51a-4af0-be76-b72cd1b35d33" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Create a new row using loc</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Create a new row using loc</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a>df.loc[<span class="dv">3001</span>] <span class="op">=</span> a_row</span>
-<span id="cb48-3"><a href="#cb48-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-3"><a href="#cb48-3"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <div id="df-4391d0be-f275-4703-bbdb-ad0c54c33d8b" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -9972,7 +10014,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -9985,7 +10027,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -9998,7 +10040,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -10011,7 +10053,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -10024,7 +10066,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -10037,7 +10079,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -10050,7 +10092,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -10063,7 +10105,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1157.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -10076,7 +10118,7 @@ DataFrame from dictionaries:</code></pre>
 <td>110.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -10089,7 +10131,7 @@ DataFrame from dictionaries:</code></pre>
 <td>2028.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3000</td>
+<th data-quarto-table-cell-role="th">3000</th>
 <td>30.00</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -10102,7 +10144,7 @@ DataFrame from dictionaries:</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">3001</td>
+<th data-quarto-table-cell-role="th">3001</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -10378,14 +10420,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-55" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="9d8996c8-536e-45f9-ab82-ac61c43848f9" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Rename columns</span></span>
-<span id="cb49-2"><a href="#cb49-2"></a>df.rename(columns<span class="op">=</span>{<span class="st">'extra column'</span>: <span class="st">'sum_column'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># Rename columns</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>df.rename(columns<span class="op">=</span>{<span class="st">'extra column'</span>: <span class="st">'sum_column'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="64">
 <div id="df-2cdf7346-d862-45b9-8f2d-e9a14e7a6e0c" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -10403,7 +10445,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -10416,7 +10458,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -10429,7 +10471,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -10442,7 +10484,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -10455,7 +10497,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -10468,7 +10510,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -10481,7 +10523,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -10494,7 +10536,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1157.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -10507,7 +10549,7 @@ DataFrame from dictionaries:</code></pre>
 <td>110.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -10520,7 +10562,7 @@ DataFrame from dictionaries:</code></pre>
 <td>2028.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3000</td>
+<th data-quarto-table-cell-role="th">3000</th>
 <td>30.00</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -10533,7 +10575,7 @@ DataFrame from dictionaries:</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">3001</td>
+<th data-quarto-table-cell-role="th">3001</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -10757,14 +10799,14 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:423}}" data-outputid="212dbbce-0dec-4756-e072-d50e33d7070f" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Rename columns</span></span>
-<span id="cb50-2"><a href="#cb50-2"></a>df.rename(columns<span class="op">=</span>{<span class="st">'longitude'</span>: <span class="st">'long'</span>, <span class="st">'latitude'</span>: <span class="st">'lat'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co"># Rename columns</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>df.rename(columns<span class="op">=</span>{<span class="st">'longitude'</span>: <span class="st">'long'</span>, <span class="st">'latitude'</span>: <span class="st">'lat'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <div id="df-2dd783ed-09a9-4edc-b20e-b709d20cda1c" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -10782,7 +10824,7 @@ DataFrame from dictionaries:</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -10795,7 +10837,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4546.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>-118.30</td>
 <td>34.26</td>
 <td>43.0</td>
@@ -10808,7 +10850,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1820.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>-117.81</td>
 <td>33.78</td>
 <td>27.0</td>
@@ -10821,7 +10863,7 @@ DataFrame from dictionaries:</code></pre>
 <td>4096.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>-118.36</td>
 <td>33.82</td>
 <td>28.0</td>
@@ -10834,7 +10876,7 @@ DataFrame from dictionaries:</code></pre>
 <td>82.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>-119.67</td>
 <td>36.33</td>
 <td>19.0</td>
@@ -10847,7 +10889,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1485.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -10860,7 +10902,7 @@ DataFrame from dictionaries:</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2997</td>
+<th data-quarto-table-cell-role="th">2997</th>
 <td>-119.70</td>
 <td>36.30</td>
 <td>10.0</td>
@@ -10873,7 +10915,7 @@ DataFrame from dictionaries:</code></pre>
 <td>1157.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2998</td>
+<th data-quarto-table-cell-role="th">2998</th>
 <td>-117.12</td>
 <td>34.10</td>
 <td>40.0</td>
@@ -10886,7 +10928,7 @@ DataFrame from dictionaries:</code></pre>
 <td>110.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2999</td>
+<th data-quarto-table-cell-role="th">2999</th>
 <td>-119.63</td>
 <td>34.42</td>
 <td>42.0</td>
@@ -10899,7 +10941,7 @@ DataFrame from dictionaries:</code></pre>
 <td>2028.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3000</td>
+<th data-quarto-table-cell-role="th">3000</th>
 <td>30.00</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -10912,7 +10954,7 @@ DataFrame from dictionaries:</code></pre>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">3001</td>
+<th data-quarto-table-cell-role="th">3001</th>
 <td>-122.05</td>
 <td>37.37</td>
 <td>27.0</td>
@@ -11136,7 +11178,7 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1ae08bf6-7422-4034-ba80-943e3f0cde90" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>df.columns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>Index(['longitude', 'latitude', 'housing_median_age', 'total_rooms',
        'total_bedrooms', 'population', 'households', 'median_income',
@@ -11145,9 +11187,9 @@ DataFrame from dictionaries:</code></pre>
 </div>
 </div>
 <div id="cell-58" class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># groupby</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># groupby</span></span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="co"># pivot</span></span>
-<span id="cb53-3"><a href="#cb53-3"></a><span class="co"># melting</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="co"># melting</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <iframe src="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf" width="1000" height="800">
 </iframe>
@@ -11221,13 +11263,14 @@ DataFrame from dictionaries:</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-10/1 Time_Series_Analysis_with_Pandas.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -301,7 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -515,17 +517,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -562,11 +604,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -651,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -748,10 +790,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="time-resampling" class="level1">
 <h1>Time Resampling</h1>
 <div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e90528c0-8452-41d2-d267-6e01124c9335">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>pd.date_range(start<span class="op">=</span><span class="st">"07-1-2025"</span> , end<span class="op">=</span><span class="st">"7-30-2025"</span>, freq<span class="op">=</span><span class="st">'W'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>pd.date_range(start<span class="op">=</span><span class="st">"07-1-2025"</span> , end<span class="op">=</span><span class="st">"7-30-2025"</span>, freq<span class="op">=</span><span class="st">'W'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>DatetimeIndex(['2025-07-06', '2025-07-13', '2025-07-20', '2025-07-27'], dtype='datetime64[ns]', freq='W-SUN')</code></pre>
 </div>
@@ -1005,14 +1047,14 @@ nanoseconds
 </tr>
 </tbody></table>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="c835e8ed-2613-4273-d5f5-25a3858e2814">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/content/starbucks.csv"</span>)<span class="co">#, parse_dates=True, index_col= "Date")</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/content/starbucks.csv"</span>)<span class="co">#, parse_dates=True, index_col= "Date")</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div id="df-a00ba9d3-69b0-4b1d-95d8-6448c7493f60" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1023,31 +1065,31 @@ nanoseconds
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>2015-01-02</td>
 <td>38.0061</td>
 <td>6906098</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>2015-01-05</td>
 <td>37.2781</td>
 <td>11623796</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>2015-01-06</td>
 <td>36.9748</td>
 <td>7664340</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>2015-01-07</td>
 <td>37.8848</td>
 <td>9732554</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>2015-01-08</td>
 <td>38.4961</td>
 <td>13170548</td>
@@ -1263,7 +1305,7 @@ nanoseconds
 </div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="56963866-ec06-4319-88ef-9dfdf5ea109a">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 1006 entries, 0 to 1005
@@ -1278,16 +1320,16 @@ memory usage: 23.7+ KB</code></pre>
 </div>
 </div>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.index <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df.index <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:455}}" data-outputid="74181afb-3207-4fa0-a6ca-0aa62a575400">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.drop(<span class="st">"Date"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df.drop(<span class="st">"Date"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div id="df-d0af357f-8a1f-4cb9-9696-c6e31368b8fb" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1302,57 +1344,57 @@ memory usage: 23.7+ KB</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-02</td>
+<th data-quarto-table-cell-role="th">2015-01-02</th>
 <td>38.0061</td>
 <td>6906098</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-05</td>
+<th data-quarto-table-cell-role="th">2015-01-05</th>
 <td>37.2781</td>
 <td>11623796</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-06</td>
+<th data-quarto-table-cell-role="th">2015-01-06</th>
 <td>36.9748</td>
 <td>7664340</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-07</td>
+<th data-quarto-table-cell-role="th">2015-01-07</th>
 <td>37.8848</td>
 <td>9732554</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-08</td>
+<th data-quarto-table-cell-role="th">2015-01-08</th>
 <td>38.4961</td>
 <td>13170548</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-24</td>
+<th data-quarto-table-cell-role="th">2018-12-24</th>
 <td>60.5600</td>
 <td>6323252</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-12-26</td>
+<th data-quarto-table-cell-role="th">2018-12-26</th>
 <td>63.0800</td>
 <td>16646238</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-27</td>
+<th data-quarto-table-cell-role="th">2018-12-27</th>
 <td>63.2000</td>
 <td>11308081</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-12-28</td>
+<th data-quarto-table-cell-role="th">2018-12-28</th>
 <td>63.3900</td>
 <td>7712127</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-31</td>
+<th data-quarto-table-cell-role="th">2018-12-31</th>
 <td>64.4000</td>
 <td>7690183</td>
 </tr>
@@ -1568,20 +1610,20 @@ memory usage: 23.7+ KB</code></pre>
 </div>
 </div>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="227c2dcf-f99e-44bf-95fb-51a2b7b06de6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>(1006, 2)</code></pre>
 </div>
 </div>
 <div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:237}}" data-outputid="8dce288e-fa46-44f5-f0f2-c2a4be1cf82a">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/content/starbucks.csv"</span>, parse_dates<span class="op">=</span><span class="va">True</span>, index_col<span class="op">=</span> <span class="st">"Date"</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"/content/starbucks.csv"</span>, parse_dates<span class="op">=</span><span class="va">True</span>, index_col<span class="op">=</span> <span class="st">"Date"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div id="df-51b2fb0b-e809-49a7-9590-f4b19ff96cad" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1596,27 +1638,27 @@ memory usage: 23.7+ KB</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-02</td>
+<th data-quarto-table-cell-role="th">2015-01-02</th>
 <td>38.0061</td>
 <td>6906098</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-05</td>
+<th data-quarto-table-cell-role="th">2015-01-05</th>
 <td>37.2781</td>
 <td>11623796</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-06</td>
+<th data-quarto-table-cell-role="th">2015-01-06</th>
 <td>36.9748</td>
 <td>7664340</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-07</td>
+<th data-quarto-table-cell-role="th">2015-01-07</th>
 <td>37.8848</td>
 <td>9732554</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-08</td>
+<th data-quarto-table-cell-role="th">2015-01-08</th>
 <td>38.4961</td>
 <td>13170548</td>
 </tr>
@@ -1831,12 +1873,12 @@ memory usage: 23.7+ KB</code></pre>
 </div>
 </div>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:147}}" data-outputid="dbc56438-f27e-4de9-9b2c-bc1b90c59336">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.iloc[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df.iloc[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1845,11 +1887,11 @@ memory usage: 23.7+ KB</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Close</td>
+<th data-quarto-table-cell-role="th">Close</th>
 <td>3.800610e+01</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Volume</td>
+<th data-quarto-table-cell-role="th">Volume</th>
 <td>6.906098e+06</td>
 </tr>
 </tbody>
@@ -1859,12 +1901,12 @@ memory usage: 23.7+ KB</code></pre>
 </div>
 </div>
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:147}}" data-outputid="b25f8648-cf6c-403d-f105-0112e050df24">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.loc[<span class="st">"2015-01-02"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df.loc[<span class="st">"2015-01-02"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1873,11 +1915,11 @@ memory usage: 23.7+ KB</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Close</td>
+<th data-quarto-table-cell-role="th">Close</th>
 <td>3.800610e+01</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Volume</td>
+<th data-quarto-table-cell-role="th">Volume</th>
 <td>6.906098e+06</td>
 </tr>
 </tbody>
@@ -1887,7 +1929,7 @@ memory usage: 23.7+ KB</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="627eb37a-f029-4e07-f6a8-30397a2738d4">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 DatetimeIndex: 1006 entries, 2015-01-02 to 2018-12-31
@@ -1901,9 +1943,9 @@ memory usage: 23.6 KB</code></pre>
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="57772e1c-fa32-486d-ae5d-9b8a3651c26d">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>full_date_range <span class="op">=</span> pd.date_range(start<span class="op">=</span>df.index.<span class="bu">min</span>(), end<span class="op">=</span>df.index.<span class="bu">max</span>(), freq<span class="op">=</span><span class="st">'B'</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>full_date_range <span class="op">=</span> pd.date_range(start<span class="op">=</span>df.index.<span class="bu">min</span>(), end<span class="op">=</span>df.index.<span class="bu">max</span>(), freq<span class="op">=</span><span class="st">'B'</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(<span class="st">"Full date range with business days:"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(full_date_range)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="bu">print</span>(full_date_range)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Full date range with business days:
 DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
@@ -1917,25 +1959,25 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </div>
 </div>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="cae6dd9c-b299-4704-978a-4416576bf879">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.index.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df.index.<span class="bu">min</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>Timestamp('2015-01-02 00:00:00')</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b789b1b8-65d1-4966-cd32-1ebff00857fe">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.index.<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>df.index.<span class="bu">max</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="66">
 <pre><code>Timestamp('2018-12-31 00:00:00')</code></pre>
 </div>
 </div>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="15a554b3-3491-4676-f644-08be237d42d1">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.resample(rule<span class="op">=</span> <span class="st">"M"</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df.resample(rule<span class="op">=</span> <span class="st">"M"</span>).mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <div id="df-1a44c8c7-e284-4244-88c1-4bd722ddd9aa" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1950,242 +1992,242 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-31</td>
+<th data-quarto-table-cell-role="th">2015-01-31</th>
 <td>38.729470</td>
 <td>1.336800e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-02-28</td>
+<th data-quarto-table-cell-role="th">2015-02-28</th>
 <td>42.862432</td>
 <td>7.908719e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-03-31</td>
+<th data-quarto-table-cell-role="th">2015-03-31</th>
 <td>44.321836</td>
 <td>8.905969e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-04-30</td>
+<th data-quarto-table-cell-role="th">2015-04-30</th>
 <td>45.508914</td>
 <td>8.540996e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-05-31</td>
+<th data-quarto-table-cell-role="th">2015-05-31</th>
 <td>47.488650</td>
 <td>6.723716e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-06-30</td>
+<th data-quarto-table-cell-role="th">2015-06-30</th>
 <td>49.761627</td>
 <td>6.856079e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-07-31</td>
+<th data-quarto-table-cell-role="th">2015-07-31</th>
 <td>52.437959</td>
 <td>8.087759e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-08-31</td>
+<th data-quarto-table-cell-role="th">2015-08-31</th>
 <td>52.797976</td>
 <td>1.064881e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-09-30</td>
+<th data-quarto-table-cell-role="th">2015-09-30</th>
 <td>53.006186</td>
 <td>8.935548e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-10-31</td>
+<th data-quarto-table-cell-role="th">2015-10-31</th>
 <td>57.051373</td>
 <td>8.893461e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-11-30</td>
+<th data-quarto-table-cell-role="th">2015-11-30</th>
 <td>58.296355</td>
 <td>7.077431e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-12-31</td>
+<th data-quarto-table-cell-role="th">2015-12-31</th>
 <td>57.219514</td>
 <td>7.952858e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-01-31</td>
+<th data-quarto-table-cell-role="th">2016-01-31</th>
 <td>55.138963</td>
 <td>1.383605e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-02-29</td>
+<th data-quarto-table-cell-role="th">2016-02-29</th>
 <td>54.446810</td>
 <td>1.119357e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-03-31</td>
+<th data-quarto-table-cell-role="th">2016-03-31</th>
 <td>55.858968</td>
 <td>8.203693e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-04-30</td>
+<th data-quarto-table-cell-role="th">2016-04-30</th>
 <td>56.531200</td>
 <td>9.407233e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-05-31</td>
+<th data-quarto-table-cell-role="th">2016-05-31</th>
 <td>53.016571</td>
 <td>7.849410e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-06-30</td>
+<th data-quarto-table-cell-role="th">2016-06-30</th>
 <td>52.669300</td>
 <td>8.495649e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-07-31</td>
+<th data-quarto-table-cell-role="th">2016-07-31</th>
 <td>54.551905</td>
 <td>1.018464e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-08-31</td>
+<th data-quarto-table-cell-role="th">2016-08-31</th>
 <td>53.518291</td>
 <td>7.797496e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-09-30</td>
+<th data-quarto-table-cell-role="th">2016-09-30</th>
 <td>52.022771</td>
 <td>9.178403e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-10-31</td>
+<th data-quarto-table-cell-role="th">2016-10-31</th>
 <td>50.945319</td>
 <td>7.073672e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2016-11-30</td>
+<th data-quarto-table-cell-role="th">2016-11-30</th>
 <td>52.845452</td>
 <td>1.128694e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2016-12-31</td>
+<th data-quarto-table-cell-role="th">2016-12-31</th>
 <td>55.331981</td>
 <td>7.898740e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-01-31</td>
+<th data-quarto-table-cell-role="th">2017-01-31</th>
 <td>55.057330</td>
 <td>9.438392e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-02-28</td>
+<th data-quarto-table-cell-role="th">2017-02-28</th>
 <td>54.157374</td>
 <td>1.032388e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-03-31</td>
+<th data-quarto-table-cell-role="th">2017-03-31</th>
 <td>54.155570</td>
 <td>9.806376e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-04-30</td>
+<th data-quarto-table-cell-role="th">2017-04-30</th>
 <td>56.968300</td>
 <td>9.546442e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-05-31</td>
+<th data-quarto-table-cell-role="th">2017-05-31</th>
 <td>59.081968</td>
 <td>7.295628e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-06-30</td>
+<th data-quarto-table-cell-role="th">2017-06-30</th>
 <td>59.031950</td>
 <td>7.745303e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-07-31</td>
+<th data-quarto-table-cell-role="th">2017-07-31</th>
 <td>55.933905</td>
 <td>1.105518e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-08-31</td>
+<th data-quarto-table-cell-role="th">2017-08-31</th>
 <td>52.567952</td>
 <td>1.024694e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-09-30</td>
+<th data-quarto-table-cell-role="th">2017-09-30</th>
 <td>52.995195</td>
 <td>9.225082e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-10-31</td>
+<th data-quarto-table-cell-role="th">2017-10-31</th>
 <td>53.310614</td>
 <td>8.129790e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2017-11-30</td>
+<th data-quarto-table-cell-role="th">2017-11-30</th>
 <td>55.359462</td>
 <td>1.025010e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2017-12-31</td>
+<th data-quarto-table-cell-role="th">2017-12-31</th>
 <td>57.006955</td>
 <td>8.758599e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-01-31</td>
+<th data-quarto-table-cell-role="th">2018-01-31</th>
 <td>58.205433</td>
 <td>1.155463e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-02-28</td>
+<th data-quarto-table-cell-role="th">2018-02-28</th>
 <td>54.729784</td>
 <td>1.255456e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-03-31</td>
+<th data-quarto-table-cell-role="th">2018-03-31</th>
 <td>56.913367</td>
 <td>8.852274e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-04-30</td>
+<th data-quarto-table-cell-role="th">2018-04-30</th>
 <td>57.635371</td>
 <td>8.503481e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-05-31</td>
+<th data-quarto-table-cell-role="th">2018-05-31</th>
 <td>56.482395</td>
 <td>6.841657e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-06-30</td>
+<th data-quarto-table-cell-role="th">2018-06-30</th>
 <td>53.663433</td>
 <td>1.612197e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-07-31</td>
+<th data-quarto-table-cell-role="th">2018-07-31</th>
 <td>50.105995</td>
 <td>1.165892e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-08-31</td>
+<th data-quarto-table-cell-role="th">2018-08-31</th>
 <td>52.279430</td>
 <td>8.617108e+06</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-09-30</td>
+<th data-quarto-table-cell-role="th">2018-09-30</th>
 <td>55.234000</td>
 <td>9.342414e+06</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-10-31</td>
+<th data-quarto-table-cell-role="th">2018-10-31</th>
 <td>57.035104</td>
 <td>1.243318e+07</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-11-30</td>
+<th data-quarto-table-cell-role="th">2018-11-30</th>
 <td>66.363652</td>
 <td>1.557092e+07</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-12-31</td>
+<th data-quarto-table-cell-role="th">2018-12-31</th>
 <td>64.609474</td>
 <td>1.316915e+07</td>
 </tr>
@@ -2400,22 +2442,22 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </div>
 </div>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f051e1af-f3e9-463a-d568-48888cfb96f7">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">print</span>(df.index.is_monotonic_increasing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">print</span>(df.index.is_monotonic_increasing)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>True</code></pre>
 </div>
 </div>
 <div id="cell-19" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="dv">1</span><span class="op">/</span><span class="dv">7</span><span class="op">/</span><span class="dv">2025</span> ,<span class="dv">3</span><span class="op">/</span> <span class="dv">7</span><span class="op">/</span> <span class="dv">20225</span>   <span class="dv">1</span><span class="op">/</span><span class="dv">7</span><span class="op">/</span><span class="dv">20</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="dv">1</span><span class="op">/</span><span class="dv">7</span><span class="op">/</span><span class="dv">2025</span> ,<span class="dv">3</span><span class="op">/</span> <span class="dv">7</span><span class="op">/</span> <span class="dv">20225</span>   <span class="dv">1</span><span class="op">/</span><span class="dv">7</span><span class="op">/</span><span class="dv">20</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:455}}" data-outputid="c6c25623-a446-4d3d-cbd2-0e092b2f6f92">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>df.sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>df.sort_index()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <div id="df-5e02bfae-c5c3-43f8-aedf-bd5f8021c62c" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2430,57 +2472,57 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-02</td>
+<th data-quarto-table-cell-role="th">2015-01-02</th>
 <td>38.0061</td>
 <td>6906098</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-05</td>
+<th data-quarto-table-cell-role="th">2015-01-05</th>
 <td>37.2781</td>
 <td>11623796</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-06</td>
+<th data-quarto-table-cell-role="th">2015-01-06</th>
 <td>36.9748</td>
 <td>7664340</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2015-01-07</td>
+<th data-quarto-table-cell-role="th">2015-01-07</th>
 <td>37.8848</td>
 <td>9732554</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2015-01-08</td>
+<th data-quarto-table-cell-role="th">2015-01-08</th>
 <td>38.4961</td>
 <td>13170548</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-24</td>
+<th data-quarto-table-cell-role="th">2018-12-24</th>
 <td>60.5600</td>
 <td>6323252</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-12-26</td>
+<th data-quarto-table-cell-role="th">2018-12-26</th>
 <td>63.0800</td>
 <td>16646238</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-27</td>
+<th data-quarto-table-cell-role="th">2018-12-27</th>
 <td>63.2000</td>
 <td>11308081</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2018-12-28</td>
+<th data-quarto-table-cell-role="th">2018-12-28</th>
 <td>63.3900</td>
 <td>7712127</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2018-12-31</td>
+<th data-quarto-table-cell-role="th">2018-12-31</th>
 <td>64.4000</td>
 <td>7690183</td>
 </tr>
@@ -2696,7 +2738,7 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:614}}" data-outputid="52d3c515-c6d6-482b-b2f9-b574fb07c18a">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df[<span class="st">"Close"</span>].resample(rule<span class="op">=</span> <span class="st">"W"</span>).<span class="bu">max</span>().plot(kind <span class="op">=</span> <span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>df[<span class="st">"Close"</span>].resample(rule<span class="op">=</span> <span class="st">"W"</span>).<span class="bu">max</span>().plot(kind <span class="op">=</span> <span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2706,7 +2748,7 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </div>
 </div>
 <div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:614}}" data-outputid="c54a3f71-7264-4459-d738-282fd4d2cf67">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df[<span class="st">"Close"</span>].resample(<span class="st">"Y"</span>).mean().plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df[<span class="st">"Close"</span>].resample(<span class="st">"Y"</span>).mean().plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2716,7 +2758,7 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
 </div>
 </div>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:614}}" data-outputid="92bcec8e-a7fa-48de-8ad1-a7d33f1ae19c">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df[<span class="st">"Close"</span>].resample(<span class="st">"M"</span>).mean().plot(kind<span class="op">=</span><span class="st">"bar"</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df[<span class="st">"Close"</span>].resample(<span class="st">"M"</span>).mean().plot(kind<span class="op">=</span><span class="st">"bar"</span>,figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2794,13 +2836,14 @@ DatetimeIndex(['2015-01-02', '2015-01-05', '2015-01-06', '2015-01-07',
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

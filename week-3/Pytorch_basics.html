@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-3/4 RNN using pytorch.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -126,7 +127,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -330,7 +331,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -544,17 +546,57 @@ window.Quarto = {
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -591,11 +633,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -709,11 +751,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -844,13 +886,13 @@ window.Quarto = {
 <li>CUDA® is a parallel computing platform and programming model developed by NVIDIA for general computing on graphical processing units (GPUs). With CUDA, developers are able to dramatically speed up computing applications by harnessing the power of GPUs.</li>
 </ul>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Check if GPU is available</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Check if GPU is available</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># print(torch.cuda.is_available())</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># torch.cuda.get_device_name(0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co"># torch.cuda.get_device_name(0)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:35}}" data-outputid="14d825f8-324d-4327-9764-bd441bd8340f">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>torch.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>torch.__version__</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>'2.6.0+cu124'</code></pre>
 </div>
@@ -916,90 +958,90 @@ window.Quarto = {
 |torch.backends|Contains settings and allows control over backend libraries like cuDNN, MKL, and others for performance tuning.|
 -->
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3a29c37c-e76e-4bb3-fa93-ccb38e498a18">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#@title Creating tensor</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#@title Creating tensor</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>first_var <span class="op">=</span> torch.tensor(<span class="dv">2</span>) <span class="co"># scalar tensor</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>first_var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>first_var</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>tensor(2)</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="07697b4c-0393-4276-e3b2-95537a1c45f7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># .ndim</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>first_var.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># .ndim</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>first_var.ndim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0</code></pre>
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7b5e2970-8a05-4dcf-fa1a-a4cc672272c3">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>a <span class="op">=</span> torch.tensor([<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
-<span id="cb8-2"><a href="#cb8-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>a <span class="op">=</span> torch.tensor([<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>])</span>
+<span id="cb8-2"><a href="#cb8-2"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([2, 3, 4, 5])</code></pre>
 </div>
 </div>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="1f996bbf-0602-4b49-ddda-7d816cfc226c">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>a.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>a.ndim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>1</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e38ee92d-8517-44a3-bc66-a05ea655212f">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>a.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>a.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>torch.Size([4])</code></pre>
 </div>
 </div>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b4b4b22f-aa83-4cbd-9d83-5beb8d829613">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>b <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]])</span>
-<span id="cb14-2"><a href="#cb14-2"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>b <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]])</span>
+<span id="cb14-2"><a href="#cb14-2"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>tensor([[1, 2, 3],
         [3, 4, 5]])</code></pre>
 </div>
 </div>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="325152fc-c3d8-4c51-caeb-a33acef0d9e1">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>b.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>b.ndim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>2</code></pre>
 </div>
 </div>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="6bc8c0d3-d423-4cb2-c310-0e421369d5bf">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>b.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>b.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>torch.Size([2, 3])</code></pre>
 </div>
 </div>
 <div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3ea90c5f-1b48-4840-953f-6966cb4ab829">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>b.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>b.dtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>torch.int64</code></pre>
 </div>
 </div>
 <div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#check dtype</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#check dtype</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="bu">int</span>, <span class="bu">float</span>, double, short, <span class="bu">long</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a></span>
 <span id="cb22-4"><a href="#cb22-4"></a><span class="dv">8</span>, <span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-5"><a href="#cb22-5"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4401e725-6e16-4806-e941-ab37a4c13267">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> torch.tensor([<span class="fl">1.3</span>,<span class="fl">2.4</span>,<span class="dv">3</span>], dtype <span class="op">=</span> torch.float32)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> torch.tensor([<span class="fl">1.3</span>,<span class="fl">2.4</span>,<span class="dv">3</span>], dtype <span class="op">=</span> torch.float32)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>tensor([1.3000, 2.4000, 3.0000])</code></pre>
 </div>
 </div>
 <div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e1232580-71e4-4512-d011-7a2d0d3471e2">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>a.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>a.dtype</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>torch.float32</code></pre>
 </div>
 </div>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="be7449ef-e324-4564-c1ea-dfa5bad2c94e">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># prompt: change the dtype of a to int32</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># prompt: change the dtype of a to int32</span></span>
 <span id="cb27-2"><a href="#cb27-2"></a></span>
 <span id="cb27-3"><a href="#cb27-3"></a>b <span class="op">=</span> torch.tensor(a, dtype <span class="op">=</span> torch.int32)</span>
-<span id="cb27-4"><a href="#cb27-4"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
   b = torch.tensor(a, dtype = torch.int32)</code></pre>
@@ -1009,23 +1051,23 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0184dba1-df29-4ef9-9e43-0e3964555435">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># empty</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># empty</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a>c<span class="op">=</span> torch.empty((<span class="dv">2</span>,<span class="dv">3</span>), dtype<span class="op">=</span>torch.int64)</span>
-<span id="cb30-3"><a href="#cb30-3"></a>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-3"><a href="#cb30-3"></a>c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>tensor([[137191861376448,        10759048, 137187316199856],
         [             65,       171150544, 137191881579792]])</code></pre>
 </div>
 </div>
 <div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="af5b13d5-5a59-49f0-a318-fb67466c65d4">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">id</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">id</span>(c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>137187256662352</code></pre>
 </div>
 </div>
 <div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f31083e8-07f2-477a-fae1-a4f654b01f2d">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co">#zeros</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a>torch.zeros(<span class="dv">3</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co">#zeros</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>torch.zeros(<span class="dv">3</span>,<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>tensor([[0., 0., 0., 0.],
         [0., 0., 0., 0.],
@@ -1033,8 +1075,8 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="530cc0e2-9e2d-4d07-a5b7-fe0579cf5b73">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">#ones</span></span>
-<span id="cb36-2"><a href="#cb36-2"></a>torch.ones(<span class="dv">4</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="co">#ones</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>torch.ones(<span class="dv">4</span>,<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>tensor([[1., 1., 1., 1.],
         [1., 1., 1., 1.],
@@ -1043,7 +1085,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9678cb07-bdb8-4424-fc5b-9539f8d00e02">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co">#manual_seed</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="co">#manual_seed</span></span>
 <span id="cb38-2"><a href="#cb38-2"></a><span class="co">#rand</span></span>
 <span id="cb38-3"><a href="#cb38-3"></a>torch.manual_seed(<span class="dv">42</span>) <span class="co"># only for this cell</span></span>
 <span id="cb38-4"><a href="#cb38-4"></a>a <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># initialize the weights</span></span>
@@ -1052,7 +1094,7 @@ window.Quarto = {
 <span id="cb38-7"><a href="#cb38-7"></a></span>
 <span id="cb38-8"><a href="#cb38-8"></a><span class="bu">print</span>(a)</span>
 <span id="cb38-9"><a href="#cb38-9"></a><span class="bu">print</span>(b)</span>
-<span id="cb38-10"><a href="#cb38-10"></a><span class="bu">print</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-10"><a href="#cb38-10"></a><span class="bu">print</span>(c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[0.8823, 0.9150, 0.3829, 0.9593],
         [0.3904, 0.6009, 0.2566, 0.7936],
@@ -1066,9 +1108,9 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="895fb6e0-f1d9-4385-f8fa-d5f5ed970e0e">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>torch.manual_seed(<span class="dv">43</span>) <span class="co"># only for this cell</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>torch.manual_seed(<span class="dv">43</span>) <span class="co"># only for this cell</span></span>
 <span id="cb40-2"><a href="#cb40-2"></a>a <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># initialize the weights</span></span>
-<span id="cb40-3"><a href="#cb40-3"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="bu">print</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tensor([[0.4540, 0.1965, 0.9210, 0.3462],
         [0.1481, 0.0858, 0.5909, 0.0659],
@@ -1076,8 +1118,8 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e8d9dd40-8ccc-49e9-a136-3977a89f5703">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># torch.manual_seed(42)</span></span>
-<span id="cb42-2"><a href="#cb42-2"></a>torch.rand(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># initialize the weights</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># torch.manual_seed(42)</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>torch.rand(<span class="dv">3</span>,<span class="dv">4</span>) <span class="co"># initialize the weights</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>tensor([[0.8823, 0.9150, 0.3829, 0.9593],
         [0.3904, 0.6009, 0.2566, 0.7936],
@@ -1085,22 +1127,22 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e7e06557-39d2-4c20-c694-4d678d5ead52">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co">#arange</span></span>
-<span id="cb44-2"><a href="#cb44-2"></a>torch.arange(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co">#arange</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>torch.arange(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>tensor([0, 2, 4, 6, 8])</code></pre>
 </div>
 </div>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ffd997cb-a250-4873-d4a8-70e44bae7eab">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co">#linspace</span></span>
-<span id="cb46-2"><a href="#cb46-2"></a>torch.linspace(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co">#linspace</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>torch.linspace(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 <pre><code>tensor([ 5., 10., 15., 20.])</code></pre>
 </div>
 </div>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="551fe23e-b72d-4a14-cc0e-2997285d8ef8">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="co">#eye (identity matrix)</span></span>
-<span id="cb48-2"><a href="#cb48-2"></a>torch.eye(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="co">#eye (identity matrix)</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>torch.eye(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>tensor([[1., 0., 0., 0., 0.],
         [0., 1., 0., 0., 0.],
@@ -1110,8 +1152,8 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c4baa6c4-cff4-4835-e33c-f2881fee23c1">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">#diag</span></span>
-<span id="cb50-2"><a href="#cb50-2"></a>torch.diag(torch.tensor([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">#diag</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>torch.diag(torch.tensor([<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">8</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="72">
 <pre><code>tensor([[2, 0, 0, 0],
         [0, 5, 0, 0],
@@ -1120,8 +1162,8 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="12632b94-dc01-4217-8804-cebb19e060c7">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="co">#full</span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>torch.full((<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="co">#full</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>torch.full((<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>tensor([[3, 3, 3],
         [3, 3, 3]])</code></pre>
@@ -1129,24 +1171,24 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 <p>#dtypes</p>
 <div id="cell-40" class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co">#int32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co">#int32</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-41" class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="co">#int64 or long</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="co">#int64 or long</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-42" class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="co">#float32</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="co">#float32</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-44" class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co">#float64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co">#float64</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="shape" class="level1">
 <h1>Shape</h1>
 <div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="091f8bc3-a53c-4cf2-dbf3-c7cad01c79be">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="co">#shape</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="co">#shape</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a>t1 <span class="op">=</span> torch.tensor([[<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">1</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>], [<span class="dv">0</span>,<span class="dv">9</span>]])</span>
-<span id="cb58-3"><a href="#cb58-3"></a>t1 <span class="co"># 4, 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-3"><a href="#cb58-3"></a>t1 <span class="co"># 4, 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>tensor([[2, 3],
         [1, 4],
@@ -1155,15 +1197,15 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c7f6cad4-0b5c-4255-f357-744f3ecbedc7">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="co">#dim</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a>t1.dim()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="co">#dim</span></span>
+<span id="cb60-2"><a href="#cb60-2"></a>t1.dim()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>2</code></pre>
 </div>
 </div>
 <div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="67ccee3b-fe2f-4f75-8401-a3114d1d6f19">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="co">#reshape</span></span>
-<span id="cb62-2"><a href="#cb62-2"></a>t1.reshape(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>) <span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="co">#reshape</span></span>
+<span id="cb62-2"><a href="#cb62-2"></a>t1.reshape(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>) <span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="86">
 <pre><code>tensor([[[2, 3],
          [1, 4]],
@@ -1173,15 +1215,15 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7dd2e589-1971-4d67-8f83-288dc4002bde">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="co">#flatten</span></span>
-<span id="cb64-2"><a href="#cb64-2"></a>t1.flatten() <span class="co">#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a><span class="co">#flatten</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>t1.flatten() <span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="87">
 <pre><code>tensor([2, 3, 1, 4, 5, 6, 0, 9])</code></pre>
 </div>
 </div>
 <div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f1fccee8-7594-4bc9-88c4-703d8ff73f01">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>mat <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb66-2"><a href="#cb66-2"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>mat <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb66-2"><a href="#cb66-2"></a>mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="91">
 <pre><code>tensor([[[[0.4290, 0.9433],
           [0.3099, 0.7041],
@@ -1211,7 +1253,7 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fde47a00-087b-4b42-8b5d-afe43bec8dba">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>mat.flatten()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>mat.flatten()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
 <pre><code>tensor([0.4290, 0.9433, 0.3099, 0.7041, 0.5546, 0.9049, 0.8079, 0.1751, 0.4293,
         0.4821, 0.3575, 0.8633, 0.9868, 0.0859, 0.3022, 0.9769, 0.5725, 0.3565,
@@ -1220,14 +1262,14 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-52" class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co">#permute (2 x 3 x 4) --&gt; (3 X 2 X 4)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co">#permute (2 x 3 x 4) --&gt; (3 X 2 X 4)</span></span>
 <span id="cb70-2"><a href="#cb70-2"></a></span>
 <span id="cb70-3"><a href="#cb70-3"></a><span class="co">#unsqueeze</span></span>
-<span id="cb70-4"><a href="#cb70-4"></a><span class="co">#squeeze</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb70-4"><a href="#cb70-4"></a><span class="co">#squeeze</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="029a5f35-25cd-4593-b963-9dfbe44bed21">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>mat <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>) <span class="co"># 3 X 2 X 4</span></span>
-<span id="cb71-2"><a href="#cb71-2"></a>mat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>mat <span class="op">=</span> torch.rand(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>) <span class="co"># 3 X 2 X 4</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>mat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="93">
 <pre><code>tensor([[[0.3125, 0.0432, 0.8238, 0.7128],
          [0.3013, 0.3151, 0.4871, 0.2836]],
@@ -1240,7 +1282,7 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bd03d35c-b8ed-4f99-8b9b-4d1dfc2d0095">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>torch.permute(mat, (<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="co"># 4 X 3 X 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>torch.permute(mat, (<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>)) <span class="co"># 4 X 3 X 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="94">
 <pre><code>tensor([[[0.3125, 0.3013],
          [0.7665, 0.3058],
@@ -1260,7 +1302,7 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fe2f55db-aa85-481e-bd7c-059175e1064e">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>torch.unsqueeze(mat, dim <span class="op">=</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>torch.unsqueeze(mat, dim <span class="op">=</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>tensor([[[[0.3125, 0.0432, 0.8238, 0.7128]],
 
@@ -1278,8 +1320,8 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f887c908-22d7-4483-fcd2-d01b15b191f2">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>b <span class="op">=</span> torch.rand(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
-<span id="cb77-2"><a href="#cb77-2"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>b <span class="op">=</span> torch.rand(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>)</span>
+<span id="cb77-2"><a href="#cb77-2"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="103">
 <pre><code>tensor([[[[0.6473],
           [0.0379],
@@ -1303,8 +1345,8 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-58" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3beb93d9-2a9e-4e92-dd8c-07a2a36744af">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>c <span class="op">=</span> torch.squeeze(b)</span>
-<span id="cb79-2"><a href="#cb79-2"></a>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>c <span class="op">=</span> torch.squeeze(b)</span>
+<span id="cb79-2"><a href="#cb79-2"></a>c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>tensor([[0.6473, 0.0379, 0.8159],
         [0.8852, 0.4247, 0.0985],
@@ -1314,7 +1356,7 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-59" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0116971a-0d4d-4688-b5a7-35597a7909d9">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>torch.unsqueeze(c, )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>torch.unsqueeze(c, )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="107">
 <pre><code>tensor([[[0.6473, 0.0379, 0.8159],
          [0.8852, 0.4247, 0.0985],
@@ -1327,156 +1369,156 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="similiar-shape-tensors" class="level1">
 <h1>similiar shape tensors</h1>
 <div id="cell-61" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="56a126f8-8a08-473d-aeb0-bfd018606e51">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a><span class="co">#empty_like</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a><span class="co">#empty_like</span></span>
 <span id="cb83-2"><a href="#cb83-2"></a>t1 <span class="op">=</span> torch.rand(<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb83-3"><a href="#cb83-3"></a>t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb83-3"><a href="#cb83-3"></a>t1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="108">
 <pre><code>tensor([[0.2141, 0.5516, 0.9147],
         [0.0856, 0.1362, 0.8033]])</code></pre>
 </div>
 </div>
 <div id="cell-62" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="08fd4d27-24e5-4398-8aea-4f2f137589d0">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>t2 <span class="op">=</span> torch.empty_like(t1)</span>
-<span id="cb85-2"><a href="#cb85-2"></a>t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a>t2 <span class="op">=</span> torch.empty_like(t1)</span>
+<span id="cb85-2"><a href="#cb85-2"></a>t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="109">
 <pre><code>tensor([[8.1619e-33, 0.0000e+00, 3.0098e-32],
         [0.0000e+00, 8.9683e-44, 0.0000e+00]])</code></pre>
 </div>
 </div>
 <div id="cell-63" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b7c1fab3-f271-48a9-a760-49e6a9b8705e">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a><span class="co">#zeros_like</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a><span class="co">#zeros_like</span></span>
 <span id="cb87-2"><a href="#cb87-2"></a>t2 <span class="op">=</span> torch.zeros_like(t1)</span>
-<span id="cb87-3"><a href="#cb87-3"></a>t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb87-3"><a href="#cb87-3"></a>t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="110">
 <pre><code>tensor([[0., 0., 0.],
         [0., 0., 0.]])</code></pre>
 </div>
 </div>
 <div id="cell-64" class="cell">
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="co">#ones_like</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="co">#ones_like</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-65" class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="co">#rand_like</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="co">#rand_like</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="mathematical-operations" class="level1">
 <h1>Mathematical Operations</h1>
 <div id="cell-67" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b0aaa67b-b3ca-4e40-fb8a-06c06a0c38be">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="co">#scalar addition</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="co">#scalar addition</span></span>
 <span id="cb91-2"><a href="#cb91-2"></a>a<span class="op">=</span> torch.tensor(<span class="dv">2</span>)</span>
 <span id="cb91-3"><a href="#cb91-3"></a>b <span class="op">=</span> torch.tensor(<span class="dv">3</span>)</span>
-<span id="cb91-4"><a href="#cb91-4"></a>a<span class="op">+</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb91-4"><a href="#cb91-4"></a>a<span class="op">+</span>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="111">
 <pre><code>tensor(5)</code></pre>
 </div>
 </div>
 <div id="cell-68" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="57d01016-568d-46e1-92bf-c5df49c0db66">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>b <span class="op">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>b <span class="op">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="112">
 <pre><code>tensor(8)</code></pre>
 </div>
 </div>
 <div id="cell-69" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="22e6f605-6d38-4b3c-8fae-760fceea9281">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a><span class="co">#scalar substraction</span></span>
-<span id="cb95-2"><a href="#cb95-2"></a>b <span class="op">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a><span class="co">#scalar substraction</span></span>
+<span id="cb95-2"><a href="#cb95-2"></a>b <span class="op">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="113">
 <pre><code>tensor(2)</code></pre>
 </div>
 </div>
 <div id="cell-70" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f89ee13f-ff61-4606-ebd9-ff61c8fad90f">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="co">#scalar multiplication</span></span>
-<span id="cb97-2"><a href="#cb97-2"></a>b<span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="co">#scalar multiplication</span></span>
+<span id="cb97-2"><a href="#cb97-2"></a>b<span class="op">*</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="114">
 <pre><code>tensor(6)</code></pre>
 </div>
 </div>
 <div id="cell-71" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f51d0621-6c67-443b-db6f-90c8c72d1424">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="co">#scalar division /</span></span>
-<span id="cb99-2"><a href="#cb99-2"></a>b <span class="op">/</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="co">#scalar division /</span></span>
+<span id="cb99-2"><a href="#cb99-2"></a>b <span class="op">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>tensor(1.5000)</code></pre>
 </div>
 </div>
 <div id="cell-72" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="6aed1d6b-ce9b-4242-be72-d87ca74796b4">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="co">#scalar division //</span></span>
-<span id="cb101-2"><a href="#cb101-2"></a>b <span class="op">//</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="co">#scalar division //</span></span>
+<span id="cb101-2"><a href="#cb101-2"></a>b <span class="op">//</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="116">
 <pre><code>tensor(1)</code></pre>
 </div>
 </div>
 <div id="cell-73" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="921ca246-dc49-4663-f13f-7b1aecb6cfb7">
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># mod remainder</span></span>
-<span id="cb103-2"><a href="#cb103-2"></a>b <span class="op">%</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a><span class="co"># mod remainder</span></span>
+<span id="cb103-2"><a href="#cb103-2"></a>b <span class="op">%</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="117">
 <pre><code>tensor(1)</code></pre>
 </div>
 </div>
 <div id="cell-74" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a2cd74d4-a7c9-4ea9-f234-7e01fa35bbb0">
-<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a><span class="co"># power</span></span>
-<span id="cb105-2"><a href="#cb105-2"></a>b <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a><span class="co"># power</span></span>
+<span id="cb105-2"><a href="#cb105-2"></a>b <span class="op">**</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="118">
 <pre><code>tensor(9)</code></pre>
 </div>
 </div>
 <p>#elementwise operations</p>
 <div id="cell-76" class="cell">
-<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a><span class="co">#add</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a><span class="co">#add</span></span>
 <span id="cb107-2"><a href="#cb107-2"></a><span class="co">#multipl</span></span>
 <span id="cb107-3"><a href="#cb107-3"></a><span class="co">#abs</span></span>
 <span id="cb107-4"><a href="#cb107-4"></a><span class="co">#neg</span></span>
 <span id="cb107-5"><a href="#cb107-5"></a><span class="co">#round</span></span>
 <span id="cb107-6"><a href="#cb107-6"></a><span class="co">#ceil</span></span>
 <span id="cb107-7"><a href="#cb107-7"></a><span class="co">#floor</span></span>
-<span id="cb107-8"><a href="#cb107-8"></a><span class="co">#clamp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb107-8"><a href="#cb107-8"></a><span class="co">#clamp</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-77" class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>t1 <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">6</span>]])</span>
-<span id="cb108-2"><a href="#cb108-2"></a>t2 <span class="op">=</span> torch.tensor( [[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>], [<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>t1 <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">6</span>]])</span>
+<span id="cb108-2"><a href="#cb108-2"></a>t2 <span class="op">=</span> torch.tensor( [[<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>], [<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>]])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-78" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d6ff545d-7fa5-4700-cac7-fbbc1fa7828a">
-<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>torch.add(t1,t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>torch.add(t1,t2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="128">
 <pre><code>tensor([[ 0,  3,  4],
         [ 6,  7, -4]])</code></pre>
 </div>
 </div>
 <div id="cell-79" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c6d985c4-da68-4b7c-f5f0-6d947125a5dc">
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>t1 <span class="op">+</span> t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>t1 <span class="op">+</span> t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="124">
 <pre><code>tensor([[ 0,  3,  4],
         [ 6,  7, -4]])</code></pre>
 </div>
 </div>
 <div id="cell-80" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d6644a7a-3082-47aa-b590-eb11daf3fdff">
-<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>t1 <span class="op">*</span> t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>t1 <span class="op">*</span> t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="125">
 <pre><code>tensor([[ -1,   2,   3],
         [  8,  10, -12]])</code></pre>
 </div>
 </div>
 <div id="cell-81" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5fc8ca65-b3df-45da-c6cd-c0b8b4009b2c">
-<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>torch.<span class="bu">abs</span>(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>torch.<span class="bu">abs</span>(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="126">
 <pre><code>tensor([[1, 2, 3],
         [4, 5, 6]])</code></pre>
 </div>
 </div>
 <div id="cell-82" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="09ed22b5-fbb0-463f-f32a-6c1227557197">
-<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>torch.neg(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a>torch.neg(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="127">
 <pre><code>tensor([[ 1, -2, -3],
         [-4, -5,  6]])</code></pre>
 </div>
 </div>
 <div id="cell-83" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f3179490-9799-46a1-8683-ea41bf29993c">
-<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a>t3<span class="op">=</span> torch.tensor([<span class="op">-</span><span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span> ,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
-<span id="cb119-2"><a href="#cb119-2"></a>t3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a>t3<span class="op">=</span> torch.tensor([<span class="op">-</span><span class="dv">5</span>,<span class="op">-</span><span class="dv">2</span>, <span class="dv">0</span> ,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
+<span id="cb119-2"><a href="#cb119-2"></a>t3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="129">
 <pre><code>tensor([-5, -2,  0,  1,  2,  3,  4])</code></pre>
 </div>
 </div>
 <div id="cell-84" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="61d049e6-ee0d-4891-9475-a9f26710acf9">
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a>torch.clamp(t3, <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a>torch.clamp(t3, <span class="bu">min</span><span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="131">
 <pre><code>tensor([0, 0, 0, 1, 2, 3, 4])</code></pre>
 </div>
@@ -1485,84 +1527,84 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="stats" class="level1">
 <h1>stats</h1>
 <div id="cell-86" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="21d936a1-5383-454f-e05a-f10f8e0d33ef">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1"></a>t1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb123"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1"></a>t1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="133">
 <pre><code>tensor([[-1,  2,  3],
         [ 4,  5, -6]])</code></pre>
 </div>
 </div>
 <div id="cell-87" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a16714d8-3c66-41d0-dcf9-52a1aab08b4d">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1"></a><span class="co">#sum</span></span>
-<span id="cb125-2"><a href="#cb125-2"></a>t1.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb125"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1"></a><span class="co">#sum</span></span>
+<span id="cb125-2"><a href="#cb125-2"></a>t1.<span class="bu">sum</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="132">
 <pre><code>tensor(7)</code></pre>
 </div>
 </div>
 <div id="cell-88" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fa6de1f7-49a2-4fa4-e5f8-2fab32dd6c48">
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1"></a><span class="co">#sum along axis</span></span>
-<span id="cb127-2"><a href="#cb127-2"></a>t1.<span class="bu">sum</span>(axis<span class="op">=</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb127"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1"></a><span class="co">#sum along axis</span></span>
+<span id="cb127-2"><a href="#cb127-2"></a>t1.<span class="bu">sum</span>(axis<span class="op">=</span> <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="134">
 <pre><code>tensor([ 3,  7, -3])</code></pre>
 </div>
 </div>
 <div id="cell-89" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9b024807-f00a-4203-cc77-f9250dbb3a59">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1"></a><span class="co">#sum along axis</span></span>
-<span id="cb129-2"><a href="#cb129-2"></a>t1.<span class="bu">sum</span>(axis<span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb129"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1"></a><span class="co">#sum along axis</span></span>
+<span id="cb129-2"><a href="#cb129-2"></a>t1.<span class="bu">sum</span>(axis<span class="op">=</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="135">
 <pre><code>tensor([4, 3])</code></pre>
 </div>
 </div>
 <div id="cell-90" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5c31249e-719a-4afb-9bde-4b3025bf7e0e">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1"></a><span class="co">#mean</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb131"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1"></a><span class="co">#mean</span></span>
 <span id="cb131-2"><a href="#cb131-2"></a>t2 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>], [<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">6</span>]], dtype<span class="op">=</span> torch.<span class="bu">float</span>)</span>
-<span id="cb131-3"><a href="#cb131-3"></a>t2.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb131-3"><a href="#cb131-3"></a>t2.mean()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="138">
 <pre><code>tensor(3.3333)</code></pre>
 </div>
 </div>
 <div id="cell-91" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="25e224a9-3e76-44bc-a2b2-e5ad7ca7a616">
-<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1"></a>t2.mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1"></a>t2.mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="139">
 <pre><code>tensor([2.3333, 4.3333])</code></pre>
 </div>
 </div>
 <div id="cell-92" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="745f39d6-0901-4aba-83ec-5067dc1d0f72">
-<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1"></a><span class="co">#median</span></span>
-<span id="cb135-2"><a href="#cb135-2"></a>t2.median()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1"></a><span class="co">#median</span></span>
+<span id="cb135-2"><a href="#cb135-2"></a>t2.median()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="140">
 <pre><code>tensor(2.)</code></pre>
 </div>
 </div>
 <div id="cell-93" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2689e0ab-f59b-42fb-fc52-447e905d27c2">
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1"></a><span class="co">#max</span></span>
-<span id="cb137-2"><a href="#cb137-2"></a>t2.<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb137"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1"></a><span class="co">#max</span></span>
+<span id="cb137-2"><a href="#cb137-2"></a>t2.<span class="bu">max</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="141">
 <pre><code>tensor(6.)</code></pre>
 </div>
 </div>
 <div id="cell-94" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="faea8797-5209-4476-9280-11dce15a4a56">
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1"></a><span class="co">#min</span></span>
-<span id="cb139-2"><a href="#cb139-2"></a>t2.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb139"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb139-1"><a href="#cb139-1"></a><span class="co">#min</span></span>
+<span id="cb139-2"><a href="#cb139-2"></a>t2.<span class="bu">min</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="142">
 <pre><code>tensor(1.)</code></pre>
 </div>
 </div>
 <div id="cell-95" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="11d76426-8c9c-42bd-f7ba-c7681768ec30">
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1"></a><span class="co">#std</span></span>
-<span id="cb141-2"><a href="#cb141-2"></a>t2.std()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb141"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb141-1"><a href="#cb141-1"></a><span class="co">#std</span></span>
+<span id="cb141-2"><a href="#cb141-2"></a>t2.std()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="143">
 <pre><code>tensor(1.9664)</code></pre>
 </div>
 </div>
 <div id="cell-96" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ba6d2520-96f1-4ca9-a8de-bcc5b5f66432">
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1"></a><span class="co">#argmax, argmin</span></span>
-<span id="cb143-2"><a href="#cb143-2"></a>t2.argmax()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb143"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb143-1"><a href="#cb143-1"></a><span class="co">#argmax, argmin</span></span>
+<span id="cb143-2"><a href="#cb143-2"></a>t2.argmax()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="144">
 <pre><code>tensor(5)</code></pre>
 </div>
 </div>
 <div id="cell-97" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fefd7d7f-d2c1-4509-b572-0838425f6416">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1"></a>t2.argmin()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1"></a>t2.argmin()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="145">
 <pre><code>tensor(0)</code></pre>
 </div>
@@ -1571,30 +1613,30 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="matrix-operation" class="level1">
 <h1>matrix operation</h1>
 <div id="cell-99" class="cell">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1"></a> <span class="co">#matmul</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1"></a> <span class="co">#matmul</span></span>
 <span id="cb147-2"><a href="#cb147-2"></a> t1 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]]) <span class="co">#2X3</span></span>
-<span id="cb147-3"><a href="#cb147-3"></a> t2 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>], [<span class="dv">5</span>,<span class="dv">6</span>]]) <span class="co"># 3 x 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb147-3"><a href="#cb147-3"></a> t2 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>], [<span class="dv">5</span>,<span class="dv">6</span>]]) <span class="co"># 3 x 2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-100" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c2cba132-f4f7-4d1a-e0ce-49f74f175fdd">
-<div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1"></a>torch.matmul(t1,t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1"></a>torch.matmul(t1,t2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="147">
 <pre><code>tensor([[22, 28],
         [49, 64]])</code></pre>
 </div>
 </div>
 <div id="cell-101" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e7b0e972-217a-49ee-bd0b-15cae1c17e32">
-<div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1"></a><span class="co">#dot</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1"></a><span class="co">#dot</span></span>
 <span id="cb150-2"><a href="#cb150-2"></a>t1 <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb150-3"><a href="#cb150-3"></a>t2 <span class="op">=</span> torch.tensor([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
-<span id="cb150-4"><a href="#cb150-4"></a>torch.dot(t1,t2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb150-4"><a href="#cb150-4"></a>torch.dot(t1,t2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="148">
 <pre><code>tensor(32)</code></pre>
 </div>
 </div>
 <div id="cell-103" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3d7f457d-1c41-4c8b-ce20-e33afa6511fd">
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1"></a><span class="co">#transpose</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1"></a><span class="co">#transpose</span></span>
 <span id="cb152-2"><a href="#cb152-2"></a>t1 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
-<span id="cb152-3"><a href="#cb152-3"></a>torch.transpose(t1,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb152-3"><a href="#cb152-3"></a>torch.transpose(t1,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="161">
 <pre><code>tensor([[1, 4],
         [2, 5],
@@ -1602,36 +1644,36 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 </div>
 </div>
 <div id="cell-104" class="cell">
-<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1"></a><span class="co"># determinant</span></span>
-<span id="cb154-2"><a href="#cb154-2"></a><span class="co"># inverse</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1"></a><span class="co"># determinant</span></span>
+<span id="cb154-2"><a href="#cb154-2"></a><span class="co"># inverse</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="comparison" class="level1">
 <h1>Comparison</h1>
 <div id="cell-106" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="05ab6570-3576-4598-eb19-98affd29d842">
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1"></a><span class="co">#greater than</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1"></a><span class="co">#greater than</span></span>
 <span id="cb155-2"><a href="#cb155-2"></a>t1 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>]])</span>
 <span id="cb155-3"><a href="#cb155-3"></a>t2 <span class="op">=</span> torch.tensor([[<span class="dv">5</span>,<span class="dv">1</span>], [<span class="dv">0</span>,<span class="dv">7</span>]])</span>
-<span id="cb155-4"><a href="#cb155-4"></a>t1 <span class="op">&gt;</span> t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb155-4"><a href="#cb155-4"></a>t1 <span class="op">&gt;</span> t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="162">
 <pre><code>tensor([[False,  True],
         [ True, False]])</code></pre>
 </div>
 </div>
 <div id="cell-107" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="71e39ed3-452c-482b-e2bc-6dea08eb1291">
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1"></a>t1 <span class="op">&lt;</span>  t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb157"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb157-1"><a href="#cb157-1"></a>t1 <span class="op">&lt;</span>  t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="163">
 <pre><code>tensor([[ True, False],
         [False,  True]])</code></pre>
 </div>
 </div>
 <div id="cell-108" class="cell">
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1"></a><span class="co">#less than</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1"></a><span class="co">#less than</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-109" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e92106ee-d197-4f11-96fc-f9fffcca895d">
-<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1"></a><span class="co">#equal to</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb160"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb160-1"><a href="#cb160-1"></a><span class="co">#equal to</span></span>
 <span id="cb160-2"><a href="#cb160-2"></a></span>
-<span id="cb160-3"><a href="#cb160-3"></a>t1 <span class="op">==</span> t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb160-3"><a href="#cb160-3"></a>t1 <span class="op">==</span> t2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="164">
 <pre><code>tensor([[False, False],
         [False, False]])</code></pre>
@@ -1641,75 +1683,75 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="important-functions" class="level1">
 <h1>important functions</h1>
 <div id="cell-111" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c054c89b-85d8-48a1-ad9c-f7e99f8b6d93">
-<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1"></a><span class="co">#log</span></span>
-<span id="cb162-2"><a href="#cb162-2"></a>torch.log(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb162"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb162-1"><a href="#cb162-1"></a><span class="co">#log</span></span>
+<span id="cb162-2"><a href="#cb162-2"></a>torch.log(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="165">
 <pre><code>tensor([[0.0000, 0.6931],
         [1.0986, 1.3863]])</code></pre>
 </div>
 </div>
 <div id="cell-112" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d3938aa9-ce9a-4323-8fc1-b5c88bfd965e">
-<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1"></a><span class="co">#exp</span></span>
-<span id="cb164-2"><a href="#cb164-2"></a>torch.exp(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb164"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb164-1"><a href="#cb164-1"></a><span class="co">#exp</span></span>
+<span id="cb164-2"><a href="#cb164-2"></a>torch.exp(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="166">
 <pre><code>tensor([[ 2.7183,  7.3891],
         [20.0855, 54.5981]])</code></pre>
 </div>
 </div>
 <div id="cell-113" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ff7692f9-7e17-4dfe-c653-3cad63f32ba4">
-<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1"></a><span class="co">#square</span></span>
-<span id="cb166-2"><a href="#cb166-2"></a>torch.square(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb166"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb166-1"><a href="#cb166-1"></a><span class="co">#square</span></span>
+<span id="cb166-2"><a href="#cb166-2"></a>torch.square(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="167">
 <pre><code>tensor([[ 1,  4],
         [ 9, 16]])</code></pre>
 </div>
 </div>
 <div id="cell-114" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5c57da59-32cf-4050-e339-6057965137e0">
-<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1"></a><span class="co">#sqrt</span></span>
-<span id="cb168-2"><a href="#cb168-2"></a>torch.sqrt(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb168"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb168-1"><a href="#cb168-1"></a><span class="co">#sqrt</span></span>
+<span id="cb168-2"><a href="#cb168-2"></a>torch.sqrt(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="168">
 <pre><code>tensor([[1.0000, 1.4142],
         [1.7321, 2.0000]])</code></pre>
 </div>
 </div>
 <div id="cell-115" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8fc547fd-2231-47aa-e2cf-39dbf92c96e2">
-<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1"></a><span class="co">#sigmoid # 1 / 1 + e^z</span></span>
-<span id="cb170-2"><a href="#cb170-2"></a>torch.sigmoid(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb170"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb170-1"><a href="#cb170-1"></a><span class="co">#sigmoid # 1 / 1 + e^z</span></span>
+<span id="cb170-2"><a href="#cb170-2"></a>torch.sigmoid(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="169">
 <pre><code>tensor([[0.7311, 0.8808],
         [0.9526, 0.9820]])</code></pre>
 </div>
 </div>
 <div id="cell-116" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b3e2d51b-165c-4715-e232-feaebd7241a1">
-<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1"></a><span class="kw">def</span> find_sigmoid(t):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb172"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb172-1"><a href="#cb172-1"></a><span class="kw">def</span> find_sigmoid(t):</span>
 <span id="cb172-2"><a href="#cb172-2"></a>  <span class="cf">return</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> torch.exp(<span class="op">-</span>t))</span>
 <span id="cb172-3"><a href="#cb172-3"></a></span>
-<span id="cb172-4"><a href="#cb172-4"></a>find_sigmoid(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb172-4"><a href="#cb172-4"></a>find_sigmoid(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="170">
 <pre><code>tensor([[0.7311, 0.8808],
         [0.9526, 0.9820]])</code></pre>
 </div>
 </div>
 <div id="cell-117" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f85e95a9-8a31-4995-e408-8b778b15c11c">
-<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1"></a><span class="co">#softmax</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb174"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb174-1"><a href="#cb174-1"></a><span class="co">#softmax</span></span>
 <span id="cb174-2"><a href="#cb174-2"></a>t1 <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="dv">4</span>]], dtype<span class="op">=</span> torch.float32)</span>
-<span id="cb174-3"><a href="#cb174-3"></a>torch.softmax(t1, axis<span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb174-3"><a href="#cb174-3"></a>torch.softmax(t1, axis<span class="op">=</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="175">
 <pre><code>tensor([[0.2689, 0.7311],
         [0.2689, 0.7311]])</code></pre>
 </div>
 </div>
 <div id="cell-118" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="3f27b45c-3a37-4cb5-96ae-0765a7a43787">
-<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1"></a>torch.softmax(t1, dim<span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb176"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb176-1"><a href="#cb176-1"></a>torch.softmax(t1, dim<span class="op">=</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="176">
 <pre><code>tensor([[0.2689, 0.7311],
         [0.2689, 0.7311]])</code></pre>
 </div>
 </div>
 <div id="cell-119" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9b79ea22-fb23-466b-fccd-2e23b00ace73">
-<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb178-1"><a href="#cb178-1"></a><span class="co">#relu</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb178"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb178-1"><a href="#cb178-1"></a><span class="co">#relu</span></span>
 <span id="cb178-2"><a href="#cb178-2"></a>t1 <span class="op">=</span> torch.tensor([[<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>], [<span class="dv">3</span>,<span class="op">-</span><span class="dv">4</span>]], dtype<span class="op">=</span> torch.float32)</span>
-<span id="cb178-3"><a href="#cb178-3"></a>torch.relu(t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb178-3"><a href="#cb178-3"></a>torch.relu(t1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="178">
 <pre><code>tensor([[0., 2.],
         [3., 0.]])</code></pre>
@@ -1719,25 +1761,25 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="inplace-operation" class="level1">
 <h1>Inplace operation</h1>
 <div id="cell-121" class="cell">
-<div class="sourceCode cell-code" id="cb180"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1"></a>a <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb180"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb180-1"><a href="#cb180-1"></a>a <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb180-2"><a href="#cb180-2"></a>b <span class="op">=</span> torch.tensor([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
-<span id="cb180-3"><a href="#cb180-3"></a>c <span class="op">=</span> a<span class="op">+</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb180-3"><a href="#cb180-3"></a>c <span class="op">=</span> a<span class="op">+</span>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-122" class="cell">
-<div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1"></a>a.add_(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb181"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb181-1"><a href="#cb181-1"></a>a.add_(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-123" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c6d90f54-fd39-4f97-aa9c-c414e14bf746">
-<div class="sourceCode cell-code" id="cb182"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1"></a>w <span class="op">=</span> torch.tensor([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb182"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb182-1"><a href="#cb182-1"></a>w <span class="op">=</span> torch.tensor([<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>])</span>
 <span id="cb182-2"><a href="#cb182-2"></a>grad <span class="op">=</span> torch.tensor([<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">3</span>])</span>
 <span id="cb182-3"><a href="#cb182-3"></a></span>
 <span id="cb182-4"><a href="#cb182-4"></a>w.subtract_(grad)</span>
-<span id="cb182-5"><a href="#cb182-5"></a>w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb182-5"><a href="#cb182-5"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="185">
 <pre><code>tensor([2, 4, 3])</code></pre>
 </div>
 </div>
 <div id="cell-124" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="011a2811-cdc1-4d58-947e-d2d88f307dbc">
-<div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="#cb184-1"></a>w.zero_()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb184"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb184-1"><a href="#cb184-1"></a>w.zero_()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="186">
 <pre><code>tensor([0, 0, 0])</code></pre>
 </div>
@@ -1746,59 +1788,59 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="clone" class="level1">
 <h1>clone</h1>
 <div id="cell-126" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f539a93c-a2d9-4e73-b724-4959401386a6">
-<div class="sourceCode cell-code" id="cb186"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1"></a><span class="co">#clone</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb186"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1"></a><span class="co">#clone</span></span>
 <span id="cb186-2"><a href="#cb186-2"></a>a <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
 <span id="cb186-3"><a href="#cb186-3"></a>b <span class="op">=</span> a</span>
-<span id="cb186-4"><a href="#cb186-4"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb186-4"><a href="#cb186-4"></a>b</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="194">
 <pre><code>tensor([1, 2, 3])</code></pre>
 </div>
 </div>
 <div id="cell-127" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="70bea054-bbb0-4576-b257-22a70d9e2a54">
-<div class="sourceCode cell-code" id="cb188"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1"></a><span class="bu">id</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb188"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb188-1"><a href="#cb188-1"></a><span class="bu">id</span>(a)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="195">
 <pre><code>137187252920080</code></pre>
 </div>
 </div>
 <div id="cell-128" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="41172d5f-b7dd-4cfb-bef6-2ad39caebe51">
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1"></a><span class="bu">id</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb190"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1"></a><span class="bu">id</span>(b)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="196">
 <pre><code>137187252920080</code></pre>
 </div>
 </div>
 <div id="cell-129" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="060bb892-c7b9-4732-a2b4-47749b86377d">
-<div class="sourceCode cell-code" id="cb192"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1"></a>b.add_(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb192"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb192-1"><a href="#cb192-1"></a>b.add_(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="197">
 <pre><code>tensor([2, 3, 4])</code></pre>
 </div>
 </div>
 <div id="cell-130" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ab6e120e-b744-46a7-b9ce-64dacb323d6d">
-<div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb194"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="198">
 <pre><code>tensor([2, 3, 4])</code></pre>
 </div>
 </div>
 <div id="cell-131" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ff7b3f1e-62e1-48f4-d52e-919aa314f904">
-<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1"></a>c<span class="op">=</span> torch.clone(a)</span>
-<span id="cb196-2"><a href="#cb196-2"></a>c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb196"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1"></a>c<span class="op">=</span> torch.clone(a)</span>
+<span id="cb196-2"><a href="#cb196-2"></a>c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="199">
 <pre><code>tensor([2, 3, 4])</code></pre>
 </div>
 </div>
 <div id="cell-132" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ccdbbc55-6081-47f3-d833-d260bd410365">
-<div class="sourceCode cell-code" id="cb198"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1"></a><span class="bu">id</span>(c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb198"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1"></a><span class="bu">id</span>(c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="200">
 <pre><code>137187252921424</code></pre>
 </div>
 </div>
 <div id="cell-133" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="fa7b076c-584c-44cc-c280-0f84a80ab7f4">
-<div class="sourceCode cell-code" id="cb200"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb200-1"><a href="#cb200-1"></a>c.add_(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb200"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb200-1"><a href="#cb200-1"></a>c.add_(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="201">
 <pre><code>tensor([3, 4, 5])</code></pre>
 </div>
 </div>
 <div id="cell-134" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="50883bdc-9d31-4dee-9638-daa3fe8fcbae">
-<div class="sourceCode cell-code" id="cb202"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb202-1"><a href="#cb202-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb202"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb202-1"><a href="#cb202-1"></a>a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="202">
 <pre><code>tensor([2, 3, 4])</code></pre>
 </div>
@@ -1807,22 +1849,22 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <section id="tensor-operations-on-gpu" class="level1">
 <h1>Tensor operations on GPU</h1>
 <div id="cell-136" class="cell">
-<div class="sourceCode cell-code" id="cb204"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb204-1"><a href="#cb204-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb204"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb204-1"><a href="#cb204-1"></a><span class="im">import</span> torch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-137" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2cc20c72-acb0-4a42-aaad-ff7feaaaaddd">
-<div class="sourceCode cell-code" id="cb205"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb205-1"><a href="#cb205-1"></a>torch.cuda.device_count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb205"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb205-1"><a href="#cb205-1"></a>torch.cuda.device_count()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>1</code></pre>
 </div>
 </div>
 <div id="cell-138" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8fbe58db-e2ca-4ffe-f51c-3466ff106df9">
-<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb207-1"><a href="#cb207-1"></a>torch.cuda.get_device_properties(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb207"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb207-1"><a href="#cb207-1"></a>torch.cuda.get_device_properties(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>_CudaDeviceProperties(name='Tesla T4', major=7, minor=5, total_memory=15095MB, multi_processor_count=40, uuid=ee6f7a89-4693-5b16-c869-5fe163a44485, L2_cache_size=4MB)</code></pre>
 </div>
 </div>
 <div id="cell-139" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="d0744cd2-edf5-476f-b682-a1e542c52c82">
-<div class="sourceCode cell-code" id="cb209"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># Check if CUDA is available</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb209"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb209-1"><a href="#cb209-1"></a><span class="co"># Check if CUDA is available</span></span>
 <span id="cb209-2"><a href="#cb209-2"></a><span class="cf">if</span> torch.cuda.is_available():</span>
 <span id="cb209-3"><a href="#cb209-3"></a>    gpu_count <span class="op">=</span> torch.cuda.device_count()</span>
 <span id="cb209-4"><a href="#cb209-4"></a>    <span class="bu">print</span>(<span class="ss">f"Number of GPUs available: </span><span class="sc">{</span>gpu_count<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
@@ -1835,7 +1877,7 @@ tensor([[0.1053, 0.2695, 0.3588, 0.1994],
 <span id="cb209-11"><a href="#cb209-11"></a>        <span class="bu">print</span>(<span class="ss">f"  - Compute Capability: </span><span class="sc">{</span>props<span class="sc">.</span>major<span class="sc">}</span><span class="ss">.</span><span class="sc">{</span>props<span class="sc">.</span>minor<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb209-12"><a href="#cb209-12"></a>        <span class="bu">print</span>(<span class="ss">f"  - Multi-Processor Count: </span><span class="sc">{</span>props<span class="sc">.</span>multi_processor_count<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
 <span id="cb209-13"><a href="#cb209-13"></a><span class="cf">else</span>:</span>
-<span id="cb209-14"><a href="#cb209-14"></a>    <span class="bu">print</span>(<span class="st">"No GPUs available."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb209-14"><a href="#cb209-14"></a>    <span class="bu">print</span>(<span class="st">"No GPUs available."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Number of GPUs available: 1
 
@@ -1847,61 +1889,61 @@ GPU 0: Tesla T4
 </div>
 </div>
 <div id="cell-140" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="668263ad-8c60-4b13-84b3-6f05e5be1638">
-<div class="sourceCode cell-code" id="cb211"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1"></a>torch.device(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb211"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb211-1"><a href="#cb211-1"></a>torch.device(<span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>device(type='cuda', index=0)</code></pre>
 </div>
 </div>
 <div id="cell-141" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="09fc1775-495e-450a-8747-eb953fe5ae13">
-<div class="sourceCode cell-code" id="cb213"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb213-1"><a href="#cb213-1"></a>torch.device(<span class="bu">type</span><span class="op">=</span><span class="st">'cuda'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb213"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb213-1"><a href="#cb213-1"></a>torch.device(<span class="bu">type</span><span class="op">=</span><span class="st">'cuda'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>device(type='cuda')</code></pre>
 </div>
 </div>
 <div id="cell-142" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="41a30b56-f7b0-4505-b343-bad1f865d4ef">
-<div class="sourceCode cell-code" id="cb215"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1"></a>torch.device(<span class="bu">type</span><span class="op">=</span><span class="st">'cuda'</span>,index<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb215"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb215-1"><a href="#cb215-1"></a>torch.device(<span class="bu">type</span><span class="op">=</span><span class="st">'cuda'</span>,index<span class="op">=</span><span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="68">
 <pre><code>device(type='cuda', index=0)</code></pre>
 </div>
 </div>
 <div id="cell-143" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4bc4ce8c-ada1-43c7-8c1d-b2d1cbf97754">
-<div class="sourceCode cell-code" id="cb217"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb217-1"><a href="#cb217-1"></a>device <span class="op">=</span> torch.device(<span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span>)</span>
-<span id="cb217-2"><a href="#cb217-2"></a>device</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb217"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb217-1"><a href="#cb217-1"></a>device <span class="op">=</span> torch.device(<span class="st">'cuda'</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">'cpu'</span>)</span>
+<span id="cb217-2"><a href="#cb217-2"></a>device</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>device(type='cuda')</code></pre>
 </div>
 </div>
 <div id="cell-144" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f5c8d0ad-c81c-424a-f541-ff45912efc1c">
-<div class="sourceCode cell-code" id="cb219"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb219-1"><a href="#cb219-1"></a><span class="co"># create matrix in GPU</span></span>
-<span id="cb219-2"><a href="#cb219-2"></a>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], device <span class="op">=</span> device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb219"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb219-1"><a href="#cb219-1"></a><span class="co"># create matrix in GPU</span></span>
+<span id="cb219-2"><a href="#cb219-2"></a>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], device <span class="op">=</span> device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>tensor([1, 2, 3], device='cuda:0')</code></pre>
 </div>
 </div>
 <div id="cell-145" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b0edceb4-661b-408c-99c7-d5fc1c445d21">
-<div class="sourceCode cell-code" id="cb221"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb221-1"><a href="#cb221-1"></a>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb221"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb221-1"><a href="#cb221-1"></a>torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>tensor([1, 2, 3])</code></pre>
 </div>
 </div>
 <div id="cell-146" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7c245dec-f06d-4117-9436-7663de701d28">
-<div class="sourceCode cell-code" id="cb223"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb223-1"><a href="#cb223-1"></a><span class="co"># move a matrix from CPU to GPU</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb223"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb223-1"><a href="#cb223-1"></a><span class="co"># move a matrix from CPU to GPU</span></span>
 <span id="cb223-2"><a href="#cb223-2"></a>mat1 <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
-<span id="cb223-3"><a href="#cb223-3"></a>mat1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb223-3"><a href="#cb223-3"></a>mat1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>tensor([1, 2, 3])</code></pre>
 </div>
 </div>
 <div id="cell-147" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="6e21b694-9a44-491c-a6db-9126de3bad86">
-<div class="sourceCode cell-code" id="cb225"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb225-1"><a href="#cb225-1"></a>mat1.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb225"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb225-1"><a href="#cb225-1"></a>mat1.to(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>tensor([1, 2, 3], device='cuda:0')</code></pre>
 </div>
 </div>
 <div id="cell-148" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e9d62d81-cf27-43de-d0f3-a4c1c071b94c">
-<div class="sourceCode cell-code" id="cb227"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb227-1"><a href="#cb227-1"></a><span class="co"># move model to GPU</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb227"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb227-1"><a href="#cb227-1"></a><span class="co"># move model to GPU</span></span>
 <span id="cb227-2"><a href="#cb227-2"></a>model <span class="op">=</span> torch.nn.Linear(<span class="dv">10</span>,<span class="dv">1</span>)</span>
-<span id="cb227-3"><a href="#cb227-3"></a>model.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb227-3"><a href="#cb227-3"></a>model.to(device)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>Linear(in_features=10, out_features=1, bias=True)</code></pre>
 </div>
@@ -1936,9 +1978,9 @@ p(z) = \dfrac{q_1}{q_2} + q_3\\
 <p>= <span class="math inline">\(\dfrac{2}{z^2} - \dfrac{3}{z^2} +  e^z\)</span></p>
 <p>= <span class="math inline">\(\dfrac{-1}{z^2} + e^z\)</span></p>
 <div id="cell-154" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:642}}" data-outputid="ba959f28-e536-4b5a-cac3-644632b406d9">
-<div class="sourceCode cell-code" id="cb229"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb229-1"><a href="#cb229-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb229"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb229-1"><a href="#cb229-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> IFrame</span>
 <span id="cb229-2"><a href="#cb229-2"></a></span>
-<span id="cb229-3"><a href="#cb229-3"></a>IFrame(src<span class="op">=</span><span class="st">"https://iitm-pod.slides.com/arunprakash_ai/cs6910-lecture-4/fullscreen#/0/43"</span>, width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb229-3"><a href="#cb229-3"></a>IFrame(src<span class="op">=</span><span class="st">"https://iitm-pod.slides.com/arunprakash_ai/cs6910-lecture-4/fullscreen#/0/43"</span>, width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">600</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 
         <iframe width="800" height="600" src="https://iitm-pod.slides.com/arunprakash_ai/cs6910-lecture-4/fullscreen#/0/43" frameborder="0" allowfullscreen=""></iframe>
@@ -2058,13 +2100,14 @@ p(z) = \dfrac{q_1}{q_2} + q_3\\
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

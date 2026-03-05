@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-5/W5_Fine_TuningBERT.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -123,7 +124,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -327,7 +328,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -541,17 +543,57 @@ window.Quarto = {
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -588,11 +630,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -677,11 +719,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -706,11 +748,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -772,21 +814,21 @@ window.Quarto = {
 <p>Guide students to create a new Colab notebook and enable the GPU runtime (Runtime -&gt; Change runtime type -&gt; T4 GPU).</p>
 <p>Install the necessary libraries with one command:</p>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="455751c3-ca73-443a-baf5-01b7cc5902c1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install <span class="op">--</span>upgrade transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">!</span>pip install <span class="op">--</span>upgrade transformers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f7d40790-6126-427e-9a01-469754e4486a">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">!</span>pip install datasets accelerate evaluate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">!</span>pip install datasets accelerate evaluate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Load a Dataset: Use the datasets library to load a simple text dataset. eli5 is a good choice because it’s a dataset of questions and answers, making the generated text interesting.</p>
 <div id="cell-8" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> transformers <span class="im">import</span> (</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    AutoTokenizer,</span>
 <span id="cb3-4"><a href="#cb3-4"></a>    DataCollatorForLanguageModeling,</span>
 <span id="cb3-5"><a href="#cb3-5"></a>    TrainingArguments,</span>
 <span id="cb3-6"><a href="#cb3-6"></a>    Trainer,</span>
 <span id="cb3-7"><a href="#cb3-7"></a>    AutoModelForCausalLM</span>
-<span id="cb3-8"><a href="#cb3-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>What this does:</p>
 <p>datasets is the Hugging Face library to load datasets like Wikitext easily.</p>
@@ -800,7 +842,7 @@ window.Quarto = {
 <li>Load and prepare the dataset</li>
 </ol>
 <div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Load 5000 examples from the training split</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Load 5000 examples from the training split</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>dataset <span class="op">=</span> load_dataset(<span class="st">"wikitext"</span>, <span class="st">"wikitext-2-raw-v1"</span>, split<span class="op">=</span><span class="st">"train[:5000]"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Remove empty lines (common in Wikitext)</span></span>
@@ -809,7 +851,7 @@ window.Quarto = {
 <span id="cb4-7"><a href="#cb4-7"></a><span class="co"># Create train/validation split (90% train, 10% validation)</span></span>
 <span id="cb4-8"><a href="#cb4-8"></a>split <span class="op">=</span> dataset.train_test_split(test_size<span class="op">=</span><span class="fl">0.1</span>, seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb4-9"><a href="#cb4-9"></a>train_raw <span class="op">=</span> split[<span class="st">"train"</span>]</span>
-<span id="cb4-10"><a href="#cb4-10"></a>val_raw <span class="op">=</span> split[<span class="st">"test"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10"></a>val_raw <span class="op">=</span> split[<span class="st">"test"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Explanation:</p>
 <p>wikitext-2-raw-v1 is a Wikipedia-based dataset for language modeling.</p>
@@ -823,7 +865,7 @@ window.Quarto = {
 </ol>
 <p>Tokenization: Explain that models work with numbers, not text. A tokenizer converts text into a format the model understands (input IDs).</p>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="874254bb-fd8f-4d2c-df08-946ba2aaa85a">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>model_name <span class="op">=</span> <span class="st">"gpt2"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>model_name <span class="op">=</span> <span class="st">"gpt2"</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(model_name)</span>
 <span id="cb5-3"><a href="#cb5-3"></a></span>
 <span id="cb5-4"><a href="#cb5-4"></a><span class="co"># GPT-2 has no pad token; we add one for batching</span></span>
@@ -831,7 +873,7 @@ window.Quarto = {
 <span id="cb5-6"><a href="#cb5-6"></a>    tokenizer.add_special_tokens({<span class="st">"pad_token"</span>: <span class="st">"[PAD]"</span>})</span>
 <span id="cb5-7"><a href="#cb5-7"></a></span>
 <span id="cb5-8"><a href="#cb5-8"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(model_name)</span>
-<span id="cb5-9"><a href="#cb5-9"></a>model.resize_token_embeddings(<span class="bu">len</span>(tokenizer))  <span class="co"># match new vocab size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9"></a>model.resize_token_embeddings(<span class="bu">len</span>(tokenizer))  <span class="co"># match new vocab size</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Explanation:</p>
 <p>Tokenizer maps words → integers using GPT-2’s vocab.</p>
@@ -845,7 +887,7 @@ window.Quarto = {
 <li>Tokenize the text</li>
 </ol>
 <div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>max_length <span class="op">=</span> <span class="dv">512</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>max_length <span class="op">=</span> <span class="dv">512</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="kw">def</span> tokenize_fn(examples):</span>
 <span id="cb6-3"><a href="#cb6-3"></a>    <span class="cf">return</span> tokenizer(examples[<span class="st">"text"</span>], truncation<span class="op">=</span><span class="va">True</span>, max_length<span class="op">=</span>max_length)</span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
@@ -854,7 +896,7 @@ window.Quarto = {
 <span id="cb6-7"><a href="#cb6-7"></a></span>
 <span id="cb6-8"><a href="#cb6-8"></a><span class="co"># Make datasets return PyTorch tensors</span></span>
 <span id="cb6-9"><a href="#cb6-9"></a>train_tok.set_format(<span class="bu">type</span><span class="op">=</span><span class="st">"torch"</span>, columns<span class="op">=</span>[<span class="st">"input_ids"</span>, <span class="st">"attention_mask"</span>])</span>
-<span id="cb6-10"><a href="#cb6-10"></a>val_tok.set_format(<span class="bu">type</span><span class="op">=</span><span class="st">"torch"</span>, columns<span class="op">=</span>[<span class="st">"input_ids"</span>, <span class="st">"attention_mask"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10"></a>val_tok.set_format(<span class="bu">type</span><span class="op">=</span><span class="st">"torch"</span>, columns<span class="op">=</span>[<span class="st">"input_ids"</span>, <span class="st">"attention_mask"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Explanation:</p>
 <p>truncation=True: cuts long texts at max_length tokens (GPT-2 limit is 1024, but we pick 512 for speed).</p>
@@ -868,7 +910,7 @@ window.Quarto = {
 <li>Create the data collator</li>
 </ol>
 <div id="cell-25" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data_collator <span class="op">=</span> DataCollatorForLanguageModeling(tokenizer<span class="op">=</span>tokenizer, mlm<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>data_collator <span class="op">=</span> DataCollatorForLanguageModeling(tokenizer<span class="op">=</span>tokenizer, mlm<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Explanation:</p>
 <p>The collator batches tokenized data and pads sequences in the batch to the same length.</p>
@@ -898,7 +940,7 @@ window.Quarto = {
 <p>The TrainingArguments class has many more options. To see a complete list with detailed explanations, you can always check the official Hugging Face documentation. It’s the best resource for exploring everything you can control.</p>
 <p>https://huggingface.co/docs/transformers/en/main_classes/trainer</p>
 <div id="cell-31" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    output_dir<span class="op">=</span><span class="st">"./gpt2-wikitext-finetuned"</span>,  <span class="co"># save model checkpoints</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>    num_train_epochs<span class="op">=</span><span class="dv">10</span>,</span>
 <span id="cb8-4"><a href="#cb8-4"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">4</span>,</span>
@@ -913,7 +955,7 @@ window.Quarto = {
 <span id="cb8-13"><a href="#cb8-13"></a>    save_total_limit<span class="op">=</span><span class="dv">3</span>,      <span class="co"># only keep last 3 checkpoints</span></span>
 <span id="cb8-14"><a href="#cb8-14"></a>    fp16<span class="op">=</span><span class="va">True</span>,               <span class="co"># mixed precision for speed</span></span>
 <span id="cb8-15"><a href="#cb8-15"></a>    report_to<span class="op">=</span><span class="st">"none"</span>  <span class="co"># disable W&amp;B, TensorBoard, etc.</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-16"><a href="#cb8-16"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Teaching moment:</p>
 <p>Warmup: starts with small learning rate → more stable.</p>
@@ -923,21 +965,21 @@ window.Quarto = {
 <li>Create the Trainer</li>
 </ol>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bd370341-c42c-41df-a53a-22855a2f9e07">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> transformers</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> transformers</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="bu">print</span>(transformers.__version__)</span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="im">from</span> transformers <span class="im">import</span> TrainingArguments</span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(TrainingArguments.__module__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="bu">print</span>(TrainingArguments.__module__)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Instantiate Trainer: Combine everything into the Trainer.</p>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="c85168c9-ebb5-452d-8a22-293b461495bc">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>trainer <span class="op">=</span> Trainer(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>trainer <span class="op">=</span> Trainer(</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    model<span class="op">=</span>model,</span>
 <span id="cb10-3"><a href="#cb10-3"></a>    args<span class="op">=</span>training_args,</span>
 <span id="cb10-4"><a href="#cb10-4"></a>    train_dataset<span class="op">=</span>train_tok,</span>
 <span id="cb10-5"><a href="#cb10-5"></a>    eval_dataset<span class="op">=</span>val_tok,        <span class="co"># Needed for evaluation_strategy</span></span>
 <span id="cb10-6"><a href="#cb10-6"></a>    data_collator<span class="op">=</span>data_collator,</span>
 <span id="cb10-7"><a href="#cb10-7"></a>    processing_class<span class="op">=</span>tokenizer,         </span>
-<span id="cb10-8"><a href="#cb10-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Explanation:</p>
 <p>Trainer automates the training loop, evaluation, saving, logging.</p>
@@ -949,7 +991,7 @@ window.Quarto = {
 </ol>
 <p>Launch Training: Start the fine-tuning process. Explain that the model’s weights (W) are being updated via backpropagation to minimize a loss function.</p>
 <div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:549}}" data-outputid="e7fbf829-a47b-425f-f6a7-92fd08d8f9f3">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> time</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> time</span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co"># Start timer</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>start_time <span class="op">=</span> time.perf_counter()</span>
@@ -963,11 +1005,11 @@ window.Quarto = {
 <span id="cb11-12"><a href="#cb11-12"></a><span class="co"># Calculate and format</span></span>
 <span id="cb11-13"><a href="#cb11-13"></a>elapsed_time <span class="op">=</span> end_time <span class="op">-</span> start_time</span>
 <span id="cb11-14"><a href="#cb11-14"></a>minutes, seconds <span class="op">=</span> <span class="bu">divmod</span>(elapsed_time, <span class="dv">60</span>)</span>
-<span id="cb11-15"><a href="#cb11-15"></a><span class="bu">print</span>(<span class="ss">f"Total training time: </span><span class="sc">{</span><span class="bu">int</span>(minutes)<span class="sc">}</span><span class="ss"> min </span><span class="sc">{</span>seconds<span class="sc">:.2f}</span><span class="ss"> sec"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="bu">print</span>(<span class="ss">f"Total training time: </span><span class="sc">{</span><span class="bu">int</span>(minutes)<span class="sc">}</span><span class="ss"> min </span><span class="sc">{</span>seconds<span class="sc">:.2f}</span><span class="ss"> sec"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Generate Text! (The Fun Part): Use the fine-tuned model to generate text. Show how it has adopted the “style” of the training data.</p>
 <div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="72c49532-e4ff-4ecf-822d-b921e4eeff6a">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>prompt <span class="op">=</span> <span class="st">"Himalaya mountains are "</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>prompt <span class="op">=</span> <span class="st">"Himalaya mountains are "</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="co"># Tokenize with attention mask, send to GPU</span></span>
 <span id="cb12-4"><a href="#cb12-4"></a>encoding <span class="op">=</span> tokenizer(prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span>, padding<span class="op">=</span><span class="va">True</span>).to(<span class="st">"cuda"</span>)</span>
@@ -984,10 +1026,10 @@ window.Quarto = {
 <span id="cb12-15"><a href="#cb12-15"></a>)</span>
 <span id="cb12-16"><a href="#cb12-16"></a></span>
 <span id="cb12-17"><a href="#cb12-17"></a><span class="co"># Decode and print</span></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a8584b3f-a4db-496d-9e8e-ca52c7f2e86b">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>prompt <span class="op">=</span> <span class="st">"photosynthesis is a function"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>prompt <span class="op">=</span> <span class="st">"photosynthesis is a function"</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># Tell tokenizer to use EOS as pad token</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a>tokenizer.pad_token <span class="op">=</span> tokenizer.eos_token</span>
@@ -1009,10 +1051,10 @@ window.Quarto = {
 <span id="cb13-20"><a href="#cb13-20"></a></span>
 <span id="cb13-21"><a href="#cb13-21"></a><span class="co"># Decode and print</span></span>
 <span id="cb13-22"><a href="#cb13-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span>
-<span id="cb13-23"><a href="#cb13-23"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-23"><a href="#cb13-23"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="96b0ce2d-ff7a-4edb-b4c8-d67a49af026c">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>tokenizer.pad_token <span class="op">=</span> tokenizer.eos_token          <span class="co"># safe: reuse eos as pad</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>model.config.pad_token_id <span class="op">=</span> tokenizer.pad_token_id</span>
 <span id="cb14-4"><a href="#cb14-4"></a></span>
@@ -1033,10 +1075,10 @@ window.Quarto = {
 <span id="cb14-19"><a href="#cb14-19"></a>    eos_token_id<span class="op">=</span>tokenizer.eos_token_id</span>
 <span id="cb14-20"><a href="#cb14-20"></a>)</span>
 <span id="cb14-21"><a href="#cb14-21"></a></span>
-<span id="cb14-22"><a href="#cb14-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-22"><a href="#cb14-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2d2d60df-d42a-49b7-91d2-4f30cb8a77ac">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>tokenizer.pad_token <span class="op">=</span> tokenizer.eos_token          <span class="co"># safe: reuse eos as pad</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a>model.config.pad_token_id <span class="op">=</span> tokenizer.pad_token_id</span>
 <span id="cb15-4"><a href="#cb15-4"></a></span>
@@ -1057,10 +1099,10 @@ window.Quarto = {
 <span id="cb15-19"><a href="#cb15-19"></a>    eos_token_id<span class="op">=</span>tokenizer.eos_token_id</span>
 <span id="cb15-20"><a href="#cb15-20"></a>)</span>
 <span id="cb15-21"><a href="#cb15-21"></a></span>
-<span id="cb15-22"><a href="#cb15-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-22"><a href="#cb15-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="22f77a00-1f02-4595-af2e-cf493cba06f9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Make sure pad token is set (do this once)</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>tokenizer.pad_token <span class="op">=</span> tokenizer.eos_token          <span class="co"># safe: reuse eos as pad</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a>model.config.pad_token_id <span class="op">=</span> tokenizer.pad_token_id</span>
 <span id="cb16-4"><a href="#cb16-4"></a></span>
@@ -1081,7 +1123,7 @@ window.Quarto = {
 <span id="cb16-19"><a href="#cb16-19"></a>    eos_token_id<span class="op">=</span>tokenizer.eos_token_id</span>
 <span id="cb16-20"><a href="#cb16-20"></a>)</span>
 <span id="cb16-21"><a href="#cb16-21"></a></span>
-<span id="cb16-22"><a href="#cb16-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-22"><a href="#cb16-22"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>], skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Right now, your prompt output is “rambling” because the model:</p>
 <p>Is only fine-tuned briefly (1 epoch on 5,000 Wikitext examples — too small for deep learning models).</p>
@@ -1170,13 +1212,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

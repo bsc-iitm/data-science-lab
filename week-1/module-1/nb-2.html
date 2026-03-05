@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,18 +70,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../week-1/module-1/nb-1.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,7 +125,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -328,7 +329,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -542,17 +544,57 @@ window.Quarto = {
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -589,11 +631,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -678,11 +720,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -707,11 +749,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -806,30 +848,30 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="import-and-settings">Import and Settings</h2>
 <p>We will import <code>NumPy</code> and <code>matplotlib</code>. In addition, we will also start with some customised layout for the plot.</p>
 <div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:13,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774148,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="partitioning-the-real-line" class="level2">
 <h2 class="anchored" data-anchor-id="partitioning-the-real-line">Partitioning the real line</h2>
 <p>In order to plot a curve, we need a set of <span class="math inline">\(x\)</span> values and the corresponding <span class="math inline">\(y\)</span> values. Since <span class="math inline">\(x\)</span> is the independent variable, we need to first generate a list of values for <span class="math inline">\(x\)</span>. This is done using the <code>linspace</code> method in NumPy. <code>np.linspace(a, b, n)</code> generates a sequence of <span class="math inline">\(n\)</span> numbers that are equally spaced between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, end-points included. As an example:</p>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:53,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="741c2a04-2c5c-418f-ef8e-ac2fd3a4c1a5" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">11</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
 </div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:8,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a731f5f3-ed39-41c4-bbb9-52405931e499" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(11,)</code></pre>
 </div>
 </div>
 <p>Here, <code>np.linspace(0, 1, 11)</code> generates a sequence of eleven numbers, starting from <span class="math inline">\(0\)</span> and ending at <span class="math inline">\(11\)</span>, with equal spacing. We could have also arrived at this result using the <code>arange</code> method by specifying a step size of <span class="math inline">\(0.1\)</span> and end-point that is greater than <span class="math inline">\(1\)</span>. But clearly, <code>linspace</code> is easier since it avoids these calculations:</p>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774200,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="dd9d1ad6-fe93-420a-cf54-5dfc4c81df08" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="fl">1.1</span>, <span class="fl">0.1</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre>
 </div>
@@ -843,9 +885,9 @@ window.Quarto = {
 <p>Plot <span class="math inline">\(y = x\)</span> for <span class="math inline">\(x \in [0, 1]\)</span>. Sample <span class="math inline">\(10\)</span> equally spaced points in this interval, inclusive of endpoints.</p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:124,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774323,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c4200e1f-1e4f-4111-ac1b-f6b65d85366b" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a>y <span class="op">=</span> x</span>
-<span id="cb8-3"><a href="#cb8-3"></a>plt.plot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3"></a>plt.plot(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -856,11 +898,11 @@ window.Quarto = {
 </div>
 <p><code>np.plot</code> connects the points that we have specified with the help of a straight line. If we also wish to visualise the location of the individual points, we can add a scatter plot along with the line plot. We will study scatter plots in greater detail in an upcoming notebook.</p>
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:145,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774468,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="398a0779-16e9-49e4-db43-2629ba91846e" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>y <span class="op">=</span> x</span>
 <span id="cb9-3"><a href="#cb9-3"></a>plt.scatter(x, y)</span>
 <span id="cb9-4"><a href="#cb9-4"></a>plt.plot(x, y)<span class="op">;</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># ; suppresses output, compare with previous cell</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co"># ; suppresses output, compare with previous cell</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -871,11 +913,11 @@ window.Quarto = {
 </div>
 <p>The <code>;</code> after the plot command suppresses the output. We could have arrived at this line with the help of just two points, since it takes two distinct points to uniquely specify a line:</p>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:146,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774615,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="bb7759a6-448a-4423-d9fc-03e1c9e98a66" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>])</span>
 <span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> x</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co"># order of plot and scatter doesn't matter here</span></span>
 <span id="cb10-4"><a href="#cb10-4"></a>plt.plot(x, y)</span>
-<span id="cb10-5"><a href="#cb10-5"></a>plt.scatter(x, y)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a href="#cb10-5"></a>plt.scatter(x, y)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -890,10 +932,10 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="curve-2">Curve-2</h3>
 <p>Plot <span class="math inline">\(y = 5 - 3x\)</span> for <span class="math inline">\(x \in [-5, 5]\)</span>. Sample <span class="math inline">\(20\)</span> equally spaced points in this interval, inclusive of endpoints. Add a title to the plot which has the equation of the curve.</p>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:156,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774772,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="88a52897-c8d2-4668-d399-1c96c0a47011" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">20</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>y <span class="op">=</span> <span class="dv">5</span> <span class="op">-</span> <span class="dv">3</span> <span class="op">*</span> x</span>
 <span id="cb11-3"><a href="#cb11-3"></a>plt.plot(x, y)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>plt.title(<span class="st">'y = 5 - 3 x'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4"></a>plt.title(<span class="st">'y = 5 - 3 x'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -914,7 +956,7 @@ window.Quarto = {
 </ul>
 <p>Observe the differences in these four plots. Which one would you choose? Add the equation of the curve as the title of the plot. Also add the x and y-axis to the plot.</p>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:164,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073774937,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="ca93fa30-30d8-4c60-8a53-61080cdc10c6" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 5 points</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># 5 points</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb12-3"><a href="#cb12-3"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb12-4"><a href="#cb12-4"></a>plt.plot(x, y)</span>
@@ -923,7 +965,7 @@ window.Quarto = {
 <span id="cb12-7"><a href="#cb12-7"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb12-8"><a href="#cb12-8"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
 <span id="cb12-9"><a href="#cb12-9"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb12-10"><a href="#cb12-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-10"><a href="#cb12-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -934,7 +976,7 @@ window.Quarto = {
 </div>
 <p>Notice the effect of using a small number of points. Recall that <code>plot.plot</code> connects the points we have given using a straight line. To get a smoother curve that resembles <span class="math inline">\(y = x^2\)</span>, we need a finer partition of the x-axis.</p>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:150,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775088,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f154c408-01e5-4ff7-d133-24c47c0cd9b5" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 50 points</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># 50 points</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">50</span>)</span>
 <span id="cb13-3"><a href="#cb13-3"></a>y <span class="op">=</span> x <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a>plt.plot(x, y)</span>
@@ -943,7 +985,7 @@ window.Quarto = {
 <span id="cb13-7"><a href="#cb13-7"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb13-8"><a href="#cb13-8"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
 <span id="cb13-9"><a href="#cb13-9"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb13-10"><a href="#cb13-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-10"><a href="#cb13-10"></a>            linewidth <span class="op">=</span> <span class="fl">0.8</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -963,7 +1005,7 @@ window.Quarto = {
 <li>Add a legend.</li>
 </ul>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:184,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775273,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="c622abe5-1078-4130-cc75-d6d5d76a8e6e" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># y = 3</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># y = 3</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>x <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">6</span>])</span>
 <span id="cb14-3"><a href="#cb14-3"></a>y <span class="op">=</span> np.array([<span class="dv">3</span>, <span class="dv">3</span>])</span>
 <span id="cb14-4"><a href="#cb14-4"></a>plt.plot(x, y,</span>
@@ -984,7 +1026,7 @@ window.Quarto = {
 <span id="cb14-19"><a href="#cb14-19"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)</span>
 <span id="cb14-20"><a href="#cb14-20"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
 <span id="cb14-21"><a href="#cb14-21"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb14-22"><a href="#cb14-22"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-22"><a href="#cb14-22"></a>            linewidth<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1007,13 +1049,13 @@ window.Quarto = {
 <p>Title each curve appropriately.</p>
 <p>We will first increase the size of the plotting space. This can be manipulated by a parameter called <code>figure.figsize</code> which can be accessed via an object called <code>rcParams</code>, which can be used to change the configuration parameters for various aspects of the plot.</p>
 <div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775275,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># rcParams is like a dict</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># rcParams is like a dict</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co"># controls various configurations</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3"></a>plt.rcParams[<span class="st">'figure.figsize'</span>] <span class="op">=</span> [<span class="dv">8</span>, <span class="dv">8</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>plt.subplot(r, c, ind)</code> divides the plotting region into <span class="math inline">\(r \times c\)</span> individual plotting windows and selects the plot at index <code>ind</code>. The index is set to <span class="math inline">\(1\)</span> for the top-left plot and increases by one point from left to right and top to bottom. The top-left plot window has index <span class="math inline">\(1\)</span>, the last window in the first row has index <span class="math inline">\(c\)</span>, and so on.</p>
 <div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:642,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757073775916,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="e08f54f4-e614-4502-9488-b207783750cf" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Plot-1</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Plot-1</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb16-3"><a href="#cb16-3"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span> <span class="op">/</span> np.e <span class="op">**</span> <span class="dv">2</span>, np.e <span class="op">**</span> <span class="dv">3</span>)</span>
 <span id="cb16-4"><a href="#cb16-4"></a>y <span class="op">=</span> np.log(x)</span>
@@ -1040,7 +1082,7 @@ window.Quarto = {
 <span id="cb16-25"><a href="#cb16-25"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb16-26"><a href="#cb16-26"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> x</span>
 <span id="cb16-27"><a href="#cb16-27"></a>plt.plot(x, y)</span>
-<span id="cb16-28"><a href="#cb16-28"></a>plt.title(<span class="st">'y = 1 / x'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-28"><a href="#cb16-28"></a>plt.title(<span class="st">'y = 1 / x'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1118,13 +1160,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

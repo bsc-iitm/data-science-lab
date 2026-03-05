@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../week-1/pandas/pandas_introduction.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -301,7 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -515,17 +517,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -562,11 +604,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -651,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -744,7 +786,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>#Creating a Pivot Table in Pandas</p>
 <p>In pandas, you can create a pivot table using the pivot_table() function. Let’s go through the basic syntax:</p>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="aeedece6-68ff-40b5-fdd3-f1fabc6d71de">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="co"># Create a DataFrame</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>data <span class="op">=</span> {</span>
@@ -756,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10"></a></span>
 <span id="cb1-11"><a href="#cb1-11"></a><span class="co"># Create a pivot table</span></span>
 <span id="cb1-12"><a href="#cb1-12"></a>pivot_table <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'Value'</span>, index<span class="op">=</span><span class="st">'Date'</span>, columns<span class="op">=</span><span class="st">'Category'</span>, aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="bu">print</span>(pivot_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="bu">print</span>(pivot_table)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Category     A   B
 Date              
@@ -767,23 +809,23 @@ Date
 <p>In this example:</p>
 <p>values: The column to aggregate. index: The column to use as the row index in the pivot table. columns: The column to use as the column index in the pivot table. aggfunc: The aggregation function to apply when multiple values are present for the same index/column pair. It defaults to ‘mean’.</p>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>data <span class="op">=</span> {}</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>data <span class="op">=</span> {}</span>
 <span id="cb3-2"><a href="#cb3-2"></a>np.random.seed(<span class="dv">2</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="bu">chr</span>(x) <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">65</span>,<span class="dv">70</span>)]:</span>
 <span id="cb3-4"><a href="#cb3-4"></a>  data[<span class="st">'col'</span><span class="op">+</span>i] <span class="op">=</span> np.random.randint(<span class="dv">1</span>,<span class="dv">100</span>,<span class="dv">10</span>)</span>
 <span id="cb3-5"><a href="#cb3-5"></a>data[<span class="st">'orderID'</span>] <span class="op">=</span> np.random.choice([<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>], <span class="dv">10</span>)</span>
 <span id="cb3-6"><a href="#cb3-6"></a>data[<span class="st">'product'</span>] <span class="op">=</span> np.random.choice([<span class="st">'Product1'</span>, <span class="st">'Product2'</span>, <span class="st">'Product3'</span>], <span class="dv">10</span>)</span>
 <span id="cb3-7"><a href="#cb3-7"></a>data[<span class="st">'customer'</span>] <span class="op">=</span> np.random.choice([<span class="st">'Customer1'</span>, <span class="st">'Customer2'</span>, <span class="st">'Customer3'</span>, <span class="st">'Customer4'</span>], <span class="dv">10</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a>df <span class="op">=</span> pd.DataFrame(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a>df <span class="op">=</span> pd.DataFrame(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:363}}" data-outputid="748e7754-e065-4c98-f476-5d5d9e7ce9bd">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div id="df-9b09df9d-ee31-4a3e-a900-f398fd247d0d" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -799,7 +841,7 @@ Date
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>41</td>
 <td>96</td>
 <td>68</td>
@@ -810,7 +852,7 @@ Date
 <td>Customer3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>16</td>
 <td>76</td>
 <td>5</td>
@@ -821,7 +863,7 @@ Date
 <td>Customer1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>73</td>
 <td>86</td>
 <td>43</td>
@@ -832,7 +874,7 @@ Date
 <td>Customer1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>23</td>
 <td>48</td>
 <td>52</td>
@@ -843,7 +885,7 @@ Date
 <td>Customer3</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>44</td>
 <td>64</td>
 <td>39</td>
@@ -854,7 +896,7 @@ Date
 <td>Customer3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
+<th data-quarto-table-cell-role="th">5</th>
 <td>83</td>
 <td>32</td>
 <td>34</td>
@@ -865,7 +907,7 @@ Date
 <td>Customer1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
+<th data-quarto-table-cell-role="th">6</th>
 <td>76</td>
 <td>91</td>
 <td>59</td>
@@ -876,7 +918,7 @@ Date
 <td>Customer3</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
+<th data-quarto-table-cell-role="th">7</th>
 <td>8</td>
 <td>21</td>
 <td>68</td>
@@ -887,7 +929,7 @@ Date
 <td>Customer1</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
+<th data-quarto-table-cell-role="th">8</th>
 <td>35</td>
 <td>38</td>
 <td>70</td>
@@ -898,7 +940,7 @@ Date
 <td>Customer2</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
+<th data-quarto-table-cell-role="th">9</th>
 <td>50</td>
 <td>40</td>
 <td>89</td>
@@ -1118,8 +1160,8 @@ Date
 </div>
 </div>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="6b69e331-8640-408f-fbb7-46cfda4a9acb">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>pivot_table2 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span><span class="st">'orderID'</span>, columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span>np.mean)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(pivot_table2.to_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>pivot_table2 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span><span class="st">'orderID'</span>, columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span>np.mean)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(pivot_table2.to_string())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>product  Product1  Product2  Product3
 orderID                              
@@ -1131,14 +1173,14 @@ C            35.0      16.0      76.0</code></pre>
 <p>#Operations with Pivot Tables</p>
 <p>Aggregation Functions You can specify different aggregation functions when creating a pivot table. Common aggregation functions include ‘sum’, ‘mean’, ‘count’, ‘max’, and ‘min’. For example:</p>
 <div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:175}}" data-outputid="95d2c51c-ce4a-4fac-944b-159b1202a906">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>pivot_table3 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span><span class="st">'orderID'</span>, columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>pivot_table3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>pivot_table3 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span><span class="st">'orderID'</span>, columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>pivot_table3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div id="df-6d0d94c5-af06-4d25-9034-ac7fe9d47860" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">product</th>
@@ -1155,19 +1197,19 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">A</td>
+<th data-quarto-table-cell-role="th">A</th>
 <td>44.0</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
+<th data-quarto-table-cell-role="th">B</th>
 <td>NaN</td>
 <td>73.0</td>
 <td>83.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">C</td>
+<th data-quarto-table-cell-role="th">C</th>
 <td>35.0</td>
 <td>16.0</td>
 <td>76.0</td>
@@ -1382,14 +1424,14 @@ C            35.0      16.0      76.0</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="78a19013-e1a5-40e9-fd6a-f6b76b4651a8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>pivot_table <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'Value'</span>, index<span class="op">=</span><span class="st">'Date'</span>, columns<span class="op">=</span><span class="st">'Category'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2"></a>pivot_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>pivot_table <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'Value'</span>, index<span class="op">=</span><span class="st">'Date'</span>, columns<span class="op">=</span><span class="st">'Category'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>pivot_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div id="df-908f933c-0e0c-4cbc-af89-1611bbf293d3" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Category</th>
@@ -1404,12 +1446,12 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2022-01-01</td>
+<th data-quarto-table-cell-role="th">2022-01-01</th>
 <td>10</td>
 <td>20</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2022-01-02</td>
+<th data-quarto-table-cell-role="th">2022-01-02</th>
 <td>30</td>
 <td>40</td>
 </tr>
@@ -1624,14 +1666,14 @@ C            35.0      16.0      76.0</code></pre>
 </div>
 <p>#Multi-level Pivot Tables #You can create pivot tables with hierarchical row and column indexes:</p>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:206}}" data-outputid="79c1123b-c014-428f-a536-3e7b80897d84">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>pivot_table <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'Value'</span>, index<span class="op">=</span>[<span class="st">'Date'</span>, <span class="st">'Category'</span>], aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>pivot_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>pivot_table <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'Value'</span>, index<span class="op">=</span>[<span class="st">'Date'</span>, <span class="st">'Category'</span>], aggfunc<span class="op">=</span><span class="st">'sum'</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>pivot_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div id="df-d54615ce-d069-45c5-a2ec-b84e6019dba4" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1646,21 +1688,21 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">2022-01-01</td>
-<td data-quarto-table-cell-role="th">A</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">2022-01-01</th>
+<th data-quarto-table-cell-role="th">A</th>
 <td>10</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
+<th data-quarto-table-cell-role="th">B</th>
 <td>20</td>
 </tr>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">2022-01-02</td>
-<td data-quarto-table-cell-role="th">A</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">2022-01-02</th>
+<th data-quarto-table-cell-role="th">A</th>
 <td>30</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
+<th data-quarto-table-cell-role="th">B</th>
 <td>40</td>
 </tr>
 </tbody>
@@ -1873,14 +1915,14 @@ C            35.0      16.0      76.0</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="6358c9e3-4db6-4252-8581-167b632a91fc">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>pivot_table4 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span>[<span class="st">'orderID'</span>,<span class="st">'customer'</span>], columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>pivot_table4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>pivot_table4 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span>[<span class="st">'orderID'</span>,<span class="st">'customer'</span>], columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>pivot_table4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div id="df-dcda1dfe-6737-4546-be8b-efc2c9533d0d" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1899,46 +1941,46 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">A</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">A</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>8.0</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>44.0</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">B</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">B</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>NaN</td>
 <td>73.0</td>
 <td>83.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>NaN</td>
 <td>41.0</td>
 <td>50.0</td>
 </tr>
 <tr class="odd">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">C</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="3" data-quarto-table-cell-role="th" data-valign="top">C</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>NaN</td>
 <td>16.0</td>
 <td>NaN</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer2</td>
+<th data-quarto-table-cell-role="th">Customer2</th>
 <td>35.0</td>
 <td>NaN</td>
 <td>NaN</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>NaN</td>
 <td>NaN</td>
 <td>76.0</td>
@@ -2154,16 +2196,16 @@ C            35.0      16.0      76.0</code></pre>
 </div>
 <p>##Handling Missing Values. You can specify how missing values are handled using the fill_value parameter:</p>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:175}}" data-outputid="2aac2f52-32f5-41d2-ca0b-0a7a6259a382">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Pivot table with fill value for missing combinations</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Pivot table with fill value for missing combinations</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a></span>
 <span id="cb11-3"><a href="#cb11-3"></a>pivot_table5 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span><span class="st">'orderID'</span>, columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span>np.mean, fill_value<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>pivot_table5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4"></a>pivot_table5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div id="df-35c7fbcc-0c90-4c8a-ada2-b8bec6357699" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">product</th>
@@ -2180,19 +2222,19 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">A</td>
+<th data-quarto-table-cell-role="th">A</th>
 <td>26</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">B</td>
+<th data-quarto-table-cell-role="th">B</th>
 <td>0</td>
 <td>57</td>
 <td>52</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">C</td>
+<th data-quarto-table-cell-role="th">C</th>
 <td>35</td>
 <td>16</td>
 <td>76</td>
@@ -2407,14 +2449,14 @@ C            35.0      16.0      76.0</code></pre>
 </div>
 </div>
 <div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:300}}" data-outputid="cadf8fb7-c366-4dfc-fe1c-9774753ac9a3">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>pivot_table6 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span>[<span class="st">'orderID'</span>,<span class="st">'customer'</span>], columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>, fill_value <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a>pivot_table6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>pivot_table6 <span class="op">=</span> df.pivot_table(values<span class="op">=</span><span class="st">'colA'</span>, index<span class="op">=</span>[<span class="st">'orderID'</span>,<span class="st">'customer'</span>], columns<span class="op">=</span><span class="st">'product'</span>, aggfunc<span class="op">=</span><span class="st">'max'</span>, fill_value <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>pivot_table6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div id="df-772146f2-22f1-4559-929e-add7186dd134" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2433,46 +2475,46 @@ C            35.0      16.0      76.0</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">A</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">A</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>8</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>44</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td rowspan="2" data-quarto-table-cell-role="th" data-valign="top">B</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="2" data-quarto-table-cell-role="th" data-valign="top">B</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>0</td>
 <td>73</td>
 <td>83</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>0</td>
 <td>41</td>
 <td>50</td>
 </tr>
 <tr class="odd">
-<td rowspan="3" data-quarto-table-cell-role="th" data-valign="top">C</td>
-<td data-quarto-table-cell-role="th">Customer1</td>
+<th rowspan="3" data-quarto-table-cell-role="th" data-valign="top">C</th>
+<th data-quarto-table-cell-role="th">Customer1</th>
 <td>0</td>
 <td>16</td>
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Customer2</td>
+<th data-quarto-table-cell-role="th">Customer2</th>
 <td>35</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Customer3</td>
+<th data-quarto-table-cell-role="th">Customer3</th>
 <td>0</td>
 <td>0</td>
 <td>76</td>
@@ -2754,13 +2796,14 @@ C            35.0      16.0      76.0</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -298,7 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -512,17 +514,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -559,11 +601,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -648,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -677,11 +719,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -760,7 +802,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Be more prone to overfitting.</p>
 <p>Require more computational resources.</p>
 <div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="2259c1dc-463e-4d3a-b9c3-7f79fe451f1a" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torchvision</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> torchvision.transforms <span class="im">as</span> transforms</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2 <span class="co"># Import v2 for modern transforms</span></span>
@@ -776,7 +818,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
 <span id="cb1-15"><a href="#cb1-15"></a></span>
 <span id="cb1-16"><a href="#cb1-16"></a><span class="bu">print</span>(<span class="ss">f"PyTorch Version: </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow Version: </span><span class="sc">{</span>tf<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="bu">print</span>(<span class="ss">f"TensorFlow Version: </span><span class="sc">{</span>tf<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PyTorch Version: 2.6.0+cu124
 TensorFlow Version: 2.18.0</code></pre>
@@ -784,12 +826,12 @@ TensorFlow Version: 2.18.0</code></pre>
 </div>
 <p>Data Acquisition (Example Image) For demonstration purposes, we’ll download a sample image. In a real scenario, you’d typically load a dataset of images.</p>
 <div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="c1289758-8a86-49a9-87d8-9c1e9ef3532d" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#Reading an image</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#Reading an image</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>original_image <span class="op">=</span> data.astronaut()  <span class="co"># Sample RGB image from skimage</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>plt.title(<span class="st">"original Image"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4"></a>plt.imshow(original_image)</span>
 <span id="cb3-5"><a href="#cb3-5"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb3-6"><a href="#cb3-6"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a href="#cb3-6"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -799,21 +841,21 @@ TensorFlow Version: 2.18.0</code></pre>
 </div>
 </div>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="8adffa58-aa96-4ff1-b167-a454f83e1c6b" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#checking shape</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">#checking shape</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>image <span class="op">=</span> original_image</span>
-<span id="cb4-3"><a href="#cb4-3"></a>image.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a>image.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
 <pre><code>(512, 512, 3)</code></pre>
 </div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="a9be6549-fbf1-4a29-d3a3-aa0792a07de1" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># preserving the height of the image and reshaping the width  and channel values</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># preserving the height of the image and reshaping the width  and channel values</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>reshaped_image <span class="op">=</span> image.reshape(image.shape[<span class="dv">0</span>],<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="bu">print</span>(reshaped_image.shape)</span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
 <span id="cb6-5"><a href="#cb6-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">12</span>))</span>
 <span id="cb6-6"><a href="#cb6-6"></a>plt.title(<span class="st">"Reshaped Image"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7"></a>plt.imshow(reshaped_image)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7"></a>plt.imshow(reshaped_image)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(512, 1536)</code></pre>
 </div>
@@ -826,13 +868,13 @@ TensorFlow Version: 2.18.0</code></pre>
 </div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:428}}" data-outputid="e8ed4231-c6a5-47de-a4a3-ee5c852ba931" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># resize the original image to 100 by 300</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># resize the original image to 100 by 300</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a>image_resized <span class="op">=</span> skimage.transform.resize(image,(<span class="dv">100</span>,<span class="dv">300</span>))</span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="bu">print</span>(image_resized.shape)</span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
 <span id="cb8-5"><a href="#cb8-5"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">12</span>))</span>
 <span id="cb8-6"><a href="#cb8-6"></a>plt.title(<span class="st">"Resized Image"</span>)</span>
-<span id="cb8-7"><a href="#cb8-7"></a>plt.imshow(image_resized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-7"><a href="#cb8-7"></a>plt.imshow(image_resized)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(100, 300, 3)</code></pre>
 </div>
@@ -845,7 +887,7 @@ TensorFlow Version: 2.18.0</code></pre>
 </div>
 </div>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:580}}" data-outputid="2bbb91ef-0812-4db9-f363-58a4a9a6e49b" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">### Reversing color order from RGB to BGR</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">### Reversing color order from RGB to BGR</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co"># Used in certain frameworks such as OpenCV</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
 <span id="cb10-4"><a href="#cb10-4"></a>image_BGR <span class="op">=</span> image[:,:,(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>)]</span>
@@ -853,7 +895,7 @@ TensorFlow Version: 2.18.0</code></pre>
 <span id="cb10-6"><a href="#cb10-6"></a></span>
 <span id="cb10-7"><a href="#cb10-7"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">6</span>))</span>
 <span id="cb10-8"><a href="#cb10-8"></a>plt.title(<span class="st">"BGR Image"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9"></a>plt.imshow(image_BGR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a href="#cb10-9"></a>plt.imshow(image_BGR)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(512, 512, 3)</code></pre>
 </div>
@@ -866,10 +908,10 @@ TensorFlow Version: 2.18.0</code></pre>
 </div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="2f11bfeb-0b49-42ba-90a9-a9cf1398a347" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">### Gray scale</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">### Gray scale</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co">## transfroming a color image to a gray image</span></span>
 <span id="cb12-3"><a href="#cb12-3"></a>image_gray <span class="op">=</span> skimage.color.rgb2gray(image)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>plt.imshow(image_gray, cmap <span class="op">=</span> <span class="st">'gray'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4"></a>plt.imshow(image_gray, cmap <span class="op">=</span> <span class="st">'gray'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -881,7 +923,7 @@ TensorFlow Version: 2.18.0</code></pre>
 <p>Image Preprocessing with PyTorch PyTorch’s torchvision.transforms module provides a rich set of common image transformations. These transformations can be chained together using transforms.Compose.</p>
 <p>Let’s assume our model expects input images of size 224x224, normalized to a specific mean and standard deviation.</p>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:480}}" data-outputid="a1304625-b010-4015-a8c2-90302992e331" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Convert PIL Image to PyTorch Tensor (CHW format)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># Convert PIL Image to PyTorch Tensor (CHW format)</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a>    <span class="co"># Why v2.ToImage() is needed: It's the recommended way in v2 to convert various input types</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>    <span class="co"># (like PIL Images, NumPy arrays) into a torch.Tensor. This also handles the dimension</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a>    <span class="co"># rearrangement to Channel-Height-Width (CHW) format, which is standard for PyTorch.</span></span>
@@ -962,7 +1004,7 @@ TensorFlow Version: 2.18.0</code></pre>
 <span id="cb13-79"><a href="#cb13-79"></a>plt.axis(<span class="st">'off'</span>)</span>
 <span id="cb13-80"><a href="#cb13-80"></a>plt.show()</span>
 <span id="cb13-81"><a href="#cb13-81"></a></span>
-<span id="cb13-82"><a href="#cb13-82"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-82"><a href="#cb13-82"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PyTorch preprocessed image shape: torch.Size([3, 224, 224])
 PyTorch preprocessed image min value: -2.1179039478302
@@ -978,7 +1020,7 @@ PyTorch preprocessed image max value: 2.6225709915161133</code></pre>
 </div>
 <p>Image Preprocessing with TensorFlow TensorFlow’s tf.image module provides a comprehensive set of functions for image manipulation. TensorFlow’s approach often involves applying these operations as part of the tf.data.Dataset pipeline for efficient data loading and preprocessing.</p>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:480}}" data-outputid="364445b4-1367-4aa6-df1c-81755c065e63" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Convert PIL image to TensorFlow tensor</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Convert PIL image to TensorFlow tensor</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>    <span class="co"># Why it's needed: TensorFlow operations work on tf.Tensor objects. This converts the image.</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a>    <span class="co"># We also cast to float32 as neural networks typically operate on floating-point numbers.</span></span>
 <span id="cb15-4"><a href="#cb15-4"></a>raw_tf_image <span class="op">=</span> tf.convert_to_tensor(np.array(original_image), dtype<span class="op">=</span>tf.float32)</span>
@@ -1015,7 +1057,7 @@ PyTorch preprocessed image max value: 2.6225709915161133</code></pre>
 <span id="cb15-35"><a href="#cb15-35"></a>plt.imshow(preprocessed_tf_image.numpy()) <span class="co"># TensorFlow is H,W,C</span></span>
 <span id="cb15-36"><a href="#cb15-36"></a>plt.title(<span class="st">"TensorFlow Preprocessed (0-1 range)"</span>)</span>
 <span id="cb15-37"><a href="#cb15-37"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb15-38"><a href="#cb15-38"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-38"><a href="#cb15-38"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>TensorFlow preprocessed image shape: (224, 224, 3)
 TensorFlow preprocessed image min value: 0.0
@@ -1039,7 +1081,7 @@ TensorFlow preprocessed image max value: 1.0</code></pre>
 # For demonstration, we'll apply the same transforms defined above as they include augmentation
 # If you wanted more specific augmentations, you'd add more v2 transforms here.</code></pre>
 <div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:443}}" data-outputid="0fc039bc-2fba-40f6-8246-23417b41f039" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- PyTorch Data Augmentation Examples (using v2) ---"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- PyTorch Data Augmentation Examples (using v2) ---"</span>)</span>
 <span id="cb18-2"><a href="#cb18-2"></a></span>
 <span id="cb18-3"><a href="#cb18-3"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
@@ -1053,7 +1095,7 @@ TensorFlow preprocessed image max value: 1.0</code></pre>
 <span id="cb18-12"><a href="#cb18-12"></a>    plt.title(<span class="ss">f"Augmented </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb18-13"><a href="#cb18-13"></a>    plt.axis(<span class="st">'off'</span>)</span>
 <span id="cb18-14"><a href="#cb18-14"></a>plt.suptitle(<span class="st">"PyTorch Augmented Images (v2 Transforms)"</span>)</span>
-<span id="cb18-15"><a href="#cb18-15"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-15"><a href="#cb18-15"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 --- PyTorch Data Augmentation Examples (using v2) ---</code></pre>
@@ -1077,7 +1119,7 @@ TensorFlow preprocessed image max value: 1.0</code></pre>
 # Convert original image to tensor (without adding batch dim here, will add inside the function)
 raw_tf_image = tf.convert_to_tensor(np.array(original_image), dtype=tf.float32)</code></pre>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:418}}" data-outputid="e2981012-11d2-4c7d-f40c-f3f6fe2042df" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> tensorflow_augment(image_tensor):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> tensorflow_augment(image_tensor):</span>
 <span id="cb21-2"><a href="#cb21-2"></a>    <span class="co"># Why it's needed: Similar to PyTorch, to prevent overfitting and improve generalization.</span></span>
 <span id="cb21-3"><a href="#cb21-3"></a>      <span class="co"># These operations are applied randomly during training.</span></span>
 <span id="cb21-4"><a href="#cb21-4"></a></span>
@@ -1115,7 +1157,7 @@ raw_tf_image = tf.convert_to_tensor(np.array(original_image), dtype=tf.float32)<
 <span id="cb21-36"><a href="#cb21-36"></a>      plt.title(<span class="ss">f"Augmented </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb21-37"><a href="#cb21-37"></a>      plt.axis(<span class="st">'off'</span>)</span>
 <span id="cb21-38"><a href="#cb21-38"></a>plt.suptitle(<span class="st">"TensorFlow Augmented Images"</span>)</span>
-<span id="cb21-39"><a href="#cb21-39"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-39"><a href="#cb21-39"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-0.0009468228..1.0005664].
 WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-0.06451446..1.071233].
@@ -1130,14 +1172,14 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 </div>
 </div>
 <div id="cell-23" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#Using PyTorch</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#Using PyTorch</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="co">#Most transformations accept both PIL images and tensor inputs.</span></span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="co"># Both CPU and CUDA tensors are supported.</span></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="co">#The result of both backends (PIL or Tensors) should be very close.</span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="co">#In general, we recommend relying on the tensor backend for performance.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="co">#In general, we recommend relying on the tensor backend for performance.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:406}}" data-outputid="62a85998-f0ac-4b94-b9ed-dc798728ff93" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> torch</span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2</span>
 <span id="cb24-3"><a href="#cb24-3"></a></span>
 <span id="cb24-4"><a href="#cb24-4"></a></span>
@@ -1160,7 +1202,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <span id="cb24-21"><a href="#cb24-21"></a></span>
 <span id="cb24-22"><a href="#cb24-22"></a>plt.imshow(img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())  <span class="co"># Convert to HWC for display</span></span>
 <span id="cb24-23"><a href="#cb24-23"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb24-24"><a href="#cb24-24"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-24"><a href="#cb24-24"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1175,7 +1217,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <p>Use torch.uint8 dtype, especially for resizing</p>
 <p>Resize with bilinear or bicubic mode</p>
 <div id="cell-27" class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
 <span id="cb25-2"><a href="#cb25-2"></a>    v2.ToImage(),  <span class="co"># Convert to tensor, only needed if you had a PIL image</span></span>
 <span id="cb25-3"><a href="#cb25-3"></a>    v2.ToDtype(torch.uint8, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># optional, most input are already uint8 at this point</span></span>
 <span id="cb25-4"><a href="#cb25-4"></a>    <span class="co"># ...</span></span>
@@ -1183,7 +1225,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <span id="cb25-6"><a href="#cb25-6"></a>    <span class="co"># ...</span></span>
 <span id="cb25-7"><a href="#cb25-7"></a>    v2.ToDtype(torch.float32, scale<span class="op">=</span><span class="va">True</span>),  <span class="co"># Normalize expects float input</span></span>
 <span id="cb25-8"><a href="#cb25-8"></a>    v2.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]),</span>
-<span id="cb25-9"><a href="#cb25-9"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-9"><a href="#cb25-9"></a>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The above should give you the best performance in a typical training environment that relies on the torch.utils.data.DataLoader.</p>
 <p>v2.Resize(size[, interpolation, max_size, …]) Resize the input to the given size.</p>
@@ -1197,7 +1239,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <p>v2.FiveCrop(size) Crop the image or video into four corners and the central crop</p>
 <p>v2.TenCrop(size[, vertical_flip]) Crop the image or video into four corners and the central crop plus the flipped version of these (horizontal flipping is used by default).</p>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:406}}" data-outputid="6c2332f5-f59a-45ae-ceb5-1089c3f3359e">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>transforms <span class="op">=</span> v2.Compose([</span>
 <span id="cb26-2"><a href="#cb26-2"></a>    v2.Resize(<span class="dv">100</span>),</span>
 <span id="cb26-3"><a href="#cb26-3"></a>    <span class="co">#v2.ToDtype(torch.uint8, scale=True),  # optional, most input are already uint8 at this point</span></span>
 <span id="cb26-4"><a href="#cb26-4"></a>    v2.CenterCrop(<span class="dv">256</span>),</span>
@@ -1216,7 +1258,7 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <span id="cb26-17"><a href="#cb26-17"></a></span>
 <span id="cb26-18"><a href="#cb26-18"></a>plt.imshow(img.permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy())  <span class="co"># Convert to HWC for display</span></span>
 <span id="cb26-19"><a href="#cb26-19"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb26-20"><a href="#cb26-20"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-20"><a href="#cb26-20"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1226,10 +1268,10 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 </div>
 </div>
 <div id="cell-31" class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">#transfrom in batches</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">#transfrom in batches</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-32" class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="im">import</span> torch</span>
 <span id="cb28-2"><a href="#cb28-2"></a><span class="im">import</span> torchvision</span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> v2</span>
 <span id="cb28-4"><a href="#cb28-4"></a></span>
@@ -1244,13 +1286,13 @@ WARNING:matplotlib.image:Clipping input data to the valid range for imshow with 
 <span id="cb28-13"><a href="#cb28-13"></a>])</span>
 <span id="cb28-14"><a href="#cb28-14"></a></span>
 <span id="cb28-15"><a href="#cb28-15"></a><span class="co"># Load CIFAR-10 dataset with the transform</span></span>
-<span id="cb28-16"><a href="#cb28-16"></a>dataset <span class="op">=</span> torchvision.datasets.CIFAR10(root<span class="op">=</span><span class="st">'./Data/Train'</span>, download<span class="op">=</span><span class="va">True</span>, transform<span class="op">=</span>transforms)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-16"><a href="#cb28-16"></a>dataset <span class="op">=</span> torchvision.datasets.CIFAR10(root<span class="op">=</span><span class="st">'./Data/Train'</span>, download<span class="op">=</span><span class="va">True</span>, transform<span class="op">=</span>transforms)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>ToTensor() or ToImage() converts a PIL image or NumPy array into a PyTorch tensor.</p>
 <p>All other v2 transforms like Resize, Crop, Flip, etc., expect tensor input.</p>
 <p>So ToTensor() must come before those transforms.</p>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ec54e56c-d6f0-488b-c947-f843c3d51a0e">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dataset</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="67">
 <pre><code>Dataset CIFAR10
     Number of datapoints: 50000
@@ -1268,7 +1310,7 @@ Transform: Compose(
 </div>
 </div>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:465}}" data-outputid="6b6c07d4-139c-4668-e318-674cfb21a6b8">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataloader <span class="op">=</span> torch.utils.data.DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">16</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">2</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>dataloader <span class="op">=</span> torch.utils.data.DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">16</span>, shuffle<span class="op">=</span><span class="va">True</span>, num_workers<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb31-2"><a href="#cb31-2"></a></span>
 <span id="cb31-3"><a href="#cb31-3"></a><span class="co"># get a batch</span></span>
 <span id="cb31-4"><a href="#cb31-4"></a>image_batch, labels_batch <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dataloader))</span>
@@ -1277,7 +1319,7 @@ Transform: Compose(
 <span id="cb31-7"><a href="#cb31-7"></a>plt.imshow(image_batch[<span class="dv">0</span>].permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))  <span class="co"># Convert CHW to HWC</span></span>
 <span id="cb31-8"><a href="#cb31-8"></a>plt.title(<span class="ss">f"Label: </span><span class="sc">{</span>labels_batch[<span class="dv">0</span>]<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb31-9"><a href="#cb31-9"></a>plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb31-10"><a href="#cb31-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb31-10"><a href="#cb31-10"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-2.0151556..1.7457986].</code></pre>
 </div>
@@ -1290,40 +1332,40 @@ Transform: Compose(
 </div>
 </div>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e75f3b98-47d8-467b-d430-42975b15fbd7">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">print</span>(image_batch.shape, labels_batch.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">print</span>(image_batch.shape, labels_batch.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>torch.Size([16, 3, 224, 224]) torch.Size([16])</code></pre>
 </div>
 </div>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="dc272507-435c-46a0-f3d9-1e021606dfb9">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>labels_batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>labels_batch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>tensor([4, 7, 9, 1, 2, 7, 9, 7, 2, 0, 8, 9, 6, 3, 6, 3])</code></pre>
 </div>
 </div>
 <p>each image is associated with a label there are 10 categories of images represented by numeric values (from 0 to 9)</p>
 <div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e1c289b8-56e4-470a-894f-ee3fb5577dc6">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>img <span class="op">=</span> torchvision.utils.make_grid(image_batch)</span>
-<span id="cb37-2"><a href="#cb37-2"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>img <span class="op">=</span> torchvision.utils.make_grid(image_batch)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>img.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>torch.Size([3, 454, 1810])</code></pre>
 </div>
 </div>
 <p>we see above the channel (3) is in first dimension</p>
 <div id="cell-41" class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>img <span class="op">=</span> np.transpose(img, (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>img <span class="op">=</span> np.transpose(img, (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="43446b9b-0bb3-48f6-fe1c-41058dd54da3">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>img.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>img.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
 <pre><code>torch.Size([454, 1810, 3])</code></pre>
 </div>
 </div>
 <div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:346}}" data-outputid="78b00009-fafb-4cfa-f44a-bb6f90c5a9aa">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">10</span>))</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">10</span>))</span>
 <span id="cb42-2"><a href="#cb42-2"></a>plt.imshow(img)</span>
 <span id="cb42-3"><a href="#cb42-3"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb42-4"><a href="#cb42-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-4"><a href="#cb42-4"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:matplotlib.image:Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers). Got range [-2.117904..2.64].</code></pre>
 </div>
@@ -1338,7 +1380,7 @@ Transform: Compose(
 <section id="normalizing-the-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="normalizing-the-dataset">Normalizing the dataset</h2>
 <div id="cell-45" class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># mean and std for the entire data set</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># mean and std for the entire data set</span></span>
 <span id="cb44-2"><a href="#cb44-2"></a>data_mean <span class="op">=</span>[]</span>
 <span id="cb44-3"><a href="#cb44-3"></a>data_std <span class="op">=</span> []</span>
 <span id="cb44-4"><a href="#cb44-4"></a></span>
@@ -1352,36 +1394,36 @@ Transform: Compose(
 <span id="cb44-12"><a href="#cb44-12"></a></span>
 <span id="cb44-13"><a href="#cb44-13"></a>    <span class="co">#apped to the list</span></span>
 <span id="cb44-14"><a href="#cb44-14"></a>    data_mean.append(batch_mean)</span>
-<span id="cb44-15"><a href="#cb44-15"></a>    data_std.append(batch_std)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-15"><a href="#cb44-15"></a>    data_std.append(batch_std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b8d967e8-14de-4e91-eb79-a358e9421355">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>data_mean <span class="op">=</span>np.array(data_mean)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>data_mean <span class="op">=</span>np.array(data_mean)</span>
 <span id="cb45-2"><a href="#cb45-2"></a>data_std <span class="op">=</span> np.array(data_std)</span>
 <span id="cb45-3"><a href="#cb45-3"></a></span>
-<span id="cb45-4"><a href="#cb45-4"></a>data_mean.shape, data_std.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-4"><a href="#cb45-4"></a>data_mean.shape, data_std.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 <pre><code>((3125, 3), (3125, 3))</code></pre>
 </div>
 </div>
 <div id="cell-47" class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># average of mean and std acros each batch</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># average of mean and std acros each batch</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a></span>
 <span id="cb47-3"><a href="#cb47-3"></a>data_mean <span class="op">=</span> data_mean.mean(axis <span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb47-4"><a href="#cb47-4"></a>data_std  <span class="op">=</span> data_std.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb47-5"><a href="#cb47-5"></a></span>
 <span id="cb47-6"><a href="#cb47-6"></a><span class="bu">print</span>(data_mean)</span>
-<span id="cb47-7"><a href="#cb47-7"></a><span class="bu">print</span>(data_std)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-7"><a href="#cb47-7"></a><span class="bu">print</span>(data_std)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-48" class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">def</span> unnormalize(img_tensor, mean, std):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">def</span> unnormalize(img_tensor, mean, std):</span>
 <span id="cb48-2"><a href="#cb48-2"></a>    <span class="co">"""Unnormalize a tensor image using mean and std, returns a numpy image in HWC format."""</span></span>
 <span id="cb48-3"><a href="#cb48-3"></a>    img <span class="op">=</span> img_tensor.clone()</span>
 <span id="cb48-4"><a href="#cb48-4"></a>    <span class="cf">for</span> t, m, s <span class="kw">in</span> <span class="bu">zip</span>(img, mean, std):</span>
 <span id="cb48-5"><a href="#cb48-5"></a>        t.mul_(s).add_(m)</span>
-<span id="cb48-6"><a href="#cb48-6"></a>    <span class="cf">return</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb48-6"><a href="#cb48-6"></a>    <span class="cf">return</span> img</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:309}}" data-outputid="94ea22eb-314e-406d-eebc-5e26e6a9379c">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co">#applying transforms on the dataset</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co">#applying transforms on the dataset</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a>transform <span class="op">=</span> v2.Compose([</span>
 <span id="cb49-3"><a href="#cb49-3"></a>    v2.ToImage(),  <span class="co"># Ensures input is TensorImage (for v2), replaces ToTensor()</span></span>
 <span id="cb49-4"><a href="#cb49-4"></a>    v2.Resize(<span class="dv">256</span>),  <span class="co"># Resize to a size &gt;= crop size</span></span>
@@ -1416,7 +1458,7 @@ Transform: Compose(
 <span id="cb49-33"><a href="#cb49-33"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">10</span>))</span>
 <span id="cb49-34"><a href="#cb49-34"></a>plt.imshow(img)</span>
 <span id="cb49-35"><a href="#cb49-35"></a>plt.axis(<span class="st">'off'</span>)</span>
-<span id="cb49-36"><a href="#cb49-36"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-36"><a href="#cb49-36"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1428,7 +1470,7 @@ Transform: Compose(
 <p>Reference : https://docs.pytorch.org/vision/main/transforms.html</p>
 <p>Preprocessing using Tensorflow</p>
 <div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="5a5e743a-35b5-4649-da0e-c89fe0dcf18f">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf</span>
 <span id="cb50-2"><a href="#cb50-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb50-3"><a href="#cb50-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb50-4"><a href="#cb50-4"></a></span>
@@ -1460,7 +1502,7 @@ Transform: Compose(
 <span id="cb50-30"><a href="#cb50-30"></a>train_ds <span class="op">=</span> tf.data.Dataset.from_tensor_slices((x_train, y_train))</span>
 <span id="cb50-31"><a href="#cb50-31"></a>train_ds <span class="op">=</span> train_ds.shuffle(buffer_size<span class="op">=</span><span class="dv">1000</span>)</span>
 <span id="cb50-32"><a href="#cb50-32"></a>train_ds <span class="op">=</span> train_ds.<span class="bu">map</span>(preprocess_and_augment, num_parallel_calls<span class="op">=</span>AUTOTUNE)</span>
-<span id="cb50-33"><a href="#cb50-33"></a>train_ds <span class="op">=</span> train_ds.batch(batch_size).prefetch(AUTOTUNE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-33"><a href="#cb50-33"></a>train_ds <span class="op">=</span> train_ds.batch(batch_size).prefetch(AUTOTUNE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Downloading data from https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
@@ -1474,7 +1516,7 @@ Training data shape: (50000, 32, 32, 3)
 </div>
 <p>Visualization of One Batch (Unnormalized)</p>
 <div id="cell-54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:559}}" data-outputid="f8d546fc-4281-4140-8ad9-5800875e12ca">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Unnormalize function for display</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="co"># Unnormalize function for display</span></span>
 <span id="cb51-2"><a href="#cb51-2"></a><span class="kw">def</span> unnormalize(image_batch):</span>
 <span id="cb51-3"><a href="#cb51-3"></a>    <span class="cf">return</span> tf.clip_by_value(image_batch <span class="op">*</span> data_std <span class="op">+</span> data_mean, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb51-4"><a href="#cb51-4"></a></span>
@@ -1488,7 +1530,7 @@ Training data shape: (50000, 32, 32, 3)
 <span id="cb51-12"><a href="#cb51-12"></a>        plt.title(<span class="ss">f"Label: </span><span class="sc">{</span>labels[i]<span class="sc">.</span>numpy()[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb51-13"><a href="#cb51-13"></a>        plt.axis(<span class="st">'off'</span>)</span>
 <span id="cb51-14"><a href="#cb51-14"></a>    plt.suptitle(<span class="st">"Augmented CIFAR-10 Images"</span>)</span>
-<span id="cb51-15"><a href="#cb51-15"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb51-15"><a href="#cb51-15"></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1501,7 +1543,7 @@ Training data shape: (50000, 32, 32, 3)
 <p>Batches are created and prefetching is enabled for performance.</p>
 <p>Images are shown unnormalized for correct display.</p>
 <div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="9b941a9c-d028-4662-8da8-874fa5a060a1" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(<span class="st">"Conclusion"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(<span class="st">"Conclusion"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Conclusion</code></pre>
 </div>
@@ -1599,13 +1641,14 @@ Training data shape: (50000, 32, 32, 3)
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

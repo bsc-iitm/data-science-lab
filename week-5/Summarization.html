@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-5/Fine_tuning_hands-on.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -298,7 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -512,17 +514,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -559,11 +601,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -648,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -677,11 +719,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -736,40 +778,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div id="cell-0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="b00e24da-0d16-4913-8097-ec8561e9b492">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>pip install <span class="op">-</span>U datasets huggingface_hub fsspec aiohttp aiofiles transformers evaluate accelerate peft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>pip install <span class="op">-</span>U datasets huggingface_hub fsspec aiohttp aiofiles transformers evaluate accelerate peft</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="21ad1ac6-a9a9-4bf6-fe2b-1e9abcdc846c">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>pip install <span class="op">-</span>U bitsandbytes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>pip install <span class="op">-</span>U bitsandbytes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> torch</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">from</span> transformers <span class="im">import</span> AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline, TrainingArguments, Trainer</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="im">from</span> peft <span class="im">import</span> LoraConfig, PeftModel</span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="im">from</span> accelerate <span class="im">import</span> Accelerator</span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="im">import</span> evaluate</span>
 <span id="cb3-7"><a href="#cb3-7"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-3" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># from huggingface_hub import login</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># from huggingface_hub import login</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co"># token_API = ''</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># login(token=token_API)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co"># login(token=token_API)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
-<span id="cb5-2"><a href="#cb5-2"></a>my_secret_key <span class="op">=</span> userdata.get(<span class="st">'HF_TOKEN'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb5-2"><a href="#cb5-2"></a>my_secret_key <span class="op">=</span> userdata.get(<span class="st">'HF_TOKEN'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:305,&quot;referenced_widgets&quot;:[&quot;b8c487d3899d478094eafe45d0a24020&quot;,&quot;fa7e540e8cff490eba4d3176c7253b5c&quot;,&quot;44c789a0f5d049f8aa10f9e466468243&quot;,&quot;4ee2699b49de4b4593aa6bac908c09bb&quot;,&quot;c7c656d5a790448f8dfb10521da2ef2d&quot;,&quot;787a479d4c9a4586a98b53c0b8aef7b4&quot;,&quot;be2a6fe523f74f9c8207069e34e6b3b2&quot;,&quot;c016788032fe4516959d501a2ffc6ae9&quot;,&quot;d709588d4b6c42038dfdff6c6e79a8f8&quot;,&quot;de1a0bfa1a794f2d904c5fe1badfe3aa&quot;,&quot;d2c20998cc6f43699a31870fbedcd0e7&quot;,&quot;239a4df67813493b8e083fd89289add0&quot;,&quot;bb289d5ef4364dbbbf1b651b8bce504c&quot;,&quot;7a83761eae7349b895f2f4e17087c331&quot;,&quot;8ed79ccf417a4ab4ab15bb260e1b96d8&quot;,&quot;f7902547508a4fca95d988ea9410178f&quot;,&quot;a5bef30a8a5c4db5acae8697f3d90ba1&quot;,&quot;743650a52f994edbb59f65d953219d09&quot;,&quot;564a74bbba044ad5bfff75f4e0dd30e2&quot;,&quot;7678f1f37bda4944878d7022ba48c92e&quot;,&quot;6dcf4cf0a71d4ccbb2f0908e45b098ef&quot;,&quot;e7f5fd2cde1442df9f36b778ae58f2c5&quot;,&quot;9c3d4636bce94989aa94751be8dde9c9&quot;,&quot;25ce3b98e7db49b99b6408bb8388813d&quot;,&quot;043691253523411c9ce15ca6d927f33d&quot;,&quot;0b4c75805e6a485eb7775242ee89c2f7&quot;,&quot;e0ebf0ef5803487aacaee0b8074398ff&quot;,&quot;b8ebf18289bb4756b9390131c1277b0f&quot;,&quot;46a8ea91bde8480cbe9579cf88bc46c9&quot;,&quot;d3f4764efe7047e595dd57c229e40935&quot;,&quot;c9216b4ff51b49b6a9706340aacc82c9&quot;,&quot;6ae901544a4a43b58f220a82d38c29f8&quot;,&quot;1a7287b293244909a5fc530da1d9b24d&quot;,&quot;09e1789e01614288b03256d23d65aac7&quot;,&quot;f53ef8451ff04ae181475efe0360da8d&quot;,&quot;7cb07d6903f6411abe2fafe8c191e4aa&quot;,&quot;6cbe927faa564a2ab67b71fbfcdd6c42&quot;,&quot;c6523b7c85fc495888cb15a83ffedd05&quot;,&quot;4b4f68aa11ec4ff896d091e73de8ae72&quot;,&quot;ada54dff9d2e4d29a537df0ccefd1433&quot;,&quot;263f9d79f0c746eda32ec15d2135f4fc&quot;,&quot;6a8ea35d5e1745d9827f00a4e08bc963&quot;,&quot;31dcaa7f598e43fea684628bd0e78c33&quot;,&quot;7a4ce6e45cf44205b06176a1faad283e&quot;,&quot;650f68caba3f44529fdc7b0859379f1e&quot;,&quot;63154d3fb7564a918b486a9b364c25ff&quot;,&quot;67855909d4ae466db2effd61d7c4e7fe&quot;,&quot;7fa35aa868604259b5236d642a176e36&quot;,&quot;30906ca4afcf4fecb93eee3c07be52bb&quot;,&quot;4d44629d97cf4f6dad6fdf0e79fe9d2a&quot;,&quot;7096cb79476c43528f9f573af0fa2c40&quot;,&quot;786032499e6c47fa856855f940dafc29&quot;,&quot;22c7b8202ef146aca74a65176d0b3559&quot;,&quot;11b83f8a13e04eaeb9bde6174cea1056&quot;,&quot;7dadd63d661e4669a2795f7c0e146e27&quot;,&quot;394a6d04e3b44ccab18c9896eec1c221&quot;,&quot;1dce50a6d4554fd28e83090c08670c64&quot;,&quot;efef3b20af794991b5faec32eb63bd81&quot;,&quot;88775aeca18b45d1bd4c3f5f3e96a11f&quot;,&quot;d4948ec885d7469e9d6073889126159b&quot;,&quot;574c7e04426d494b8fa4bc4829b5b3c4&quot;,&quot;6028fd6ef85c44d89f4115ba7ab30317&quot;,&quot;ba24079ac30e4cd6bc002d319feb1a8e&quot;,&quot;32841d9c086646348f7b5cfb177290f7&quot;,&quot;0de48b85fbf84843afb6f69ee698994d&quot;,&quot;5fd2f07b179649a8888b17f3e3760048&quot;,&quot;8466aa9864fc44e78a08f097d99a9962&quot;,&quot;94c0c7171ec8410c803db3cf1dd38572&quot;,&quot;861fd17bf9c34ea28e4a304ca195642a&quot;,&quot;e505145e2fa547dfb42bb97615a99b79&quot;,&quot;82eb691d2cfd4d2aabb6e0cb611cc2f2&quot;,&quot;adf32921fe984cd2abf79eef60bd36db&quot;,&quot;ec3f1910b4a64c95be38d8b833880252&quot;,&quot;1447843103c342d0b4888af782d6ee7d&quot;,&quot;7bf440afa9304433be37842b164a4a01&quot;,&quot;c14ee34790674ab7a0a920bf1b087b93&quot;,&quot;f205eef22efc4da9bff4c13c784fea05&quot;,&quot;a519db99f383478489cc429e2ddb1fc8&quot;,&quot;a1c0bad9f0634755a4cbf5702cf4ef65&quot;,&quot;df33da0d284a44c4b8926bd1daa4832f&quot;,&quot;d2da66f788de4baeab41a5991338db55&quot;,&quot;88af998c4bc04405828b3cfa6f675508&quot;,&quot;e5122643d2064f34a2ad91a965b5150e&quot;,&quot;24a5452992be4b299ccf9de493039ce3&quot;,&quot;03c7b5878c7b414bbe5e56495b655bcc&quot;,&quot;a2eef05f0c9648ed8395227bdf7e05c7&quot;,&quot;1a83a89700b1438f8f4dc1ba2422c303&quot;,&quot;28cf37cfc6354b94a5665ebd5f2f3840&quot;,&quot;89d54354138743398505708b02086b2b&quot;,&quot;b74d7a1eda464daea4ddcbd1c30967ee&quot;,&quot;386d873a57e14cc89a45da30601e39f6&quot;,&quot;087a7e8eaaa845f4acddc00eb46ecccf&quot;,&quot;92866eb7fad443149c5280fdc686bcb9&quot;,&quot;8c393770736f4e9fb6b31a47f857d0ee&quot;,&quot;29c492c7189e4f2d9b0a75447e49ccf9&quot;,&quot;36a64971f0034025b9461820909994e6&quot;,&quot;b014cc59bbdb46d385d0882241962a4e&quot;,&quot;17ae92b3b06946f89372c6eb568844f4&quot;,&quot;cf2a7a8baca749e5bfaa5b1533997526&quot;]}}" data-outputid="21711166-cd65-42d1-db57-b104d4a2c135">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dataset_name <span class="op">=</span> <span class="st">"cnn_dailymail"</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>raw_datasets <span class="op">=</span> load_dataset(dataset_name, <span class="st">"3.0.0"</span>, split<span class="op">=</span><span class="st">"train[:10000]+validation[:2000]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dataset_name <span class="op">=</span> <span class="st">"cnn_dailymail"</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>raw_datasets <span class="op">=</span> load_dataset(dataset_name, <span class="st">"3.0.0"</span>, split<span class="op">=</span><span class="st">"train[:10000]+validation[:2000]"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="4820884d-b24d-40e4-f2e5-db94f6d3cc88">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>example <span class="op">=</span> raw_datasets[<span class="dv">0</span>]</span>
-<span id="cb7-2"><a href="#cb7-2"></a>example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>example <span class="op">=</span> raw_datasets[<span class="dv">0</span>]</span>
+<span id="cb7-2"><a href="#cb7-2"></a>example</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> format_prompt(article, summary):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> format_prompt(article, summary):</span>
 <span id="cb8-2"><a href="#cb8-2"></a>    prompt_template <span class="op">=</span> (</span>
 <span id="cb8-3"><a href="#cb8-3"></a>        <span class="st">"&lt;|begin_of_text|&gt;"</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>        <span class="st">"&lt;|start_header_id|&gt;system&lt;|end_header_id|&gt;</span><span class="ch">\n\n</span><span class="st">"</span></span>
@@ -781,13 +823,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-10"><a href="#cb8-10"></a>        <span class="st">"&lt;|eot_id|&gt;"</span></span>
 <span id="cb8-11"><a href="#cb8-11"></a>        <span class="st">"&lt;|start_header_id|&gt;assistant&lt;|end_header_id|&gt;</span><span class="ch">\n\n</span><span class="st">"</span></span>
 <span id="cb8-12"><a href="#cb8-12"></a>        <span class="st">"</span><span class="sc">{summary}</span><span class="st">&lt;|eot_id|&gt;"</span>)</span>
-<span id="cb8-13"><a href="#cb8-13"></a>    <span class="cf">return</span> prompt_template.<span class="bu">format</span>(article<span class="op">=</span>article, summary<span class="op">=</span>summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="cf">return</span> prompt_template.<span class="bu">format</span>(article<span class="op">=</span>article, summary<span class="op">=</span>summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:143}}" data-outputid="18f32920-52f6-4c63-84b8-40c69765ff58">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>format_prompt(example[<span class="st">'article'</span>], example[<span class="st">'highlights'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>format_prompt(example[<span class="st">'article'</span>], example[<span class="st">'highlights'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2"></a>model_id <span class="op">=</span> <span class="st">"meta-llama/Meta-Llama-3-8B-Instruct"</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
 <span id="cb10-4"><a href="#cb10-4"></a>bnb_config <span class="op">=</span> BitsAndBytesConfig(load_in_4bit<span class="op">=</span><span class="va">True</span>, bnb_4bit_quant_type<span class="op">=</span><span class="st">"nf4"</span>, bnb_4bit_compute_dtype<span class="op">=</span>torch.bfloat16, bnb_4bit_use_double_quant<span class="op">=</span><span class="va">True</span>)</span>
@@ -796,35 +838,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-7"><a href="#cb10-7"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(model_id)</span>
 <span id="cb10-8"><a href="#cb10-8"></a></span>
 <span id="cb10-9"><a href="#cb10-9"></a>tokenizer.pad_token <span class="op">=</span> tokenizer.eos_token</span>
-<span id="cb10-10"><a href="#cb10-10"></a>tokenizer.padding_side <span class="op">=</span> <span class="st">"right"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-10"><a href="#cb10-10"></a>tokenizer.padding_side <span class="op">=</span> <span class="st">"right"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:49,&quot;referenced_widgets&quot;:[&quot;6a57c13a2f4a4dcd8297741ffa25d807&quot;,&quot;9ae44c553f674295b4755c2b09163e12&quot;,&quot;bc949ad5c4b847f0a4706706c0603d8d&quot;,&quot;5812946662af4cd58cc9e5c060e44d00&quot;,&quot;0d4326a111384210853928e22c0e0e3b&quot;,&quot;8d6a3ade63e9495ab6051df8cb3509e1&quot;,&quot;57d8aba5ca3743ffb127814f2f1e89ef&quot;,&quot;cf51bceba4a34d0ea731841511ddae2d&quot;,&quot;d1d7bb68f4744f40bee3cb92eaf187ca&quot;,&quot;b4df2245a3f0430da899d28a483b9ddc&quot;,&quot;48d4e0c35f894c05bd99f732e79693e3&quot;]}}" data-outputid="1c2c96f8-b650-498f-a8ba-7c4a3c862a04">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> tokenize_function(example):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> tokenize_function(example):</span>
 <span id="cb11-2"><a href="#cb11-2"></a>    formatted_text <span class="op">=</span> format_prompt(example[<span class="st">"article"</span>], example[<span class="st">"highlights"</span>])</span>
 <span id="cb11-3"><a href="#cb11-3"></a>    tokenized_output <span class="op">=</span> tokenizer(formatted_text, truncation<span class="op">=</span><span class="va">True</span>, max_length<span class="op">=</span><span class="dv">8192</span>)</span>
 <span id="cb11-4"><a href="#cb11-4"></a>    <span class="cf">return</span> tokenized_output</span>
-<span id="cb11-5"><a href="#cb11-5"></a>tokenized_datasets <span class="op">=</span> raw_datasets.<span class="bu">map</span>(tokenize_function, batched<span class="op">=</span><span class="va">False</span>, remove_columns<span class="op">=</span>raw_datasets.column_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5"></a>tokenized_datasets <span class="op">=</span> raw_datasets.<span class="bu">map</span>(tokenize_function, batched<span class="op">=</span><span class="va">False</span>, remove_columns<span class="op">=</span>raw_datasets.column_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-11" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>processed_dataset_split <span class="op">=</span> tokenized_datasets.train_test_split(test_size<span class="op">=</span><span class="fl">0.1</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>processed_dataset_split <span class="op">=</span> tokenized_datasets.train_test_split(test_size<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>train_dataset <span class="op">=</span> processed_dataset_split[<span class="st">"train"</span>]</span>
-<span id="cb12-3"><a href="#cb12-3"></a>eval_dataset <span class="op">=</span> processed_dataset_split[<span class="st">"test"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3"></a>eval_dataset <span class="op">=</span> processed_dataset_split[<span class="st">"test"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(model_id, quantization_config<span class="op">=</span>bnb_config, device_map<span class="op">=</span><span class="st">"auto"</span>, trust_remote_code<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(model_id, quantization_config<span class="op">=</span>bnb_config, device_map<span class="op">=</span><span class="st">"auto"</span>, trust_remote_code<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="bu">print</span>(<span class="ss">f"Number of parameters: </span><span class="sc">{</span>model<span class="sc">.</span>num_parameters()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="bu">print</span>(<span class="ss">f"Number of parameters: </span><span class="sc">{</span>model<span class="sc">.</span>num_parameters()<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:341}}" data-outputid="6b764172-d7c2-42b7-e268-0c22cb7a4310">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>lora_config <span class="op">=</span> LoraConfig(r<span class="op">=</span><span class="dv">32</span>, lora_alpha<span class="op">=</span><span class="dv">64</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>lora_config <span class="op">=</span> LoraConfig(r<span class="op">=</span><span class="dv">32</span>, lora_alpha<span class="op">=</span><span class="dv">64</span>,</span>
 <span id="cb14-2"><a href="#cb14-2"></a>    target_modules<span class="op">=</span>[<span class="st">"q_proj"</span>, <span class="st">"k_proj"</span>, <span class="st">"v_proj"</span>, <span class="st">"o_proj"</span>, <span class="st">"gate_proj"</span>, <span class="st">"up_proj"</span>, <span class="st">"down_proj"</span>],</span>
 <span id="cb14-3"><a href="#cb14-3"></a>    lora_dropout<span class="op">=</span><span class="fl">0.05</span>, bias<span class="op">=</span><span class="st">"none"</span>, task_type<span class="op">=</span><span class="st">"CAUSAL_LM"</span>)</span>
 <span id="cb14-4"><a href="#cb14-4"></a></span>
 <span id="cb14-5"><a href="#cb14-5"></a></span>
-<span id="cb14-6"><a href="#cb14-6"></a>model.add_adapter(lora_config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6"></a>model.add_adapter(lora_config)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-14" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>training_args <span class="op">=</span> TrainingArguments(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>    output_dir<span class="op">=</span><span class="st">"./llama-summarization-ft"</span>,</span>
 <span id="cb15-3"><a href="#cb15-3"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb15-4"><a href="#cb15-4"></a>    gradient_accumulation_steps<span class="op">=</span><span class="dv">4</span>,</span>
@@ -837,10 +879,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-11"><a href="#cb15-11"></a>    eval_steps<span class="op">=</span><span class="dv">500</span>,</span>
 <span id="cb15-12"><a href="#cb15-12"></a>    eval_strategy<span class="op">=</span><span class="st">"steps"</span>,</span>
 <span id="cb15-13"><a href="#cb15-13"></a>    lr_scheduler_type<span class="op">=</span><span class="st">"cosine"</span>,</span>
-<span id="cb15-14"><a href="#cb15-14"></a>    load_best_model_at_end<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-14"><a href="#cb15-14"></a>    load_best_model_at_end<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:216}}" data-outputid="4884b622-15d0-49d0-8c75-6929cbd3b148">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>trainer <span class="op">=</span> Trainer(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>trainer <span class="op">=</span> Trainer(</span>
 <span id="cb16-2"><a href="#cb16-2"></a>    model<span class="op">=</span>model,</span>
 <span id="cb16-3"><a href="#cb16-3"></a>    train_dataset<span class="op">=</span>train_dataset,</span>
 <span id="cb16-4"><a href="#cb16-4"></a>    eval_dataset<span class="op">=</span>eval_dataset,</span>
@@ -852,19 +894,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-10"><a href="#cb16-10"></a>    packing<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb16-11"><a href="#cb16-11"></a>    formatting_func<span class="op">=</span><span class="kw">lambda</span> example: [format_prompt(example[<span class="st">"article"</span>], example[<span class="st">"highlights"</span>])])</span>
 <span id="cb16-12"><a href="#cb16-12"></a></span>
-<span id="cb16-13"><a href="#cb16-13"></a>trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-13"><a href="#cb16-13"></a>trainer.train()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-16" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Save the adapter</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Save the adapter</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a>output_dir <span class="op">=</span> <span class="st">"./llama3-70b-summarization-ft/final_adapter"</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>trainer.model.save_pretrained(output_dir)</span>
 <span id="cb17-4"><a href="#cb17-4"></a>tokenizer.save_pretrained(output_dir)</span>
 <span id="cb17-5"><a href="#cb17-5"></a></span>
 <span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-7"><a href="#cb17-7"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-17" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>base_model_for_inference <span class="op">=</span> AutoModelForCausalLM.from_pretrained(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>base_model_for_inference <span class="op">=</span> AutoModelForCausalLM.from_pretrained(</span>
 <span id="cb18-2"><a href="#cb18-2"></a>    model_id,</span>
 <span id="cb18-3"><a href="#cb18-3"></a>    quantization_config<span class="op">=</span>bnb_config,</span>
 <span id="cb18-4"><a href="#cb18-4"></a>    device_map<span class="op">=</span><span class="st">"auto"</span>,</span>
@@ -872,7 +914,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-6"><a href="#cb18-6"></a></span>
 <span id="cb18-7"><a href="#cb18-7"></a></span>
 <span id="cb18-8"><a href="#cb18-8"></a>model_for_inference <span class="op">=</span> PeftModel.from_pretrained(base_model_for_inference, output_dir)</span>
-<span id="cb18-9"><a href="#cb18-9"></a>tokenizer_for_inference <span class="op">=</span> AutoTokenizer.from_pretrained(output_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-9"><a href="#cb18-9"></a>tokenizer_for_inference <span class="op">=</span> AutoTokenizer.from_pretrained(output_dir)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -942,13 +984,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,18 +70,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../week-1/module-1/index.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,7 +125,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -328,7 +329,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -542,17 +544,57 @@ window.Quarto = {
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -589,11 +631,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -678,11 +720,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -707,11 +749,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -815,7 +857,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="import">Import</h2>
 <p>First we shall import the <code>NumPy</code> package.</p>
 <div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:17,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038585,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="python-lists" class="level2">
@@ -842,12 +884,12 @@ window.Quarto = {
 \]</span></p>
 <p>Let us first see how this is done in native Python, using lists:</p>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:19,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038603,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1f9ab50b-ba4e-4421-fe17-83f9e86461aa" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>x <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb2-2"><a href="#cb2-2"></a>y <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
 <span id="cb2-3"><a href="#cb2-3"></a>z <span class="op">=</span> [ ]</span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="cf">for</span> x_i, y_i <span class="kw">in</span> <span class="bu">zip</span>(x, y):</span>
 <span id="cb2-5"><a href="#cb2-5"></a>    z.append(x_i <span class="op">+</span> y_i)</span>
-<span id="cb2-6"><a href="#cb2-6"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6"></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>[5, 7, 9]</code></pre>
 </div>
@@ -866,23 +908,23 @@ window.Quarto = {
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:23,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038624,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="42d3cff5-a36f-4fe9-a0c9-25cbb5f10999" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb4-2"><a href="#cb4-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb4-2"><a href="#cb4-2"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
 </div>
 <p>We can also arrive at this using the <code>arange</code> method. The <code>arange</code> method in NumPy is similar to the <code>range</code> function in Python. The right end-point is excluded and the step size is <span class="math inline">\(1\)</span> by default.</p>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:33,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038658,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="0d9bf01b-237e-4b11-e8e1-44b7bf525ea0" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>array([1, 2, 3])</code></pre>
 </div>
 </div>
 <p>Notice that <code>x</code> is a new kind of object and is called a NumPy array. To be more precise, it is an object of type <code>ndarray</code>.</p>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:28,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038687,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="843a652c-9605-48f8-8804-7b201cde6a68" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">type</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="bu">type</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>numpy.ndarray</code></pre>
 </div>
@@ -913,10 +955,10 @@ window.Quarto = {
 \]</span></p>
 <p>In NumPy:</p>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:40,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038705,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="bd9466bc-94c4-467d-9876-0a97b5359bab" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb10-2"><a href="#cb10-2"></a>y <span class="op">=</span> np.arange(<span class="dv">4</span>, <span class="dv">7</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>z <span class="op">=</span> x <span class="op">+</span> y</span>
-<span id="cb10-4"><a href="#cb10-4"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>array([5, 7, 9])</code></pre>
 </div>
@@ -952,10 +994,10 @@ window.Quarto = {
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:134,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038819,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="431769c6-51fb-485d-8a25-7811d5000f52" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb12-2"><a href="#cb12-2"></a>y <span class="op">=</span> np.arange(<span class="dv">4</span>, <span class="dv">7</span>)</span>
 <span id="cb12-3"><a href="#cb12-3"></a>z <span class="op">=</span> x <span class="op">*</span> y</span>
-<span id="cb12-4"><a href="#cb12-4"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4"></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>array([ 4, 10, 18])</code></pre>
 </div>
@@ -981,9 +1023,9 @@ window.Quarto = {
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038835,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="09017c31-f6ae-488e-aabe-5d826a62c9a2" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a>y <span class="op">=</span> <span class="dv">3</span> <span class="op">*</span> x</span>
-<span id="cb14-3"><a href="#cb14-3"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>array([3, 6, 9])</code></pre>
 </div>
@@ -993,23 +1035,23 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="python-lists-vs-numpy-arrays">Python Lists vs NumPy Arrays</h2>
 <p>A small detour. Let us now compare the difference in speed between Python lists and NumPy arrays. Consider a sequence of the first million positive integers. We wish to multiply each element by 2. Let us do it in two ways, one using Python lists and other using NumPy arrays, and observe the difference in speeds.</p>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:18,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071038851,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>py_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">1_000_000</span>))</span>
-<span id="cb16-2"><a href="#cb16-2"></a>np_array <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1_000_000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>py_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">1_000_000</span>))</span>
+<span id="cb16-2"><a href="#cb16-2"></a>np_array <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">1_000_000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:5242,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071044096,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1d826bb0-9875-4c37-e1da-dde3b7088208" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>timeit [<span class="dv">2</span> <span class="op">*</span> x <span class="cf">for</span> x <span class="kw">in</span> py_list]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="op">%</span>timeit [<span class="dv">2</span> <span class="op">*</span> x <span class="cf">for</span> x <span class="kw">in</span> py_list]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>67.3 ms ± 11.7 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)</code></pre>
 </div>
 </div>
 <div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:6473,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050577,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="b9dae0c4-bc9d-4b23-efb2-50faa3cc9280" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>timeit <span class="dv">2</span> <span class="op">*</span> np_array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="op">%</span>timeit <span class="dv">2</span> <span class="op">*</span> np_array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>796 µs ± 137 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)</code></pre>
 </div>
 </div>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:45,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071073828,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="5e3608cc-9fa0-4f01-ce44-e4c747fc25b2" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="bu">round</span>((<span class="fl">67.3</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (<span class="op">-</span><span class="dv">3</span>)) <span class="op">/</span> (<span class="dv">796</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (<span class="op">-</span><span class="dv">6</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="bu">round</span>((<span class="fl">67.3</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (<span class="op">-</span><span class="dv">3</span>)) <span class="op">/</span> (<span class="dv">796</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (<span class="op">-</span><span class="dv">6</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>85</code></pre>
 </div>
@@ -1052,8 +1094,8 @@ x_d^2
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-28" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:12,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050614,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="ad68d853-61a9-4db6-b4c1-f29eda11150e" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>x <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>x <span class="op">**</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>array([ 1,  4,  9, 16])</code></pre>
 </div>
@@ -1072,8 +1114,8 @@ x_d^2
 <p>Let us do this for <span class="math inline">\(\begin{bmatrix}1 &amp; 10 &amp; 100 &amp; 1000 &amp; 10000 &amp; 100000\end{bmatrix}^T\)</span>. Use base <span class="math inline">\(10\)</span>.</p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-30" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050618,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="14430302-f387-4627-9056-29ab251414e4" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10_000</span>, <span class="dv">100_000</span>])</span>
-<span id="cb25-2"><a href="#cb25-2"></a>np.log10(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10_000</span>, <span class="dv">100_000</span>])</span>
+<span id="cb25-2"><a href="#cb25-2"></a>np.log10(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>array([0., 1., 2., 3., 4., 5.])</code></pre>
 </div>
@@ -1093,8 +1135,8 @@ e^3
 <p>and apply the function <span class="math inline">\(f(x) = \ln(x)\)</span> element-wise.</p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-32" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:9,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050627,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="7cf880c4-c73e-4be6-b008-56291b1e7552" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, np.e, np.e <span class="op">**</span> <span class="dv">2</span>, np.e <span class="op">**</span> <span class="dv">3</span>])</span>
-<span id="cb27-2"><a href="#cb27-2"></a>np.log(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, np.e, np.e <span class="op">**</span> <span class="dv">2</span>, np.e <span class="op">**</span> <span class="dv">3</span>])</span>
+<span id="cb27-2"><a href="#cb27-2"></a>np.log(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([0., 1., 2., 3.])</code></pre>
 </div>
@@ -1105,9 +1147,9 @@ e^3
 <p>Just as we can scale a vector, we can also add a constant to each component. This is equivalent to applying the element-wise function <span class="math inline">\(f(x) = x + c\)</span>. Let us take the case of <span class="math inline">\(\begin{bmatrix}1 &amp; 2 &amp; 3\end{bmatrix}^T\)</span> and <span class="math inline">\(c = 5\)</span>.</p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050632,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="376bb668-ad14-4106-fa55-d7d57aec1147" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb29-2"><a href="#cb29-2"></a>c <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb29-3"><a href="#cb29-3"></a>x <span class="op">+</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-3"><a href="#cb29-3"></a>x <span class="op">+</span> c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>array([6, 7, 8])</code></pre>
 </div>
@@ -1126,8 +1168,8 @@ e^3
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:61,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050693,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="df57fcfd-4b7a-47fa-c762-540edb20ed97" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb31-2"><a href="#cb31-2"></a><span class="dv">5</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="dv">5</span> <span class="op">*</span> x <span class="op">-</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([-7, -2,  3,  8])</code></pre>
 </div>
@@ -1156,16 +1198,16 @@ z = \mathbf{x}^T \mathbf{y} =  \mathbf{x} \cdot \mathbf{y} = \sum \limits_{j = 1
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:19,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050693,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a756a062-a9fa-4c4c-faec-51ec656a7085" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb33-2"><a href="#cb33-2"></a>y <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">8</span>, <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb33-3"><a href="#cb33-3"></a>np.dot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-3"><a href="#cb33-3"></a>np.dot(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>np.int64(-60)</code></pre>
 </div>
 </div>
 <p>Alternatively, we can do the following.</p>
 <div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:18,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050693,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="86156699-1e92-4a80-a740-aed7e02fb7de" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>x <span class="op">@</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>x <span class="op">@</span> y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>np.int64(-60)</code></pre>
 </div>
@@ -1192,23 +1234,23 @@ z = \mathbf{x}^T \mathbf{y} =  \mathbf{x} \cdot \mathbf{y} = \sum \limits_{j = 1
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:16,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050693,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="60aa682e-98a4-4236-c508-53aa77435d1a" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>zeros <span class="op">=</span> np.zeros(<span class="dv">5</span>)</span>
-<span id="cb37-2"><a href="#cb37-2"></a>zeros</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>zeros <span class="op">=</span> np.zeros(<span class="dv">5</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>zeros</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>array([0., 0., 0., 0., 0.])</code></pre>
 </div>
 </div>
 <div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:15,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050693,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9460c270-b031-4c87-cc88-861a9523e942" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>ones <span class="op">=</span> np.ones(<span class="dv">5</span>)</span>
-<span id="cb39-2"><a href="#cb39-2"></a>ones</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>ones <span class="op">=</span> np.ones(<span class="dv">5</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a>ones</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>array([1., 1., 1., 1., 1.])</code></pre>
 </div>
 </div>
 <p>What if we wanted to create a vector all of whose elements are equal to <span class="math inline">\(5\)</span>?</p>
 <div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050696,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="1e2be4c6-f871-4aa9-c85a-9841d4ef4768" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>fives <span class="op">=</span> np.ones(<span class="dv">5</span>) <span class="op">*</span> <span class="dv">5</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a>fives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>fives <span class="op">=</span> np.ones(<span class="dv">5</span>) <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>fives</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>array([5., 5., 5., 5., 5.])</code></pre>
 </div>
@@ -1234,20 +1276,20 @@ z = \mathbf{x}^T \mathbf{y} =  \mathbf{x} \cdot \mathbf{y} = \sum \limits_{j = 1
 \]</span></p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:103,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050800,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="124fbcf8-3c71-4f2b-e0a1-a4a16d0c0e54" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># L2-norm</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># L2-norm</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb43-3"><a href="#cb43-3"></a>norm <span class="op">=</span> np.linalg.norm(x)</span>
-<span id="cb43-4"><a href="#cb43-4"></a>norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-4"><a href="#cb43-4"></a>norm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>np.float64(3.7416573867739413)</code></pre>
 </div>
 </div>
 <p>By default, the norm computed is the L2 norm. If we want to compute the L1 norm, we have to pass an additional argument to the function.</p>
 <div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050803,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="57ed4064-4cac-4b20-daa1-922681b16fed" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># L1-norm</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># L1-norm</span></span>
 <span id="cb45-2"><a href="#cb45-2"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">4</span>)</span>
 <span id="cb45-3"><a href="#cb45-3"></a>norm <span class="op">=</span> np.linalg.norm(x, <span class="bu">ord</span><span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb45-4"><a href="#cb45-4"></a>norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-4"><a href="#cb45-4"></a>norm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>np.float64(6.0)</code></pre>
 </div>
@@ -1265,17 +1307,17 @@ z = \mathbf{x}^T \mathbf{y} =  \mathbf{x} \cdot \mathbf{y} = \sum \limits_{j = 1
 \end{bmatrix}
 \]</span></p>
 <div id="cell-52" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:20,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050824,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3a39d085-e773-4d3e-bd7a-9907f79d0d9e" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Shape</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="co"># Shape</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb47-3"><a href="#cb47-3"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-3"><a href="#cb47-3"></a>x.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>(4,)</code></pre>
 </div>
 </div>
 <div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757071050828,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="99e07a17-129a-4a23-cc8a-5107cdda90b1" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># N-dim</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># N-dim</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb49-3"><a href="#cb49-3"></a>x.ndim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-3"><a href="#cb49-3"></a>x.ndim</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>1</code></pre>
 </div>
@@ -1349,13 +1391,14 @@ z = \mathbf{x}^T \mathbf{y} =  \mathbf{x} \cdot \mathbf{y} = \sum \limits_{j = 1
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

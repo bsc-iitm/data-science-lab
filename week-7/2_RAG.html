@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-7/1_Revisiting_langchain.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -298,7 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -512,17 +514,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -559,11 +601,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -648,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -677,11 +719,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -781,10 +823,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>RAG LLM: First opens a textbook, goes to the right chapter, then answers.</p>
 <p>We will use OpenAI and langchain to demonstrate RAG.</p>
 <div id="cell-3" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>openai_api_key <span class="op">=</span> <span class="st">'&lt;your_api_key&gt;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>openai_api_key <span class="op">=</span> <span class="st">'&lt;your_api_key&gt;'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755529496387,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:11411,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="aff0aaab-b485-4b6b-edc5-5ed4fe2d6f51">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">!</span>pip install langchain<span class="op">-</span>openai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">!</span>pip install langchain<span class="op">-</span>openai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Collecting langchain-openai
@@ -865,7 +907,7 @@ Successfully installed langchain-openai-0.3.30
 </div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="badc8cc6-5600-4c03-9141-f7edb8d93163">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> langchain_openai <span class="im">import</span> ChatOpenAI</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">from</span> langchain_openai <span class="im">import</span> ChatOpenAI</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="im">import</span> os</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
 <span id="cb3-4"><a href="#cb3-4"></a>os.environ[<span class="st">"OPENAI_API_KEY"</span>] <span class="op">=</span> openai_api_key</span>
@@ -877,7 +919,7 @@ Successfully installed langchain-openai-0.3.30
 <span id="cb3-10"><a href="#cb3-10"></a></span>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co"># Now you can use it in a chain, or call it directly as below</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a>response <span class="op">=</span> llm.invoke(<span class="st">"When was Acme Inc. founded?"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(response.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bu">print</span>(response.content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>There have been several companies with the name Acme Inc. founded throughout history, so it depends on which specific company you are referring to. Can you please provide more context or details?</code></pre>
 </div>
@@ -912,24 +954,24 @@ Successfully installed langchain-openai-0.3.30
 <p>###<code>Document</code> class</p>
 <p>LangChain wraps all content in Document objects, which hold both text and optional metadata.</p>
 <div id="cell-13" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> langchain.schema <span class="im">import</span> Document</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">from</span> langchain.schema <span class="im">import</span> Document</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a>doc1 <span class="op">=</span> Document(page_content<span class="op">=</span><span class="st">"This is the first document"</span>, metadata<span class="op">=</span>{<span class="st">"source"</span>: <span class="st">"file1.txt"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3"></a>doc1 <span class="op">=</span> Document(page_content<span class="op">=</span><span class="st">"This is the first document"</span>, metadata<span class="op">=</span>{<span class="st">"source"</span>: <span class="st">"file1.txt"</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530341721,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:48,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="b201cd43-c7af-4067-8e02-93059d7e740f">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>doc1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>doc1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>Document(metadata={'source': 'file1.txt'}, page_content='This is the first document')</code></pre>
 </div>
 </div>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530489771,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:99,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="db90e5c9-1086-4c23-f452-40bbf71f599f">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>doc1.page_content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>doc1.page_content</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>'This is the first document'</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530495850,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:96,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="72c3581a-db42-47db-b219-de9ddf62717f">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>doc1.metadata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>doc1.metadata</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>{'source': 'file1.txt'}</code></pre>
 </div>
@@ -942,7 +984,7 @@ Successfully installed langchain-openai-0.3.30
 <h3 class="anchored" data-anchor-id="document_loaders"><code>document_loaders</code></h3>
 <p>Loaders help you load documents from .txt, .pdf, .csv, URLs, etc.</p>
 <div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530420289,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:10100,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="9f474aa8-0911-417a-8077-08d101c1c8fd">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">!</span>pip install langchain langchain<span class="op">-</span>community</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="op">!</span>pip install langchain langchain<span class="op">-</span>community</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Requirement already satisfied: langchain in /usr/local/lib/python3.11/dist-packages (0.3.27)
@@ -1083,19 +1125,19 @@ Successfully installed dataclasses-json-0.6.7 httpx-sse-0.4.1 langchain-communit
 </div>
 </div>
 <div id="cell-21" class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">from</span> langchain.document_loaders <span class="im">import</span> TextLoader</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">from</span> langchain.document_loaders <span class="im">import</span> TextLoader</span>
 <span id="cb13-2"><a href="#cb13-2"></a></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="co"># If the above doesnt work, use</span></span>
 <span id="cb13-4"><a href="#cb13-4"></a><span class="co"># from langchain_community.document_loaders import TextLoader</span></span>
 <span id="cb13-5"><a href="#cb13-5"></a></span>
 <span id="cb13-6"><a href="#cb13-6"></a>loader <span class="op">=</span> TextLoader(<span class="st">"RAG_file.txt"</span>)</span>
-<span id="cb13-7"><a href="#cb13-7"></a>docs1 <span class="op">=</span> loader.load()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7"></a>docs1 <span class="op">=</span> loader.load()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530466848,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:68,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="1c0ff3a3-3e10-4c0c-f7c8-29ffa696bfef">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># docs1 is a list of Document objects</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># docs1 is a list of Document objects</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="cf">for</span> doc <span class="kw">in</span> docs1:</span>
 <span id="cb14-3"><a href="#cb14-3"></a>    <span class="bu">print</span>(doc.page_content)   <span class="co"># The text</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>    <span class="bu">print</span>(doc.metadata)       <span class="co"># File name, etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="bu">print</span>(doc.metadata)       <span class="co"># File name, etc.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Acme Inc. was founded in 1987 in Helsinki, Finland. It specializes in anti-gravity footwear and rocket-powered pogo sticks.
 
@@ -1114,7 +1156,7 @@ As per internal policy, Acme's HR team meets every 2 weeks to assess wellness me
 <section id="using-a-pdf-file" class="level2">
 <h2 class="anchored" data-anchor-id="using-a-pdf-file">1.3 Using a pdf file</h2>
 <div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530666707,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:5533,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="dffb1f77-5092-49dc-fb21-16f0ed20784f">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">!</span>pip install pypdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="op">!</span>pip install pypdf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Collecting pypdf
@@ -1133,16 +1175,16 @@ Successfully installed pypdf-6.0.0
 </div>
 </div>
 <div id="cell-26" class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> langchain.document_loaders <span class="im">import</span> PyPDFLoader</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> langchain.document_loaders <span class="im">import</span> PyPDFLoader</span>
 <span id="cb17-2"><a href="#cb17-2"></a></span>
 <span id="cb17-3"><a href="#cb17-3"></a>loader <span class="op">=</span> PyPDFLoader(<span class="st">"RAG_file.pdf"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>docs2 <span class="op">=</span> loader.load()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-4"><a href="#cb17-4"></a>docs2 <span class="op">=</span> loader.load()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755530677110,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:47,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="efb2d64f-c381-4d52-a7b4-4985bdf13e2d">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># again docs2 is a list of Document objects</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># again docs2 is a list of Document objects</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="cf">for</span> doc <span class="kw">in</span> docs2:</span>
 <span id="cb18-3"><a href="#cb18-3"></a>    <span class="bu">print</span>(doc.page_content)   <span class="co"># The text</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="bu">print</span>(doc.metadata)       <span class="co"># File name, etc.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a href="#cb18-4"></a>    <span class="bu">print</span>(doc.metadata)       <span class="co"># File name, etc.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Acme Inc. was founded in 1987 in Helsinki, Finland. It specializes in anti-gravity footwear and
 rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers",
@@ -1157,7 +1199,7 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 <h2 class="anchored" data-anchor-id="mixing-different-file-types">1.4 Mixing Different File Types</h2>
 <p>You can load different formats separately and then combine them</p>
 <div id="cell-30" class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Assuming file1, file2, file3, file4 are available</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Assuming file1, file2, file3, file4 are available</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="co"># from langchain.document_loaders import TextLoader, PyPDFLoader, CSVLoader, UnstructuredHTMLLoader</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a></span>
 <span id="cb20-4"><a href="#cb20-4"></a><span class="co"># # Loaders for different file types</span></span>
@@ -1167,7 +1209,7 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 <span id="cb20-8"><a href="#cb20-8"></a><span class="co"># html_docs = UnstructuredHTMLLoader("file4.html").load()</span></span>
 <span id="cb20-9"><a href="#cb20-9"></a></span>
 <span id="cb20-10"><a href="#cb20-10"></a><span class="co"># # Merge all into one list</span></span>
-<span id="cb20-11"><a href="#cb20-11"></a><span class="co"># all_docs = txt_docs + pdf_docs + csv_docs + html_docs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="co"># all_docs = txt_docs + pdf_docs + csv_docs + html_docs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>all_docs is just a list of Document objects → ready for splitting, embedding, and vector storage.</p>
 </section>
@@ -1176,15 +1218,15 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 <h1>2.Split the text</h1>
 <p>LLMs have token limits, so long files need to be split.</p>
 <div id="cell-33" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
 <span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a>splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">100</span>, chunk_overlap<span class="op">=</span><span class="dv">10</span>) <span class="co">#or 300 and 50 resp</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-3"><a href="#cb21-3"></a>splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">100</span>, chunk_overlap<span class="op">=</span><span class="dv">10</span>) <span class="co">#or 300 and 50 resp</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-34" class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>chunks <span class="op">=</span> splitter.split_documents(docs2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>chunks <span class="op">=</span> splitter.split_documents(docs2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755533233961,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:322,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="8dd56595-6e9b-4d25-8fe5-0e17dda74327">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>chunks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>chunks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>[Document(metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='Acme Inc. was founded in 1987 in Helsinki, Finland. It specializes in anti-gravity footwear and'),
  Document(metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers",'),
@@ -1194,21 +1236,21 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 </div>
 <p>Like <code>split_documents()</code>, ther is also a function <code>split_text()</code> which can directly split the text. Let me use that below and show the effect of the parameters <code>chunk_size</code> and <code>chunk_overlap</code></p>
 <div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755533236354,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:26,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="05cb554e-b50b-4469-b308-ddd9abcb56c0">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
 <span id="cb25-2"><a href="#cb25-2"></a></span>
 <span id="cb25-3"><a href="#cb25-3"></a>splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">300</span>, chunk_overlap<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb25-4"><a href="#cb25-4"></a>chunks1 <span class="op">=</span> splitter.split_text(<span class="st">"Very long document text here..."</span>)</span>
-<span id="cb25-5"><a href="#cb25-5"></a>chunks1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a href="#cb25-5"></a>chunks1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>['Very long document text here...']</code></pre>
 </div>
 </div>
 <div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755533254281,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:31,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="7b96ffce-7a8e-46b3-ca08-b63690d29de7">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">from</span> langchain.text_splitter <span class="im">import</span> RecursiveCharacterTextSplitter</span>
 <span id="cb27-2"><a href="#cb27-2"></a></span>
 <span id="cb27-3"><a href="#cb27-3"></a>splitter <span class="op">=</span> RecursiveCharacterTextSplitter(chunk_size<span class="op">=</span><span class="dv">3</span>, chunk_overlap<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb27-4"><a href="#cb27-4"></a>chunks2 <span class="op">=</span> splitter.split_text(<span class="st">"Very long document text here..."</span>)</span>
-<span id="cb27-5"><a href="#cb27-5"></a>chunks2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-5"><a href="#cb27-5"></a>chunks2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>['Ver',
  'ry',
@@ -1235,28 +1277,28 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 <li><p>And for dissimilar texts, embeddings are far apart.</p></li>
 </ul>
 <div id="cell-40" class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">from</span> langchain_openai <span class="im">import</span> OpenAIEmbeddings</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="im">from</span> langchain_openai <span class="im">import</span> OpenAIEmbeddings</span>
 <span id="cb29-2"><a href="#cb29-2"></a></span>
 <span id="cb29-3"><a href="#cb29-3"></a>embedding_model <span class="op">=</span> OpenAIEmbeddings()</span>
 <span id="cb29-4"><a href="#cb29-4"></a></span>
 <span id="cb29-5"><a href="#cb29-5"></a><span class="co"># The following extracts the text from each Document chunk, and then converts each chunk into a vector (list of floats).</span></span>
 <span id="cb29-6"><a href="#cb29-6"></a></span>
-<span id="cb29-7"><a href="#cb29-7"></a>vectors <span class="op">=</span> embedding_model.embed_documents([doc.page_content <span class="cf">for</span> doc <span class="kw">in</span> chunks])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-7"><a href="#cb29-7"></a>vectors <span class="op">=</span> embedding_model.embed_documents([doc.page_content <span class="cf">for</span> doc <span class="kw">in</span> chunks])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755533758363,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:66,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="4b430500-53be-49bc-9d86-b4183a2c9ab7">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">len</span>(vectors)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="bu">len</span>(vectors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>4</code></pre>
 </div>
 </div>
 <div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755533761058,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:65,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="b2cf3d8c-fc1f-49a3-ab82-b58b3732a087">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">len</span>(vectors[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">len</span>(vectors[<span class="dv">0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>1536</code></pre>
 </div>
 </div>
 <div id="cell-43" class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># vectors[0]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># vectors[0]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="store-the-embeddings-in-a-vectordb" class="level1">
@@ -1275,7 +1317,7 @@ weeks to assess wellness metrics of staff based on holographic surveys.
 <li>Efficient retrieval in RAG pipelines</li>
 </ul>
 <div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755534041019,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:8153,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="7ffb6ca0-ebc6-4eba-b41b-26265611a297">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">!</span>pip install faiss<span class="op">-</span>cpu</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="op">!</span>pip install faiss<span class="op">-</span>cpu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Collecting faiss-cpu
@@ -1298,14 +1340,14 @@ Successfully installed faiss-cpu-1.12.0
 </div>
 </div>
 <div id="cell-46" class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> langchain.vectorstores <span class="im">import</span> FAISS</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="im">from</span> langchain.vectorstores <span class="im">import</span> FAISS</span>
 <span id="cb36-2"><a href="#cb36-2"></a></span>
 <span id="cb36-3"><a href="#cb36-3"></a>vectorstore <span class="op">=</span> FAISS.from_documents(chunks, embedding_model)</span>
 <span id="cb36-4"><a href="#cb36-4"></a></span>
-<span id="cb36-5"><a href="#cb36-5"></a><span class="co"># This stores both embeddings and data together.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-5"><a href="#cb36-5"></a><span class="co"># This stores both embeddings and data together.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-47" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755534110961,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:48,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="b9039976-e42d-4180-ac6c-658f07c4ff49">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>vectorstore</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>vectorstore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>&lt;langchain_community.vectorstores.faiss.FAISS at 0x7d69e899fd10&gt;</code></pre>
 </div>
@@ -1313,14 +1355,14 @@ Successfully installed faiss-cpu-1.12.0
 <section id="access-stored-documents-optional" class="level3">
 <h3 class="anchored" data-anchor-id="access-stored-documents-optional">Access stored documents (Optional)</h3>
 <div id="cell-49" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755538457164,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:67,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="b630e21a-cb88-4019-a9e0-6911012275c8">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Get all documents back (but embeddings are inside the FAISS index)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Get all documents back (but embeddings are inside the FAISS index)</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a>all_docs <span class="op">=</span> vectorstore.docstore._dict</span>
 <span id="cb39-3"><a href="#cb39-3"></a></span>
 <span id="cb39-4"><a href="#cb39-4"></a><span class="cf">for</span> doc_id, doc <span class="kw">in</span> all_docs.items():</span>
 <span id="cb39-5"><a href="#cb39-5"></a>    <span class="bu">print</span>(<span class="st">"ID:"</span>, doc_id)</span>
 <span id="cb39-6"><a href="#cb39-6"></a>    <span class="bu">print</span>(<span class="st">"Content:"</span>, doc.page_content)</span>
 <span id="cb39-7"><a href="#cb39-7"></a>    <span class="bu">print</span>(<span class="st">"Metadata:"</span>, doc.metadata)</span>
-<span id="cb39-8"><a href="#cb39-8"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-8"><a href="#cb39-8"></a>    <span class="bu">print</span>(<span class="st">"-"</span> <span class="op">*</span> <span class="dv">40</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ID: 3f6cd2c9-42c5-4e95-a56e-5e5c5fa1da1e
 Content: Acme Inc. was founded in 1987 in Helsinki, Finland. It specializes in anti-gravity footwear and
@@ -1344,11 +1386,11 @@ Metadata: {'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:2025073
 <section id="save-reload-faiss-optional" class="level3">
 <h3 class="anchored" data-anchor-id="save-reload-faiss-optional">Save &amp; reload FAISS (Optional)</h3>
 <div id="cell-51" class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Save locally</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># Save locally</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a>vectorstore.save_local(<span class="st">"faiss_index"</span>)</span>
 <span id="cb41-3"><a href="#cb41-3"></a></span>
 <span id="cb41-4"><a href="#cb41-4"></a><span class="co"># Reload later</span></span>
-<span id="cb41-5"><a href="#cb41-5"></a>new_store <span class="op">=</span> FAISS.load_local(<span class="st">"faiss_index"</span>, OpenAIEmbeddings(), allow_dangerous_deserialization<span class="op">=</span><span class="va">True</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-5"><a href="#cb41-5"></a>new_store <span class="op">=</span> FAISS.load_local(<span class="st">"faiss_index"</span>, OpenAIEmbeddings(), allow_dangerous_deserialization<span class="op">=</span><span class="va">True</span> )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After creating a vectorstore, we can do similarity search using <code>similarity_search()</code> which uses the following process:</p>
 <ol type="1">
@@ -1358,9 +1400,9 @@ Metadata: {'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:2025073
 </ol>
 <p>Output = a list of Documents (List[Document]).</p>
 <div id="cell-53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755538753928,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:999,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="f9cde973-a4e3-47b0-a37f-ed0e39bc1eb1">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># extra</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># extra</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a>retrieved_docs <span class="op">=</span> vectorstore.similarity_search(<span class="st">'What was the launch date?'</span>, k <span class="op">=</span> <span class="dv">2</span>) <span class="co"># k is the number of documents to retrieve</span></span>
-<span id="cb42-3"><a href="#cb42-3"></a>retrieved_docs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-3"><a href="#cb42-3"></a>retrieved_docs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>[Document(id='3e61c826-0d6c-4c82-a4f3-e42efde3bf43', metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers",'),
  Document(id='0770a2d5-f717-424a-a917-b5c63bcd0dfc', metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='weeks to assess wellness metrics of staff based on holographic surveys.')]</code></pre>
@@ -1373,9 +1415,9 @@ Metadata: {'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:2025073
 <p>Another variant:</p>
 <p><code>similarity_search_with_score</code>: Also gives similarity score along with the document</p>
 <div id="cell-56" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755538832131,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:638,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="0093dfe8-db00-4423-fa3b-266db908865c">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>results <span class="op">=</span> vectorstore.similarity_search_with_score(<span class="st">"What was the launch date?"</span>, k<span class="op">=</span><span class="dv">2</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>results <span class="op">=</span> vectorstore.similarity_search_with_score(<span class="st">"What was the launch date?"</span>, k<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb44-2"><a href="#cb44-2"></a><span class="cf">for</span> doc, score <span class="kw">in</span> results:</span>
-<span id="cb44-3"><a href="#cb44-3"></a>    <span class="bu">print</span>(doc.page_content, score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-3"><a href="#cb44-3"></a>    <span class="bu">print</span>(doc.page_content, score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers", 0.44364873
 weeks to assess wellness metrics of staff based on holographic surveys. 0.52889407</code></pre>
@@ -1385,17 +1427,17 @@ weeks to assess wellness metrics of staff based on holographic surveys. 0.528894
 <p>#5.Create Retriever to retrieve the embeddings from the VectorDB</p>
 <p>A retriever is a wrapper around the vector store that defines how to fetch documents given a query.</p>
 <div id="cell-59" class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>retriever <span class="op">=</span> vectorstore.as_retriever()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>retriever <span class="op">=</span> vectorstore.as_retriever()</span>
 <span id="cb46-2"><a href="#cb46-2"></a><span class="co"># or</span></span>
 <span id="cb46-3"><a href="#cb46-3"></a>retriever <span class="op">=</span> vectorstore.as_retriever(search_kwargs<span class="op">=</span>{<span class="st">"k"</span>: <span class="dv">3</span>})</span>
-<span id="cb46-4"><a href="#cb46-4"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-4"><a href="#cb46-4"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(Optional) Retriever is a standardized interface that implements <code>get_relevant_documents(query)</code></p>
 <div id="cell-61" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755539229477,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:1146,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="6332bc40-71f9-4d8c-fc69-fa8bceae387e">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>docs <span class="op">=</span> retriever.get_relevant_documents(<span class="st">"What was the launch date?"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>docs <span class="op">=</span> retriever.get_relevant_documents(<span class="st">"What was the launch date?"</span>)</span>
 <span id="cb47-2"><a href="#cb47-2"></a><span class="cf">for</span> d <span class="kw">in</span> docs:</span>
 <span id="cb47-3"><a href="#cb47-3"></a>    <span class="bu">print</span>(d.page_content, d.metadata)</span>
-<span id="cb47-4"><a href="#cb47-4"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-4"><a href="#cb47-4"></a>    <span class="bu">print</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers", {'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}
 
@@ -1418,8 +1460,8 @@ designed for low-orbit recreational use. As per internal policy, Acme's HR team 
 </ol>
 <p>So instead of the LLM hallucinating, it grounds its answers on your documents.</p>
 <div id="cell-63" class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> RetrievalQA</span>
-<span id="cb49-2"><a href="#cb49-2"></a>qa_chain <span class="op">=</span> RetrievalQA.from_chain_type(llm<span class="op">=</span>llm, retriever<span class="op">=</span>retriever, return_source_documents<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="im">from</span> langchain.chains <span class="im">import</span> RetrievalQA</span>
+<span id="cb49-2"><a href="#cb49-2"></a>qa_chain <span class="op">=</span> RetrievalQA.from_chain_type(llm<span class="op">=</span>llm, retriever<span class="op">=</span>retriever, return_source_documents<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="invokequery-query" class="level3">
@@ -1436,15 +1478,15 @@ designed for low-orbit recreational use. As per internal policy, Acme's HR team 
 </ul></li>
 </ul>
 <div id="cell-65" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755539882379,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:1392,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="df8746ed-9c7e-4451-8209-66705f1b90b5">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>query <span class="op">=</span> <span class="st">"When and where was Acme Inc. founded?"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>query <span class="op">=</span> <span class="st">"When and where was Acme Inc. founded?"</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a>response <span class="op">=</span> qa_chain.invoke({<span class="st">"query"</span>: query})</span>
-<span id="cb50-3"><a href="#cb50-3"></a><span class="bu">print</span>(response[<span class="st">"result"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="bu">print</span>(response[<span class="st">"result"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Acme Inc. was founded in 1987 in Helsinki, Finland.</code></pre>
 </div>
 </div>
 <div id="cell-66" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1755539883796,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:28,&quot;user&quot;:{&quot;displayName&quot;:&quot;anamika chhabra&quot;,&quot;userId&quot;:&quot;17959289708387507018&quot;}}}" data-outputid="ad96f5b5-d13c-4039-ad28-19438812e469">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(response[<span class="st">"source_documents"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="bu">print</span>(response[<span class="st">"source_documents"</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[Document(id='3f6cd2c9-42c5-4e95-a56e-5e5c5fa1da1e', metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='Acme Inc. was founded in 1987 in Helsinki, Finland. It specializes in anti-gravity footwear and'), Document(id='3e61c826-0d6c-4c82-a4f3-e42efde3bf43', metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content='rocket-powered pogo sticks. In 2024, Acme released a new product line: "Jet Sneakers",'), Document(id='499a4a3b-9497-4a44-acf0-78b2a09eea04', metadata={'producer': 'PDFium', 'creator': 'PDFium', 'creationdate': 'D:20250730135006', 'source': 'RAG_file.pdf', 'total_pages': 1, 'page': 0, 'page_label': '1'}, page_content="designed for low-orbit recreational use. As per internal policy, Acme's HR team meets every 2")]</code></pre>
 </div>
@@ -1519,13 +1561,14 @@ designed for low-orbit recreational use. As per internal policy, Acme's HR team 
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

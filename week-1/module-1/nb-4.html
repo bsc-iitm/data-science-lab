@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,18 +70,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../week-1/module-1/nb-3.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -124,7 +125,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -328,7 +329,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -542,17 +544,57 @@ window.Quarto = {
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -589,11 +631,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -678,11 +720,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -707,11 +749,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -808,20 +850,20 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="import-and-settings">Import and Settings</h2>
 <p>We will import <code>NumPy</code> and <code>matplotlib</code>. In addition, we will also start with some customised layout for the plot.</p>
 <div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086227933,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="random-number-generator" class="level2">
 <h2 class="anchored" data-anchor-id="random-number-generator">Random Number Generator</h2>
 <p>A random number generator allows us to generate “pseudo random numbers”. These aren’t truly random, but come close enough for all practical purposes. <code>NumPy</code> has a <code>random</code> module that helps us define such a generator:</p>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:14,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086227953,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The seed value ensures that our simulations are reproducible. Run the following code multiple times with and without a seed value and notice the behaviour.</p>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086252156,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="60caefaa-66bd-4651-d68b-60c30d71da3b" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>rng.integers(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>rng.integers(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>array([0, 7, 6, 4, 4])</code></pre>
 </div>
@@ -829,10 +871,10 @@ window.Quarto = {
 <p>Let us quickly look at sampling from a uniform distribution.</p>
 <p><code>rng.integers(a, b, endpoint=True, size=n)</code> returns a sample of <span class="math inline">\(n\)</span> integers in the interval <span class="math inline">\([a, b]\)</span> drawn from the discrete uniform distribution.</p>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:46,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757088180859,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="78a45c68-77d2-44b0-f1ac-200f4d718655" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>rng.integers(<span class="dv">0</span>, <span class="dv">5</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>rng.integers(<span class="dv">0</span>, <span class="dv">5</span>,</span>
 <span id="cb5-2"><a href="#cb5-2"></a>             endpoint<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb5-3"><a href="#cb5-3"></a>             size<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>array([5, 2, 3, 5, 5, 0, 2, 2, 5, 3, 2, 1, 4, 2, 5, 0, 1, 3, 1, 3, 3, 1,
        2, 4, 3, 3, 2, 2, 0, 1, 2, 3, 3, 5, 1, 2, 4, 1, 3, 5, 1, 5, 1, 5,
@@ -841,8 +883,8 @@ window.Quarto = {
 </div>
 <p>To sample from the continuous uniform distribution <span class="math inline">\(U[a, b]\)</span>, we run:</p>
 <div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:23,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757088275145,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6e75b793-068b-4c9c-de27-a2fca243c58e" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>rng.uniform(<span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>            size<span class="op">=</span><span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>rng.uniform(<span class="dv">0</span>, <span class="dv">1</span>,</span>
+<span id="cb7-2"><a href="#cb7-2"></a>            size<span class="op">=</span><span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>array([0.98796486, 0.76410381, 0.10498714, 0.03107057, 0.93128712,
        0.96552035, 0.21928765, 0.44180262, 0.55841242, 0.26566918,
@@ -865,11 +907,11 @@ window.Quarto = {
 <p>Let us generate a sample of <span class="math inline">\(1000\)</span> points from the <span class="math inline">\(\text{Br}(0.7)\)</span>. Recall that this is the same as tossing a biased coin <span class="math inline">\(1000\)</span> times, which has <span class="math inline">\(P(H) = 0.7\)</span>.</p>
 <p>In <code>NumPy</code>:</p>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:22,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086426375,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6d40118b-1ed8-4db2-c011-58d0e189681a" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>X <span class="op">=</span> rng.choice(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>X <span class="op">=</span> rng.choice(</span>
 <span id="cb9-2"><a href="#cb9-2"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
 <span id="cb9-3"><a href="#cb9-3"></a>    p<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.7</span>],</span>
 <span id="cb9-4"><a href="#cb9-4"></a>    size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5"></a>X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>(1000,)</code></pre>
 </div>
@@ -879,11 +921,11 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="plotting-bar-plot">Plotting: Bar plot</h3>
 <p>Let us visualise the sample using a bar plot. For this, we first need the height of the bars or the frequencies.</p>
 <div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:141,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086559855,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="57e42446-23e1-490d-d554-7dc7cf068f91" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb11-2"><a href="#cb11-2"></a>freq <span class="op">=</span> Counter(X)</span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="bu">print</span>(freq)</span>
 <span id="cb11-4"><a href="#cb11-4"></a>plt.bar([<span class="dv">0</span>, <span class="dv">1</span>], [freq[<span class="dv">0</span>], freq[<span class="dv">1</span>]])</span>
-<span id="cb11-5"><a href="#cb11-5"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Counter({np.int64(1): 690, np.int64(0): 310})</code></pre>
 </div>
@@ -901,9 +943,9 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="sampling-gaussian">Sampling: Gaussian</h3>
 <p>We now generate a sample of <span class="math inline">\(10,000\)</span> points from <span class="math inline">\(\mathcal{N}(50, 4)\)</span>. Recall that <span class="math inline">\(\mu = 1\)</span> and <span class="math inline">\(\sigma^2 = 4\)</span>. As a concrete example, we could use a normal distribution to model the heights or weights of people in a room, or the marks of students in an exam.</p>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086670454,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a5a23e81-24ea-4ae0-dec2-5fbfa8a8a4f8" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>X <span class="op">=</span> rng.normal(<span class="dv">50</span>, <span class="dv">2</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>X <span class="op">=</span> rng.normal(<span class="dv">50</span>, <span class="dv">2</span>,</span>
 <span id="cb13-2"><a href="#cb13-2"></a>               size<span class="op">=</span><span class="dv">10_000</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a>X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>(10000,)</code></pre>
 </div>
@@ -913,9 +955,9 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="plotting-histogram">Plotting: Histogram</h3>
 <p>We can now visualise the sample using a histogram.</p>
 <div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:182,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086686148,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3d8645ad-820d-49dd-b50e-a37c64c3c087" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.hist(X,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.hist(X,</span>
 <span id="cb15-2"><a href="#cb15-2"></a>         bins<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -933,7 +975,7 @@ window.Quarto = {
 \]</span></p>
 <p>As a concrete example, a Bivariate Gaussian could model the distribution of the landing positions of balls on a cricket pitch in a given cricekt match.</p>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086939713,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>mu <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>mu <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
 <span id="cb16-2"><a href="#cb16-2"></a>cov <span class="op">=</span> np.array([</span>
 <span id="cb16-3"><a href="#cb16-3"></a>    [<span class="dv">1</span>, <span class="dv">0</span>],</span>
 <span id="cb16-4"><a href="#cb16-4"></a>    [<span class="dv">0</span>, <span class="dv">5</span>]</span>
@@ -943,14 +985,14 @@ window.Quarto = {
 <span id="cb16-8"><a href="#cb16-8"></a>    cov,</span>
 <span id="cb16-9"><a href="#cb16-9"></a>    size<span class="op">=</span><span class="dv">1000</span>).T</span>
 <span id="cb16-10"><a href="#cb16-10"></a><span class="co"># we transpose so that the data-matrix is (d, n) and not (n, d)</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a>d, n <span class="op">=</span> X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-11"><a href="#cb16-11"></a>d, n <span class="op">=</span> X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="plotting-scatter-plot" class="level3">
 <h3 class="anchored" data-anchor-id="plotting-scatter-plot">Plotting: Scatter plot</h3>
 <p>Let us now visualise the sample using a scatter plot. Zooming out of the scatter plot gives us a better understanding. Changing the covariance matrix also helps in understanding how the sampled points depend on it.</p>
 <div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:448,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086966080,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="49833e8a-c3ad-4264-da1a-1e05a90ac4db" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.scatter(X[<span class="dv">0</span>], X[<span class="dv">1</span>],</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.scatter(X[<span class="dv">0</span>], X[<span class="dv">1</span>],</span>
 <span id="cb17-2"><a href="#cb17-2"></a>            alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb17-3"><a href="#cb17-3"></a>plt.axis(<span class="st">'equal'</span>)</span>
 <span id="cb17-4"><a href="#cb17-4"></a>plt.axhline(color<span class="op">=</span><span class="st">'black'</span>,</span>
@@ -958,7 +1000,7 @@ window.Quarto = {
 <span id="cb17-6"><a href="#cb17-6"></a>            linewidth<span class="op">=</span><span class="st">'0.8'</span>)</span>
 <span id="cb17-7"><a href="#cb17-7"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
 <span id="cb17-8"><a href="#cb17-8"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb17-9"><a href="#cb17-9"></a>            linewidth<span class="op">=</span><span class="st">'0.8'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-9"><a href="#cb17-9"></a>            linewidth<span class="op">=</span><span class="st">'0.8'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -974,7 +1016,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="gmm">GMM</h2>
 <p>We can now combine the concepts learnt above to sample points from a Gaussian Mixture Model. We shall draw <span class="math inline">\(1,000,000\)</span> samples from a Gaussian Mixture Model (GMM) that has three components, with mixture probabilities <span class="math inline">\([0.2, 0.3, 0.5]\)</span> and means <span class="math inline">\([10, 15, 18]\)</span>. The standard deviation of all three Gaussians is the same and is equal to <span class="math inline">\(1\)</span>. We can visualise the sample using a histogram.</p>
 <div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4173,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757087232624,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="cdb02a15-264c-47ca-c9b2-0ad23db92a8a" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>n <span class="op">=</span> <span class="dv">1_000_000</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>n <span class="op">=</span> <span class="dv">1_000_000</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a>comp <span class="op">=</span> rng.choice(</span>
 <span id="cb18-3"><a href="#cb18-3"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
 <span id="cb18-4"><a href="#cb18-4"></a>    p<span class="op">=</span>[<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>],</span>
@@ -985,7 +1027,7 @@ window.Quarto = {
 <span id="cb18-9"><a href="#cb18-9"></a>    X[i] <span class="op">=</span> rng.normal(mu[comp[i]], <span class="dv">1</span>)</span>
 <span id="cb18-10"><a href="#cb18-10"></a>plt.hist(X,</span>
 <span id="cb18-11"><a href="#cb18-11"></a>         bins<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb18-12"><a href="#cb18-12"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-12"><a href="#cb18-12"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1064,13 +1106,14 @@ window.Quarto = {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

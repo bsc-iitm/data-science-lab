@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,18 +69,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../week-10/4 STL_Decomposition.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -301,7 +302,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -515,17 +517,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -562,11 +604,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -651,11 +693,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -680,11 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -765,22 +807,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Reject the null hypothesis if p-value &lt; 0.05</p>
 <p>KPSS Test - Null Hypothesis (HO): Series is trend stationary - Alternate Hypothesis(HA): Series is non-stationary</p>
 <div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load the libraries</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load the libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:455}}" data-outputid="250fdc3c-5132-4181-ec44-c7c9b2aa0de7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Using airline passenger dataset (monthly totals)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Using airline passenger dataset (monthly totals)</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/jbrownlee/Datasets/master/airline-passengers.csv'</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>df <span class="op">=</span> pd.read_csv(url, parse_dates<span class="op">=</span>[<span class="st">'Month'</span>], index_col<span class="op">=</span><span class="st">'Month'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <div id="df-4abb85ff-d9bf-468b-ac15-dcfcfa83d82b" class="colab-df-container">
     <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -793,47 +835,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1949-01-01</td>
+<th data-quarto-table-cell-role="th">1949-01-01</th>
 <td>112</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1949-02-01</td>
+<th data-quarto-table-cell-role="th">1949-02-01</th>
 <td>118</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1949-03-01</td>
+<th data-quarto-table-cell-role="th">1949-03-01</th>
 <td>132</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1949-04-01</td>
+<th data-quarto-table-cell-role="th">1949-04-01</th>
 <td>129</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1949-05-01</td>
+<th data-quarto-table-cell-role="th">1949-05-01</th>
 <td>121</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1960-08-01</td>
+<th data-quarto-table-cell-role="th">1960-08-01</th>
 <td>606</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1960-09-01</td>
+<th data-quarto-table-cell-role="th">1960-09-01</th>
 <td>508</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1960-10-01</td>
+<th data-quarto-table-cell-role="th">1960-10-01</th>
 <td>461</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1960-11-01</td>
+<th data-quarto-table-cell-role="th">1960-11-01</th>
 <td>390</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">1960-12-01</td>
+<th data-quarto-table-cell-role="th">1960-12-01</th>
 <td>432</td>
 </tr>
 </tbody>
@@ -1100,7 +1142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:482}}" data-outputid="184bc7ff-c24c-41a0-a276-50ba5bb6f37f">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df[<span class="st">"Passengers"</span>].plot(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df[<span class="st">"Passengers"</span>].plot(figsize <span class="op">=</span> (<span class="dv">12</span>,<span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1110,21 +1152,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-10" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>dftest <span class="op">=</span> adfuller(df[<span class="st">"Passengers"</span>], autolag<span class="op">=</span><span class="st">'AIC'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>dftest <span class="op">=</span> adfuller(df[<span class="st">"Passengers"</span>], autolag<span class="op">=</span><span class="st">'AIC'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:303}}" data-outputid="43d3f4f1-7d44-4f47-e71b-935aa77d2cb9">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dfoutput <span class="op">=</span> pd.Series(dftest[<span class="dv">0</span>:<span class="dv">4</span>], index<span class="op">=</span>[<span class="st">'Test Statistic'</span>,<span class="st">'p-value'</span>,<span class="st">'#Lags Used'</span>,<span class="st">'Number of Observations Used'</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>dfoutput <span class="op">=</span> pd.Series(dftest[<span class="dv">0</span>:<span class="dv">4</span>], index<span class="op">=</span>[<span class="st">'Test Statistic'</span>,<span class="st">'p-value'</span>,<span class="st">'#Lags Used'</span>,<span class="st">'Number of Observations Used'</span>])</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="cf">for</span> key,value <span class="kw">in</span> dftest[<span class="dv">4</span>].items():</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  dfoutput[<span class="st">'Critical Value (</span><span class="sc">%s</span><span class="st">)'</span><span class="op">%</span>key] <span class="op">=</span> value</span>
-<span id="cb6-4"><a href="#cb6-4"></a>dfoutput</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4"></a>dfoutput</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1133,31 +1175,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Test Statistic</td>
+<th data-quarto-table-cell-role="th">Test Statistic</th>
 <td>0.815369</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">p-value</td>
+<th data-quarto-table-cell-role="th">p-value</th>
 <td>0.991880</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">#Lags Used</td>
+<th data-quarto-table-cell-role="th">#Lags Used</th>
 <td>13.000000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Number of Observations Used</td>
+<th data-quarto-table-cell-role="th">Number of Observations Used</th>
 <td>130.000000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Critical Value (1%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (1%)</th>
 <td>-3.481682</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Critical Value (5%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (5%)</th>
 <td>-2.884042</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Critical Value (10%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (10%)</th>
 <td>-2.578770</td>
 </tr>
 </tbody>
@@ -1167,10 +1209,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> kpss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> kpss</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e1948e62-46e8-47be-84ba-b17fd0e598bb">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>kpsstest <span class="op">=</span> kpss(df[<span class="st">"Passengers"</span>], regression<span class="op">=</span><span class="st">'c'</span>, nlags<span class="op">=</span><span class="st">"auto"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>kpsstest <span class="op">=</span> kpss(df[<span class="st">"Passengers"</span>], regression<span class="op">=</span><span class="st">'c'</span>, nlags<span class="op">=</span><span class="st">"auto"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/tmp/ipython-input-752976516.py:1: InterpolationWarning: The test statistic is outside of the range of p-values available in the
 look-up table. The actual p-value is smaller than the p-value returned.
@@ -1179,15 +1221,15 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </div>
 </div>
 <div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:303}}" data-outputid="d3f9ade5-b23e-4db9-9f81-9a179bb3a119">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>kpss_output <span class="op">=</span> pd.Series(kpsstest[<span class="dv">0</span>:<span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'Test Statistic'</span>,<span class="st">'p-value'</span>,<span class="st">'#Lags Used'</span>])</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>kpss_output <span class="op">=</span> pd.Series(kpsstest[<span class="dv">0</span>:<span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'Test Statistic'</span>,<span class="st">'p-value'</span>,<span class="st">'#Lags Used'</span>])</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="cf">for</span> key,value <span class="kw">in</span> kpsstest[<span class="dv">3</span>].items():</span>
 <span id="cb10-3"><a href="#cb10-3"></a>  kpss_output[<span class="st">'Critical Value (</span><span class="sc">%s</span><span class="st">)'</span><span class="op">%</span>key] <span class="op">=</span> value</span>
-<span id="cb10-4"><a href="#cb10-4"></a>kpss_output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4"></a>kpss_output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1196,31 +1238,31 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Test Statistic</td>
+<th data-quarto-table-cell-role="th">Test Statistic</th>
 <td>1.651312</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">p-value</td>
+<th data-quarto-table-cell-role="th">p-value</th>
 <td>0.010000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">#Lags Used</td>
+<th data-quarto-table-cell-role="th">#Lags Used</th>
 <td>8.000000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Critical Value (10%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (10%)</th>
 <td>0.347000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Critical Value (5%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (5%)</th>
 <td>0.463000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">Critical Value (2.5%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (2.5%)</th>
 <td>0.574000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">Critical Value (1%)</td>
+<th data-quarto-table-cell-role="th">Critical Value (1%)</th>
 <td>0.739000</td>
 </tr>
 </tbody>
@@ -1230,12 +1272,12 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </div>
 </div>
 <div id="cell-15" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> kpss_test(timeseries):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> kpss_test(timeseries):</span>
 <span id="cb11-2"><a href="#cb11-2"></a>    <span class="bu">print</span> (<span class="st">'Results of KPSS Test:'</span>)</span>
 <span id="cb11-3"><a href="#cb11-3"></a>    kpss_output <span class="op">=</span> pd.Series(kpsstest[<span class="dv">0</span>:<span class="dv">3</span>], index<span class="op">=</span>[<span class="st">'Test Statistic'</span>,<span class="st">'p-value'</span>,<span class="st">'#Lags Used'</span>])</span>
 <span id="cb11-4"><a href="#cb11-4"></a>    <span class="cf">for</span> key,value <span class="kw">in</span> kpsstest[<span class="dv">3</span>].items():</span>
 <span id="cb11-5"><a href="#cb11-5"></a>        kpss_output[<span class="st">'Critical Value (</span><span class="sc">%s</span><span class="st">)'</span><span class="op">%</span>key] <span class="op">=</span> value</span>
-<span id="cb11-6"><a href="#cb11-6"></a>    <span class="bu">print</span> (kpss_output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="bu">print</span> (kpss_output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The following are the possible outcomes of applying both tests.</p>
 <ul>
@@ -1245,18 +1287,18 @@ look-up table. The actual p-value is smaller than the p-value returned.
 <li>Case 4: ADF concludes stationary, and KPSS concludes non-stationary The series is difference stationary. Differencing is to be used to make series stationary. Then we check the differenced series for stationarity.</li>
 </ul>
 <div id="cell-17" class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-3"><a href="#cb12-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller, kpss</span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:410}}" data-outputid="8d9a78e0-83af-4eb6-ba09-bcdeef389043">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co"># Plot original series</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>df[<span class="st">'Passengers'</span>].plot(title<span class="op">=</span><span class="st">'Original Airline Passenger Data'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
 <span id="cb13-4"><a href="#cb13-4"></a>plt.grid()</span>
-<span id="cb13-5"><a href="#cb13-5"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1266,20 +1308,20 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </div>
 </div>
 <div id="cell-19" class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Step 1: Fit linear regression (trend) using sklearn</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Step 1: Fit linear regression (trend) using sklearn</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>X <span class="op">=</span> np.arange(<span class="bu">len</span>(df)).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)       <span class="co"># Time as feature</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a>y <span class="op">=</span> df[<span class="st">'Passengers'</span>].values                     <span class="co"># Passenger values</span></span>
 <span id="cb14-4"><a href="#cb14-4"></a>model <span class="op">=</span> LinearRegression().fit(X, y)</span>
-<span id="cb14-5"><a href="#cb14-5"></a>trend <span class="op">=</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5"></a>trend <span class="op">=</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-20" class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df[<span class="st">'detrended'</span>] <span class="op">=</span> y <span class="op">-</span> model.predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df[<span class="st">'detrended'</span>] <span class="op">=</span> y <span class="op">-</span> model.predict(X)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:410}}" data-outputid="3d714459-3415-40b7-c214-4d2ac3fb2f55">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Plot detrended series</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Plot detrended series</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>df[<span class="st">'detrended'</span>].plot(title<span class="op">=</span><span class="st">'Detrended Series (Linear Trend Removed)'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
 <span id="cb16-3"><a href="#cb16-3"></a>plt.grid()</span>
-<span id="cb16-4"><a href="#cb16-4"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1289,7 +1331,7 @@ look-up table. The actual p-value is smaller than the p-value returned.
 </div>
 </div>
 <div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:1000}}" data-outputid="b1ef6d2d-3f83-42cb-8f32-40795f760d1c">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Step 2: Stationarity Tests</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># Step 2: Stationarity Tests</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co"># ADF Test</span></span>
 <span id="cb17-3"><a href="#cb17-3"></a>adf_orig_p <span class="op">=</span> adfuller(df[<span class="st">'Passengers'</span>])[<span class="dv">1</span>]</span>
 <span id="cb17-4"><a href="#cb17-4"></a>adf_det_p <span class="op">=</span> adfuller(df[<span class="st">'detrended'</span>])[<span class="dv">1</span>]</span>
@@ -1303,7 +1345,7 @@ look-up table. The actual p-value is smaller than the p-value returned.
 <span id="cb17-12"><a href="#cb17-12"></a><span class="bu">print</span>(<span class="ss">f"ADF (Original):     p = </span><span class="sc">{</span>adf_orig_p<span class="sc">:.4f}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'Non-stationary'</span> <span class="cf">if</span> adf_orig_p <span class="op">&gt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'Stationary'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="ss">f"KPSS (Original):    p = </span><span class="sc">{</span>kpss_orig_p<span class="sc">:.4f}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'Non-stationary'</span> <span class="cf">if</span> kpss_orig_p <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'Stationary'</span><span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb17-14"><a href="#cb17-14"></a><span class="bu">print</span>(<span class="ss">f"ADF (Detrended):    p = </span><span class="sc">{</span>adf_det_p<span class="sc">:.4f}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'Non-stationary'</span> <span class="cf">if</span> adf_det_p <span class="op">&gt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'Stationary'</span><span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb17-15"><a href="#cb17-15"></a><span class="bu">print</span>(<span class="ss">f"KPSS (Detrended):   p = </span><span class="sc">{</span>kpss_det_p<span class="sc">:.4f}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'Non-stationary'</span> <span class="cf">if</span> kpss_det_p <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'Stationary'</span><span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="bu">print</span>(<span class="ss">f"KPSS (Detrended):   p = </span><span class="sc">{</span>kpss_det_p<span class="sc">:.4f}</span><span class="ss"> → </span><span class="sc">{</span><span class="st">'Non-stationary'</span> <span class="cf">if</span> kpss_det_p <span class="op">&lt;</span> <span class="fl">0.05</span> <span class="cf">else</span> <span class="st">'Stationary'</span><span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1404,13 +1446,14 @@ look-up table. The actual p-value is greater than the p-value returned.
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,22 +65,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../week-5/index.html" rel="next">
+<link href="../week-4/yolo-multiclass-detection.html" rel="next">
 <link href="../week-4/preprocessing_images.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d99f1631218ff9e9c1793c24613d371a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f5b8582305394ab3d0231d2900294800.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -298,7 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -512,17 +514,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Transfer Learning</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-5</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
@@ -559,11 +601,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 6</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
@@ -648,11 +690,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-7</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
@@ -677,11 +719,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-10</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
@@ -756,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Change th eruntime configuration from CPU to T4 GPU.</li>
 </ol>
 <div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937378553,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:15055,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Importing the required libraries.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Importing the required libraries.</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
@@ -771,11 +813,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13"></a><span class="im">import</span> os, zipfile, pathlib, random</span>
 <span id="cb1-14"><a href="#cb1-14"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Extract the data. For this colab notebook task, we will be using the bee and ants image dataset. Link: https://download.pytorch.org/tutorial/hymenoptera_data.zip We have about 120 training images each for ants and bees. There are 75 validation images for each class.</p>
 <div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937391420,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:603,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="a36c2495-515b-4c99-eca8-57a21059be2c" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Download and extract</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Download and extract</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>data_root <span class="op">=</span> <span class="st">"/content/data"</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>os.makedirs(data_root, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-4"><a href="#cb2-4"></a></span>
@@ -792,14 +834,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15"></a><span class="co"># dataset directory (contains train/val subfolders)</span></span>
 <span id="cb2-16"><a href="#cb2-16"></a>data_dir <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>data_root<span class="sc">}</span><span class="ss">/hymenoptera_data"</span></span>
 <span id="cb2-17"><a href="#cb2-17"></a><span class="bu">print</span>(<span class="st">"Extracted to:"</span>, data_dir)</span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="bu">print</span>(<span class="st">"Subdirs:"</span>, os.listdir(data_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="bu">print</span>(<span class="st">"Subdirs:"</span>, os.listdir(data_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Extracted to: /content/data/hymenoptera_data
 Subdirs: ['train', 'val']</code></pre>
 </div>
 </div>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937630848,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:1329,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="f43939c2-4dbe-4d9b-ce4b-9895802ce1fb" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## Count the number of images in each set</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## Count the number of images in each set</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> split <span class="kw">in</span> [<span class="st">"train"</span>, <span class="st">"val"</span>]:</span>
 <span id="cb4-3"><a href="#cb4-3"></a>    split_dir <span class="op">=</span> pathlib.Path(data_dir) <span class="op">/</span> split</span>
 <span id="cb4-4"><a href="#cb4-4"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">[</span><span class="sc">{</span>split<span class="sc">.</span>upper()<span class="sc">}</span><span class="ss">]"</span>)</span>
@@ -846,7 +888,7 @@ Subdirs: ['train', 'val']</code></pre>
 <span id="cb4-45"><a href="#cb4-45"></a>    plt.show()</span>
 <span id="cb4-46"><a href="#cb4-46"></a></span>
 <span id="cb4-47"><a href="#cb4-47"></a><span class="co"># Show images</span></span>
-<span id="cb4-48"><a href="#cb4-48"></a>show_images(dataset, class_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-48"><a href="#cb4-48"></a>show_images(dataset, class_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 [TRAIN]
@@ -866,7 +908,7 @@ Subdirs: ['train', 'val']</code></pre>
 </div>
 </div>
 <div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938133894,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:12,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="e6c21e90-7d7f-4ba7-c360-1cf465b46881" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> time</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> time</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> tempfile <span class="im">import</span> TemporaryDirectory</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> torch</span>
 <span id="cb6-4"><a href="#cb6-4"></a></span>
@@ -951,7 +993,7 @@ Subdirs: ['train', 'val']</code></pre>
 <span id="cb6-83"><a href="#cb6-83"></a>dataset_sizes <span class="op">=</span> {x: <span class="bu">len</span>(image_datasets[x]) <span class="cf">for</span> x <span class="kw">in</span> [<span class="st">'train'</span>, <span class="st">'val'</span>]}</span>
 <span id="cb6-84"><a href="#cb6-84"></a><span class="bu">print</span>(<span class="dv">50</span><span class="op">*</span><span class="st">"=="</span>)</span>
 <span id="cb6-85"><a href="#cb6-85"></a><span class="bu">print</span>(dataset_sizes)</span>
-<span id="cb6-86"><a href="#cb6-86"></a><span class="bu">print</span>(<span class="dv">50</span><span class="op">*</span><span class="st">"=="</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-86"><a href="#cb6-86"></a><span class="bu">print</span>(<span class="dv">50</span><span class="op">*</span><span class="st">"=="</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>====================================================================================================
 {'train': 244, 'val': 153}
@@ -959,7 +1001,7 @@ Subdirs: ['train', 'val']</code></pre>
 </div>
 </div>
 <div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938166195,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:26596,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="d1b401b2-6eab-4f3f-ce67-b6a63b8dbb69" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>model_scratch <span class="op">=</span> models.resnet18(pretrained<span class="op">=</span><span class="va">False</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>model_scratch <span class="op">=</span> models.resnet18(pretrained<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a>num_ftrs <span class="op">=</span> model_scratch.fc.in_features</span>
 <span id="cb8-3"><a href="#cb8-3"></a>model_scratch.fc <span class="op">=</span> nn.Linear(num_ftrs, <span class="bu">len</span>(class_names))  <span class="co"># Adapt final layer to match num classes</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>model_scratch <span class="op">=</span> model_scratch.to(device)</span>
@@ -973,7 +1015,7 @@ Subdirs: ['train', 'val']</code></pre>
 <span id="cb8-12"><a href="#cb8-12"></a></span>
 <span id="cb8-13"><a href="#cb8-13"></a><span class="co"># Train the model from scratch</span></span>
 <span id="cb8-14"><a href="#cb8-14"></a><span class="bu">print</span>(<span class="st">"🛠️ Training ResNet18 from scratch...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15"></a>model_scratch, history_scratch <span class="op">=</span> train_model(model_scratch, dataloaders, dataset_sizes, criterion, optimizer_scratch, scheduler_scratch, device, num_epochs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-15"><a href="#cb8-15"></a>model_scratch, history_scratch <span class="op">=</span> train_model(model_scratch, dataloaders, dataset_sizes, criterion, optimizer_scratch, scheduler_scratch, device, num_epochs<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🛠️ Training ResNet18 from scratch...
 
@@ -1033,7 +1075,7 @@ Best val Acc: 0.6993</code></pre>
 </div>
 <p>ResNET18 with Transfer Learning</p>
 <div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938213471,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:25249,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="9cc9757b-ee2e-4226-80c8-1f6a05173802" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Load pretrained model</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Load pretrained model</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>model_tl <span class="op">=</span> models.resnet18(pretrained<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>num_ftrs <span class="op">=</span> model_tl.fc.in_features</span>
 <span id="cb10-4"><a href="#cb10-4"></a>model_tl.fc <span class="op">=</span> nn.Linear(num_ftrs, <span class="bu">len</span>(class_names))</span>
@@ -1049,7 +1091,7 @@ Best val Acc: 0.6993</code></pre>
 <span id="cb10-14"><a href="#cb10-14"></a>scheduler_tl <span class="op">=</span> optim.lr_scheduler.StepLR(optimizer_tl, step_size<span class="op">=</span><span class="dv">7</span>, gamma<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb10-15"><a href="#cb10-15"></a></span>
 <span id="cb10-16"><a href="#cb10-16"></a><span class="bu">print</span>(<span class="st">"🔧 Training ResNet18 with transfer learning...</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb10-17"><a href="#cb10-17"></a>model_tl, history_tl <span class="op">=</span> train_model(model_tl, dataloaders, dataset_sizes, criterion, optimizer_tl, scheduler_tl, device, num_epochs<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-17"><a href="#cb10-17"></a>model_tl, history_tl <span class="op">=</span> train_model(model_tl, dataloaders, dataset_sizes, criterion, optimizer_tl, scheduler_tl, device, num_epochs<span class="op">=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>🔧 Training ResNet18 with transfer learning...
 
@@ -1112,7 +1154,7 @@ Best val Acc: 0.9346</code></pre>
 <section id="plot-the-accuracy" class="level2">
 <h2 class="anchored" data-anchor-id="plot-the-accuracy">Plot the accuracy</h2>
 <div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938227063,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:582,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="a0194268-fb1d-4431-9e5a-bbe8e6858029" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Plot training &amp; validation accuracy</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Plot training &amp; validation accuracy</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
 <span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Accuracy plot</span></span>
@@ -1140,7 +1182,7 @@ Best val Acc: 0.9346</code></pre>
 <span id="cb12-26"><a href="#cb12-26"></a>plt.grid(<span class="va">True</span>)</span>
 <span id="cb12-27"><a href="#cb12-27"></a></span>
 <span id="cb12-28"><a href="#cb12-28"></a>plt.tight_layout()</span>
-<span id="cb12-29"><a href="#cb12-29"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-29"><a href="#cb12-29"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1218,13 +1260,14 @@ Best val Acc: 0.9346</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1573,8 +1616,8 @@ Best val Acc: 0.9346</code></pre>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../week-5/index.html" class="pagination-link" aria-label="Week-5">
-        <span class="nav-page-text">Week-5</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../week-4/yolo-multiclass-detection.html" class="pagination-link" aria-label="Object Recognition with YOLO">
+        <span class="nav-page-text">Object Recognition with YOLO</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

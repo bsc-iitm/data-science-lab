@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Object Recognition with YOLO – Data Science Lab</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../week-4/Intro to computer vision/intro_to_cv.html" rel="next">
+<link href="../week-4/Transfer_Learning.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-969ddfa49e00a70eb3423444dbc81f6c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-671d11123829428b91b21d15b3af772b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6c72f3842be282d0faf5c906c59282b6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/yolo-multiclass-detection.html">Object Recognition with YOLO</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/iit_logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-1/module-1/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy and Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vectors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting Simple Curves</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Matrices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/module-1/nb-5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">NumPy Arrays</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pandas</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/apply_and_map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apply and Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/compare.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Compare</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/introduction_to_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/pandas_introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-1/pandas/PivotTable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PivotTable</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-2/week-2-reference-notebook_v1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Structured Approach to ML Projects</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-3/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-3</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/2 ANN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numpy array to Tensor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/3 CNN using Pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 CNN using Pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/4 RNN using pytorch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 RNN using pytorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/Pytorch_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DL workshop on PyTorch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorchANN.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mini batch gradient descent</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Pytorch</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-3/pytorch/Autograd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gradient accumulation and clearing the gradients</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-4/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loading Images</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/preprocessing_images.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">— Data Augmentation Examples (PyTorch v2) —</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Transfer_Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transfer Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/yolo-multiclass-detection.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Object Recognition with YOLO</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Intro to computer vision</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Computer Vision</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Vision Transformers</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vision Transformers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-5/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-5</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Datasets_and_Tokenizers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to the Hugging Face Ecosystem: Datasets and Tokenizers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Fine_tuning_hands-on.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fine Tuning Hands On</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/Summarization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Summarization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_Fine_TuningBERT.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 Fine TuningBERT</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-5/W5_L2_FineTuningGPT2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">W5 L2 FineTuningGPT2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-6/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 6</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1: Introduction to Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2: Techniques in Prompting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Applications of Prompt Engineering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Introduction to LLM Platforms</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 5: Getting Started with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 6: Hands-on with OpenAI API</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 7: Working with Text Completion in OpenAI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 8: Evaluating Prompt Quality and Output Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 9: Introduction to LangChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 10: Core Components of LangChain – LLMs, PromptTemplates, OutputParsers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 11: LangChain Chains – Sequential, SimpleSequentialChain, RouterChain</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 12: LangChain Memory – Making LLMs Remember Context</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-6/Module13.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 13: PromptTemplates in Depth – Partial Templates, Nesting, Debugging</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-7/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-7</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/1_Revisiting_langchain.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LangChain Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/2_RAG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RAG</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-7/3_VectorDBs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Vector Databases</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../week-10/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week-10</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/1 Time_Series_Analysis_with_Pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Date Time Index</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/2 Time_Resampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Time Resampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/3 Classical_decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 Classical_decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/4 STL_Decomposition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 STL_Decomposition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/5 Stationarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 Stationarity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../week-10/6 make_data_stationary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Make data stationary</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." id="toc-object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." class="nav-link active" data-scroll-target="#object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car.">Object Recognition 1• Object recognition in image processing refers to the task of identifying and classifying objects within digital images or video frames. 2• It involves the use of computer vision techniques and machine learning algorithms to automatically detect and recognize objects of interest in visual data.3. The goal of object recognition is to assign meaningful labels or categories to objects in an image. 4. This can involve identifying common objects such as cars, people, animals, or specific object instances such as a particular breed of dog or a specific model of car.</a>
+  <ul class="collapse">
+  <li><a href="#object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." id="toc-object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." class="nav-link" data-scroll-target="#object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes.">Object recognition typical steps1. Preprocessing: This step involves preparing the image data for analysis by performing operations such as resizing, normalizing, or enhancing the image.2. Feature Extraction: Features that represent discriminative characteristics of objects are extracted from the preprocessed image. These features can be low-level visual descriptors like edges, corners, or textures, or higher-level features learned from deep neural networks.3. Classification or Detection: The extracted features are used to classify the objects or detect their presence in the image. Classification involves assigning a specific label or category to an entire image, while detection involves localizing and classifying objects within an image.4. Post-processing: After classification or detection, postprocessing techniques are applied to refine the results, such as filtering out false positives, grouping detections, or estimating object poses and attributes.</a></li>
+  </ul></li>
+  <li><a href="#three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." id="toc-three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." class="nav-link" data-scroll-target="#three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image.">Three computer vision tasks1. Image Classification: Predict the type or class of an object in an image.2. Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.3. Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.</a></li>
+  <li><a href="#yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." id="toc-yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." class="nav-link" data-scroll-target="#yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly.">YOLO - You only look once1. YOLO does object detection in real-time.2. It involves a single neural network trained end to end that takes a photograph as input and predicts bounding boxes and class labels for each bounding box directly.</a></li>
+  <li><a href="#yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." id="toc-yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." class="nav-link" data-scroll-target="#yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels.">YOLO Models 1. The model works by first splitting the input image into a grid of cells, where each cell is responsible for predicting a bounding box if the center of a bounding box falls within the cell.2. Each grid cell predicts a bounding box involving the x, y coordinate and the width and height and the confidence.3. A class prediction is also based on each cell.4. For example, an image may be divided into a 7×7 grid and each cell in the grid may predict 2 bounding boxes, resulting in 94 proposed bounding box predictions.5. The class probabilities map and the bounding boxes with confidences are then combined into a final set of bounding boxes and class labels.</a></li>
+  <li><a href="#yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." id="toc-yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." class="nav-link" data-scroll-target="#yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes.">YOLO: Step by Step1. Divide the image into a grid of cells. – The YOLO algorithm divides the image into a grid of cells, typically 7x7 or 13x13. – Each cell is responsible for predicting a set of bounding boxes and class probabilities.2. Predict bounding boxes and class probabilities for each cell. – For each cell, the YOLO algorithm predicts a set of bounding boxes and class probabilities. – The bounding boxes are represented as four coordinates: the top left corner, the bottom right corner, and the width and height of the box. – The class probabilities represent the probability that the object in the box belongs to a particular class.3. Apply non-max suppression. – The bounding boxes predicted by the YOLO algorithm may overlap. – To remove overlapping boxes, the YOLO algorithm applies a non-max suppression algorithm. – This algorithm keeps the box with the highest confidence score, and it removes all other boxes that have a high overlap with the selected box.4. Draw the bounding boxes and class labels on the image. – The final step is to draw the bounding boxes and class labels on the image. – The bounding boxes are drawn in a different color for each class, and the class labels are displayed next to the bounding boxes.</a></li>
+  <li><a href="#yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." id="toc-yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." class="nav-link" data-scroll-target="#yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.">YOLO: Summary 1. Divide the image into a grid of cells.2. Predict bounding boxes and class probabilities for each cell.3. Apply non-max suppression.4. Draw the bounding boxes and class labels on the image.</a>
+  <ul class="collapse">
+  <li><a href="#lets-start" id="toc-lets-start" class="nav-link" data-scroll-target="#lets-start">Lets start</a></li>
+  <li><a href="#checking-number-of-classes" id="toc-checking-number-of-classes" class="nav-link" data-scroll-target="#checking-number-of-classes">Checking number of classes</a></li>
+  <li><a href="#so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" id="toc-so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" class="nav-link" data-scroll-target="#so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes">So , we have 4 classes, lets see the images after regular intervals to see these classes</a></li>
+  <li><a href="#so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" id="toc-so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" class="nav-link" data-scroll-target="#so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra">So we have 4 classes0 : Buffallo1 : Elephant2 : Rhino4 : Zebra</a></li>
+  <li><a href="#we-can-see-that-there-are-2-eelephants-in-the-image" id="toc-we-can-see-that-there-are-2-eelephants-in-the-image" class="nav-link" data-scroll-target="#we-can-see-that-there-are-2-eelephants-in-the-image">We can see that there are 2 eelephants in the image</a></li>
+  <li><a href="#for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" id="toc-for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" class="nav-link" data-scroll-target="#for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names">For YOLO model training, we have to build a yaml file with train, val datasets info, and number of classes, and class names</a></li>
+  <li><a href="#we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" id="toc-we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" class="nav-link" data-scroll-target="#we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model">We can see that the trained model performnace is better than the base model</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-4/yolo-multiclass-detection.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/yolo-multiclass-detection.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/yolo-multiclass-detection.html">Object Recognition with YOLO</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Object Recognition with YOLO</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." class="level2">
+<h2 class="anchored" data-anchor-id="object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car.">Object Recognition 1• Object recognition in image processing refers to the task of identifying and classifying objects within digital images or video frames. 2• It involves the use of computer vision techniques and machine learning algorithms to automatically detect and recognize objects of interest in visual data.3. The goal of object recognition is to assign meaningful labels or categories to objects in an image. 4. This can involve identifying common objects such as cars, people, animals, or specific object instances such as a particular breed of dog or a specific model of car.</h2>
+<section id="object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." class="level3">
+<h3 class="anchored" data-anchor-id="object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes.">Object recognition typical steps1. Preprocessing: This step involves preparing the image data for analysis by performing operations such as resizing, normalizing, or enhancing the image.2. Feature Extraction: Features that represent discriminative characteristics of objects are extracted from the preprocessed image. These features can be low-level visual descriptors like edges, corners, or textures, or higher-level features learned from deep neural networks.3. Classification or Detection: The extracted features are used to classify the objects or detect their presence in the image. Classification involves assigning a specific label or category to an entire image, while detection involves localizing and classifying objects within an image.4. Post-processing: After classification or detection, postprocessing techniques are applied to refine the results, such as filtering out false positives, grouping detections, or estimating object poses and attributes.</h3>
+</section>
+</section>
+<section id="three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." class="level2">
+<h2 class="anchored" data-anchor-id="three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image.">Three computer vision tasks1. Image Classification: Predict the type or class of an object in an image.2. Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.3. Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.</h2>
+</section>
+<section id="yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." class="level2">
+<h2 class="anchored" data-anchor-id="yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly.">YOLO - You only look once1. YOLO does object detection in real-time.2. It involves a single neural network trained end to end that takes a photograph as input and predicts bounding boxes and class labels for each bounding box directly.</h2>
+</section>
+<section id="yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." class="level2">
+<h2 class="anchored" data-anchor-id="yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels.">YOLO Models 1. The model works by first splitting the input image into a grid of cells, where each cell is responsible for predicting a bounding box if the center of a bounding box falls within the cell.2. Each grid cell predicts a bounding box involving the x, y coordinate and the width and height and the confidence.3. A class prediction is also based on each cell.4. For example, an image may be divided into a 7×7 grid and each cell in the grid may predict 2 bounding boxes, resulting in 94 proposed bounding box predictions.5. The class probabilities map and the bounding boxes with confidences are then combined into a final set of bounding boxes and class labels.</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-7-1-2d3625a9-d431-459a-9e79-ea0db58559f7.png" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." class="level2">
+<h2 class="anchored" data-anchor-id="yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes.">YOLO: Step by Step1. Divide the image into a grid of cells. – The YOLO algorithm divides the image into a grid of cells, typically 7x7 or 13x13. – Each cell is responsible for predicting a set of bounding boxes and class probabilities.2. Predict bounding boxes and class probabilities for each cell. – For each cell, the YOLO algorithm predicts a set of bounding boxes and class probabilities. – The bounding boxes are represented as four coordinates: the top left corner, the bottom right corner, and the width and height of the box. – The class probabilities represent the probability that the object in the box belongs to a particular class.3. Apply non-max suppression. – The bounding boxes predicted by the YOLO algorithm may overlap. – To remove overlapping boxes, the YOLO algorithm applies a non-max suppression algorithm. – This algorithm keeps the box with the highest confidence score, and it removes all other boxes that have a high overlap with the selected box.4. Draw the bounding boxes and class labels on the image. – The final step is to draw the bounding boxes and class labels on the image. – The bounding boxes are drawn in a different color for each class, and the class labels are displayed next to the bounding boxes.</h2>
+</section>
+<section id="yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." class="level2">
+<h2 class="anchored" data-anchor-id="yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.">YOLO: Summary 1. Divide the image into a grid of cells.2. Predict bounding boxes and class probabilities for each cell.3. Apply non-max suppression.4. Draw the bounding boxes and class labels on the image.</h2>
+<section id="lets-start" class="level3">
+<h3 class="anchored" data-anchor-id="lets-start">Lets start</h3>
+<div id="cell-11" class="cell" data-trusted="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install YOLOv8!pip install ultralytics -q</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>::: {#cell-12 .cell _uuid=‘8f2839f25d086af736a60e9eeb907d3b93b6e0e5’ _cell_guid=‘b1076dfc-b9ad-4769-8c92-a6c4dae69d19’ trusted=‘true’ quarto-private-1=‘{“key”:“execution”,“value”:{“iopub.status.busy”:“2025-10-06T10:15:09.064080Z”,“iopub.execute_input”:“2025-10-06T10:15:09.064427Z”,“iopub.status.idle”:“2025-10-06T10:15:09.069788Z”,“shell.execute_reply.started”:“2025-10-06T10:15:09.064398Z”,“shell.execute_reply”:“2025-10-06T10:15:09.068961Z”}}’ execution_count=4}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> npimport pandas <span class="im">as</span> pd <span class="im">import</span> osimport randomfrom ultralytics <span class="im">import</span> YOLOimport matplotlib.pyplot <span class="im">as</span> pltimport cv2from PIL <span class="im">import</span> Imagerandom.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
+<div id="cell-13" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:13.808896Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:13.809526Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:17.069846Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:13.809501Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:17.069090Z&quot;}}" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">!</span>yolo <span class="op">-</span>check</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Ultralytics 8.3.205 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
+Setup complete ✅ (4 CPUs, 31.4 GB RAM, 6411.4/8062.4 GB disk)
+
+OS                     Linux-6.6.56+-x86_64-with-glibc2.35
+Environment            Colab
+Python                 3.11.13
+Install                pip
+Path                   /usr/local/lib/python3.11/dist-packages/ultralytics
+RAM                    31.35 GB
+Disk                   6411.4/8062.4 GB
+CPU                    Intel Xeon CPU @ 2.00GHz
+CPU count              4
+GPU                    Tesla P100-PCIE-16GB, 16269MiB
+GPU count              1
+CUDA                   12.4
+
+numpy                  ✅ 1.26.4&gt;=1.23.0
+matplotlib             ✅ 3.7.2&gt;=3.3.0
+opencv-python          ✅ 4.11.0.86&gt;=4.6.0
+pillow                 ✅ 11.2.1&gt;=7.1.2
+pyyaml                 ✅ 6.0.2&gt;=5.3.1
+requests               ✅ 2.32.4&gt;=2.23.0
+scipy                  ✅ 1.15.3&gt;=1.4.1
+torch                  ✅ 2.6.0+cu124&gt;=1.8.0
+torch                  ✅ 2.6.0+cu124!=2.4.0,&gt;=1.8.0; sys_platform == "win32"
+torchvision            ✅ 0.21.0+cu124&gt;=0.9.0
+psutil                 ✅ 7.0.0
+polars                 ✅ 1.21.0
+ultralytics-thop       ✅ 2.0.17&gt;=2.0.0</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:29.940006Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:29.940285Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:29.955473Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:29.940262Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:29.954729Z&quot;}}" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># will use multi-class datasetdataset_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format"# List top-level files/foldersprint("Top-level structure:")print(os.listdir(dataset_dir))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top-level structure:
+['final_data']</code></pre>
+</div>
+</div>
+<div id="cell-15" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:38.630213Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:38.630482Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:38.648971Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:38.630464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:38.648181Z&quot;}}" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['valid', 'test', 'data_wl.yaml', 'train']</code></pre>
+</div>
+</div>
+<div id="cell-16" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:00.713279Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:00.714012Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:00.730116Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:00.713986Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:00.729398Z&quot;}}" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['labels', 'labels.cache', 'images']</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:37.360743Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:37.361394Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:37.406576Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:37.361372Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:37.405782Z&quot;}}" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>dataset_dir<span class="op">=</span> <span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data'</span><span class="co"># Specify the directory containing the train and val imagestrain_dir = os.path.join(dataset_dir, "train/images")label_dir_train = os.path.join(dataset_dir, "train/labels")val_dir = os.path.join(dataset_dir, "valid/images")label_dir_val = os.path.join(dataset_dir, "valid/labels")# Get a list of all image files in the train directoryimage_files = [f for f in os.listdir(train_dir) if f.endswith((".jpg", ".jpeg"))]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-18" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:54.038174Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:54.038448Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:54.078041Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:54.038428Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:54.077293Z&quot;}}" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Count the number of images in each directorynum_train_images = len([f for f in os.listdir(train_dir) if f.endswith((".jpg", ".jpeg"))])num_val_images = len([f for f in os.listdir(val_dir) if f.endswith((".jpg", ".jpeg"))])# Calculate the total number of imagestotal_images = num_train_images + num_val_images# Calculate the percentage of images in each folderpercentage_train = (num_train_images / total_images) * 100percentage_val = (num_val_images / total_images) * 100print(f"Total Number of images {total_images}")print(f"Percentage of images in the training folder: {percentage_train:.2f}%")print(f"Percentage of images in the validation folder: {percentage_val:.2f}%")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total Number of images 1353
+Percentage of images in the training folder: 88.91%
+Percentage of images in the validation folder: 11.09%</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:18:11.348641Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:18:11.349325Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:18:11.629583Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:18:11.349303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:18:11.628902Z&quot;}}" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Randomly select one image to displayrandom_image = random.choice(image_files)# Load and display the selected imageimage_path = os.path.join(train_dir, random_image)image = cv2.imread(image_path)  # Read the image using OpenCVimg_shape = image.shapeif image is not None:    # OpenCV reads images in BGR format, so convert to RGB for Matplotlib    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))     plt.title(f"{random_image} with shape {img_shape}")    plt.axis('off')    plt.show()else:    print(f"Failed to read {random_image}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-number-of-classes" class="level3">
+<h3 class="anchored" data-anchor-id="checking-number-of-classes">Checking number of classes</h3>
+<div id="cell-21" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:03.797530Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:03.797782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:04.569596Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:03.797765Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:04.568893Z&quot;}}" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Get the number of classes # Collect class IDsall_classes = set()for file in os.listdir(label_dir_train):    if file.endswith(".txt"):        with open(os.path.join(label_dir_train, file), "r") as f:            for line in f:                if line.strip():  # avoid empty lines                    class_id = int(line.split()[0])  # first element = class                    all_classes.add(class_id)print("Distinct classes found:", sorted(all_classes))print("Total number of unique classes:", len(all_classes))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Distinct classes found: [0, 1, 2, 3]
+Total number of unique classes: 4</code></pre>
+</div>
+</div>
+</section>
+<section id="so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" class="level3">
+<h3 class="anchored" data-anchor-id="so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes">So , we have 4 classes, lets see the images after regular intervals to see these classes</h3>
+<div id="cell-23" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:17.792782Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:17.793055Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:18.795169Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:17.793037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:18.794390Z&quot;}}" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># display images to check the image lablesimages = ['0020.jpg', '0380.jpg', '0820.jpg', '1320.jpg']for image in images:    image_path = os.path.join(train_dir,image)    #image_path="/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/images/1320.jpg"    image1 = cv2.imread(image_path)      img_shape = image1.shape    if image is not None:    # OpenCV reads images in BGR format, so convert to RGB for Matplotlib        plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))         plt.title(f"{image} with shape {img_shape}")        plt.axis('off')        plt.show()    else:        print(f"Failed to read {image}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-12-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-12-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-12-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" class="level3">
+<h3 class="anchored" data-anchor-id="so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra">So we have 4 classes0 : Buffallo1 : Elephant2 : Rhino4 : Zebra</h3>
+<div id="cell-25" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:54.901229Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:54.901802Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:54.934051Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:54.901779Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:54.933409Z&quot;}}" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Checking how labels look likelabel_file_path = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/labels/0401.txt"# Read the label file into a Pandas DataFramecolumn_names = ["class", "x_min", "y_min", "x_max", "y_max"]df = pd.read_csv(label_file_path, header=None, names=column_names, sep=" ")df</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">class</th>
+<th data-quarto-table-cell-role="th">x_min</th>
+<th data-quarto-table-cell-role="th">y_min</th>
+<th data-quarto-table-cell-role="th">x_max</th>
+<th data-quarto-table-cell-role="th">y_max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>0.485938</td>
+<td>0.538732</td>
+<td>0.515625</td>
+<td>0.678404</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1</td>
+<td>0.310156</td>
+<td>0.730047</td>
+<td>0.242188</td>
+<td>0.291080</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Each .txt file in YOLO format corresponds to one image.Each line inside the file = one object annotation in that image.That’s why we got 2 rows → it means that image (0401.jpg) has two objects of class 1.</p>
+<div id="cell-27" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:21:52.133421Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:21:52.133696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:21:52.350676Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:21:52.133677Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:21:52.349879Z&quot;}}" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>image_filename <span class="op">=</span> <span class="st">"0401.jpg"</span>image_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/images"</span>, image_filename)label_file_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/labels"</span>, image_filename.replace(<span class="st">".jpg"</span>, <span class="st">".txt"</span>))<span class="co"># Load imageimage = cv2.imread(image_path)image_height, image_width, _ = image.shape# Read YOLO labelswith open(label_file_path, "r") as file:    yolo_labels = file.readlines()# Draw bounding boxesfor label in yolo_labels:    class_id, x_center, y_center, width, height = map(float, label.split())    # Convert YOLO (relative) → absolute pixel values    x_center *= image_width    y_center *= image_height    width *= image_width    height *= image_height    # Bounding box corners    x1 = int(x_center - width / 2)    y1 = int(y_center - height / 2)    x2 = int(x_center + width / 2)    y2 = int(y_center + height / 2)    # Draw rectangle + class id    color = (0, 0, 255)  # red box    thickness = 2    cv2.rectangle(image, (x1, y1), (x2, y2), color, thickness)    cv2.putText(image, f"Class {int(class_id)}", (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)# Show imageplt.figure(figsize=(8, 8))plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="we-can-see-that-there-are-2-eelephants-in-the-image" class="level3">
+<h3 class="anchored" data-anchor-id="we-can-see-that-there-are-2-eelephants-in-the-image">We can see that there are 2 eelephants in the image</h3>
+</section>
+<section id="for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" class="level3">
+<h3 class="anchored" data-anchor-id="for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names">For YOLO model training, we have to build a yaml file with train, val datasets info, and number of classes, and class names</h3>
+<div id="cell-30" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:22:54.474065Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:22:54.474797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:22:54.479252Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:22:54.474774Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:22:54.478494Z&quot;}}" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#create yaml file for YOLO trainingyaml_content = f"""train:   - {train_dir}  - {label_dir_train}val:   - {val_dir}  - {label_dir_val}nc: 4  # number of classesnames: ['Buffalo', 'Elephant', 'Rhino', 'Zebra']  # class names in our dataset as a list"""# Write to YAML filewith open("/kaggle/working/wildlife_dataset.yaml", "w") as f:    f.write(yaml_content)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-31" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:23:23.459408Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:23:23.459646Z&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Load a modelmodel = YOLO('yolov8m.pt') # Train the model model.train(data='/kaggle/working/wildlife_dataset.yaml', epochs=10, imgsz=640)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8m.pt to 'yolov8m.pt': 100% ━━━━━━━━━━━━ 49.7MB 47.3MB/s 1.1s1.0s&lt;0.2s9s
+Ultralytics 8.3.205 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
+<span class="ansi-blue-fg ansi-bold">engine/trainer: </span>agnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=/kaggle/working/wildlife_dataset.yaml, degrees=0.0, deterministic=True, device=None, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=10, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8m.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=train, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=/kaggle/working/runs/detect/train, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf': 100% ━━━━━━━━━━━━ 755.1KB 4.6MB/s 0.2s 0.1s&lt;0.2s
+Overriding model.yaml nc=80 with nc=4
+
+                   from  n    params  module                                       arguments                     
+  0                  -1  1      1392  ultralytics.nn.modules.conv.Conv             [3, 48, 3, 2]                 
+  1                  -1  1     41664  ultralytics.nn.modules.conv.Conv             [48, 96, 3, 2]                
+  2                  -1  2    111360  ultralytics.nn.modules.block.C2f             [96, 96, 2, True]             
+  3                  -1  1    166272  ultralytics.nn.modules.conv.Conv             [96, 192, 3, 2]               
+  4                  -1  4    813312  ultralytics.nn.modules.block.C2f             [192, 192, 4, True]           
+  5                  -1  1    664320  ultralytics.nn.modules.conv.Conv             [192, 384, 3, 2]              
+  6                  -1  4   3248640  ultralytics.nn.modules.block.C2f             [384, 384, 4, True]           
+  7                  -1  1   1991808  ultralytics.nn.modules.conv.Conv             [384, 576, 3, 2]              
+  8                  -1  2   3985920  ultralytics.nn.modules.block.C2f             [576, 576, 2, True]           
+  9                  -1  1    831168  ultralytics.nn.modules.block.SPPF            [576, 576, 5]                 
+ 10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 12                  -1  2   1993728  ultralytics.nn.modules.block.C2f             [960, 384, 2]                 
+ 13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+ 14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 15                  -1  2    517632  ultralytics.nn.modules.block.C2f             [576, 192, 2]                 
+ 16                  -1  1    332160  ultralytics.nn.modules.conv.Conv             [192, 192, 3, 2]              
+ 17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 18                  -1  2   1846272  ultralytics.nn.modules.block.C2f             [576, 384, 2]                 
+ 19                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+ 20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+ 21                  -1  2   4207104  ultralytics.nn.modules.block.C2f             [960, 576, 2]                 
+ 22        [15, 18, 21]  1   3778012  ultralytics.nn.modules.head.Detect           [4, [192, 384, 576]]          
+Model summary: 169 layers, 25,858,636 parameters, 25,858,620 gradients, 79.1 GFLOPs
+
+Transferred 469/475 items from pretrained weights
+Freezing layer 'model.22.dfl.conv.weight'
+<span class="ansi-blue-fg ansi-bold">AMP: </span>running Automatic Mixed Precision (AMP) checks...
+Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt to 'yolo11n.pt': 100% ━━━━━━━━━━━━ 5.4MB 20.6MB/s 0.3s.2s&lt;0.2s4s
+<span class="ansi-blue-fg ansi-bold">AMP: </span>checks passed ✅
+<span class="ansi-blue-fg ansi-bold">train: </span>Fast image access ✅ (ping: 1.1±2.3 ms, read: 10.1±5.9 MB/s, size: 228.6 KB)
+<span class="ansi-blue-fg ansi-bold">train: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/labels... 1203 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1203/1203 243.3it/s 4.9s0.1s
+WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">train: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train is not writeable, cache not saved.
+<span class="ansi-blue-fg ansi-bold">albumentations: </span>Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+<span class="ansi-blue-fg ansi-bold">val: </span>Fast image access ✅ (ping: 0.3±0.6 ms, read: 12.8±8.7 MB/s, size: 154.0 KB)
+<span class="ansi-blue-fg ansi-bold">val: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/labels... 150 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 150/150 126.1it/s 1.2s0.1s
+WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid is not writeable, cache not saved.
+Plotting labels to /kaggle/working/runs/detect/train/labels.jpg... 
+<span class="ansi-blue-fg ansi-bold">optimizer:</span> 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+<span class="ansi-blue-fg ansi-bold">optimizer:</span> AdamW(lr=0.00125, momentum=0.9) with parameter groups 77 weight(decay=0.0), 84 weight(decay=0.0005), 83 bias(decay=0.0)
+Image sizes 640 train, 640 val
+Using 4 dataloader workers
+Logging results to <span class="ansi-bold">/kaggle/working/runs/detect/train</span>
+Starting training for 10 epochs...
+Closing dataloader mosaic
+<span class="ansi-blue-fg ansi-bold">albumentations: </span>Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       1/10      7.79G     0.7689      1.947      1.192         13        640: 100% ━━━━━━━━━━━━ 76/76 1.5it/s 49.4s0.4ss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.1it/s 2.4s0.5ss
+                   all        150        262      0.529      0.617      0.629      0.407
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       2/10      7.86G      1.115      1.526      1.479          4        640: 100% ━━━━━━━━━━━━ 76/76 1.6it/s 46.8s0.4ss
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.0it/s 1.7s0.5s
+                   all        150        262      0.245      0.463      0.265       0.13
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+       3/10       7.9G      1.168      1.505      1.506         27        640: 41% ━━━━╸─────── 31/76 1.6it/s 19.8s&lt;27.8s</pre>
+</div>
+</div>
+</div>
+<div id="cell-32" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:22.350672Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:22.351027Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:22.356276Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:22.350999Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:22.355444Z&quot;}}" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/working/runs/detect/train2/weights'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['best.pt', 'last.pt']</code></pre>
+</div>
+</div>
+<div id="cell-33" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:29.159878Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:29.160492Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:36.642400Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:29.160471Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:36.641718Z&quot;}}" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Load your trained modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Run validation on validation setmetrics = model.val()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>Ultralytics 8.3.203 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
+Model summary (fused): 92 layers, 25,842,076 parameters, 0 gradients, 78.7 GFLOPs
+<span class="ansi-blue-fg ansi-bold">val: </span>Fast image access ✅ (ping: 0.0±0.0 ms, read: 259.2±111.8 MB/s, size: 152.6 KB)
+<span class="ansi-blue-fg ansi-bold">val: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/labels... 150 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 150/150 1.1Kit/s 0.1s&lt;0.1s
+WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid is not writeable, cache not saved.
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 10/10 2.7it/s 3.7s.2ss
+</pre>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.11/dist-packages/matplotlib/colors.py:721: RuntimeWarning: invalid value encountered in less
+  xa[xa &lt; 0] = -1
+/usr/local/lib/python3.11/dist-packages/matplotlib/colors.py:721: RuntimeWarning: invalid value encountered in less
+  xa[xa &lt; 0] = -1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>                   all        150        262      0.925      0.887      0.949      0.795
+               Buffalo         38         60      0.907      0.814      0.906      0.742
+              Elephant         43         83      0.893      0.904      0.952      0.763
+                 Rhino         42         58      0.983      0.977      0.993      0.905
+                 Zebra         28         61      0.919      0.852      0.943      0.769
+Speed: 2.0ms preprocess, 9.5ms inference, 0.0ms loss, 1.5ms postprocess per image
+Results saved to <span class="ansi-bold">/kaggle/working/runs/detect/val</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="cell-34" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:55.070484Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:55.070768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:55.074665Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:55.070746Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:55.073863Z&quot;}}" data-execution_count="25">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">### YOLOv8 automatically saves all plots in the validation folder:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="cell-35" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:59.114052Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:59.114656Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:59.119711Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:59.114632Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:59.119008Z&quot;}}" data-execution_count="26">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/working/runs/detect/val'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['val_batch1_labels.jpg', 'val_batch2_labels.jpg', 'val_batch1_pred.jpg', 'BoxF1_curve.png', 'BoxP_curve.png', 'val_batch0_pred.jpg', 'confusion_matrix_normalized.png', 'BoxR_curve.png', 'BoxPR_curve.png', 'val_batch0_labels.jpg', 'confusion_matrix.png', 'val_batch2_pred.jpg']</code></pre>
+</div>
+</div>
+<div id="cell-36" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:03.999780Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:04.000371Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:04.400335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:04.000350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:04.399705Z&quot;}}" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Display Precision-Recall curvepr_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxPR_curve.png")plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-37" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:12.611943Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:12.612222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:14.195410Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:12.612204Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:14.194558Z&quot;}}" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> pltimport cv2<span class="co"># Display Precision-Recall curvepr_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxPR_curve.png")plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()# Display F1 curvef1_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxF1_curve.png")plt.imshow(cv2.cvtColor(f1_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()cm_curve = cv2.imread("/kaggle/working/runs/detect/val/confusion_matrix.png")plt.imshow(cv2.cvtColor(cm_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-22-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-22-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-38" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:54:40.229334Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:54:40.229950Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:54:41.392410Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:54:40.229919Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:54:41.391237Z&quot;}}" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">### Lets check the model to detect and classify an onbject in an image# Load modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Load imageimg = cv2.imread('/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images/0365.jpg')# Run predictionprediction = model.predict(img)[0]# Draw bounding boxes on the imagepred_img = prediction.plot(line_width=4, font_size=12)# Convert BGR (OpenCV) → RGB (for matplotlib / PIL)pred_img = pred_img[:, :, ::-1]# Display with matplotlibplt.figure(figsize=(10, 10))plt.imshow(pred_img)plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+0: 448x640 1 Buffalo, 13.7ms
+Speed: 2.9ms preprocess, 13.7ms inference, 1.3ms postprocess per image at shape (1, 3, 448, 640)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-39" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:56:08.334153Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:56:08.334893Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:56:11.793986Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:56:08.334859Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:56:11.792698Z&quot;}}" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># prediction on 10 random images from val folder# Load modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Path to validation imagesval_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"# Get list of imagesall_images = [os.path.join(val_dir, img) for img in os.listdir(val_dir) if img.endswith((".jpg", ".png", ".jpeg"))]# Randomly pick 10 imagessampled_images = random.sample(all_images, 10)# Run inference and displayplt.figure(figsize=(20, 20))for i, img_path in enumerate(sampled_images):    # Load image    img = cv2.imread(img_path)    # Run prediction    prediction = model.predict(img)[0]    # Draw bounding boxes    pred_img = prediction.plot(line_width=3, font_size=12)    # Convert BGR to RGB    pred_img = pred_img[:, :, ::-1]    # Show    plt.subplot(5, 2, i+1)  # 5 rows, 2 columns    plt.imshow(pred_img)    plt.title(os.path.basename(img_path))    plt.axis("off")plt.tight_layout()plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+0: 480x640 1 Buffalo, 14.6ms
+Speed: 2.1ms preprocess, 14.6ms inference, 1.3ms postprocess per image at shape (1, 3, 480, 640)
+
+0: 640x448 1 Elephant, 14.0ms
+Speed: 2.9ms preprocess, 14.0ms inference, 1.2ms postprocess per image at shape (1, 3, 640, 448)
+
+0: 640x448 2 Elephants, 13.1ms
+Speed: 1.6ms preprocess, 13.1ms inference, 1.3ms postprocess per image at shape (1, 3, 640, 448)
+
+0: 480x640 1 Buffalo, 14.6ms
+Speed: 1.5ms preprocess, 14.6ms inference, 1.2ms postprocess per image at shape (1, 3, 480, 640)
+
+0: 640x640 1 Elephant, 16.9ms
+Speed: 1.7ms preprocess, 16.9ms inference, 1.3ms postprocess per image at shape (1, 3, 640, 640)
+
+0: 448x640 2 Buffalos, 13.4ms
+Speed: 1.7ms preprocess, 13.4ms inference, 1.2ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 448x640 1 Elephant, 12.9ms
+Speed: 2.1ms preprocess, 12.9ms inference, 1.2ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 480x640 1 Rhino, 14.7ms
+Speed: 2.0ms preprocess, 14.7ms inference, 1.2ms postprocess per image at shape (1, 3, 480, 640)
+
+0: 384x640 2 Elephants, 42.4ms
+Speed: 1.4ms preprocess, 42.4ms inference, 1.4ms postprocess per image at shape (1, 3, 384, 640)
+
+0: 448x640 1 Elephant, 1 Rhino, 13.5ms
+Speed: 2.3ms preprocess, 13.5ms inference, 1.2ms postprocess per image at shape (1, 3, 448, 640)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-40" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:57:58.897461Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:57:58.897751Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:58:02.248276Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:57:58.897733Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:58:02.247012Z&quot;}}" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">### predicting with base model# prediction on 10 random images from val folder# Load base modelmodel = YOLO('yolov8m.pt') # Path to validation imagesval_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"# Get list of imagesall_images = [os.path.join(val_dir, img) for img in os.listdir(val_dir) if img.endswith((".jpg", ".png", ".jpeg"))]# Randomly pick 10 imagessampled_images = random.sample(all_images, 10)# Run inference and displayplt.figure(figsize=(20, 20))for i, img_path in enumerate(sampled_images):    # Load image    img = cv2.imread(img_path)    # Run prediction    prediction = model.predict(img)[0]    # Draw bounding boxes    pred_img = prediction.plot(line_width=3, font_size=12)    # Convert BGR to RGB    pred_img = pred_img[:, :, ::-1]    # Show    plt.subplot(5, 2, i+1)  # 5 rows, 2 columns    plt.imshow(pred_img)    plt.title(os.path.basename(img_path))    plt.axis("off")plt.tight_layout()plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+0: 448x640 1 cow, 1 elephant, 13.5ms
+Speed: 2.0ms preprocess, 13.5ms inference, 1.5ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 448x640 7 zebras, 12.9ms
+Speed: 1.5ms preprocess, 12.9ms inference, 1.5ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 448x640 1 cow, 12.9ms
+Speed: 2.4ms preprocess, 12.9ms inference, 1.3ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 384x640 1 elephant, 14.0ms
+Speed: 1.9ms preprocess, 14.0ms inference, 1.2ms postprocess per image at shape (1, 3, 384, 640)
+
+0: 448x640 3 cows, 13.5ms
+Speed: 2.2ms preprocess, 13.5ms inference, 1.2ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 640x640 2 cows, 17.1ms
+Speed: 2.5ms preprocess, 17.1ms inference, 1.3ms postprocess per image at shape (1, 3, 640, 640)
+
+0: 448x640 1 cow, 1 elephant, 13.7ms
+Speed: 1.8ms preprocess, 13.7ms inference, 1.2ms postprocess per image at shape (1, 3, 448, 640)
+
+0: 384x640 1 cow, 14.0ms
+Speed: 2.0ms preprocess, 14.0ms inference, 1.2ms postprocess per image at shape (1, 3, 384, 640)
+
+0: 480x640 4 zebras, 14.9ms
+Speed: 2.5ms preprocess, 14.9ms inference, 1.2ms postprocess per image at shape (1, 3, 480, 640)
+
+0: 384x640 2 elephants, 14.1ms
+Speed: 2.4ms preprocess, 14.1ms inference, 1.3ms postprocess per image at shape (1, 3, 384, 640)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-25-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" class="level3">
+<h3 class="anchored" data-anchor-id="we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model">We can see that the trained model performnace is better than the base model</h3>
+<div id="cell-42" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:59:50.728123Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:59:50.728412Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:59:51.531773Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:59:50.728393Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:59:51.530998Z&quot;}}" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#testing the model on a new image# Load trained modelmodel = YOLO("/kaggle/working/runs/detect/train/weights/best.pt")# Load a test image (with elephant, giraffe, zebra)img_path = "/kaggle/input/test-image/Yolo_image.png"img = cv2.imread(img_path)# Run predictionresults = model.predict(img)[0]# Print detected objectsfor box in results.boxes:    cls_id = int(box.cls)    class_name = results.names[cls_id]    conf = float(box.conf)    print(f"Detected {class_name} with confidence {conf:.2f}")# Draw bounding boxespred_img = results.plot(line_width=3, font_size=0.8)pred_img = pred_img[:, :, ::-1]  # BGR → RGB# Displayplt.figure(figsize=(10, 10))plt.imshow(pred_img)plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+0: 640x640 1 Elephant, 1 Zebra, 16.1ms
+Speed: 3.5ms preprocess, 16.1ms inference, 1.4ms postprocess per image at shape (1, 3, 640, 640)
+Detected Zebra with confidence 0.91
+Detected Elephant with confidence 0.90</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-26-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-43" class="cell" data-trusted="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsc-iitm\.github\.io\/data-science-lab\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../week-4/Transfer_Learning.html" class="pagination-link" aria-label="Transfer Learning">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Transfer Learning</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../week-4/Intro to computer vision/intro_to_cv.html" class="pagination-link" aria-label="Introduction to Computer Vision">
+        <span class="nav-page-text">Introduction to Computer Vision</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2025 @ IIT Madras</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-4/yolo-multiclass-detection.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/yolo-multiclass-detection.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

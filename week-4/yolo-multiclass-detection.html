@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Lalit Kumar">
 
 <title>Object Recognition with YOLO – Data Science Lab</title>
 <style>
@@ -502,13 +503,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+ <span class="menu-text">Image Manipulation using Pillow and OpenCV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-4/preprocessing_images.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">— Data Augmentation Examples (PyTorch v2) —</span></a>
+ <span class="menu-text">Image Preprocessing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -551,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../week-4/Vision Transformers/vision_transformers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Vision Transformers</span></a>
   </div>
 </li>
@@ -775,20 +776,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." id="toc-object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." class="nav-link active" data-scroll-target="#object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car.">Object Recognition 1• Object recognition in image processing refers to the task of identifying and classifying objects within digital images or video frames. 2• It involves the use of computer vision techniques and machine learning algorithms to automatically detect and recognize objects of interest in visual data.3. The goal of object recognition is to assign meaningful labels or categories to objects in an image. 4. This can involve identifying common objects such as cars, people, animals, or specific object instances such as a particular breed of dog or a specific model of car.</a>
+  <li><a href="#object-recognition" id="toc-object-recognition" class="nav-link active" data-scroll-target="#object-recognition">Object Recognition</a>
   <ul class="collapse">
-  <li><a href="#object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." id="toc-object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." class="nav-link" data-scroll-target="#object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes.">Object recognition typical steps1. Preprocessing: This step involves preparing the image data for analysis by performing operations such as resizing, normalizing, or enhancing the image.2. Feature Extraction: Features that represent discriminative characteristics of objects are extracted from the preprocessed image. These features can be low-level visual descriptors like edges, corners, or textures, or higher-level features learned from deep neural networks.3. Classification or Detection: The extracted features are used to classify the objects or detect their presence in the image. Classification involves assigning a specific label or category to an entire image, while detection involves localizing and classifying objects within an image.4. Post-processing: After classification or detection, postprocessing techniques are applied to refine the results, such as filtering out false positives, grouping detections, or estimating object poses and attributes.</a></li>
+  <li><a href="#object-recognition-typical-steps" id="toc-object-recognition-typical-steps" class="nav-link" data-scroll-target="#object-recognition-typical-steps">Object recognition typical steps</a></li>
   </ul></li>
-  <li><a href="#three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." id="toc-three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." class="nav-link" data-scroll-target="#three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image.">Three computer vision tasks1. Image Classification: Predict the type or class of an object in an image.2. Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.3. Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.</a></li>
-  <li><a href="#yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." id="toc-yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." class="nav-link" data-scroll-target="#yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly.">YOLO - You only look once1. YOLO does object detection in real-time.2. It involves a single neural network trained end to end that takes a photograph as input and predicts bounding boxes and class labels for each bounding box directly.</a></li>
-  <li><a href="#yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." id="toc-yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." class="nav-link" data-scroll-target="#yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels.">YOLO Models 1. The model works by first splitting the input image into a grid of cells, where each cell is responsible for predicting a bounding box if the center of a bounding box falls within the cell.2. Each grid cell predicts a bounding box involving the x, y coordinate and the width and height and the confidence.3. A class prediction is also based on each cell.4. For example, an image may be divided into a 7×7 grid and each cell in the grid may predict 2 bounding boxes, resulting in 94 proposed bounding box predictions.5. The class probabilities map and the bounding boxes with confidences are then combined into a final set of bounding boxes and class labels.</a></li>
-  <li><a href="#yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." id="toc-yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." class="nav-link" data-scroll-target="#yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes.">YOLO: Step by Step1. Divide the image into a grid of cells. – The YOLO algorithm divides the image into a grid of cells, typically 7x7 or 13x13. – Each cell is responsible for predicting a set of bounding boxes and class probabilities.2. Predict bounding boxes and class probabilities for each cell. – For each cell, the YOLO algorithm predicts a set of bounding boxes and class probabilities. – The bounding boxes are represented as four coordinates: the top left corner, the bottom right corner, and the width and height of the box. – The class probabilities represent the probability that the object in the box belongs to a particular class.3. Apply non-max suppression. – The bounding boxes predicted by the YOLO algorithm may overlap. – To remove overlapping boxes, the YOLO algorithm applies a non-max suppression algorithm. – This algorithm keeps the box with the highest confidence score, and it removes all other boxes that have a high overlap with the selected box.4. Draw the bounding boxes and class labels on the image. – The final step is to draw the bounding boxes and class labels on the image. – The bounding boxes are drawn in a different color for each class, and the class labels are displayed next to the bounding boxes.</a></li>
-  <li><a href="#yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." id="toc-yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." class="nav-link" data-scroll-target="#yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.">YOLO: Summary 1. Divide the image into a grid of cells.2. Predict bounding boxes and class probabilities for each cell.3. Apply non-max suppression.4. Draw the bounding boxes and class labels on the image.</a>
+  <li><a href="#three-computer-vision-tasks" id="toc-three-computer-vision-tasks" class="nav-link" data-scroll-target="#three-computer-vision-tasks">Three computer vision tasks</a></li>
+  <li><a href="#yolo---you-only-look-once" id="toc-yolo---you-only-look-once" class="nav-link" data-scroll-target="#yolo---you-only-look-once">YOLO - You only look once</a></li>
+  <li><a href="#yolo-models" id="toc-yolo-models" class="nav-link" data-scroll-target="#yolo-models">YOLO Models</a></li>
+  <li><a href="#yolo-step-by-step" id="toc-yolo-step-by-step" class="nav-link" data-scroll-target="#yolo-step-by-step">YOLO: Step by Step</a></li>
+  <li><a href="#yolo-summary" id="toc-yolo-summary" class="nav-link" data-scroll-target="#yolo-summary">YOLO: Summary</a>
   <ul class="collapse">
   <li><a href="#lets-start" id="toc-lets-start" class="nav-link" data-scroll-target="#lets-start">Lets start</a></li>
   <li><a href="#checking-number-of-classes" id="toc-checking-number-of-classes" class="nav-link" data-scroll-target="#checking-number-of-classes">Checking number of classes</a></li>
   <li><a href="#so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" id="toc-so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" class="nav-link" data-scroll-target="#so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes">So , we have 4 classes, lets see the images after regular intervals to see these classes</a></li>
-  <li><a href="#so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" id="toc-so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" class="nav-link" data-scroll-target="#so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra">So we have 4 classes0 : Buffallo1 : Elephant2 : Rhino4 : Zebra</a></li>
+  <li><a href="#so-we-have-4-classes" id="toc-so-we-have-4-classes" class="nav-link" data-scroll-target="#so-we-have-4-classes">So we have 4 classes</a></li>
   <li><a href="#we-can-see-that-there-are-2-eelephants-in-the-image" id="toc-we-can-see-that-there-are-2-eelephants-in-the-image" class="nav-link" data-scroll-target="#we-can-see-that-there-are-2-eelephants-in-the-image">We can see that there are 2 eelephants in the image</a></li>
   <li><a href="#for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" id="toc-for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" class="nav-link" data-scroll-target="#for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names">For YOLO model training, we have to build a yaml file with train, val datasets info, and number of classes, and class names</a></li>
   <li><a href="#we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" id="toc-we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" class="nav-link" data-scroll-target="#we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model">We can see that the trained model performnace is better than the base model</a></li>
@@ -809,6 +810,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Lalit Kumar </p>
+          </div>
+  </div>
     
   
     
@@ -819,41 +826,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car." class="level2">
-<h2 class="anchored" data-anchor-id="object-recognition-1-object-recognition-in-image-processing-refers-to-the-task-of-identifying-and-classifying-objects-within-digital-images-or-video-frames.-2-it-involves-the-use-of-computer-vision-techniques-and-machine-learning-algorithms-to-automatically-detect-and-recognize-objects-of-interest-in-visual-data.3.-the-goal-of-object-recognition-is-to-assign-meaningful-labels-or-categories-to-objects-in-an-image.-4.-this-can-involve-identifying-common-objects-such-as-cars-people-animals-or-specific-object-instances-such-as-a-particular-breed-of-dog-or-a-specific-model-of-car.">Object Recognition 1• Object recognition in image processing refers to the task of identifying and classifying objects within digital images or video frames. 2• It involves the use of computer vision techniques and machine learning algorithms to automatically detect and recognize objects of interest in visual data.3. The goal of object recognition is to assign meaningful labels or categories to objects in an image. 4. This can involve identifying common objects such as cars, people, animals, or specific object instances such as a particular breed of dog or a specific model of car.</h2>
-<section id="object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes." class="level3">
-<h3 class="anchored" data-anchor-id="object-recognition-typical-steps1.-preprocessing-this-step-involves-preparing-the-image-data-for-analysis-by-performing-operations-such-as-resizing-normalizing-or-enhancing-the-image.2.-feature-extraction-features-that-represent-discriminative-characteristics-of-objects-are-extracted-from-the-preprocessed-image.-these-features-can-be-low-level-visual-descriptors-like-edges-corners-or-textures-or-higher-level-features-learned-from-deep-neural-networks.3.-classification-or-detection-the-extracted-features-are-used-to-classify-the-objects-or-detect-their-presence-in-the-image.-classification-involves-assigning-a-specific-label-or-category-to-an-entire-image-while-detection-involves-localizing-and-classifying-objects-within-an-image.4.-post-processing-after-classification-or-detection-postprocessing-techniques-are-applied-to-refine-the-results-such-as-filtering-out-false-positives-grouping-detections-or-estimating-object-poses-and-attributes.">Object recognition typical steps1. Preprocessing: This step involves preparing the image data for analysis by performing operations such as resizing, normalizing, or enhancing the image.2. Feature Extraction: Features that represent discriminative characteristics of objects are extracted from the preprocessed image. These features can be low-level visual descriptors like edges, corners, or textures, or higher-level features learned from deep neural networks.3. Classification or Detection: The extracted features are used to classify the objects or detect their presence in the image. Classification involves assigning a specific label or category to an entire image, while detection involves localizing and classifying objects within an image.4. Post-processing: After classification or detection, postprocessing techniques are applied to refine the results, such as filtering out false positives, grouping detections, or estimating object poses and attributes.</h3>
+<section id="object-recognition" class="level2">
+<h2 class="anchored" data-anchor-id="object-recognition">Object Recognition</h2>
+<ul>
+<li><p>Object recognition in image processing refers to the task of identifying and classifying objects within digital images or video frames.</p></li>
+<li><p>It involves the use of computer vision techniques and machine learning algorithms to automatically detect and recognize objects of interest in visual data.</p></li>
+<li><p>The goal of object recognition is to assign meaningful labels or categories to objects in an image.</p></li>
+<li><p>This can involve identifying common objects such as cars, people, animals, or specific object instances such as a particular breed of dog or a specific model of car.</p></li>
+</ul>
+<section id="object-recognition-typical-steps" class="level3">
+<h3 class="anchored" data-anchor-id="object-recognition-typical-steps">Object recognition typical steps</h3>
+<ol type="1">
+<li>Preprocessing: This step involves preparing the image data for analysis by performing operations such as resizing, normalizing, or enhancing the image.</li>
+<li>Feature Extraction: Features that represent discriminative characteristics of objects are extracted from the preprocessed image. These features can be low-level visual descriptors like edges, corners, or textures, or higher-level features learned from deep neural networks.</li>
+<li>Classification or Detection: The extracted features are used to classify the objects or detect their presence in the image. Classification involves assigning a specific label or category to an entire image, while detection involves localizing and classifying objects within an image.</li>
+<li>Post-processing: After classification or detection, postprocessing techniques are applied to refine the results, such as filtering out false positives, grouping detections, or estimating object poses and attributes.</li>
+</ol>
 </section>
 </section>
-<section id="three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image." class="level2">
-<h2 class="anchored" data-anchor-id="three-computer-vision-tasks1.-image-classification-predict-the-type-or-class-of-an-object-in-an-image.2.-object-localization-locate-the-presence-of-objects-in-an-image-and-indicate-their-location-with-a-bounding-box.3.-object-detection-locate-the-presence-of-objects-with-a-bounding-box-and-types-or-classes-of-the-located-objects-in-an-image.">Three computer vision tasks1. Image Classification: Predict the type or class of an object in an image.2. Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.3. Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.</h2>
+<section id="three-computer-vision-tasks" class="level2">
+<h2 class="anchored" data-anchor-id="three-computer-vision-tasks">Three computer vision tasks</h2>
+<ol type="1">
+<li>Image Classification: Predict the type or class of an object in an image.</li>
+<li>Object Localization: Locate the presence of objects in an image and indicate their location with a bounding box.</li>
+<li>Object Detection: Locate the presence of objects with a bounding box and types or classes of the located objects in an image.</li>
+</ol>
 </section>
-<section id="yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly." class="level2">
-<h2 class="anchored" data-anchor-id="yolo---you-only-look-once1.-yolo-does-object-detection-in-real-time.2.-it-involves-a-single-neural-network-trained-end-to-end-that-takes-a-photograph-as-input-and-predicts-bounding-boxes-and-class-labels-for-each-bounding-box-directly.">YOLO - You only look once1. YOLO does object detection in real-time.2. It involves a single neural network trained end to end that takes a photograph as input and predicts bounding boxes and class labels for each bounding box directly.</h2>
+<section id="yolo---you-only-look-once" class="level2">
+<h2 class="anchored" data-anchor-id="yolo---you-only-look-once">YOLO - You only look once</h2>
+<ol type="1">
+<li>YOLO does object detection in real-time.</li>
+<li>It involves a single neural network trained end to end that takes a photograph as input and predicts bounding boxes and class labels for each bounding box directly.</li>
+</ol>
 </section>
-<section id="yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels." class="level2">
-<h2 class="anchored" data-anchor-id="yolo-models-1.-the-model-works-by-first-splitting-the-input-image-into-a-grid-of-cells-where-each-cell-is-responsible-for-predicting-a-bounding-box-if-the-center-of-a-bounding-box-falls-within-the-cell.2.-each-grid-cell-predicts-a-bounding-box-involving-the-x-y-coordinate-and-the-width-and-height-and-the-confidence.3.-a-class-prediction-is-also-based-on-each-cell.4.-for-example-an-image-may-be-divided-into-a-77-grid-and-each-cell-in-the-grid-may-predict-2-bounding-boxes-resulting-in-94-proposed-bounding-box-predictions.5.-the-class-probabilities-map-and-the-bounding-boxes-with-confidences-are-then-combined-into-a-final-set-of-bounding-boxes-and-class-labels.">YOLO Models 1. The model works by first splitting the input image into a grid of cells, where each cell is responsible for predicting a bounding box if the center of a bounding box falls within the cell.2. Each grid cell predicts a bounding box involving the x, y coordinate and the width and height and the confidence.3. A class prediction is also based on each cell.4. For example, an image may be divided into a 7×7 grid and each cell in the grid may predict 2 bounding boxes, resulting in 94 proposed bounding box predictions.5. The class probabilities map and the bounding boxes with confidences are then combined into a final set of bounding boxes and class labels.</h2>
+<section id="yolo-models" class="level2">
+<h2 class="anchored" data-anchor-id="yolo-models">YOLO Models</h2>
+<ol type="1">
+<li>The model works by first splitting the input image into a grid of cells, where each cell is responsible for predicting a bounding box if the center of a bounding box falls within the cell.</li>
+<li>Each grid cell predicts a bounding box involving the x, y coordinate and the width and height and the confidence.</li>
+<li>A class prediction is also based on each cell.</li>
+<li>For example, an image may be divided into a 7×7 grid and each cell in the grid may predict 2 bounding boxes, resulting in 94 proposed bounding box predictions.</li>
+<li>The class probabilities map and the bounding boxes with confidences are then combined into a final set of bounding boxes and class labels.</li>
+</ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="yolo-multiclass-detection_files/figure-html/cell-7-1-2d3625a9-d431-459a-9e79-ea0db58559f7.png" class="img-fluid figure-img"></p>
+<p><img src="yolo-multiclass-detection_files/figure-html/cell-11-1-2d3625a9-d431-459a-9e79-ea0db58559f7.png" class="img-fluid figure-img"></p>
 <figcaption>image.png</figcaption>
 </figure>
 </div>
 </section>
-<section id="yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes." class="level2">
-<h2 class="anchored" data-anchor-id="yolo-step-by-step1.-divide-the-image-into-a-grid-of-cells.-the-yolo-algorithm-divides-the-image-into-a-grid-of-cells-typically-7x7-or-13x13.-each-cell-is-responsible-for-predicting-a-set-of-bounding-boxes-and-class-probabilities.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.-for-each-cell-the-yolo-algorithm-predicts-a-set-of-bounding-boxes-and-class-probabilities.-the-bounding-boxes-are-represented-as-four-coordinates-the-top-left-corner-the-bottom-right-corner-and-the-width-and-height-of-the-box.-the-class-probabilities-represent-the-probability-that-the-object-in-the-box-belongs-to-a-particular-class.3.-apply-non-max-suppression.-the-bounding-boxes-predicted-by-the-yolo-algorithm-may-overlap.-to-remove-overlapping-boxes-the-yolo-algorithm-applies-a-non-max-suppression-algorithm.-this-algorithm-keeps-the-box-with-the-highest-confidence-score-and-it-removes-all-other-boxes-that-have-a-high-overlap-with-the-selected-box.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-final-step-is-to-draw-the-bounding-boxes-and-class-labels-on-the-image.-the-bounding-boxes-are-drawn-in-a-different-color-for-each-class-and-the-class-labels-are-displayed-next-to-the-bounding-boxes.">YOLO: Step by Step1. Divide the image into a grid of cells. – The YOLO algorithm divides the image into a grid of cells, typically 7x7 or 13x13. – Each cell is responsible for predicting a set of bounding boxes and class probabilities.2. Predict bounding boxes and class probabilities for each cell. – For each cell, the YOLO algorithm predicts a set of bounding boxes and class probabilities. – The bounding boxes are represented as four coordinates: the top left corner, the bottom right corner, and the width and height of the box. – The class probabilities represent the probability that the object in the box belongs to a particular class.3. Apply non-max suppression. – The bounding boxes predicted by the YOLO algorithm may overlap. – To remove overlapping boxes, the YOLO algorithm applies a non-max suppression algorithm. – This algorithm keeps the box with the highest confidence score, and it removes all other boxes that have a high overlap with the selected box.4. Draw the bounding boxes and class labels on the image. – The final step is to draw the bounding boxes and class labels on the image. – The bounding boxes are drawn in a different color for each class, and the class labels are displayed next to the bounding boxes.</h2>
+<section id="yolo-step-by-step" class="level2">
+<h2 class="anchored" data-anchor-id="yolo-step-by-step">YOLO: Step by Step</h2>
+<ol type="1">
+<li>Divide the image into a grid of cells.
+<ul>
+<li>The YOLO algorithm divides the image into a grid of cells, typically 7x7 or 13x13.</li>
+<li>Each cell is responsible for predicting a set of bounding boxes and class probabilities.</li>
+</ul></li>
+<li>Predict bounding boxes and class probabilities for each cell.
+<ul>
+<li>For each cell, the YOLO algorithm predicts a set of bounding boxes and class probabilities.</li>
+<li>The bounding boxes are represented as four coordinates: the top left corner, the bottom right corner, and the width and height of the box.</li>
+<li>The class probabilities represent the probability that the object in the box belongs to a particular class.</li>
+</ul></li>
+<li>Apply non-max suppression.
+<ul>
+<li>The bounding boxes predicted by the YOLO algorithm may overlap.</li>
+<li>To remove overlapping boxes, the YOLO algorithm applies a non-max suppression algorithm.</li>
+<li>This algorithm keeps the box with the highest confidence score, and it removes all other boxes that have a high overlap with the selected box.</li>
+</ul></li>
+<li>Draw the bounding boxes and class labels on the image.
+<ul>
+<li>The final step is to draw the bounding boxes and class labels on the image.</li>
+<li>The bounding boxes are drawn in a different color for each class, and the class labels are displayed next to the bounding boxes.</li>
+</ul></li>
+</ol>
 </section>
-<section id="yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image." class="level2">
-<h2 class="anchored" data-anchor-id="yolo-summary-1.-divide-the-image-into-a-grid-of-cells.2.-predict-bounding-boxes-and-class-probabilities-for-each-cell.3.-apply-non-max-suppression.4.-draw-the-bounding-boxes-and-class-labels-on-the-image.">YOLO: Summary 1. Divide the image into a grid of cells.2. Predict bounding boxes and class probabilities for each cell.3. Apply non-max suppression.4. Draw the bounding boxes and class labels on the image.</h2>
+<section id="yolo-summary" class="level2">
+<h2 class="anchored" data-anchor-id="yolo-summary">YOLO: Summary</h2>
+<ol type="1">
+<li>Divide the image into a grid of cells.</li>
+<li>Predict bounding boxes and class probabilities for each cell.</li>
+<li>Apply non-max suppression.</li>
+<li>Draw the bounding boxes and class labels on the image.</li>
+</ol>
 <section id="lets-start" class="level3">
 <h3 class="anchored" data-anchor-id="lets-start">Lets start</h3>
-<div id="cell-11" class="cell" data-trusted="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install YOLOv8!pip install ultralytics -q</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-17" class="cell" data-trusted="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Install YOLOv8</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">!</span>pip install ultralytics <span class="op">-</span>q</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>::: {#cell-12 .cell _uuid=‘8f2839f25d086af736a60e9eeb907d3b93b6e0e5’ _cell_guid=‘b1076dfc-b9ad-4769-8c92-a6c4dae69d19’ trusted=‘true’ quarto-private-1=‘{“key”:“execution”,“value”:{“iopub.status.busy”:“2025-10-06T10:15:09.064080Z”,“iopub.execute_input”:“2025-10-06T10:15:09.064427Z”,“iopub.status.idle”:“2025-10-06T10:15:09.069788Z”,“shell.execute_reply.started”:“2025-10-06T10:15:09.064398Z”,“shell.execute_reply”:“2025-10-06T10:15:09.068961Z”}}’ execution_count=4}</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> npimport pandas <span class="im">as</span> pd <span class="im">import</span> osimport randomfrom ultralytics <span class="im">import</span> YOLOimport matplotlib.pyplot <span class="im">as</span> pltimport cv2from PIL <span class="im">import</span> Imagerandom.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>::: {#cell-18 .cell _cell_guid=‘b1076dfc-b9ad-4769-8c92-a6c4dae69d19’ _uuid=‘8f2839f25d086af736a60e9eeb907d3b93b6e0e5’ quarto-private-1=‘{“key”:“execution”,“value”:{“iopub.execute_input”:“2025-10-06T10:15:09.064427Z”,“iopub.status.busy”:“2025-10-06T10:15:09.064080Z”,“iopub.status.idle”:“2025-10-06T10:15:09.069788Z”,“shell.execute_reply”:“2025-10-06T10:15:09.068961Z”,“shell.execute_reply.started”:“2025-10-06T10:15:09.064398Z”}}’ trusted=‘true’ execution_count=4}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">import</span> os</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="im">import</span> random</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="im">from</span> ultralytics <span class="im">import</span> YOLO</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="im">import</span> cv2</span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb2-9"><a href="#cb2-9"></a>random.seed(<span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>:::</p>
-<div id="cell-13" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:13.808896Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:13.809526Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:17.069846Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:13.809501Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:17.069090Z&quot;}}" data-execution_count="5">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:13.809526Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:13.808896Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:17.069846Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:17.069090Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:13.809501Z&quot;}}" data-trusted="true" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="op">!</span>yolo <span class="op">-</span>check</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Ultralytics 8.3.205 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
@@ -887,38 +961,79 @@ polars                 ✅ 1.21.0
 ultralytics-thop       ✅ 2.0.17&gt;=2.0.0</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:29.940006Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:29.940285Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:29.955473Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:29.940262Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:29.954729Z&quot;}}" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># will use multi-class datasetdataset_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format"# List top-level files/foldersprint("Top-level structure:")print(os.listdir(dataset_dir))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:29.940285Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:29.940006Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:29.955473Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:29.954729Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:29.940262Z&quot;}}" data-trusted="true" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># will use multi-class dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>dataset_dir <span class="op">=</span> <span class="st">"/kaggle/input/object-detection-wildlife-dataset-yolo-format"</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># List top-level files/folders</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="bu">print</span>(<span class="st">"Top-level structure:"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="bu">print</span>(os.listdir(dataset_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top-level structure:
 ['final_data']</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:38.630213Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:38.630482Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:38.648971Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:38.630464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:38.648181Z&quot;}}" data-execution_count="7">
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:15:38.630482Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:15:38.630213Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:15:38.648971Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:15:38.648181Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:15:38.630464Z&quot;}}" data-trusted="true" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['valid', 'test', 'data_wl.yaml', 'train']</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:00.713279Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:00.714012Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:00.730116Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:00.713986Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:00.729398Z&quot;}}" data-execution_count="8">
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:00.714012Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:00.713279Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:00.730116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:00.729398Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:00.713986Z&quot;}}" data-trusted="true" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['labels', 'labels.cache', 'images']</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:37.360743Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:37.361394Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:37.406576Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:37.361372Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:37.405782Z&quot;}}" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>dataset_dir<span class="op">=</span> <span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data'</span><span class="co"># Specify the directory containing the train and val imagestrain_dir = os.path.join(dataset_dir, "train/images")label_dir_train = os.path.join(dataset_dir, "train/labels")val_dir = os.path.join(dataset_dir, "valid/images")label_dir_val = os.path.join(dataset_dir, "valid/labels")# Get a list of all image files in the train directoryimage_files = [f for f in os.listdir(train_dir) if f.endswith((".jpg", ".jpeg"))]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:37.361394Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:37.360743Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:37.406576Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:37.405782Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:37.361372Z&quot;}}" data-trusted="true" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>dataset_dir<span class="op">=</span> <span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data'</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># Specify the directory containing the train and val images</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>train_dir <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/images"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a>label_dir_train <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/labels"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>val_dir <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"valid/images"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>label_dir_val <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"valid/labels"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8"></a></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co"># Get a list of all image files in the train directory</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>image_files <span class="op">=</span> [f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(train_dir) <span class="cf">if</span> f.endswith((<span class="st">".jpg"</span>, <span class="st">".jpeg"</span>))]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-18" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:54.038174Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:54.038448Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:54.078041Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:54.038428Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:54.077293Z&quot;}}" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Count the number of images in each directorynum_train_images = len([f for f in os.listdir(train_dir) if f.endswith((".jpg", ".jpeg"))])num_val_images = len([f for f in os.listdir(val_dir) if f.endswith((".jpg", ".jpeg"))])# Calculate the total number of imagestotal_images = num_train_images + num_val_images# Calculate the percentage of images in each folderpercentage_train = (num_train_images / total_images) * 100percentage_val = (num_val_images / total_images) * 100print(f"Total Number of images {total_images}")print(f"Percentage of images in the training folder: {percentage_train:.2f}%")print(f"Percentage of images in the validation folder: {percentage_val:.2f}%")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:16:54.038448Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:16:54.038174Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:16:54.078041Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:16:54.077293Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:16:54.038428Z&quot;}}" data-trusted="true" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Count the number of images in each directory</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>num_train_images <span class="op">=</span> <span class="bu">len</span>([f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(train_dir) <span class="cf">if</span> f.endswith((<span class="st">".jpg"</span>, <span class="st">".jpeg"</span>))])</span>
+<span id="cb12-3"><a href="#cb12-3"></a>num_val_images <span class="op">=</span> <span class="bu">len</span>([f <span class="cf">for</span> f <span class="kw">in</span> os.listdir(val_dir) <span class="cf">if</span> f.endswith((<span class="st">".jpg"</span>, <span class="st">".jpeg"</span>))])</span>
+<span id="cb12-4"><a href="#cb12-4"></a></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="co"># Calculate the total number of images</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>total_images <span class="op">=</span> num_train_images <span class="op">+</span> num_val_images</span>
+<span id="cb12-7"><a href="#cb12-7"></a></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="co"># Calculate the percentage of images in each folder</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a>percentage_train <span class="op">=</span> (num_train_images <span class="op">/</span> total_images) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a>percentage_val <span class="op">=</span> (num_val_images <span class="op">/</span> total_images) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="bu">print</span>(<span class="ss">f"Total Number of images </span><span class="sc">{</span>total_images<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="bu">print</span>(<span class="ss">f"Percentage of images in the training folder: </span><span class="sc">{</span>percentage_train<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="bu">print</span>(<span class="ss">f"Percentage of images in the validation folder: </span><span class="sc">{</span>percentage_val<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Total Number of images 1353
 Percentage of images in the training folder: 88.91%
 Percentage of images in the validation folder: 11.09%</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:18:11.348641Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:18:11.349325Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:18:11.629583Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:18:11.349303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:18:11.628902Z&quot;}}" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Randomly select one image to displayrandom_image = random.choice(image_files)# Load and display the selected imageimage_path = os.path.join(train_dir, random_image)image = cv2.imread(image_path)  # Read the image using OpenCVimg_shape = image.shapeif image is not None:    # OpenCV reads images in BGR format, so convert to RGB for Matplotlib    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))     plt.title(f"{random_image} with shape {img_shape}")    plt.axis('off')    plt.show()else:    print(f"Failed to read {random_image}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-25" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:18:11.349325Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:18:11.348641Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:18:11.629583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:18:11.628902Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:18:11.349303Z&quot;}}" data-trusted="true" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Randomly select one image to display</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>random_image <span class="op">=</span> random.choice(image_files)</span>
+<span id="cb14-3"><a href="#cb14-3"></a></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># Load and display the selected image</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>image_path <span class="op">=</span> os.path.join(train_dir, random_image)</span>
+<span id="cb14-6"><a href="#cb14-6"></a>image <span class="op">=</span> cv2.imread(image_path)  <span class="co"># Read the image using OpenCV</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>img_shape <span class="op">=</span> image.shape</span>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="cf">if</span> image <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb14-9"><a href="#cb14-9"></a>    <span class="co"># OpenCV reads images in BGR format, so convert to RGB for Matplotlib</span></span>
+<span id="cb14-10"><a href="#cb14-10"></a>    plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)) </span>
+<span id="cb14-11"><a href="#cb14-11"></a>    plt.title(<span class="ss">f"</span><span class="sc">{</span>random_image<span class="sc">}</span><span class="ss"> with shape </span><span class="sc">{</span>img_shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-12"><a href="#cb14-12"></a>    plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb14-13"><a href="#cb14-13"></a>    plt.show()</span>
+<span id="cb14-14"><a href="#cb14-14"></a><span class="cf">else</span>:</span>
+<span id="cb14-15"><a href="#cb14-15"></a>    <span class="bu">print</span>(<span class="ss">f"Failed to read </span><span class="sc">{</span>random_image<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -930,8 +1045,21 @@ Percentage of images in the validation folder: 11.09%</code></pre>
 </section>
 <section id="checking-number-of-classes" class="level3">
 <h3 class="anchored" data-anchor-id="checking-number-of-classes">Checking number of classes</h3>
-<div id="cell-21" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:03.797530Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:03.797782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:04.569596Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:03.797765Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:04.568893Z&quot;}}" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Get the number of classes # Collect class IDsall_classes = set()for file in os.listdir(label_dir_train):    if file.endswith(".txt"):        with open(os.path.join(label_dir_train, file), "r") as f:            for line in f:                if line.strip():  # avoid empty lines                    class_id = int(line.split()[0])  # first element = class                    all_classes.add(class_id)print("Distinct classes found:", sorted(all_classes))print("Total number of unique classes:", len(all_classes))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:03.797782Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:03.797530Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:04.569596Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:04.568893Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:03.797765Z&quot;}}" data-trusted="true" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Get the number of classes </span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Collect class IDs</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>all_classes <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb15-4"><a href="#cb15-4"></a></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="cf">for</span> <span class="bu">file</span> <span class="kw">in</span> os.listdir(label_dir_train):</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="cf">if</span> <span class="bu">file</span>.endswith(<span class="st">".txt"</span>):</span>
+<span id="cb15-7"><a href="#cb15-7"></a>        <span class="cf">with</span> <span class="bu">open</span>(os.path.join(label_dir_train, <span class="bu">file</span>), <span class="st">"r"</span>) <span class="im">as</span> f:</span>
+<span id="cb15-8"><a href="#cb15-8"></a>            <span class="cf">for</span> line <span class="kw">in</span> f:</span>
+<span id="cb15-9"><a href="#cb15-9"></a>                <span class="cf">if</span> line.strip():  <span class="co"># avoid empty lines</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a>                    class_id <span class="op">=</span> <span class="bu">int</span>(line.split()[<span class="dv">0</span>])  <span class="co"># first element = class</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a>                    all_classes.add(class_id)</span>
+<span id="cb15-12"><a href="#cb15-12"></a></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="bu">print</span>(<span class="st">"Distinct classes found:"</span>, <span class="bu">sorted</span>(all_classes))</span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="bu">print</span>(<span class="st">"Total number of unique classes:"</span>, <span class="bu">len</span>(all_classes))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Distinct classes found: [0, 1, 2, 3]
 Total number of unique classes: 4</code></pre>
@@ -940,8 +1068,22 @@ Total number of unique classes: 4</code></pre>
 </section>
 <section id="so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes" class="level3">
 <h3 class="anchored" data-anchor-id="so-we-have-4-classes-lets-see-the-images-after-regular-intervals-to-see-these-classes">So , we have 4 classes, lets see the images after regular intervals to see these classes</h3>
-<div id="cell-23" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:17.792782Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:17.793055Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:18.795169Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:17.793037Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:18.794390Z&quot;}}" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># display images to check the image lablesimages = ['0020.jpg', '0380.jpg', '0820.jpg', '1320.jpg']for image in images:    image_path = os.path.join(train_dir,image)    #image_path="/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/images/1320.jpg"    image1 = cv2.imread(image_path)      img_shape = image1.shape    if image is not None:    # OpenCV reads images in BGR format, so convert to RGB for Matplotlib        plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB))         plt.title(f"{image} with shape {img_shape}")        plt.axis('off')        plt.show()    else:        print(f"Failed to read {image}")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:17.793055Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:17.792782Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:18.795169Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:18.794390Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:17.793037Z&quot;}}" data-trusted="true" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># display images to check the image lables</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>images <span class="op">=</span> [<span class="st">'0020.jpg'</span>, <span class="st">'0380.jpg'</span>, <span class="st">'0820.jpg'</span>, <span class="st">'1320.jpg'</span>]</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cf">for</span> image <span class="kw">in</span> images:</span>
+<span id="cb17-4"><a href="#cb17-4"></a>    image_path <span class="op">=</span> os.path.join(train_dir,image)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>    <span class="co">#image_path="/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/images/1320.jpg"</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a>    image1 <span class="op">=</span> cv2.imread(image_path)  </span>
+<span id="cb17-7"><a href="#cb17-7"></a>    img_shape <span class="op">=</span> image1.shape</span>
+<span id="cb17-8"><a href="#cb17-8"></a>    <span class="cf">if</span> image <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="co"># OpenCV reads images in BGR format, so convert to RGB for Matplotlib</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a>        plt.imshow(cv2.cvtColor(image1, cv2.COLOR_BGR2RGB)) </span>
+<span id="cb17-11"><a href="#cb17-11"></a>        plt.title(<span class="ss">f"</span><span class="sc">{</span>image<span class="sc">}</span><span class="ss"> with shape </span><span class="sc">{</span>img_shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-12"><a href="#cb17-12"></a>        plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb17-13"><a href="#cb17-13"></a>        plt.show()</span>
+<span id="cb17-14"><a href="#cb17-14"></a>    <span class="cf">else</span>:</span>
+<span id="cb17-15"><a href="#cb17-15"></a>        <span class="bu">print</span>(<span class="ss">f"Failed to read </span><span class="sc">{</span>image<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -972,10 +1114,17 @@ Total number of unique classes: 4</code></pre>
 </div>
 </div>
 </section>
-<section id="so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra" class="level3">
-<h3 class="anchored" data-anchor-id="so-we-have-4-classes0-buffallo1-elephant2-rhino4-zebra">So we have 4 classes0 : Buffallo1 : Elephant2 : Rhino4 : Zebra</h3>
-<div id="cell-25" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:54.901229Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:54.901802Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:54.934051Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:54.901779Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:54.933409Z&quot;}}" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Checking how labels look likelabel_file_path = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/labels/0401.txt"# Read the label file into a Pandas DataFramecolumn_names = ["class", "x_min", "y_min", "x_max", "y_max"]df = pd.read_csv(label_file_path, header=None, names=column_names, sep=" ")df</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="so-we-have-4-classes" class="level3">
+<h3 class="anchored" data-anchor-id="so-we-have-4-classes">So we have 4 classes</h3>
+<p>0 : Buffallo 1 : Elephant 2 : Rhino 4 : Zebra</p>
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:19:54.901802Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:19:54.901229Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:19:54.934051Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:19:54.933409Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:19:54.901779Z&quot;}}" data-trusted="true" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Checking how labels look like</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>label_file_path <span class="op">=</span> <span class="st">"/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/labels/0401.txt"</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co"># Read the label file into a Pandas DataFrame</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a>column_names <span class="op">=</span> [<span class="st">"class"</span>, <span class="st">"x_min"</span>, <span class="st">"y_min"</span>, <span class="st">"x_max"</span>, <span class="st">"y_max"</span>]</span>
+<span id="cb18-6"><a href="#cb18-6"></a>df <span class="op">=</span> pd.read_csv(label_file_path, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>column_names, sep<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <div>
 
@@ -1014,9 +1163,49 @@ Total number of unique classes: 4</code></pre>
 </div>
 </div>
 </div>
-<p>Each .txt file in YOLO format corresponds to one image.Each line inside the file = one object annotation in that image.That’s why we got 2 rows → it means that image (0401.jpg) has two objects of class 1.</p>
-<div id="cell-27" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:21:52.133421Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:21:52.133696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:21:52.350676Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:21:52.133677Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:21:52.349879Z&quot;}}" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>image_filename <span class="op">=</span> <span class="st">"0401.jpg"</span>image_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/images"</span>, image_filename)label_file_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/labels"</span>, image_filename.replace(<span class="st">".jpg"</span>, <span class="st">".txt"</span>))<span class="co"># Load imageimage = cv2.imread(image_path)image_height, image_width, _ = image.shape# Read YOLO labelswith open(label_file_path, "r") as file:    yolo_labels = file.readlines()# Draw bounding boxesfor label in yolo_labels:    class_id, x_center, y_center, width, height = map(float, label.split())    # Convert YOLO (relative) → absolute pixel values    x_center *= image_width    y_center *= image_height    width *= image_width    height *= image_height    # Bounding box corners    x1 = int(x_center - width / 2)    y1 = int(y_center - height / 2)    x2 = int(x_center + width / 2)    y2 = int(y_center + height / 2)    # Draw rectangle + class id    color = (0, 0, 255)  # red box    thickness = 2    cv2.rectangle(image, (x1, y1), (x2, y2), color, thickness)    cv2.putText(image, f"Class {int(class_id)}", (x1, y1 - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)# Show imageplt.figure(figsize=(8, 8))plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each .txt file in YOLO format corresponds to one image.</p>
+<p>Each line inside the file = one object annotation in that image.</p>
+<p>That’s why we got 2 rows → it means that image (0401.jpg) has two objects of class 1.</p>
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:21:52.133696Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:21:52.133421Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:21:52.350676Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:21:52.349879Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:21:52.133677Z&quot;}}" data-trusted="true" data-execution_count="18">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>image_filename <span class="op">=</span> <span class="st">"0401.jpg"</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>image_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/images"</span>, image_filename)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>label_file_path <span class="op">=</span> os.path.join(dataset_dir, <span class="st">"train/labels"</span>, image_filename.replace(<span class="st">".jpg"</span>, <span class="st">".txt"</span>))</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># Load image</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>image <span class="op">=</span> cv2.imread(image_path)</span>
+<span id="cb19-7"><a href="#cb19-7"></a>image_height, image_width, _ <span class="op">=</span> image.shape</span>
+<span id="cb19-8"><a href="#cb19-8"></a></span>
+<span id="cb19-9"><a href="#cb19-9"></a><span class="co"># Read YOLO labels</span></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="cf">with</span> <span class="bu">open</span>(label_file_path, <span class="st">"r"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb19-11"><a href="#cb19-11"></a>    yolo_labels <span class="op">=</span> <span class="bu">file</span>.readlines()</span>
+<span id="cb19-12"><a href="#cb19-12"></a></span>
+<span id="cb19-13"><a href="#cb19-13"></a><span class="co"># Draw bounding boxes</span></span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="cf">for</span> label <span class="kw">in</span> yolo_labels:</span>
+<span id="cb19-15"><a href="#cb19-15"></a>    class_id, x_center, y_center, width, height <span class="op">=</span> <span class="bu">map</span>(<span class="bu">float</span>, label.split())</span>
+<span id="cb19-16"><a href="#cb19-16"></a></span>
+<span id="cb19-17"><a href="#cb19-17"></a>    <span class="co"># Convert YOLO (relative) → absolute pixel values</span></span>
+<span id="cb19-18"><a href="#cb19-18"></a>    x_center <span class="op">*=</span> image_width</span>
+<span id="cb19-19"><a href="#cb19-19"></a>    y_center <span class="op">*=</span> image_height</span>
+<span id="cb19-20"><a href="#cb19-20"></a>    width <span class="op">*=</span> image_width</span>
+<span id="cb19-21"><a href="#cb19-21"></a>    height <span class="op">*=</span> image_height</span>
+<span id="cb19-22"><a href="#cb19-22"></a></span>
+<span id="cb19-23"><a href="#cb19-23"></a>    <span class="co"># Bounding box corners</span></span>
+<span id="cb19-24"><a href="#cb19-24"></a>    x1 <span class="op">=</span> <span class="bu">int</span>(x_center <span class="op">-</span> width <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb19-25"><a href="#cb19-25"></a>    y1 <span class="op">=</span> <span class="bu">int</span>(y_center <span class="op">-</span> height <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb19-26"><a href="#cb19-26"></a>    x2 <span class="op">=</span> <span class="bu">int</span>(x_center <span class="op">+</span> width <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb19-27"><a href="#cb19-27"></a>    y2 <span class="op">=</span> <span class="bu">int</span>(y_center <span class="op">+</span> height <span class="op">/</span> <span class="dv">2</span>)</span>
+<span id="cb19-28"><a href="#cb19-28"></a></span>
+<span id="cb19-29"><a href="#cb19-29"></a>    <span class="co"># Draw rectangle + class id</span></span>
+<span id="cb19-30"><a href="#cb19-30"></a>    color <span class="op">=</span> (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">255</span>)  <span class="co"># red box</span></span>
+<span id="cb19-31"><a href="#cb19-31"></a>    thickness <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb19-32"><a href="#cb19-32"></a>    cv2.rectangle(image, (x1, y1), (x2, y2), color, thickness)</span>
+<span id="cb19-33"><a href="#cb19-33"></a>    cv2.putText(image, <span class="ss">f"Class </span><span class="sc">{</span><span class="bu">int</span>(class_id)<span class="sc">}</span><span class="ss">"</span>, (x1, y1 <span class="op">-</span> <span class="dv">5</span>), cv2.FONT_HERSHEY_SIMPLEX, <span class="fl">0.6</span>, color, <span class="dv">2</span>)</span>
+<span id="cb19-34"><a href="#cb19-34"></a></span>
+<span id="cb19-35"><a href="#cb19-35"></a><span class="co"># Show image</span></span>
+<span id="cb19-36"><a href="#cb19-36"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">8</span>))</span>
+<span id="cb19-37"><a href="#cb19-37"></a>plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))</span>
+<span id="cb19-38"><a href="#cb19-38"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb19-39"><a href="#cb19-39"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1031,97 +1220,190 @@ Total number of unique classes: 4</code></pre>
 </section>
 <section id="for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names" class="level3">
 <h3 class="anchored" data-anchor-id="for-yolo-model-training-we-have-to-build-a-yaml-file-with-train-val-datasets-info-and-number-of-classes-and-class-names">For YOLO model training, we have to build a yaml file with train, val datasets info, and number of classes, and class names</h3>
-<div id="cell-30" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:22:54.474065Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:22:54.474797Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:22:54.479252Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:22:54.474774Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:22:54.478494Z&quot;}}" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#create yaml file for YOLO trainingyaml_content = f"""train:   - {train_dir}  - {label_dir_train}val:   - {val_dir}  - {label_dir_val}nc: 4  # number of classesnames: ['Buffalo', 'Elephant', 'Rhino', 'Zebra']  # class names in our dataset as a list"""# Write to YAML filewith open("/kaggle/working/wildlife_dataset.yaml", "w") as f:    f.write(yaml_content)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:22:54.474797Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:22:54.474065Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-10-06T10:22:54.479252Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-10-06T10:22:54.478494Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-10-06T10:22:54.474774Z&quot;}}" data-trusted="true" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">#create yaml file for YOLO training</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>yaml_content <span class="op">=</span> <span class="ss">f"""</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="ss">train: </span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="ss">  - </span><span class="sc">{</span>train_dir<span class="sc">}</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="ss">  - </span><span class="sc">{</span>label_dir_train<span class="sc">}</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="ss">val: </span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="ss">  - </span><span class="sc">{</span>val_dir<span class="sc">}</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="ss">  - </span><span class="sc">{</span>label_dir_val<span class="sc">}</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="ss">nc: 4  # number of classes</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a><span class="ss">names: ['Buffalo', 'Elephant', 'Rhino', 'Zebra']  # class names in our dataset as a list</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a><span class="ss">"""</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a></span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="co"># Write to YAML file</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"/kaggle/working/wildlife_dataset.yaml"</span>, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    f.write(yaml_content)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-31" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:23:23.459408Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:23:23.459646Z&quot;}}">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Load a modelmodel = YOLO('yolov8m.pt') # Train the model model.train(data='/kaggle/working/wildlife_dataset.yaml', epochs=10, imgsz=640)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-10-06T10:23:23.459646Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-10-06T10:23:23.459408Z&quot;}}" data-trusted="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># Load a model</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>model <span class="op">=</span> YOLO(<span class="st">'yolov8m.pt'</span>) </span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># Train the model </span></span>
+<span id="cb21-4"><a href="#cb21-4"></a>model.train(data<span class="op">=</span><span class="st">'/kaggle/working/wildlife_dataset.yaml'</span>, epochs<span class="op">=</span><span class="dv">10</span>, imgsz<span class="op">=</span><span class="dv">640</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8m.pt to 'yolov8m.pt': 100% ━━━━━━━━━━━━ 49.7MB 47.3MB/s 1.1s1.0s&lt;0.2s9s
+
 Ultralytics 8.3.205 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
+
 <span class="ansi-blue-fg ansi-bold">engine/trainer: </span>agnostic_nms=False, amp=True, augment=False, auto_augment=randaugment, batch=16, bgr=0.0, box=7.5, cache=False, cfg=None, classes=None, close_mosaic=10, cls=0.5, compile=False, conf=None, copy_paste=0.0, copy_paste_mode=flip, cos_lr=False, cutmix=0.0, data=/kaggle/working/wildlife_dataset.yaml, degrees=0.0, deterministic=True, device=None, dfl=1.5, dnn=False, dropout=0.0, dynamic=False, embed=None, epochs=10, erasing=0.4, exist_ok=False, fliplr=0.5, flipud=0.0, format=torchscript, fraction=1.0, freeze=None, half=False, hsv_h=0.015, hsv_s=0.7, hsv_v=0.4, imgsz=640, int8=False, iou=0.7, keras=False, kobj=1.0, line_width=None, lr0=0.01, lrf=0.01, mask_ratio=4, max_det=300, mixup=0.0, mode=train, model=yolov8m.pt, momentum=0.937, mosaic=1.0, multi_scale=False, name=train, nbs=64, nms=False, opset=None, optimize=False, optimizer=auto, overlap_mask=True, patience=100, perspective=0.0, plots=True, pose=12.0, pretrained=True, profile=False, project=None, rect=False, resume=False, retina_masks=False, save=True, save_conf=False, save_crop=False, save_dir=/kaggle/working/runs/detect/train, save_frames=False, save_json=False, save_period=-1, save_txt=False, scale=0.5, seed=0, shear=0.0, show=False, show_boxes=True, show_conf=True, show_labels=True, simplify=True, single_cls=False, source=None, split=val, stream_buffer=False, task=detect, time=None, tracker=botsort.yaml, translate=0.1, val=True, verbose=True, vid_stride=1, visualize=False, warmup_bias_lr=0.1, warmup_epochs=3.0, warmup_momentum=0.8, weight_decay=0.0005, workers=8, workspace=None
+
 Downloading https://ultralytics.com/assets/Arial.ttf to '/root/.config/Ultralytics/Arial.ttf': 100% ━━━━━━━━━━━━ 755.1KB 4.6MB/s 0.2s 0.1s&lt;0.2s
+
 Overriding model.yaml nc=80 with nc=4
 
+
+
                    from  n    params  module                                       arguments                     
+
   0                  -1  1      1392  ultralytics.nn.modules.conv.Conv             [3, 48, 3, 2]                 
+
   1                  -1  1     41664  ultralytics.nn.modules.conv.Conv             [48, 96, 3, 2]                
+
   2                  -1  2    111360  ultralytics.nn.modules.block.C2f             [96, 96, 2, True]             
+
   3                  -1  1    166272  ultralytics.nn.modules.conv.Conv             [96, 192, 3, 2]               
+
   4                  -1  4    813312  ultralytics.nn.modules.block.C2f             [192, 192, 4, True]           
+
   5                  -1  1    664320  ultralytics.nn.modules.conv.Conv             [192, 384, 3, 2]              
+
   6                  -1  4   3248640  ultralytics.nn.modules.block.C2f             [384, 384, 4, True]           
+
   7                  -1  1   1991808  ultralytics.nn.modules.conv.Conv             [384, 576, 3, 2]              
+
   8                  -1  2   3985920  ultralytics.nn.modules.block.C2f             [576, 576, 2, True]           
+
   9                  -1  1    831168  ultralytics.nn.modules.block.SPPF            [576, 576, 5]                 
+
  10                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+
  11             [-1, 6]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+
  12                  -1  2   1993728  ultralytics.nn.modules.block.C2f             [960, 384, 2]                 
+
  13                  -1  1         0  torch.nn.modules.upsampling.Upsample         [None, 2, 'nearest']          
+
  14             [-1, 4]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+
  15                  -1  2    517632  ultralytics.nn.modules.block.C2f             [576, 192, 2]                 
+
  16                  -1  1    332160  ultralytics.nn.modules.conv.Conv             [192, 192, 3, 2]              
+
  17            [-1, 12]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+
  18                  -1  2   1846272  ultralytics.nn.modules.block.C2f             [576, 384, 2]                 
+
  19                  -1  1   1327872  ultralytics.nn.modules.conv.Conv             [384, 384, 3, 2]              
+
  20             [-1, 9]  1         0  ultralytics.nn.modules.conv.Concat           [1]                           
+
  21                  -1  2   4207104  ultralytics.nn.modules.block.C2f             [960, 576, 2]                 
+
  22        [15, 18, 21]  1   3778012  ultralytics.nn.modules.head.Detect           [4, [192, 384, 576]]          
+
 Model summary: 169 layers, 25,858,636 parameters, 25,858,620 gradients, 79.1 GFLOPs
 
+
+
 Transferred 469/475 items from pretrained weights
+
 Freezing layer 'model.22.dfl.conv.weight'
+
 <span class="ansi-blue-fg ansi-bold">AMP: </span>running Automatic Mixed Precision (AMP) checks...
+
 Downloading https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n.pt to 'yolo11n.pt': 100% ━━━━━━━━━━━━ 5.4MB 20.6MB/s 0.3s.2s&lt;0.2s4s
+
 <span class="ansi-blue-fg ansi-bold">AMP: </span>checks passed ✅
+
 <span class="ansi-blue-fg ansi-bold">train: </span>Fast image access ✅ (ping: 1.1±2.3 ms, read: 10.1±5.9 MB/s, size: 228.6 KB)
+
 <span class="ansi-blue-fg ansi-bold">train: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train/labels... 1203 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 1203/1203 243.3it/s 4.9s0.1s
+
 WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">train: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/train is not writeable, cache not saved.
-<span class="ansi-blue-fg ansi-bold">albumentations: </span>Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
-<span class="ansi-blue-fg ansi-bold">val: </span>Fast image access ✅ (ping: 0.3±0.6 ms, read: 12.8±8.7 MB/s, size: 154.0 KB)
-<span class="ansi-blue-fg ansi-bold">val: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/labels... 150 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 150/150 126.1it/s 1.2s0.1s
-WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid is not writeable, cache not saved.
-Plotting labels to /kaggle/working/runs/detect/train/labels.jpg... 
-<span class="ansi-blue-fg ansi-bold">optimizer:</span> 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
-<span class="ansi-blue-fg ansi-bold">optimizer:</span> AdamW(lr=0.00125, momentum=0.9) with parameter groups 77 weight(decay=0.0), 84 weight(decay=0.0005), 83 bias(decay=0.0)
-Image sizes 640 train, 640 val
-Using 4 dataloader workers
-Logging results to <span class="ansi-bold">/kaggle/working/runs/detect/train</span>
-Starting training for 10 epochs...
-Closing dataloader mosaic
+
 <span class="ansi-blue-fg ansi-bold">albumentations: </span>Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
 
+<span class="ansi-blue-fg ansi-bold">val: </span>Fast image access ✅ (ping: 0.3±0.6 ms, read: 12.8±8.7 MB/s, size: 154.0 KB)
+
+<span class="ansi-blue-fg ansi-bold">val: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/labels... 150 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 150/150 126.1it/s 1.2s0.1s
+
+WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid is not writeable, cache not saved.
+
+Plotting labels to /kaggle/working/runs/detect/train/labels.jpg... 
+
+<span class="ansi-blue-fg ansi-bold">optimizer:</span> 'optimizer=auto' found, ignoring 'lr0=0.01' and 'momentum=0.937' and determining best 'optimizer', 'lr0' and 'momentum' automatically... 
+
+<span class="ansi-blue-fg ansi-bold">optimizer:</span> AdamW(lr=0.00125, momentum=0.9) with parameter groups 77 weight(decay=0.0), 84 weight(decay=0.0005), 83 bias(decay=0.0)
+
+Image sizes 640 train, 640 val
+
+Using 4 dataloader workers
+
+Logging results to <span class="ansi-bold">/kaggle/working/runs/detect/train</span>
+
+Starting training for 10 epochs...
+
+Closing dataloader mosaic
+
+<span class="ansi-blue-fg ansi-bold">albumentations: </span>Blur(p=0.01, blur_limit=(3, 7)), MedianBlur(p=0.01, blur_limit=(3, 7)), ToGray(p=0.01, method='weighted_average', num_output_channels=3), CLAHE(p=0.01, clip_limit=(1.0, 4.0), tile_grid_size=(8, 8))
+
+
+
       Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+
        1/10      7.79G     0.7689      1.947      1.192         13        640: 100% ━━━━━━━━━━━━ 76/76 1.5it/s 49.4s0.4ss
+
                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 2.1it/s 2.4s0.5ss
+
                    all        150        262      0.529      0.617      0.629      0.407
 
-      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
-       2/10      7.86G      1.115      1.526      1.479          4        640: 100% ━━━━━━━━━━━━ 76/76 1.6it/s 46.8s0.4ss
-                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.0it/s 1.7s0.5s
-                   all        150        262      0.245      0.463      0.265       0.13
+
 
       Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+
+       2/10      7.86G      1.115      1.526      1.479          4        640: 100% ━━━━━━━━━━━━ 76/76 1.6it/s 46.8s0.4ss
+
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 5/5 3.0it/s 1.7s0.5s
+
+                   all        150        262      0.245      0.463      0.265       0.13
+
+
+
+      Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+
        3/10       7.9G      1.168      1.505      1.506         27        640: 41% ━━━━╸─────── 31/76 1.6it/s 19.8s&lt;27.8s</pre>
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:22.350672Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:22.351027Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:22.356276Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:22.350999Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:22.355444Z&quot;}}" data-execution_count="23">
+<div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:22.351027Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:22.350672Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:22.356276Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:22.355444Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:22.350999Z&quot;}}" data-trusted="true" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/working/runs/detect/train2/weights'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['best.pt', 'last.pt']</code></pre>
 </div>
 </div>
-<div id="cell-33" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:29.159878Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:29.160492Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:36.642400Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:29.160471Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:36.641718Z&quot;}}" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Load your trained modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Run validation on validation setmetrics = model.val()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:29.160492Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:29.159878Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:36.642400Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:36.641718Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:29.160471Z&quot;}}" data-trusted="true" data-execution_count="24">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Load your trained model</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>model <span class="op">=</span> YOLO(<span class="st">"/kaggle/working/runs/detect/train2/weights/best.pt"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># Run validation on validation set</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>metrics <span class="op">=</span> model.val()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>Ultralytics 8.3.203 🚀 Python-3.11.13 torch-2.6.0+cu124 CUDA:0 (Tesla P100-PCIE-16GB, 16269MiB)
+
 Model summary (fused): 92 layers, 25,842,076 parameters, 0 gradients, 78.7 GFLOPs
+
 <span class="ansi-blue-fg ansi-bold">val: </span>Fast image access ✅ (ping: 0.0±0.0 ms, read: 259.2±111.8 MB/s, size: 152.6 KB)
+
 <span class="ansi-blue-fg ansi-bold">val: </span>Scanning /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/labels... 150 images, 0 backgrounds, 0 corrupt: 100% ━━━━━━━━━━━━ 150/150 1.1Kit/s 0.1s&lt;0.1s
+
 WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory /kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid is not writeable, cache not saved.
+
                  Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 10/10 2.7it/s 3.7s.2ss
 </pre>
 </div>
@@ -1135,27 +1417,37 @@ WARNING ⚠️ <span class="ansi-blue-fg ansi-bold">val: </span>Cache directory 
 <div class="cell-output cell-output-stdout">
 <div class="ansi-escaped-output">
 <pre>                   all        150        262      0.925      0.887      0.949      0.795
+
                Buffalo         38         60      0.907      0.814      0.906      0.742
+
               Elephant         43         83      0.893      0.904      0.952      0.763
+
                  Rhino         42         58      0.983      0.977      0.993      0.905
+
                  Zebra         28         61      0.919      0.852      0.943      0.769
+
 Speed: 2.0ms preprocess, 9.5ms inference, 0.0ms loss, 1.5ms postprocess per image
+
 Results saved to <span class="ansi-bold">/kaggle/working/runs/detect/val</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:55.070484Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:55.070768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:55.074665Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:55.070746Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:55.073863Z&quot;}}" data-execution_count="25">
+<div id="cell-40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:55.070768Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:55.070484Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:55.074665Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:55.073863Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:55.070746Z&quot;}}" data-trusted="true" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">### YOLOv8 automatically saves all plots in the validation folder:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="cell-35" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:59.114052Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:59.114656Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:59.119711Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:59.114632Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:59.119008Z&quot;}}" data-execution_count="26">
+<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:52:59.114656Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:52:59.114052Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:52:59.119711Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:52:59.119008Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:52:59.114632Z&quot;}}" data-trusted="true" data-execution_count="26">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(os.listdir(<span class="st">'/kaggle/working/runs/detect/val'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['val_batch1_labels.jpg', 'val_batch2_labels.jpg', 'val_batch1_pred.jpg', 'BoxF1_curve.png', 'BoxP_curve.png', 'val_batch0_pred.jpg', 'confusion_matrix_normalized.png', 'BoxR_curve.png', 'BoxPR_curve.png', 'val_batch0_labels.jpg', 'confusion_matrix.png', 'val_batch2_pred.jpg']</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:03.999780Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:04.000371Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:04.400335Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:04.000350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:04.399705Z&quot;}}" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Display Precision-Recall curvepr_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxPR_curve.png")plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:04.000371Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:03.999780Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:04.400335Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:04.399705Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:04.000350Z&quot;}}" data-trusted="true" data-execution_count="27">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># Display Precision-Recall curve</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>pr_curve <span class="op">=</span> cv2.imread(<span class="st">"/kaggle/working/runs/detect/val/BoxPR_curve.png"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))</span>
+<span id="cb29-4"><a href="#cb29-4"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1164,8 +1456,26 @@ Results saved to <span class="ansi-bold">/kaggle/working/runs/detect/val</span>
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:12.611943Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:12.612222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:14.195410Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:12.612204Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:14.194558Z&quot;}}" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> pltimport cv2<span class="co"># Display Precision-Recall curvepr_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxPR_curve.png")plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()# Display F1 curvef1_curve = cv2.imread("/kaggle/working/runs/detect/val/BoxF1_curve.png")plt.imshow(cv2.cvtColor(f1_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()cm_curve = cv2.imread("/kaggle/working/runs/detect/val/confusion_matrix.png")plt.imshow(cv2.cvtColor(cm_curve, cv2.COLOR_BGR2RGB))plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:53:12.612222Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:53:12.611943Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:53:14.195410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:53:14.194558Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:53:12.612204Z&quot;}}" data-trusted="true" data-execution_count="28">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="im">import</span> cv2</span>
+<span id="cb30-3"><a href="#cb30-3"></a></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co"># Display Precision-Recall curve</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>pr_curve <span class="op">=</span> cv2.imread(<span class="st">"/kaggle/working/runs/detect/val/BoxPR_curve.png"</span>)</span>
+<span id="cb30-6"><a href="#cb30-6"></a>plt.imshow(cv2.cvtColor(pr_curve, cv2.COLOR_BGR2RGB))</span>
+<span id="cb30-7"><a href="#cb30-7"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb30-8"><a href="#cb30-8"></a>plt.show()</span>
+<span id="cb30-9"><a href="#cb30-9"></a></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co"># Display F1 curve</span></span>
+<span id="cb30-11"><a href="#cb30-11"></a>f1_curve <span class="op">=</span> cv2.imread(<span class="st">"/kaggle/working/runs/detect/val/BoxF1_curve.png"</span>)</span>
+<span id="cb30-12"><a href="#cb30-12"></a>plt.imshow(cv2.cvtColor(f1_curve, cv2.COLOR_BGR2RGB))</span>
+<span id="cb30-13"><a href="#cb30-13"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb30-14"><a href="#cb30-14"></a>plt.show()</span>
+<span id="cb30-15"><a href="#cb30-15"></a></span>
+<span id="cb30-16"><a href="#cb30-16"></a>cm_curve <span class="op">=</span> cv2.imread(<span class="st">"/kaggle/working/runs/detect/val/confusion_matrix.png"</span>)</span>
+<span id="cb30-17"><a href="#cb30-17"></a>plt.imshow(cv2.cvtColor(cm_curve, cv2.COLOR_BGR2RGB))</span>
+<span id="cb30-18"><a href="#cb30-18"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb30-19"><a href="#cb30-19"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1188,8 +1498,28 @@ Results saved to <span class="ansi-bold">/kaggle/working/runs/detect/val</span>
 </div>
 </div>
 </div>
-<div id="cell-38" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:54:40.229334Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:54:40.229950Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:54:41.392410Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:54:40.229919Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:54:41.391237Z&quot;}}" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">### Lets check the model to detect and classify an onbject in an image# Load modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Load imageimg = cv2.imread('/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images/0365.jpg')# Run predictionprediction = model.predict(img)[0]# Draw bounding boxes on the imagepred_img = prediction.plot(line_width=4, font_size=12)# Convert BGR (OpenCV) → RGB (for matplotlib / PIL)pred_img = pred_img[:, :, ::-1]# Display with matplotlibplt.figure(figsize=(10, 10))plt.imshow(pred_img)plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:54:40.229950Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:54:40.229334Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:54:41.392410Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:54:41.391237Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:54:40.229919Z&quot;}}" data-trusted="true" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">### Lets check the model to detect and classify an onbject in an image</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co"># Load model</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>model <span class="op">=</span> YOLO(<span class="st">"/kaggle/working/runs/detect/train2/weights/best.pt"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co"># Load image</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a>img <span class="op">=</span> cv2.imread(<span class="st">'/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images/0365.jpg'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co"># Run prediction</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a>prediction <span class="op">=</span> model.predict(img)[<span class="dv">0</span>]</span>
+<span id="cb31-10"><a href="#cb31-10"></a></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="co"># Draw bounding boxes on the image</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a>pred_img <span class="op">=</span> prediction.plot(line_width<span class="op">=</span><span class="dv">4</span>, font_size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb31-13"><a href="#cb31-13"></a></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="co"># Convert BGR (OpenCV) → RGB (for matplotlib / PIL)</span></span>
+<span id="cb31-15"><a href="#cb31-15"></a>pred_img <span class="op">=</span> pred_img[:, :, ::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb31-16"><a href="#cb31-16"></a></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="co"># Display with matplotlib</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb31-19"><a href="#cb31-19"></a>plt.imshow(pred_img)</span>
+<span id="cb31-20"><a href="#cb31-20"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb31-21"><a href="#cb31-21"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 0: 448x640 1 Buffalo, 13.7ms
@@ -1203,8 +1533,44 @@ Speed: 2.9ms preprocess, 13.7ms inference, 1.3ms postprocess per image at shape 
 </div>
 </div>
 </div>
-<div id="cell-39" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:56:08.334153Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:56:08.334893Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:56:11.793986Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:56:08.334859Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:56:11.792698Z&quot;}}" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># prediction on 10 random images from val folder# Load modelmodel = YOLO("/kaggle/working/runs/detect/train2/weights/best.pt")# Path to validation imagesval_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"# Get list of imagesall_images = [os.path.join(val_dir, img) for img in os.listdir(val_dir) if img.endswith((".jpg", ".png", ".jpeg"))]# Randomly pick 10 imagessampled_images = random.sample(all_images, 10)# Run inference and displayplt.figure(figsize=(20, 20))for i, img_path in enumerate(sampled_images):    # Load image    img = cv2.imread(img_path)    # Run prediction    prediction = model.predict(img)[0]    # Draw bounding boxes    pred_img = prediction.plot(line_width=3, font_size=12)    # Convert BGR to RGB    pred_img = pred_img[:, :, ::-1]    # Show    plt.subplot(5, 2, i+1)  # 5 rows, 2 columns    plt.imshow(pred_img)    plt.title(os.path.basename(img_path))    plt.axis("off")plt.tight_layout()plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-45" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:56:08.334893Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:56:08.334153Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:56:11.793986Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:56:11.792698Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:56:08.334859Z&quot;}}" data-trusted="true" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># prediction on 10 random images from val folder</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co"># Load model</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>model <span class="op">=</span> YOLO(<span class="st">"/kaggle/working/runs/detect/train2/weights/best.pt"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4"></a></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="co"># Path to validation images</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>val_dir <span class="op">=</span> <span class="st">"/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="co"># Get list of images</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>all_images <span class="op">=</span> [os.path.join(val_dir, img) <span class="cf">for</span> img <span class="kw">in</span> os.listdir(val_dir) <span class="cf">if</span> img.endswith((<span class="st">".jpg"</span>, <span class="st">".png"</span>, <span class="st">".jpeg"</span>))]</span>
+<span id="cb33-10"><a href="#cb33-10"></a></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="co"># Randomly pick 10 images</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a>sampled_images <span class="op">=</span> random.sample(all_images, <span class="dv">10</span>)</span>
+<span id="cb33-13"><a href="#cb33-13"></a></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="co"># Run inference and display</span></span>
+<span id="cb33-15"><a href="#cb33-15"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
+<span id="cb33-16"><a href="#cb33-16"></a></span>
+<span id="cb33-17"><a href="#cb33-17"></a><span class="cf">for</span> i, img_path <span class="kw">in</span> <span class="bu">enumerate</span>(sampled_images):</span>
+<span id="cb33-18"><a href="#cb33-18"></a>    <span class="co"># Load image</span></span>
+<span id="cb33-19"><a href="#cb33-19"></a>    img <span class="op">=</span> cv2.imread(img_path)</span>
+<span id="cb33-20"><a href="#cb33-20"></a></span>
+<span id="cb33-21"><a href="#cb33-21"></a>    <span class="co"># Run prediction</span></span>
+<span id="cb33-22"><a href="#cb33-22"></a>    prediction <span class="op">=</span> model.predict(img)[<span class="dv">0</span>]</span>
+<span id="cb33-23"><a href="#cb33-23"></a></span>
+<span id="cb33-24"><a href="#cb33-24"></a>    <span class="co"># Draw bounding boxes</span></span>
+<span id="cb33-25"><a href="#cb33-25"></a>    pred_img <span class="op">=</span> prediction.plot(line_width<span class="op">=</span><span class="dv">3</span>, font_size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb33-26"><a href="#cb33-26"></a></span>
+<span id="cb33-27"><a href="#cb33-27"></a>    <span class="co"># Convert BGR to RGB</span></span>
+<span id="cb33-28"><a href="#cb33-28"></a>    pred_img <span class="op">=</span> pred_img[:, :, ::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb33-29"><a href="#cb33-29"></a></span>
+<span id="cb33-30"><a href="#cb33-30"></a>    <span class="co"># Show</span></span>
+<span id="cb33-31"><a href="#cb33-31"></a>    plt.subplot(<span class="dv">5</span>, <span class="dv">2</span>, i<span class="op">+</span><span class="dv">1</span>)  <span class="co"># 5 rows, 2 columns</span></span>
+<span id="cb33-32"><a href="#cb33-32"></a>    plt.imshow(pred_img)</span>
+<span id="cb33-33"><a href="#cb33-33"></a>    plt.title(os.path.basename(img_path))</span>
+<span id="cb33-34"><a href="#cb33-34"></a>    plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb33-35"><a href="#cb33-35"></a></span>
+<span id="cb33-36"><a href="#cb33-36"></a>plt.tight_layout()</span>
+<span id="cb33-37"><a href="#cb33-37"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 0: 480x640 1 Buffalo, 14.6ms
@@ -1245,8 +1611,45 @@ Speed: 2.3ms preprocess, 13.5ms inference, 1.2ms postprocess per image at shape 
 </div>
 </div>
 </div>
-<div id="cell-40" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:57:58.897461Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:57:58.897751Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:58:02.248276Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:57:58.897733Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:58:02.247012Z&quot;}}" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">### predicting with base model# prediction on 10 random images from val folder# Load base modelmodel = YOLO('yolov8m.pt') # Path to validation imagesval_dir = "/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"# Get list of imagesall_images = [os.path.join(val_dir, img) for img in os.listdir(val_dir) if img.endswith((".jpg", ".png", ".jpeg"))]# Randomly pick 10 imagessampled_images = random.sample(all_images, 10)# Run inference and displayplt.figure(figsize=(20, 20))for i, img_path in enumerate(sampled_images):    # Load image    img = cv2.imread(img_path)    # Run prediction    prediction = model.predict(img)[0]    # Draw bounding boxes    pred_img = prediction.plot(line_width=3, font_size=12)    # Convert BGR to RGB    pred_img = pred_img[:, :, ::-1]    # Show    plt.subplot(5, 2, i+1)  # 5 rows, 2 columns    plt.imshow(pred_img)    plt.title(os.path.basename(img_path))    plt.axis("off")plt.tight_layout()plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:57:58.897751Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:57:58.897461Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:58:02.248276Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:58:02.247012Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:57:58.897733Z&quot;}}" data-trusted="true" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">### predicting with base model</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co"># prediction on 10 random images from val folder</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co"># Load base model</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>model <span class="op">=</span> YOLO(<span class="st">'yolov8m.pt'</span>) </span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co"># Path to validation images</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>val_dir <span class="op">=</span> <span class="st">"/kaggle/input/object-detection-wildlife-dataset-yolo-format/final_data/valid/images"</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co"># Get list of images</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a>all_images <span class="op">=</span> [os.path.join(val_dir, img) <span class="cf">for</span> img <span class="kw">in</span> os.listdir(val_dir) <span class="cf">if</span> img.endswith((<span class="st">".jpg"</span>, <span class="st">".png"</span>, <span class="st">".jpeg"</span>))]</span>
+<span id="cb35-11"><a href="#cb35-11"></a></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="co"># Randomly pick 10 images</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a>sampled_images <span class="op">=</span> random.sample(all_images, <span class="dv">10</span>)</span>
+<span id="cb35-14"><a href="#cb35-14"></a></span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="co"># Run inference and display</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
+<span id="cb35-17"><a href="#cb35-17"></a></span>
+<span id="cb35-18"><a href="#cb35-18"></a><span class="cf">for</span> i, img_path <span class="kw">in</span> <span class="bu">enumerate</span>(sampled_images):</span>
+<span id="cb35-19"><a href="#cb35-19"></a>    <span class="co"># Load image</span></span>
+<span id="cb35-20"><a href="#cb35-20"></a>    img <span class="op">=</span> cv2.imread(img_path)</span>
+<span id="cb35-21"><a href="#cb35-21"></a></span>
+<span id="cb35-22"><a href="#cb35-22"></a>    <span class="co"># Run prediction</span></span>
+<span id="cb35-23"><a href="#cb35-23"></a>    prediction <span class="op">=</span> model.predict(img)[<span class="dv">0</span>]</span>
+<span id="cb35-24"><a href="#cb35-24"></a></span>
+<span id="cb35-25"><a href="#cb35-25"></a>    <span class="co"># Draw bounding boxes</span></span>
+<span id="cb35-26"><a href="#cb35-26"></a>    pred_img <span class="op">=</span> prediction.plot(line_width<span class="op">=</span><span class="dv">3</span>, font_size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb35-27"><a href="#cb35-27"></a></span>
+<span id="cb35-28"><a href="#cb35-28"></a>    <span class="co"># Convert BGR to RGB</span></span>
+<span id="cb35-29"><a href="#cb35-29"></a>    pred_img <span class="op">=</span> pred_img[:, :, ::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb35-30"><a href="#cb35-30"></a></span>
+<span id="cb35-31"><a href="#cb35-31"></a>    <span class="co"># Show</span></span>
+<span id="cb35-32"><a href="#cb35-32"></a>    plt.subplot(<span class="dv">5</span>, <span class="dv">2</span>, i<span class="op">+</span><span class="dv">1</span>)  <span class="co"># 5 rows, 2 columns</span></span>
+<span id="cb35-33"><a href="#cb35-33"></a>    plt.imshow(pred_img)</span>
+<span id="cb35-34"><a href="#cb35-34"></a>    plt.title(os.path.basename(img_path))</span>
+<span id="cb35-35"><a href="#cb35-35"></a>    plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb35-36"><a href="#cb35-36"></a></span>
+<span id="cb35-37"><a href="#cb35-37"></a>plt.tight_layout()</span>
+<span id="cb35-38"><a href="#cb35-38"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 0: 448x640 1 cow, 1 elephant, 13.5ms
@@ -1290,8 +1693,34 @@ Speed: 2.4ms preprocess, 14.1ms inference, 1.3ms postprocess per image at shape 
 </section>
 <section id="we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model" class="level3">
 <h3 class="anchored" data-anchor-id="we-can-see-that-the-trained-model-performnace-is-better-than-the-base-model">We can see that the trained model performnace is better than the base model</h3>
-<div id="cell-42" class="cell" data-trusted="true" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:59:50.728123Z&quot;,&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:59:50.728412Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:59:51.531773Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:59:50.728393Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:59:51.530998Z&quot;}}" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#testing the model on a new image# Load trained modelmodel = YOLO("/kaggle/working/runs/detect/train/weights/best.pt")# Load a test image (with elephant, giraffe, zebra)img_path = "/kaggle/input/test-image/Yolo_image.png"img = cv2.imread(img_path)# Run predictionresults = model.predict(img)[0]# Print detected objectsfor box in results.boxes:    cls_id = int(box.cls)    class_name = results.names[cls_id]    conf = float(box.conf)    print(f"Detected {class_name} with confidence {conf:.2f}")# Draw bounding boxespred_img = results.plot(line_width=3, font_size=0.8)pred_img = pred_img[:, :, ::-1]  # BGR → RGB# Displayplt.figure(figsize=(10, 10))plt.imshow(pred_img)plt.axis("off")plt.show()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-09-26T08:59:50.728412Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-09-26T08:59:50.728123Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-09-26T08:59:51.531773Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-09-26T08:59:51.530998Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-09-26T08:59:50.728393Z&quot;}}" data-trusted="true" data-execution_count="39">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#testing the model on a new image</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co"># Load trained model</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>model <span class="op">=</span> YOLO(<span class="st">"/kaggle/working/runs/detect/train/weights/best.pt"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4"></a></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="co"># Load a test image (with elephant, giraffe, zebra)</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a>img_path <span class="op">=</span> <span class="st">"/kaggle/input/test-image/Yolo_image.png"</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>img <span class="op">=</span> cv2.imread(img_path)</span>
+<span id="cb37-8"><a href="#cb37-8"></a></span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="co"># Run prediction</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a>results <span class="op">=</span> model.predict(img)[<span class="dv">0</span>]</span>
+<span id="cb37-11"><a href="#cb37-11"></a></span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="co"># Print detected objects</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a><span class="cf">for</span> box <span class="kw">in</span> results.boxes:</span>
+<span id="cb37-14"><a href="#cb37-14"></a>    cls_id <span class="op">=</span> <span class="bu">int</span>(box.cls)</span>
+<span id="cb37-15"><a href="#cb37-15"></a>    class_name <span class="op">=</span> results.names[cls_id]</span>
+<span id="cb37-16"><a href="#cb37-16"></a>    conf <span class="op">=</span> <span class="bu">float</span>(box.conf)</span>
+<span id="cb37-17"><a href="#cb37-17"></a>    <span class="bu">print</span>(<span class="ss">f"Detected </span><span class="sc">{</span>class_name<span class="sc">}</span><span class="ss"> with confidence </span><span class="sc">{</span>conf<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb37-18"><a href="#cb37-18"></a></span>
+<span id="cb37-19"><a href="#cb37-19"></a><span class="co"># Draw bounding boxes</span></span>
+<span id="cb37-20"><a href="#cb37-20"></a>pred_img <span class="op">=</span> results.plot(line_width<span class="op">=</span><span class="dv">3</span>, font_size<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb37-21"><a href="#cb37-21"></a>pred_img <span class="op">=</span> pred_img[:, :, ::<span class="op">-</span><span class="dv">1</span>]  <span class="co"># BGR → RGB</span></span>
+<span id="cb37-22"><a href="#cb37-22"></a></span>
+<span id="cb37-23"><a href="#cb37-23"></a><span class="co"># Display</span></span>
+<span id="cb37-24"><a href="#cb37-24"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb37-25"><a href="#cb37-25"></a>plt.imshow(pred_img)</span>
+<span id="cb37-26"><a href="#cb37-26"></a>plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb37-27"><a href="#cb37-27"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 0: 640x640 1 Elephant, 1 Zebra, 16.1ms
@@ -1306,9 +1735,6 @@ Detected Elephant with confidence 0.90</code></pre>
 </figure>
 </div>
 </div>
-</div>
-<div id="cell-43" class="cell" data-trusted="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 

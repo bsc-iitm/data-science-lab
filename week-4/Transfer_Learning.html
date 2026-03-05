@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Amartya Basu">
 
-<title>transfer_learning – Data Science Lab</title>
+<title>Transfer Learning – Data Science Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -499,13 +500,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-4/Guide_to_Image_Manipulation_with_Pillow_and_OpenCV.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">A Practical Guide to Image Manipulation with Pillow and OpenCV</span></a>
+ <span class="menu-text">Image Manipulation using Pillow and OpenCV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../week-4/preprocessing_images.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">— Data Augmentation Examples (PyTorch v2) —</span></a>
+ <span class="menu-text">Image Preprocessing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -548,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../week-4/Vision Transformers/vision_transformers.pdf" class="sidebar-item-text sidebar-link">
+  <a href="../week-4/Vision Transformers/vision_transformers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Vision Transformers</span></a>
   </div>
 </li>
@@ -772,24 +773,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#transfer-learning" id="toc-transfer-learning" class="nav-link active" data-scroll-target="#transfer-learning">Transfer Learning</a>
-  <ul class="collapse">
-  <li><a href="#steps-to-run-the-colab-notebook." id="toc-steps-to-run-the-colab-notebook." class="nav-link" data-scroll-target="#steps-to-run-the-colab-notebook.">Steps to run the colab notebook.</a></li>
-  </ul></li>
+  <li><a href="#steps-to-run-the-colab-notebook." id="toc-steps-to-run-the-colab-notebook." class="nav-link active" data-scroll-target="#steps-to-run-the-colab-notebook.">Steps to run the colab notebook.</a></li>
   <li><a href="#plot-the-accuracy" id="toc-plot-the-accuracy" class="nav-link" data-scroll-target="#plot-the-accuracy">Plot the accuracy</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-4/Transfer_Learning.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/Transfer_Learning.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Transfer_Learning.html">Transfer Learning</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../week-4/Transfer_Learning.html">Transfer Learning</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Transfer Learning</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Amartya Basu </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <p>This Colab notebook aims to provide a comprehensive understanding of transfer learning, including its underlying principles and its widespread application in image classification and object detection tasks.</p>
-<section id="transfer-learning" class="level2">
-<h2 class="anchored" data-anchor-id="transfer-learning">Transfer Learning</h2>
 <p>Transfer learning is a paradigm in deep learning where knowledge gained from solving one problem is leveraged to address a related, often more specific, task. In neural network applications, this typically involves initializing a model with weights from a network previously trained on a large-scale dataset, rather than starting with random weights. This approach benefits from the rich feature representations learned during the initial training phase, enabling faster convergence and improved performance—especially when the new task has limited data.</p>
 <p>For more detais- https://cs231n.github.io/transfer-learning/</p>
 <section id="steps-to-run-the-colab-notebook." class="level3">
@@ -797,7 +815,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Change th eruntime configuration from CPU to T4 GPU.</li>
 </ol>
-<div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937378553,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:15055,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-execution_count="1">
+<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:15055,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937378553,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Importing the required libraries.</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
@@ -816,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16"></a>device <span class="op">=</span> torch.device(<span class="st">"cuda"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Extract the data. For this colab notebook task, we will be using the bee and ants image dataset. Link: https://download.pytorch.org/tutorial/hymenoptera_data.zip We have about 120 training images each for ants and bees. There are 75 validation images for each class.</p>
-<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937391420,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:603,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="a36c2495-515b-4c99-eca8-57a21059be2c" data-execution_count="2">
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:603,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937391420,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a36c2495-515b-4c99-eca8-57a21059be2c" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## Download and extract</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a>data_root <span class="op">=</span> <span class="st">"/content/data"</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a>os.makedirs(data_root, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
@@ -840,7 +858,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 Subdirs: ['train', 'val']</code></pre>
 </div>
 </div>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937630848,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:1329,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="f43939c2-4dbe-4d9b-ce4b-9895802ce1fb" data-execution_count="9">
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:1329,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753937630848,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="f43939c2-4dbe-4d9b-ce4b-9895802ce1fb" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">## Count the number of images in each set</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> split <span class="kw">in</span> [<span class="st">"train"</span>, <span class="st">"val"</span>]:</span>
 <span id="cb4-3"><a href="#cb4-3"></a>    split_dir <span class="op">=</span> pathlib.Path(data_dir) <span class="op">/</span> split</span>
@@ -907,7 +925,7 @@ Subdirs: ['train', 'val']</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938133894,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:12,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="e6c21e90-7d7f-4ba7-c360-1cf465b46881" data-execution_count="21">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:12,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938133894,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="e6c21e90-7d7f-4ba7-c360-1cf465b46881" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">import</span> time</span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="im">from</span> tempfile <span class="im">import</span> TemporaryDirectory</span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="im">import</span> torch</span>
@@ -1000,7 +1018,7 @@ Subdirs: ['train', 'val']</code></pre>
 ====================================================================================================</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938166195,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:26596,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="d1b401b2-6eab-4f3f-ce67-b6a63b8dbb69" data-execution_count="22">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:26596,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938166195,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="d1b401b2-6eab-4f3f-ce67-b6a63b8dbb69" data-execution_count="22">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>model_scratch <span class="op">=</span> models.resnet18(pretrained<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a>num_ftrs <span class="op">=</span> model_scratch.fc.in_features</span>
 <span id="cb8-3"><a href="#cb8-3"></a>model_scratch.fc <span class="op">=</span> nn.Linear(num_ftrs, <span class="bu">len</span>(class_names))  <span class="co"># Adapt final layer to match num classes</span></span>
@@ -1074,7 +1092,7 @@ Best val Acc: 0.6993</code></pre>
 </div>
 </div>
 <p>ResNET18 with Transfer Learning</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938213471,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:25249,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="9cc9757b-ee2e-4226-80c8-1f6a05173802" data-execution_count="24">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:25249,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938213471,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="9cc9757b-ee2e-4226-80c8-1f6a05173802" data-execution_count="24">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Load pretrained model</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>model_tl <span class="op">=</span> models.resnet18(pretrained<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>num_ftrs <span class="op">=</span> model_tl.fc.in_features</span>
@@ -1150,10 +1168,9 @@ Best val Acc: 0.9346</code></pre>
 </div>
 </div>
 </section>
-</section>
 <section id="plot-the-accuracy" class="level2">
 <h2 class="anchored" data-anchor-id="plot-the-accuracy">Plot the accuracy</h2>
-<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938227063,&quot;user_tz&quot;:-330,&quot;elapsed&quot;:582,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;}}}" data-outputid="a0194268-fb1d-4431-9e5a-bbe8e6858029" data-execution_count="25">
+<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:582,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1753938227063,&quot;user&quot;:{&quot;displayName&quot;:&quot;Amartya&quot;,&quot;userId&quot;:&quot;05009573271607345030&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a0194268-fb1d-4431-9e5a-bbe8e6858029" data-execution_count="25">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># Plot training &amp; validation accuracy</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
 <span id="cb12-3"><a href="#cb12-3"></a></span>
@@ -1611,8 +1628,8 @@ Best val Acc: 0.9346</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../week-4/preprocessing_images.html" class="pagination-link" aria-label="--- Data Augmentation Examples (PyTorch v2) ---">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">— Data Augmentation Examples (PyTorch v2) —</span>
+      <a href="../week-4/preprocessing_images.html" class="pagination-link" aria-label="Image Preprocessing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Image Preprocessing</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

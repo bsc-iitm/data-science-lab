@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Karthik Thiagarajan">
+<meta name="author" content="Aniruddha">
 
-<title>Sampling from Distributions, Bar Plots, Histograms and Scatter plots – Data Science Lab</title>
+<title>Introduction to Vision Transformers – Data Science Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,8 +31,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../week-1/module-1/nb-5.html" rel="next">
-<link href="../../week-1/module-1/nb-3.html" rel="prev">
+<link href="../../week-5/index.html" rel="next">
+<link href="../../week-4/Intro to computer vision/intro_to_cv.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -314,7 +279,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../week-1/index.html">Week-1</a></li><li class="breadcrumb-item"><a href="../../week-1/module-1/index.html">NumPy and Matplotlib</a></li><li class="breadcrumb-item"><a href="../../week-1/module-1/nb-4.html">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../../week-4/Vision Transformers/vision_transformers.html">Vision Transformers</a></li><li class="breadcrumb-item"><a href="../../week-4/Vision Transformers/vision_transformers.html">Introduction to Vision Transformers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -347,20 +312,20 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../week-1/module-1/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">NumPy and Matplotlib</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-1/module-1/nb-1.html" class="sidebar-item-text sidebar-link">
@@ -381,7 +346,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../week-1/module-1/nb-4.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../week-1/module-1/nb-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</span></a>
   </div>
 </li>
@@ -515,11 +480,11 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../week-4/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week-4</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../week-4/Loading_Images.html" class="sidebar-item-text sidebar-link">
@@ -569,16 +534,16 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
  <span class="menu-text">Vision Transformers</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../week-4/Vision Transformers/vision_transformers.html" class="sidebar-item-text sidebar-link">
+  <a href="../../week-4/Vision Transformers/vision_transformers.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to Vision Transformers</span></a>
   </div>
 </li>
@@ -802,28 +767,21 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#import-and-settings" id="toc-import-and-settings" class="nav-link active" data-scroll-target="#import-and-settings">Import and Settings</a></li>
-  <li><a href="#random-number-generator" id="toc-random-number-generator" class="nav-link" data-scroll-target="#random-number-generator">Random Number Generator</a></li>
-  <li><a href="#sampling-and-plotting" id="toc-sampling-and-plotting" class="nav-link" data-scroll-target="#sampling-and-plotting">Sampling and Plotting</a>
-  <ul class="collapse">
-  <li><a href="#sampling-bernoulli" id="toc-sampling-bernoulli" class="nav-link" data-scroll-target="#sampling-bernoulli">Sampling: Bernoulli</a></li>
-  <li><a href="#plotting-bar-plot" id="toc-plotting-bar-plot" class="nav-link" data-scroll-target="#plotting-bar-plot">Plotting: Bar plot</a></li>
-  <li><a href="#sampling-gaussian" id="toc-sampling-gaussian" class="nav-link" data-scroll-target="#sampling-gaussian">Sampling: Gaussian</a></li>
-  <li><a href="#plotting-histogram" id="toc-plotting-histogram" class="nav-link" data-scroll-target="#plotting-histogram">Plotting: Histogram</a></li>
-  <li><a href="#sampling-bivariate-gaussian" id="toc-sampling-bivariate-gaussian" class="nav-link" data-scroll-target="#sampling-bivariate-gaussian">Sampling: Bivariate Gaussian</a></li>
-  <li><a href="#plotting-scatter-plot" id="toc-plotting-scatter-plot" class="nav-link" data-scroll-target="#plotting-scatter-plot">Plotting: Scatter plot</a></li>
-  </ul></li>
-  <li><a href="#gmm" id="toc-gmm" class="nav-link" data-scroll-target="#gmm">GMM</a></li>
+  <li><a href="#transformer-architecture" id="toc-transformer-architecture" class="nav-link active" data-scroll-target="#transformer-architecture">Transformer Architecture</a></li>
+  <li><a href="#transformers-in-computer-vision" id="toc-transformers-in-computer-vision" class="nav-link" data-scroll-target="#transformers-in-computer-vision">Transformers in Computer Vision</a></li>
+  <li><a href="#an-image-is-worth-16-x-16-words" id="toc-an-image-is-worth-16-x-16-words" class="nav-link" data-scroll-target="#an-image-is-worth-16-x-16-words">An Image Is Worth 16 x 16 Words</a></li>
+  <li><a href="#vit-variants" id="toc-vit-variants" class="nav-link" data-scroll-target="#vit-variants">ViT Variants</a></li>
+  <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-4.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-4.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bsc-iitm/data-science-lab/edit/master/week-4/Vision Transformers/vision_transformers.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/Vision Transformers/vision_transformers.qmd" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="https://discourse.onlinedegree.iitm.ac.in/"><i class="bi bi-chat-square-dots-fill"></i>Discussion Forum</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../week-1/index.html">Week-1</a></li><li class="breadcrumb-item"><a href="../../week-1/module-1/index.html">NumPy and Matplotlib</a></li><li class="breadcrumb-item"><a href="../../week-1/module-1/nb-4.html">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../week-4/index.html">Week-4</a></li><li class="breadcrumb-item"><a href="../../week-4/Vision Transformers/vision_transformers.html">Vision Transformers</a></li><li class="breadcrumb-item"><a href="../../week-4/Vision Transformers/vision_transformers.html">Introduction to Vision Transformers</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Sampling from Distributions, Bar Plots, Histograms and Scatter plots</h1>
+<h1 class="title">Introduction to Vision Transformers</h1>
 </div>
 
 
@@ -833,7 +791,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Karthik Thiagarajan </p>
+             <p>Aniruddha </p>
           </div>
   </div>
     
@@ -846,197 +804,69 @@ window.Quarto = {
 </header>
 
 
-<section id="import-and-settings" class="level2">
-<h2 class="anchored" data-anchor-id="import-and-settings">Import and Settings</h2>
-<p>We will import <code>NumPy</code> and <code>matplotlib</code>. In addition, we will also start with some customised layout for the plot.</p>
-<div id="cell-2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086227933,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="random-number-generator" class="level2">
-<h2 class="anchored" data-anchor-id="random-number-generator">Random Number Generator</h2>
-<p>A random number generator allows us to generate “pseudo random numbers”. These aren’t truly random, but come close enough for all practical purposes. <code>NumPy</code> has a <code>random</code> module that helps us define such a generator:</p>
-<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:14,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086227953,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The seed value ensures that our simulations are reproducible. Run the following code multiple times with and without a seed value and notice the behaviour.</p>
-<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086252156,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="60caefaa-66bd-4651-d68b-60c30d71da3b" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>rng.integers(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<pre><code>array([0, 7, 6, 4, 4])</code></pre>
-</div>
-</div>
-<p>Let us quickly look at sampling from a uniform distribution.</p>
-<p><code>rng.integers(a, b, endpoint=True, size=n)</code> returns a sample of <span class="math inline">\(n\)</span> integers in the interval <span class="math inline">\([a, b]\)</span> drawn from the discrete uniform distribution.</p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:46,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757088180859,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="78a45c68-77d2-44b0-f1ac-200f4d718655" data-execution_count="50">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>rng.integers(<span class="dv">0</span>, <span class="dv">5</span>,</span>
-<span id="cb5-2"><a href="#cb5-2"></a>             endpoint<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-3"><a href="#cb5-3"></a>             size<span class="op">=</span><span class="dv">50</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<pre><code>array([5, 2, 3, 5, 5, 0, 2, 2, 5, 3, 2, 1, 4, 2, 5, 0, 1, 3, 1, 3, 3, 1,
-       2, 4, 3, 3, 2, 2, 0, 1, 2, 3, 3, 5, 1, 2, 4, 1, 3, 5, 1, 5, 1, 5,
-       3, 3, 1, 2, 5, 2])</code></pre>
-</div>
-</div>
-<p>To sample from the continuous uniform distribution <span class="math inline">\(U[a, b]\)</span>, we run:</p>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:23,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757088275145,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6e75b793-068b-4c9c-de27-a2fca243c58e" data-execution_count="53">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>rng.uniform(<span class="dv">0</span>, <span class="dv">1</span>,</span>
-<span id="cb7-2"><a href="#cb7-2"></a>            size<span class="op">=</span><span class="dv">50</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<pre><code>array([0.98796486, 0.76410381, 0.10498714, 0.03107057, 0.93128712,
-       0.96552035, 0.21928765, 0.44180262, 0.55841242, 0.26566918,
-       0.05186467, 0.34936711, 0.26823169, 0.51232861, 0.47317588,
-       0.31202876, 0.42502523, 0.4537047 , 0.99292336, 0.63649573,
-       0.40598673, 0.62687924, 0.09587909, 0.19025823, 0.57653219,
-       0.65941569, 0.82635908, 0.05680779, 0.79063923, 0.18256108,
-       0.06228407, 0.11270523, 0.81318061, 0.62981147, 0.46985742,
-       0.08367527, 0.95083251, 0.68161831, 0.47453638, 0.85001569,
-       0.17413239, 0.08551654, 0.06614779, 0.63247482, 0.48444714,
-       0.9989611 , 0.05181891, 0.0821462 , 0.23662616, 0.52679687])</code></pre>
-</div>
-</div>
-</section>
-<section id="sampling-and-plotting" class="level2">
-<h2 class="anchored" data-anchor-id="sampling-and-plotting">Sampling and Plotting</h2>
-<p>Armed with a pseudo random number generator, we shall try to sample points from various probability distributions. Once we have a sample, we can then represent it pictorially using suitable plots.</p>
-<section id="sampling-bernoulli" class="level3">
-<h3 class="anchored" data-anchor-id="sampling-bernoulli">Sampling: Bernoulli</h3>
-<p>Let us generate a sample of <span class="math inline">\(1000\)</span> points from the <span class="math inline">\(\text{Br}(0.7)\)</span>. Recall that this is the same as tossing a biased coin <span class="math inline">\(1000\)</span> times, which has <span class="math inline">\(P(H) = 0.7\)</span>.</p>
-<p>In <code>NumPy</code>:</p>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:22,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086426375,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="6d40118b-1ed8-4db2-c011-58d0e189681a" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>X <span class="op">=</span> rng.choice(</span>
-<span id="cb9-2"><a href="#cb9-2"></a>    [<span class="dv">0</span>, <span class="dv">1</span>],</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    p<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.7</span>],</span>
-<span id="cb9-4"><a href="#cb9-4"></a>    size<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb9-5"><a href="#cb9-5"></a>X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>(1000,)</code></pre>
-</div>
-</div>
-</section>
-<section id="plotting-bar-plot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-bar-plot">Plotting: Bar plot</h3>
-<p>Let us visualise the sample using a bar plot. For this, we first need the height of the bars or the frequencies.</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:141,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086559855,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="57e42446-23e1-490d-d554-7dc7cf068f91" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb11-2"><a href="#cb11-2"></a>freq <span class="op">=</span> Counter(X)</span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="bu">print</span>(freq)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>plt.bar([<span class="dv">0</span>, <span class="dv">1</span>], [freq[<span class="dv">0</span>], freq[<span class="dv">1</span>]])</span>
-<span id="cb11-5"><a href="#cb11-5"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">1</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Counter({np.int64(1): 690, np.int64(0): 310})</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
+<p>Early sequence models such as RNNs and LSTMs were designed to process text token by token, maintaining a hidden state to carry information forward through a sequence. While effective for short contexts, this sequential structure made it difficult to parallelize and was also prone to forgetting long-range dependencies.</p>
+<p>In 2017, the “Transformer” architecture introduced in the “Attention Is All You Need” paper by “Vaswani et al” helped overcome these limitations. This architecture uses Self-Attention wherein every word in the sentence looks at every other word to determine context. Since all the words are processed simultaneously, the architecture is highly parallelizable and makes this significantly faster to train on modern GPUs.</p>
+<p>In this document, we will focus on the relvant parts of the transformer architecture and understand how it was adapted for the Vision Transformer. It is strongly recommended to revisit the Encoder part of the Transformer and the attention mechanism as we will only be stating it here for completeness.</p>
+<section id="transformer-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="transformer-architecture">Transformer Architecture</h2>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nb-4_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="images/transformer.png" class="img-fluid figure-img"></p>
+<figcaption>Architecture diagram taken from the original paper with certain components highlighted for subsequent explanation</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p>The <code>xticks</code> method ensures appropriate labeling of the bars on the x-axis.</p>
+<ol type="1">
+<li><strong>Input Embedding</strong>: Converts the words (tokens) into a dense continuous vector representation of dimension <span class="math inline">\(d_{model}\)</span>. This embedding matrix is learned during training.</li>
+<li><strong>Positional Encoding</strong>: Since the model does not contain recurrence or convolution, it has no inherent notion of token order. To provide sequence information, positional encodings are added to the input embeddings.</li>
+<li><strong>Encoder</strong>: Takes the input sequence and produces a representation of the input that captures relationships between all tokens. The encoder (as defined in the paper) is composed of a stack of 6 identical layers. Each of these layers has two sub-layers i.e the multi-head self-attention mechanism and position-wise fully connected feed-forward network. A residual connection is used around each of the two sub-layers and this is followed by layer-normalization.</li>
+</ol>
 </section>
-<section id="sampling-gaussian" class="level3">
-<h3 class="anchored" data-anchor-id="sampling-gaussian">Sampling: Gaussian</h3>
-<p>We now generate a sample of <span class="math inline">\(10,000\)</span> points from <span class="math inline">\(\mathcal{N}(50, 4)\)</span>. Recall that <span class="math inline">\(\mu = 1\)</span> and <span class="math inline">\(\sigma^2 = 4\)</span>. As a concrete example, we could use a normal distribution to model the heights or weights of people in a room, or the marks of students in an exam.</p>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:21,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086670454,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="a5a23e81-24ea-4ae0-dec2-5fbfa8a8a4f8" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>X <span class="op">=</span> rng.normal(<span class="dv">50</span>, <span class="dv">2</span>,</span>
-<span id="cb13-2"><a href="#cb13-2"></a>               size<span class="op">=</span><span class="dv">10_000</span>)</span>
-<span id="cb13-3"><a href="#cb13-3"></a>X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
-<pre><code>(10000,)</code></pre>
-</div>
-</div>
+<section id="transformers-in-computer-vision" class="level2">
+<h2 class="anchored" data-anchor-id="transformers-in-computer-vision">Transformers in Computer Vision</h2>
+<p>For a long time in computer vision tasks, convolutional architectures such as ResNet had been the state of the art. The CNN based architectures offer many advantages in being translation invariant, parameter efficient and capturing local spatial patterns well. However, since CNNs process images using kernels, they are more suited to capturing local patterns as opposed to a global context.</p>
+<p>The early attempts at applying the Transformer’s attention mechanism to images faced a few obstacles</p>
+<ul>
+<li>The Self-attention has a complexity of <span class="math inline">\(O(N^2)\)</span>, where N is the number of inputs. The naive approach of treating each pixel as an input would thus have a significant cost for realistic input sizes to apply self-attention.</li>
+<li>Other approaches required very specialized architectures to achieve good results but this required complex engineering for efficient implementation on hardware accelerators</li>
+</ul>
 </section>
-<section id="plotting-histogram" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-histogram">Plotting: Histogram</h3>
-<p>We can now visualise the sample using a histogram.</p>
-<div id="cell-20" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:182,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086686148,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="3d8645ad-820d-49dd-b50e-a37c64c3c087" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.hist(X,</span>
-<span id="cb15-2"><a href="#cb15-2"></a>         bins<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
+<section id="an-image-is-worth-16-x-16-words" class="level2">
+<h2 class="anchored" data-anchor-id="an-image-is-worth-16-x-16-words">An Image Is Worth 16 x 16 Words</h2>
+<p>The paper “AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE” by “Dosovitskiy et al.” introduced the Vision Transformers (ViTs) to extend the Transformer architecture successfully to computer vision tasks. Instead of processing images using convolutional layers like in CNNs or using each pixel as input, ViTs divide an image into fixed size patches and use these as input. The paper also demonstrated that this ViT can outperform traditional CNNs when trained on large datasets.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nb-4_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="images/vit.png" class="img-fluid figure-img"></p>
+<figcaption>Architecture diagram taken from the original paper with certain components highlighted for subsequent explanation</figcaption>
 </figure>
 </div>
-</div>
-</div>
+<ol type="1">
+<li>The image is divided into fixed size patches (16 X 16 pixels). If we have an image of size 224 x 224, it will be input as a sequence of 196 patches (as opposed to 50176 if each pixel was input individually!).</li>
+<li>These patches are flattened and mapped to D dimensions through a trainable linear projection. The output of this projection is referred to as the patch embeddings. The mapping is done to D dimensions because the Transformer uses a constant vector size D (<span class="math inline">\(d_{model}\)</span>) through all of its layers.</li>
+<li>The position embeddings (learnable) are added to the patch embeddings to retain positional information. We prepend this with a learnable embedding [CLS Token] whose state at the output of the encoder serves as the image reprepsentation. (The model processes all patches, but we need a single output vector to represent the entire image)</li>
+<li>The encoder consists of alternating layers of multiheaded self-attention and MLP blocks with Layer Normalization before every block and residual connections after every block.</li>
+<li>The output from the encoder is direclty fed into the MLP head (Feed Forward Neural Network) to obtain the classification output.</li>
+</ol>
+<p>One key benefit of this architecture is its ability to adopt the scalable Transformer framework from NLP, enabling the use of well optimized implementations without modification.</p>
+<p>In Transformers, pretraining refers to training a model on large, general-purpose datasets using a self-supervised objective before fine-tuning it on a specific downstream task. This allows the Transformers to learn some general purpose representations. The ViT was pre-trained on large datasets which include ILSVRC-2012 ImageNet dataset with 1k classes and 1.3M images, its superset ImageNet-21k with 21k classes and 14M images, and JFT with with 18k classes and 303M high-resolution images.</p>
+<p>This also indicates that the final MLP head in the architecture is set to predict as many classes as there are in the datasets used for pretraining. So, during fine-tuning, the MLP head is removed and re-initialized such that the output dimension of this new head matches the number of classes in the specific downstream task.</p>
 </section>
-<section id="sampling-bivariate-gaussian" class="level3">
-<h3 class="anchored" data-anchor-id="sampling-bivariate-gaussian">Sampling: Bivariate Gaussian</h3>
-<p>Let us now sample <span class="math inline">\(1000\)</span> points from the following Bivariate Gaussian:</p>
-<p><span class="math display">\[
-\mathcal{N} \left( \begin{bmatrix}1 \\ 2\end{bmatrix}, \begin{bmatrix}1 &amp; 0\\0 &amp; 5\end{bmatrix} \right)
-\]</span></p>
-<p>As a concrete example, a Bivariate Gaussian could model the distribution of the landing positions of balls on a cricket pitch in a given cricekt match.</p>
-<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086939713,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>mu <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb16-2"><a href="#cb16-2"></a>cov <span class="op">=</span> np.array([</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    [<span class="dv">1</span>, <span class="dv">0</span>],</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    [<span class="dv">0</span>, <span class="dv">5</span>]</span>
-<span id="cb16-5"><a href="#cb16-5"></a>])</span>
-<span id="cb16-6"><a href="#cb16-6"></a>X <span class="op">=</span> rng.multivariate_normal(</span>
-<span id="cb16-7"><a href="#cb16-7"></a>    mu,</span>
-<span id="cb16-8"><a href="#cb16-8"></a>    cov,</span>
-<span id="cb16-9"><a href="#cb16-9"></a>    size<span class="op">=</span><span class="dv">1000</span>).T</span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="co"># we transpose so that the data-matrix is (d, n) and not (n, d)</span></span>
-<span id="cb16-11"><a href="#cb16-11"></a>d, n <span class="op">=</span> X.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="plotting-scatter-plot" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-scatter-plot">Plotting: Scatter plot</h3>
-<p>Let us now visualise the sample using a scatter plot. Zooming out of the scatter plot gives us a better understanding. Changing the covariance matrix also helps in understanding how the sampled points depend on it.</p>
-<div id="cell-24" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:448,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757086966080,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="49833e8a-c3ad-4264-da1a-1e05a90ac4db" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.scatter(X[<span class="dv">0</span>], X[<span class="dv">1</span>],</span>
-<span id="cb17-2"><a href="#cb17-2"></a>            alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3"></a>plt.axis(<span class="st">'equal'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4"></a>plt.axhline(color<span class="op">=</span><span class="st">'black'</span>,</span>
-<span id="cb17-5"><a href="#cb17-5"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb17-6"><a href="#cb17-6"></a>            linewidth<span class="op">=</span><span class="st">'0.8'</span>)</span>
-<span id="cb17-7"><a href="#cb17-7"></a>plt.axvline(color<span class="op">=</span><span class="st">'black'</span>,</span>
-<span id="cb17-8"><a href="#cb17-8"></a>            linestyle<span class="op">=</span><span class="st">'--'</span>,</span>
-<span id="cb17-9"><a href="#cb17-9"></a>            linewidth<span class="op">=</span><span class="st">'0.8'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
+<section id="vit-variants" class="level2">
+<h2 class="anchored" data-anchor-id="vit-variants">ViT Variants</h2>
+<p>The paper also proposes a few model variants based on number of layers, Hidden size D, MLP Size and number of heads. The same is presented in the table below:</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="nb-4_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="images/vit_variants.png" class="img-fluid figure-img"></p>
+<figcaption>Model variants from the original paper</figcaption>
 </figure>
 </div>
-</div>
-</div>
-<p><code>alpha</code> allows us to control the transparency of points in a scatter plot. By default <code>alpha=1</code>, indicating complete opacity.</p>
 </section>
-</section>
-<section id="gmm" class="level2">
-<h2 class="anchored" data-anchor-id="gmm">GMM</h2>
-<p>We can now combine the concepts learnt above to sample points from a Gaussian Mixture Model. We shall draw <span class="math inline">\(1,000,000\)</span> samples from a Gaussian Mixture Model (GMM) that has three components, with mixture probabilities <span class="math inline">\([0.2, 0.3, 0.5]\)</span> and means <span class="math inline">\([10, 15, 18]\)</span>. The standard deviation of all three Gaussians is the same and is equal to <span class="math inline">\(1\)</span>. We can visualise the sample using a histogram.</p>
-<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:4173,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1757087232624,&quot;user&quot;:{&quot;displayName&quot;:&quot;Karthik Thiagarajan&quot;,&quot;userId&quot;:&quot;18250337670386755696&quot;},&quot;user_tz&quot;:-330}}" data-outputid="cdb02a15-264c-47ca-c9b2-0ad23db92a8a" data-execution_count="47">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>n <span class="op">=</span> <span class="dv">1_000_000</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a>comp <span class="op">=</span> rng.choice(</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>],</span>
-<span id="cb18-4"><a href="#cb18-4"></a>    p<span class="op">=</span>[<span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>],</span>
-<span id="cb18-5"><a href="#cb18-5"></a>    size<span class="op">=</span>n)</span>
-<span id="cb18-6"><a href="#cb18-6"></a>mu <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">18</span>])</span>
-<span id="cb18-7"><a href="#cb18-7"></a>X <span class="op">=</span> np.zeros(n)</span>
-<span id="cb18-8"><a href="#cb18-8"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb18-9"><a href="#cb18-9"></a>    X[i] <span class="op">=</span> rng.normal(mu[comp[i]], <span class="dv">1</span>)</span>
-<span id="cb18-10"><a href="#cb18-10"></a>plt.hist(X,</span>
-<span id="cb18-11"><a href="#cb18-11"></a>         bins<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb18-12"><a href="#cb18-12"></a>         edgecolor<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="nb-4_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>A concrete example of a GMM would be in modeling the incomes of a people in a population in which there are distinct economic categories. Consider three groups whose salaries are distributed normally around means 10 lpa, 15 lpa and 18 lpa, with unit variance. The three groups are represented in the proportion <span class="math inline">\(2 : 3 : 5\)</span>. We could model the distribution of the income of an individual from this population as a GMM. The above plot would be the histogram of a sample from this population.</p>
+<section id="credits" class="level2">
+<h2 class="anchored" data-anchor-id="credits">Credits</h2>
+<ul>
+<li>https://arxiv.org/pdf/1706.03762</li>
+<li>https://arxiv.org/pdf/2010.11929</li>
+<li>https://www.kaggle.com/code/abhinand05/vision-transformer-vit-tutorial-baseline</li>
+</ul>
 
 
 </section>
@@ -1457,13 +1287,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../week-1/module-1/nb-3.html" class="pagination-link" aria-label="Matrices">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Matrices</span>
+      <a href="../../week-4/Intro to computer vision/intro_to_cv.html" class="pagination-link" aria-label="Introduction to Computer Vision">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction to Computer Vision</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../week-1/module-1/nb-5.html" class="pagination-link" aria-label="NumPy Arrays">
-        <span class="nav-page-text">NumPy Arrays</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../week-5/index.html" class="pagination-link" aria-label="Week-5">
+        <span class="nav-page-text">Week-5</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1475,7 +1305,7 @@ window.Quarto = {
     </div>   
     <div class="nav-footer-center">
 <p>Copyright 2025 @ IIT Madras</p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-4.ipynb" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-1/module-1/nb-4.ipynb" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bsc-iitm/data-science-lab/edit/master/week-4/Vision Transformers/vision_transformers.qmd" target="_blank" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/issues/new" target="_blank" class="toc-action"><i class="bi empty"></i>Report an issue</a></li><li><a href="https://github.com/bsc-iitm/data-science-lab/blob/master/week-4/Vision Transformers/vision_transformers.qmd" target="_blank" class="toc-action"><i class="bi empty"></i>View source</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
